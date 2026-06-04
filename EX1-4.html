@@ -6,6 +6,7 @@
 <title>GAMBA｜数学II 指数関数 第1章④ 指数関数のグラフと性質</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
@@ -175,6 +176,15 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
 .fab-preview{display:none;padding:.3rem .6rem;background:var(--sf2);border-top:1px solid var(--bd);}
 .fab-prev-img{max-height:60px;border-radius:6px;}
 .fab-prev-del{background:none;border:none;color:var(--pink);font-size:12px;cursor:pointer;margin-left:.4rem;}
+
+.graph-wrap{background:#f8f9ff;border:1.5px solid #c5cae9;border-radius:12px;padding:12px;margin:12px 0}
+.graph-title{font-size:13px;font-weight:700;color:#1a237e;margin-bottom:8px}
+.graph-canvas{width:100%!important;max-height:240px}
+.slider-wrap{display:flex;align-items:center;gap:8px;margin-top:8px;padding:6px 4px}
+.slider-wrap label{font-size:13px;font-weight:700;color:#1a237e;white-space:nowrap}
+.slider-wrap input[type=range]{flex:1;accent-color:#2055b0}
+.slider-val{font-size:14px;font-weight:700;color:#2055b0;min-width:36px;text-align:right}
+
 </style>
 </head>
 
@@ -804,6 +814,94 @@ window.NEKO_CONFIG = {
     'cf3': '確認問題③「平行移動の応用」に取り組み中'
   }
 };
+</script>
+
+<script>
+// ===== 指数関数グラフ =====
+(function(){
+
+  var chart1 = null;
+
+  function makeLabels(){
+    var labels = [];
+    for(var x = -4; x <= 4; x += 0.25) labels.push(x);
+    return labels;
+  }
+
+  function makeData(a, labels){
+    return labels.map(function(x){ return Math.pow(a, x); });
+  }
+
+  function initChart1(){
+    var ctx = document.getElementById('chart1');
+    if(!ctx) return;
+    var a = 2;
+    var labels = makeLabels();
+    chart1 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'y = a^x',
+          data: makeData(a, labels),
+          borderColor: '#2055b0',
+          backgroundColor: 'rgba(32,85,176,0.08)',
+          borderWidth: 2.5,
+          pointRadius: 0,
+          tension: 0.3
+        }]
+      },
+      options: {
+        animation: { duration: 150 },
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false }
+        },
+        scales: {
+          x: {
+            type: 'linear',
+            min: -4, max: 4,
+            ticks: {
+              stepSize: 1,
+              callback: function(v){ return Number.isInteger(v) ? v : ''; }
+            },
+            grid: { color: 'rgba(0,0,0,0.08)' },
+            title: { display: true, text: 'x' }
+          },
+          y: {
+            min: -0.5, max: 10,
+            ticks: { stepSize: 2 },
+            grid: { color: 'rgba(0,0,0,0.08)' },
+            title: { display: true, text: 'y' }
+          }
+        }
+      }
+    });
+  }
+
+  window.updateChart1 = function(){
+    var sl  = document.getElementById('sl1');
+    var sv  = document.getElementById('sv1');
+    if(!sl || !chart1) return;
+    var a = parseFloat(sl.value);
+    sv.textContent = a.toFixed(1);
+    var labels = makeLabels();
+    chart1.data.datasets[0].data = makeData(a, labels);
+    chart1.data.datasets[0].label = 'y = a^x  (a = ' + a.toFixed(1) + ')';
+    chart1.update();
+  };
+
+  // DOM読み込み後に初期化
+  document.addEventListener('DOMContentLoaded', function(){
+    initChart1();
+    // 初期値を表示
+    var sv = document.getElementById('sv1');
+    if(sv) sv.textContent = '2.0';
+  });
+
+})();
 </script>
 <script src="neko.js"></script>
 </body>

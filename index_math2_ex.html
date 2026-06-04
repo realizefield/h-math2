@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>GAMBA 数学II 指数関数 単元表</title>
+<title>GAMBA 数学II 指数・対数関数 単元表</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','BIZ UDGothic','Yu Gothic UI',Meiryo,sans-serif;background:#eff6ff;color:#0f1e3c;min-height:100vh;font-size:15px}
@@ -85,6 +85,11 @@ body{font-family:'Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','BIZ UD
 
 canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:none}
 
+/* 縦分数 */
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;font-size:.85em;line-height:1.1}
+.frac .num{border-bottom:1.5px solid currentColor;padding:0 3px 1px;text-align:center}
+.frac .den{padding:1px 3px 0;text-align:center}
+
 @media(max-width:480px){
   .unit-title{font-size:.9rem}
   .sc-btn-row{gap:4px}
@@ -96,13 +101,13 @@ canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:
 <canvas id="cnf"></canvas>
 
 <div class="top-header">
-  <h1>📐 GAMBA 数学II 指数関数 単元表</h1>
-  <p>数学II 第1章 — 指数の計算からグラフ・方程式・不等式・最大最小まで</p>
+  <h1>📐 GAMBA 数学II 指数・対数関数 単元表</h1>
+  <p>数学II 第1章・第2章 — 指数の計算からグラフ・方程式・不等式・対数まで</p>
   <div class="summary-bar">
     <div class="sum-item"><span class="sum-dot sum-dot-a"></span>A わかった <span class="sum-count" id="cnt-a">0</span></div>
     <div class="sum-item"><span class="sum-dot sum-dot-b"></span>B 要復習 <span class="sum-count" id="cnt-b">0</span></div>
     <div class="sum-item"><span class="sum-dot sum-dot-c"></span>C 何度も <span class="sum-count" id="cnt-c">0</span></div>
-    <div class="sum-item"><span class="sum-dot sum-dot-n"></span>未実施 <span class="sum-count" id="cnt-n">7</span></div>
+    <div class="sum-item"><span class="sum-dot sum-dot-n"></span>未実施 <span class="sum-count" id="cnt-n">8</span></div>
   </div>
 </div>
 
@@ -147,7 +152,7 @@ canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:
           <div class="sc-body"><ul class="sc-topics">
             <li>指数法則（たす・かける・ひく）</li>
             <li>ゼロ乗は 1、マイナス乗は分数</li>
-            <li>a⁻ᵐ = 1/aᵐ</li>
+            <li>a⁻ᵐ = <span class="frac"><span class="num">1</span><span class="den">aᵐ</span></span></li>
           </ul></div>
           <div class="sc-btn-row">
             <a class="sc-btn" href="EX1-1.html">📖 解説・練習</a>
@@ -167,8 +172,8 @@ canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:
             <span class="sc-stars">★★☆</span>
           </div>
           <div class="sc-body"><ul class="sc-topics">
-            <li>a^(1/n) は n 乗根（ルートの仲間）</li>
-            <li>a^(m/n) = ⁿ√aᵐ（分母が根号の次数）</li>
+            <li>a<sup><span class="frac"><span class="num">1</span><span class="den">n</span></span></sup> は n 乗根（ルートの仲間）</li>
+            <li>a<sup><span class="frac"><span class="num">m</span><span class="den">n</span></span></sup> = ⁿ√aᵐ（分母が根号の次数）</li>
             <li>累乗根の性質・複合計算</li>
           </ul></div>
           <div class="sc-btn-row">
@@ -328,8 +333,8 @@ canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:
           <tr><th>指数法則①</th><td class="hi">aᵐ × aⁿ = aᵐ⁺ⁿ</td><td>底が同じ → 指数を足す</td></tr>
           <tr><th>指数法則②</th><td class="hi">(aᵐ)ⁿ = aᵐⁿ</td><td>べき乗のべき乗 → 指数をかける</td></tr>
           <tr><th>指数法則③</th><td class="hi">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</td><td>底が同じ → 指数を引く</td></tr>
-          <tr><th>ゼロ乗・負の指数</th><td class="hi">a⁰ = 1、a⁻ᵐ = 1/aᵐ</td><td>マイナスは分母に移す</td></tr>
-          <tr><th>分数指数</th><td class="hi">a^(m/n) = ⁿ√aᵐ</td><td>分母が根号の次数</td></tr>
+          <tr><th>ゼロ乗・負の指数</th><td class="hi">a⁰ = 1、a⁻ᵐ = <span class="frac"><span class="num">1</span><span class="den">aᵐ</span></span></td><td>マイナスは分母に移す</td></tr>
+          <tr><th>分数指数</th><td class="hi">a<sup><span class="frac"><span class="num">m</span><span class="den">n</span></span></sup> = ⁿ√aᵐ</td><td>分母が根号の次数</td></tr>
           <tr><th>不等式（増加）</th><td class="hi">a &gt; 1 のとき：aᶠ ≧ aᵍ → f ≧ g</td><td>不等号そのまま</td></tr>
           <tr><th>不等式（減少）</th><td class="hi">0 &lt; a &lt; 1 のとき：aᶠ ≧ aᵍ → f ≦ g</td><td>不等号が逆転！</td></tr>
           <tr><th>相加相乗平均</th><td class="hi">aˣ + a⁻ˣ ≧ 2（等号は x = 0）</td><td>最小値は 2</td></tr>
@@ -363,11 +368,71 @@ canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:
     <a href="index_math2.html" class="back-btn">← 数学IIメニューに戻る</a>
   </div>
 
+  <!-- ══ 第2章 対数関数 ══ -->
+  <div class="unit" style="border-color:#7c3aed">
+    <div class="unit-hd" style="background:linear-gradient(90deg,#7c3aed,#a78bfa)">
+      <span class="unit-num">第2章</span>
+      <span class="unit-title">対数関数</span>
+      <span class="unit-badge">EX2-1 〜</span>
+    </div>
+    <div class="unit-body">
+      <div class="group-label">🔢 対数の基礎</div>
+      <div class="sec-grid">
+
+        <!-- EX2-1 -->
+        <div class="sec-card" data-id="EX2-1" style="border-color:#7c3aed">
+          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
+            <span class="sc-num" style="background:#7c3aed">EX2-1</span>
+            <span class="sc-title">対数の定義</span>
+            <span class="sc-stars">★☆☆</span>
+          </div>
+          <div class="sc-body"><ul class="sc-topics">
+            <li>log とは「何乗したら？」という問い</li>
+            <li>a^p = M ⟺ log_a M = p</li>
+            <li>真数条件・底の条件（M &gt; 0、a &gt; 0、a ≠ 1）</li>
+          </ul></div>
+          <div class="sc-btn-row">
+            <a class="sc-btn" href="EX2-1.html" style="background:#7c3aed">📖 解説・練習</a>
+          </div>
+          <div class="abc-row">
+            <button class="abc-btn abc-a" onclick="setABC('EX2-1','a',this)">A OK</button>
+            <button class="abc-btn abc-b" onclick="setABC('EX2-1','b',this)">B 復習</button>
+            <button class="abc-btn abc-c" onclick="setABC('EX2-1','c',this)">C もう一度</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 対数 公式早見表 -->
+  <div class="ref-table" style="border-color:#ede9fe">
+    <div class="ref-title" style="color:#7c3aed;border-bottom-color:#ede9fe">📋 対数 基本公式 早見表</div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr><th>公式名</th><th>内容</th><th>ポイント</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>対数の定義</th><td class="hi" style="color:#7c3aed">a^p = M ⟺ log_a M = p</td><td>「何乗？」を log で表す</td></tr>
+          <tr><th>真数条件</th><td class="hi" style="color:#7c3aed">log_a M → M &gt; 0 が必須</td><td>真数は必ず正！</td></tr>
+          <tr><th>底の条件</th><td class="hi" style="color:#7c3aed">a &gt; 0、a ≠ 1</td><td>底は正・かつ 1 以外</td></tr>
+          <tr><th>特別な値①</th><td class="hi" style="color:#7c3aed">log_a 1 = 0</td><td>何乗しても 1 → 0 乗</td></tr>
+          <tr><th>特別な値②</th><td class="hi" style="color:#7c3aed">log_a a = 1</td><td>a の 1 乗は a</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="back-link">
+    <a href="index_math2.html" class="back-btn">← 数学IIメニューに戻る</a>
+  </div>
+
 </div>
 
 <script>
-const STORAGE_KEY = 'gamba_ex1_status_v1';
-const ALL_IDS = ['EX1-1','EX1-2','EX1-3','EX1-4','EX1-5','EX1-6','EX1-7'];
+const STORAGE_KEY = 'gamba_ex_status_v1';
+const ALL_IDS = ['EX1-1','EX1-2','EX1-3','EX1-4','EX1-5','EX1-6','EX1-7','EX2-1'];
 let status = {};
 try { const s = localStorage.getItem(STORAGE_KEY); if(s) status = JSON.parse(s); } catch(e){}
 
