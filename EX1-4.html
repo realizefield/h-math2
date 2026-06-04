@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMBA｜数学II 指数関数 第1章④ 指数関数のグラフと性質</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f4ef;--sf:#fff;--sf2:#f0ede6;--bd:#d6d2c8;--bd2:#bcb8ae;
+--pink:#d93652;--teal:#0d9478;--blue:#2055b0;--amber:#a86000;--purple:#6c3fc5;
+--tl:#e6f5f1;--bl:#eaf0fb;--al:#fdf2dd;--pl:#fde8eb;--ppl:#f0ebfc;
+--text:#1a1814;--text2:#58544c;--text3:#98948c;--r:12px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;min-height:100vh;}
+.site-header{background:var(--sf);border-bottom:1px solid var(--bd);padding:.65rem 1.5rem;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.logo{font-family:'Shippori Mincho',serif;font-size:1.05rem;color:var(--pink);}
+.logo-sep{color:var(--bd2);}
+.logo-sub{font-size:12px;color:var(--text2);}
+.tab-nav{background:var(--sf);border-bottom:2px solid var(--bd);position:sticky;top:46px;z-index:99;display:flex;padding:0 .5rem;gap:.2rem;overflow-x:auto;}
+.tab-btn{padding:.7rem .9rem;font-size:12px;font-weight:500;color:var(--text2);background:none;border:none;cursor:pointer;font-family:'Noto Sans JP',sans-serif;display:flex;align-items:center;gap:5px;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .15s;white-space:nowrap;}
+.tab-btn:hover{color:var(--text);}
+.tab-btn.active-ex{color:var(--pink);border-bottom-color:var(--pink);}
+.tab-btn.active-pr{color:var(--blue);border-bottom-color:var(--blue);}
+.tab-btn.active-cf{color:var(--amber);border-bottom-color:var(--amber);}
+.tab-pip{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+.pip-ex{background:#fde8eb;color:var(--pink);}
+.pip-pr{background:var(--bl);color:var(--blue);}
+.pip-cf{background:var(--al);color:var(--amber);}
+.page{display:none;animation:fadeTab .2s ease;}
+.page.active{display:block;}
+@keyframes fadeTab{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
+.page-hdr{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1rem 1.4rem;margin-bottom:1.4rem;display:flex;align-items:center;gap:12px;}
+.page-hdr-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;flex-shrink:0;}
+.icon-ex{background:var(--pink);color:#fff;}.icon-pr{background:var(--blue);color:#fff;}.icon-cf{background:var(--amber);color:#fff;}
+.page-hdr-body{flex:1;}
+.page-hdr-title{font-size:15px;font-weight:700;margin-bottom:2px;}
+.page-hdr-desc{font-size:12px;color:var(--text2);}
+.prog-wrap{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:.8rem 1.2rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:12px;}
+.pb-w{flex:1;height:6px;background:var(--bd);border-radius:3px;overflow:hidden;}
+.pb{height:100%;border-radius:3px;transition:width .4s;}
+.pb-pr{background:var(--blue);}
+.pb-cf{background:var(--amber);}
+.pb-txt{font-size:12px;color:var(--text2);white-space:nowrap;}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.4rem 1.5rem;margin-bottom:1rem;}
+.clabel{font-size:11px;font-weight:700;letter-spacing:.1em;margin-bottom:.85rem;display:flex;align-items:center;gap:6px;}
+.clabel::before{content:'';width:3px;height:14px;border-radius:2px;display:inline-block;}
+.clabel.ex{color:var(--pink);}.clabel.ex::before{background:var(--pink);}
+.clabel.pr{color:var(--blue);}.clabel.pr::before{background:var(--blue);}
+.clabel.cf{color:var(--amber);}.clabel.cf::before{background:var(--amber);}
+.clabel.kai{color:var(--teal);}.clabel.kai::before{background:var(--teal);}
+.q-text{font-size:15px;line-height:1.95;color:var(--text);margin-bottom:1rem;}
+.point-box{background:var(--al);border:1px solid #e0c888;border-radius:9px;padding:.8rem 1.1rem;margin-bottom:.9rem;font-size:13px;color:var(--amber);line-height:1.8;}
+.point-box strong{display:block;font-size:10px;letter-spacing:.08em;margin-bottom:3px;}
+.exp-box{background:var(--sf2);border-radius:9px;padding:.9rem 1.15rem;margin-bottom:.75rem;border-left:3px solid var(--teal);}
+.exp-box h4{font-size:11px;color:var(--teal);font-weight:700;letter-spacing:.06em;margin-bottom:.35rem;}
+.exp-box p{font-size:14px;line-height:1.9;color:var(--text);}
+.exp-box.blue{border-color:var(--blue);}.exp-box.blue h4{color:var(--blue);}
+.exp-box.amber{border-color:var(--amber);}.exp-box.amber h4{color:var(--amber);}
+.exp-box.purple{border-color:var(--purple);}.exp-box.purple h4{color:var(--purple);}
+.kai-card{display:none;border-top:3px solid var(--teal);}
+.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:1rem;}
+.ch{background:var(--sf2);border:1.5px solid var(--bd);border-radius:9px;padding:10px 8px;font-size:14px;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .15s;font-family:'Noto Sans JP',sans-serif;width:100%;text-align:left;}
+.ch:hover:not(:disabled){border-color:var(--blue);background:var(--bl);}
+.ch:disabled{cursor:default;}
+.ch.ok{border-color:var(--teal);background:var(--tl);color:var(--teal);}
+.ch.ng{border-color:var(--pink);background:var(--pl);color:var(--pink);}
+.cnum{width:24px;height:24px;border-radius:50%;background:var(--bd);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.ch.ok .cnum{background:var(--teal);color:#fff;}
+.ch.ng .cnum{background:var(--pink);color:#fff;}
+.fb-ok{display:none;align-items:flex-start;gap:12px;background:#e6faf3;border:2px solid #0d9478;border-radius:12px;padding:12px 16px;margin:8px 0 4px;}
+.fb-ng{display:none;align-items:flex-start;gap:12px;background:#fde8eb;border:2px solid #d93652;border-radius:12px;padding:12px 16px;margin:8px 0 4px;}
+.fb-icon{font-size:1.7rem;flex-shrink:0;}
+.fb-text{font-size:13px;font-weight:700;line-height:1.5;flex:1;}
+.fb-ok .fb-text{color:#0d9478;}
+.fb-ng .fb-text{color:#d93652;}
+.fb-steps{margin-top:.5rem;display:flex;flex-direction:column;gap:.4rem;}
+.fb-step{background:rgba(255,255,255,.65);border-radius:7px;padding:.45rem .7rem;font-size:12.5px;line-height:1.8;border-left:3px solid var(--teal);}
+.fb-step.fb-ans{border-left-color:var(--amber);background:rgba(255,255,255,.85);font-weight:600;}
+.fb-ok .fb-step{border-left-color:var(--teal);}
+.fb-ng .fb-step{border-left-color:var(--pink);}
+.fb-ng .fb-step.fb-ans{border-left-color:var(--amber);}
+.reset-btn{background:none;border:1.5px solid #d93652;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;color:#d93652;cursor:pointer;font-family:'Noto Sans JP',sans-serif;margin-top:.5rem;transition:all .15s;}
+.reset-btn:hover{background:#d93652;color:#fff;}
+.prob-divider{border:none;border-top:1px dashed var(--bd);margin:1.8rem 0 1.5rem;}
+.formula-box{background:var(--ppl);border:1.5px solid #c5b8ef;border-radius:12px;padding:1rem 1.4rem;margin:1rem 0;text-align:center;}
+.formula-big{font-size:1.6rem;font-weight:700;color:var(--purple);margin:.4rem 0;line-height:1.5;}
+.formula-note{font-size:12px;color:var(--text2);margin-top:.4rem;}
+/* ── ステップ展開ボタン ── */
+.step-ex{background:var(--sf2);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;margin-bottom:.9rem;}
+.step-ex-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.step-ex-btns{display:flex;gap:.4rem;margin-bottom:.5rem;flex-wrap:wrap;}
+.step-ex-btn{border:none;border-radius:7px;padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;}
+.step-ex-btn:nth-child(1){background:var(--tl);color:var(--teal);}
+.step-ex-btn:nth-child(1):hover:not(:disabled){background:var(--teal);color:#fff;}
+.step-ex-btn:nth-child(2){background:var(--bl);color:var(--blue);}
+.step-ex-btn:nth-child(2):hover:not(:disabled){background:var(--blue);color:#fff;}
+.step-ex-btn:nth-child(3){background:var(--al);color:var(--amber);}
+.step-ex-btn:nth-child(3):hover:not(:disabled){background:var(--amber);color:#fff;}
+.step-ex-btn:disabled{opacity:.35;cursor:default;}
+.step-ex-btn.done{opacity:.6;}
+.step-ex-body{font-size:13px;line-height:1.9;color:var(--text);background:#fff;border-radius:7px;padding:.55rem .8rem;margin-top:.35rem;border-left:3px solid var(--teal);animation:fadeIn .25s ease;}
+.step-ex-body.ans{border-left-color:var(--amber);background:var(--al);}
+.step-label{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.07em;border-radius:4px;padding:1px 7px;margin-right:.3rem;}
+.step-label.teal{background:var(--teal);color:#fff;}
+.step-label.blue{background:var(--blue);color:#fff;}
+.step-label.amber{background:var(--amber);color:#fff;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+/* ── ミニテスト ── */
+.mini-fold{margin-top:1rem;}
+.mini-fold-btn{width:100%;padding:.75rem 1.2rem;background:var(--tl);border:1.5px solid var(--teal);border-radius:10px;font-size:13px;font-weight:700;color:var(--teal);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-align:center;}
+.mini-fold-btn:hover{background:var(--teal);color:#fff;}
+.mini-fold-inner{display:none;margin-top:.6rem;padding:.8rem;background:var(--sf);border:1px solid var(--bd);border-radius:10px;}
+.mini-q-text{font-size:14px;line-height:1.9;margin-bottom:.7rem;color:var(--text);}
+.mini-complete{background:var(--tl);border:1.5px solid var(--teal);border-radius:10px;padding:.8rem 1rem;text-align:center;margin-top:.6rem;display:none;}
+.mini-complete-emoji{font-size:1.6rem;margin-bottom:.2rem;}
+.mini-complete-text{font-size:13px;font-weight:700;color:var(--teal);}
+.mini-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;}
+.mini-nav-btn{flex:1;min-width:130px;padding:9px 12px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;border:2px solid;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-align:center;display:flex;align-items:center;justify-content:center;}
+.mini-nav-btn.index{background:#fff;border-color:var(--bd);color:var(--text2);}
+.mini-nav-btn.index:hover{border-color:var(--blue);color:var(--blue);}
+.mini-nav-btn.next{background:var(--blue);border-color:var(--blue);color:#fff;}
+.mini-nav-btn.next:hover{background:#153a80;}
+/* ── ページナビ ── */
+.page-nav-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem;padding:.6rem 0 .2rem;}
+.page-nav-row .mini-nav-btn{flex:1;min-width:140px;}
+/* ── unit-nav ── */
+.unit-nav{display:flex;flex-direction:column;gap:10px;margin:1.8rem 0 0;padding-top:1.4rem;border-top:2px dashed var(--bd);}
+.unit-nav-row{display:flex;gap:8px;flex-wrap:wrap;}
+.unav-btn{flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 16px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;border:2px solid;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-align:center;}
+.unav-index{background:#fff;border-color:var(--bd);color:var(--text2);}
+.unav-index:hover{border-color:var(--blue);color:var(--blue);}
+.unav-prev{background:var(--sf2);border-color:var(--bd2);color:var(--text2);}
+.unav-prev:hover{border-color:var(--text2);}
+.unav-next{background:var(--blue);border-color:var(--blue);color:#fff;}
+.unav-next:hover{background:#153a80;}
+/* ── グラフ ── */
+.graph-wrap{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1rem;margin-bottom:1rem;}
+.graph-title{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:.6rem;text-align:center;}
+.graph-canvas{width:100%;max-height:280px;}
+.slider-wrap{margin-top:.8rem;display:flex;align-items:center;gap:.8rem;font-size:13px;}
+.slider-wrap label{color:var(--text2);white-space:nowrap;}
+.slider-wrap input[type=range]{flex:1;accent-color:var(--teal);}
+.slider-val{font-weight:700;color:var(--teal);min-width:30px;text-align:right;}
+/* ── 性質カード ── */
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:.8rem 0;}
+.prop-card{background:var(--sf);border:1.5px solid var(--bd);border-radius:10px;padding:.8rem 1rem;font-size:13px;line-height:1.7;}
+.prop-card.blue{border-color:var(--blue);background:var(--bl);}
+.prop-card.amber{border-color:var(--amber);background:var(--al);}
+.prop-card-title{font-size:11px;font-weight:700;letter-spacing:.06em;margin-bottom:.35rem;}
+.prop-card.blue .prop-card-title{color:var(--blue);}
+.prop-card.amber .prop-card-title{color:var(--amber);}
+/* ── ねこ先生FAB ── */
+.fab-wrap{position:fixed;bottom:24px;right:52px;z-index:9000;}
+.fab-btn{width:72px;height:72px;border-radius:50%;background:#fff;border:3px solid #c4b5fd;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(108,63,197,.4);transition:transform .2s;overflow:hidden;padding:0;}
+.fab-btn:hover{transform:scale(1.08);}
+.fab-btn img{width:100%;height:100%;object-fit:contain;display:block;}
+.fab-btn img{width:100%;height:100%;object-fit:cover;object-position:center bottom;}
+.fab-label{position:absolute;right:82px;bottom:50%;transform:translateY(50%) translateX(6px);background:#6c3fc5;color:#fff;font-size:13px;font-weight:700;white-space:nowrap;padding:7px 14px;border-radius:20px;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;box-shadow:0 3px 10px rgba(108,63,197,.4);}
+.fab-label::after{content:'';position:absolute;right:-8px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-left-color:#6c3fc5;}
+.fab-panel{display:none;position:fixed;bottom:110px;right:20px;width:320px;max-height:480px;background:#fff;border:2px solid #c4b5fd;border-radius:16px;box-shadow:0 8px 32px rgba(108,63,197,.25);z-index:9001;flex-direction:column;overflow:hidden;}
+.fab-panel.open{display:flex;}
+.fab-panel-hdr{background:#6c3fc5;color:#fff;padding:.7rem 1rem;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:space-between;}
+.fab-close{background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;}
+.fab-msgs{flex:1;overflow-y:auto;padding:.8rem;display:flex;flex-direction:column;gap:.6rem;min-height:120px;}
+.ai-msg-u{align-self:flex-end;background:var(--bl);border-radius:12px 12px 2px 12px;padding:.5rem .85rem;font-size:13px;max-width:85%;}
+.ai-msg-a{align-self:flex-start;background:var(--ppl);border-radius:12px 12px 12px 2px;padding:.5rem .85rem;font-size:13px;max-width:90%;white-space:pre-wrap;}
+.ai-msg-t{align-self:flex-start;background:var(--sf2);border-radius:12px;padding:.4rem .8rem;font-size:12px;color:var(--text3);}
+.fab-input-row{padding:.6rem;border-top:1px solid var(--bd);display:flex;gap:.4rem;align-items:center;}
+.fab-inp{flex:1;border:1.5px solid var(--bd);border-radius:9px;padding:.45rem .7rem;font-size:13px;font-family:'Noto Sans JP',sans-serif;outline:none;}
+.fab-inp:focus{border-color:#c4b5fd;}
+.fab-sbtn{background:#6c3fc5;color:#fff;border:none;border-radius:9px;padding:.45rem .8rem;font-size:13px;cursor:pointer;}
+.fab-sbtn:disabled{opacity:.5;}
+.fab-quick{padding:.4rem .6rem .2rem;display:flex;gap:.35rem;flex-wrap:wrap;border-top:1px solid var(--bd);}
+.fab-qbtn{background:var(--ppl);border:1px solid #c4b5fd;border-radius:20px;padding:4px 10px;font-size:11px;color:#6c3fc5;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+.fab-preview{display:none;padding:.3rem .6rem;background:var(--sf2);border-top:1px solid var(--bd);}
+.fab-prev-img{max-height:60px;border-radius:6px;}
+.fab-prev-del{background:none;border:none;color:var(--pink);font-size:12px;cursor:pointer;margin-left:.4rem;}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <span class="logo">GAMBA</span><span class="logo-sep">|</span>
+  <span class="logo-sub">数学II 指数関数 ／ 第1章④ 指数関数のグラフと性質</span>
+</header>
+<nav class="tab-nav">
+  <button class="tab-btn active-ex" onclick="switchPage('ex1')"><span class="tab-pip pip-ex">例</span>解説①</button>
+  <button class="tab-btn" onclick="switchPage('pr1')"><span class="tab-pip pip-pr">演</span>練習①</button>
+  <button class="tab-btn" onclick="switchPage('cf1')"><span class="tab-pip pip-cf">確</span>確認①</button>
+  <button class="tab-btn" onclick="switchPage('ex2')"><span class="tab-pip pip-ex">例</span>解説②</button>
+  <button class="tab-btn" onclick="switchPage('pr2')"><span class="tab-pip pip-pr">演</span>練習②</button>
+  <button class="tab-btn" onclick="switchPage('cf2')"><span class="tab-pip pip-cf">確</span>確認②</button>
+  <button class="tab-btn" onclick="switchPage('ex3')"><span class="tab-pip pip-ex">例</span>解説③</button>
+  <button class="tab-btn" onclick="switchPage('pr3')"><span class="tab-pip pip-pr">演</span>練習③</button>
+  <button class="tab-btn" onclick="switchPage('cf3')"><span class="tab-pip pip-cf">確</span>確認③</button>
+</nav>
+<main>
+
+<!-- ===== 解説① a>1 のグラフと性質 ===== -->
+<div class="page active" id="page-ex1">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-ex">例</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">解説① — $a>1$ のとき：右上がりのグラフ</div>
+      <div class="page-hdr-desc">$y=2^x$ を中心にグラフの形と性質を学ぶ</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="clabel ex">解説① — 指数関数 $y = a^x$（$a > 1$）</div>
+
+    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
+      グラフの形は一度見たら覚えられます。まず見るだけでOK。
+    </div>
+
+    <p class="q-text">
+      $y = 2^x$ のように、<strong>変数が指数の位置</strong>にある関数を<strong>指数関数</strong>といいます。<br>
+      $a > 1$ のとき（例：$y = 2^x$）のグラフを見てみましょう。
+    </p>
+
+    <!-- インタラクティブグラフ① -->
+    <div class="graph-wrap">
+      <div class="graph-title">$y = a^x$ のグラフ（$a > 1$）　← $a$ を動かして形の変化を見てみよう</div>
+      <canvas id="chart1" class="graph-canvas"></canvas>
+      <div class="slider-wrap">
+        <label>$a$ =</label>
+        <input type="range" id="sl1" min="1.1" max="4" step="0.1" value="2" oninput="updateChart1()">
+        <span class="slider-val" id="sv1">2</span>
+      </div>
+    </div>
+
+    <div class="exp-box blue">
+      <h4>$y = 2^x$ の値の表で確認しよう</h4>
+      <p>
+        <span style="display:block;overflow-x:auto;">
+        <table style="border-collapse:collapse;font-size:13px;min-width:400px;">
+          <tr style="background:var(--bl);">
+            <td style="padding:6px 10px;border:1px solid var(--bd);font-weight:700;">$x$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">…</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$-2$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$-1$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$0$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$1$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$2$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$3$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">…</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 10px;border:1px solid var(--bd);font-weight:700;background:var(--bl);">$y=2^x$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">…</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$\frac{1}{4}$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$\frac{1}{2}$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$1$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$2$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$4$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$8$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">…</td>
+          </tr>
+        </table>
+        </span>
+        <br>
+        $x$ が増えると $y$ も増える（<strong>単調増加</strong>）<br>
+        $x=0$ のとき必ず $y=1$（底の値に関係なく）<br>
+        $x$ がどんなに小さくなっても $y > 0$（$x$ 軸に近づくが交わらない）
+      </p>
+    </div>
+
+    <!-- 性質カード -->
+    <div class="prop-grid">
+      <div class="prop-card blue">
+        <div class="prop-card-title">📈 $a > 1$ のとき</div>
+        $x$ が増えると $y$ も増える<br>
+        （<strong>単調増加</strong>）<br>
+        右上がりのグラフ
+      </div>
+      <div class="prop-card blue">
+        <div class="prop-card-title">📌 すべての場合で共通</div>
+        点 $(0, 1)$ を通る<br>
+        $y > 0$（常に正）<br>
+        $x$ 軸が漸近線
+      </div>
+    </div>
+
+    <div class="point-box">
+      <strong>🔑 $a > 1$ の性質まとめ</strong>
+      ① $x$ が大きいほど $y$ も大きい（単調増加）<br>
+      ② $x = 0$ で $y = 1$（グラフは必ず点 $(0,1)$ を通る）<br>
+      ③ $y > 0$（$x$ 軸より常に上）<br>
+      ④ $a$ が大きいほど急なグラフになる
+    </div>
+
+    <!-- ミニテスト① -->
+    <div class="mini-fold" id="mfold-ex4m1">
+      <button class="mini-fold-btn" onclick="mToggle('ex4m1')">✏️ ミニテストに挑戦！　▼</button>
+      <div class="mini-fold-inner" id="minner-ex4m1">
+        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説① $a>1$ の性質の確認</p>
+        <div id="mq-ex4m1-1">
+          <div class="mini-q-text"><strong>$y=3^x$ のグラフで正しいのはどれ？</strong></div>
+          <div class="choices" id="mch-ex4m1-1">
+            <button class="ch" onclick="mAns('ex4m1-1',0,1)"><span class="cnum">①</span>$x$が増えると$y$は減る</button>
+            <button class="ch" onclick="mAns('ex4m1-1',1,1)"><span class="cnum">②</span>点$(0,1)$を通る</button>
+            <button class="ch" onclick="mAns('ex4m1-1',2,1)"><span class="cnum">③</span>$y$は負の値もとる</button>
+            <button class="ch" onclick="mAns('ex4m1-1',3,1)"><span class="cnum">④</span>$x=1$で$y=1$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex4m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a>1$ の指数関数は必ず点 $(0,1)$ を通ります。<br>なぜなら $3^0 = 1$ だからです。</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex4m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a^0 = 1$ なので、どんな底でも $x=0$ のとき $y=1$。<br>点 $(0,1)$ は必ず通ります。</div></div></div><button class="reset-btn" onclick="mReset('ex4m1-1',1)">🔄 もう一度</button></div>
+        </div>
+        <div id="mq-ex4m1-2" style="display:none">
+          <div class="mini-q-text"><strong>$y=2^x$ と $y=3^x$ を比べると？</strong></div>
+          <div class="choices" id="mch-ex4m1-2">
+            <button class="ch" onclick="mAns('ex4m1-2',0,1)"><span class="cnum">①</span>$x>0$ で $2^x > 3^x$</button>
+            <button class="ch" onclick="mAns('ex4m1-2',1,1)"><span class="cnum">②</span>$x>0$ で $3^x > 2^x$</button>
+            <button class="ch" onclick="mAns('ex4m1-2',2,1)"><span class="cnum">③</span>常に $2^x = 3^x$</button>
+            <button class="ch" onclick="mAns('ex4m1-2',3,1)"><span class="cnum">④</span>$x<0$ でも $3^x > 2^x$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex4m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a>1$ の場合、底が大きいほど $x>0$ では値が大きく、$x<0$ では値が小さくなります。<br>$x>0$ では $3^x > 2^x$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex4m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">例えば $x=2$：$2^2=4$、$3^2=9$ → $3^x > 2^x$</div></div></div><button class="reset-btn" onclick="mReset('ex4m1-2',1)">🔄 もう一度</button></div>
+        </div>
+        <div class="mini-complete" id="mc-ex4m1">
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">クリア！グラフの形、つかめましたね。</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr1')">練習問題に進む →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 練習① ===== -->
+<div class="page" id="page-pr1">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-pr">演</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">練習問題① — $a>1$ の性質</div>
+      <div class="page-hdr-desc">グラフの性質・値の大小を確認する</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-pr" id="pb-pr1" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-pr1-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel pr">問 1</div>
+    <p class="q-text">$y = 5^x$ のグラフについて正しいものはどれ？</p>
+    <div class="choices" id="ch-q1">
+      <button class="ch" onclick="ans2('q1','pr1',1,0)"><span class="cnum">①</span>$x$軸と交わる</button>
+      <button class="ch" onclick="ans2('q1','pr1',1,1)"><span class="cnum">②</span>点$(0,1)$を通る</button>
+      <button class="ch" onclick="ans2('q1','pr1',1,2)"><span class="cnum">③</span>右下がりのグラフ</button>
+      <button class="ch" onclick="ans2('q1','pr1',1,3)"><span class="cnum">④</span>$y$は負になることがある</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a>0$ の指数関数は $y>0$ で、$x=0$ のとき $5^0=1$ なので必ず点 $(0,1)$ を通ります。</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$5^0=1$ なので $x=0$ で $y=1$。点 $(0,1)$ を通ります。<br>また $y=a^x>0$ なので $x$ 軸とは交わりません。</div></div></div><button class="reset-btn" onclick="resetQ2('q1','pr1')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 2</div>
+    <p class="q-text">次の大小関係で正しいのはどれ？（$a > 1$）</p>
+    <div class="choices" id="ch-q2">
+      <button class="ch" onclick="ans2('q2','pr1',0,0)"><span class="cnum">①</span>$2^3 > 2^5$</button>
+      <button class="ch" onclick="ans2('q2','pr1',0,1)"><span class="cnum">②</span>$3^{-1} > 3^1$</button>
+      <button class="ch" onclick="ans2('q2','pr1',0,2)"><span class="cnum">③</span>$a^{-2} < a^{-1} < a^0 < a^1 < a^2$</button>
+      <button class="ch" onclick="ans2('q2','pr1',0,3)"><span class="cnum">④</span>$5^0 < 5^{-1}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a>1$ のとき単調増加なので、指数が大きいほど値も大きい。<br>$a^{-2} < a^{-1} < a^0(=1) < a^1 < a^2$ が成り立ちます。</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a>1$ のとき<strong>単調増加</strong>：指数が大きい → 値が大きい<br>③ $a^{-2} < a^{-1} < a^0 < a^1 < a^2$ が正しい。</div></div></div><button class="reset-btn" onclick="resetQ2('q2','pr1')">🔄 もう一度</button></div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button>
+  </div>
+</div>
+
+<!-- ===== 確認① ===== -->
+<div class="page" id="page-cf1">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-cf">確</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">確認問題① — $a>1$ の応用</div>
+      <div class="page-hdr-desc">グラフの読み取り・大小比較</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-cf" id="pb-cf1" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-cf1-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel cf">確認 1</div>
+    <p class="q-text">$y=2^x$ のグラフが通る点はどれ？</p>
+    <div class="choices" id="ch-c1a">
+      <button class="ch" onclick="ans2('c1a','cf1',2,0)"><span class="cnum">①</span>$(1,\,1)$</button>
+      <button class="ch" onclick="ans2('c1a','cf1',2,1)"><span class="cnum">②</span>$(2,\,8)$</button>
+      <button class="ch" onclick="ans2('c1a','cf1',2,2)"><span class="cnum">③</span>$(3,\,8)$</button>
+      <button class="ch" onclick="ans2('c1a','cf1',2,3)"><span class="cnum">④</span>$(-1,\,-2)$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c1a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$x=3$ を代入：$y = 2^3 = 8$　→ 点 $(3,8)$ を通ります。</div><div class="fb-step fb-ans">確認：$2^1=2$（①は不正解）、$2^2=4$（②は不正解）、$2^{-1}=\frac{1}{2}>0$（④は不正解）</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c1a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">各点の $x$ 値を代入して確認：<br>$2^1=2$、$2^2=4$、$2^3=8$、$2^{-1}=\frac{1}{2}$</div><div class="fb-step fb-ans">$(3,8)$ が正解です。</div></div></div><button class="reset-btn" onclick="resetQ2('c1a','cf1')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel cf">確認 2</div>
+    <p class="q-text">$2^{0.3}$、$2^0$、$2^{-0.5}$ を小さい順に並べると？</p>
+    <div class="choices" id="ch-c1b">
+      <button class="ch" onclick="ans2('c1b','cf1',2,0)"><span class="cnum">①</span>$2^0 < 2^{-0.5} < 2^{0.3}$</button>
+      <button class="ch" onclick="ans2('c1b','cf1',2,1)"><span class="cnum">②</span>$2^{0.3} < 2^0 < 2^{-0.5}$</button>
+      <button class="ch" onclick="ans2('c1b','cf1',2,2)"><span class="cnum">③</span>$2^{-0.5} < 2^0 < 2^{0.3}$</button>
+      <button class="ch" onclick="ans2('c1b','cf1',2,3)"><span class="cnum">④</span>$2^{-0.5} < 2^{0.3} < 2^0$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c1b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$y=2^x$ は $a=2>1$ なので<strong>単調増加</strong>。<br>指数の大小：$-0.5 < 0 < 0.3$</div><div class="fb-step fb-ans">よって $2^{-0.5} < 2^0 < 2^{0.3}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c1b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a>1$ のとき単調増加 → 指数が小さいほど値も小さい<br>指数の順：$-0.5 < 0 < 0.3$</div><div class="fb-step fb-ans">答え：$2^{-0.5} < 2^0 < 2^{0.3}$</div></div></div><button class="reset-btn" onclick="resetQ2('c1b','cf1')">🔄 もう一度</button></div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button>
+  </div>
+</div>
+
+<!-- ===== 解説② 0<a<1 ===== -->
+<div class="page" id="page-ex2">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-ex">例</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">解説② — $0 < a < 1$ のとき：右下がりのグラフ</div>
+      <div class="page-hdr-desc">$y=\left(\frac{1}{2}\right)^x$ のグラフの形と性質</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="clabel ex">解説② — 指数関数 $y = a^x$（$0 < a < 1$）</div>
+
+    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
+      ①と逆の形になるだけ。パターンは2つしかありません。
+    </div>
+    <p class="q-text">
+      底が $0 < a < 1$（例：$a = \frac{1}{2}$）のとき、グラフはどうなるでしょうか？<br>
+      $y = \left(\frac{1}{2}\right)^x = 2^{-x}$ なので $y=2^x$ と $y$ 軸対称になります。
+    </p>
+
+    <!-- インタラクティブグラフ② -->
+    <div class="graph-wrap">
+      <div class="graph-title">$y = a^x$ のグラフ（$0 < a < 1$）　← スライダーで $a$ を変えてみよう</div>
+      <canvas id="chart2" class="graph-canvas"></canvas>
+      <div class="slider-wrap">
+        <label>$a$ =</label>
+        <input type="range" id="sl2" min="0.1" max="0.95" step="0.05" value="0.5" oninput="updateChart2()">
+        <span class="slider-val" id="sv2">0.5</span>
+      </div>
+    </div>
+
+    <div class="exp-box amber">
+      <h4>$y = \left(\frac{1}{2}\right)^x$ の値の表で確認しよう</h4>
+      <p>
+        <span style="display:block;overflow-x:auto;">
+        <table style="border-collapse:collapse;font-size:13px;min-width:400px;">
+          <tr style="background:var(--al);">
+            <td style="padding:6px 10px;border:1px solid var(--bd);font-weight:700;">$x$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">…</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$-3$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$-1$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$0$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$1$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$2$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$3$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">…</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 10px;border:1px solid var(--bd);font-weight:700;background:var(--al);">$y$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">…</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$8$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$2$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$1$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$\frac{1}{2}$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$\frac{1}{4}$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">$\frac{1}{8}$</td>
+            <td style="padding:6px 10px;border:1px solid var(--bd);">…</td>
+          </tr>
+        </table>
+        </span>
+        <br>
+        $x$ が増えると $y$ は減る（<strong>単調減少</strong>）<br>
+        $x=0$ のとき $y=1$（点 $(0,1)$ を通る）<br>
+        $y > 0$ は変わらない（$x$ 軸には交わらない）
+      </p>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card amber">
+        <div class="prop-card-title">📉 $0 < a < 1$ のとき</div>
+        $x$ が増えると $y$ は減る<br>
+        （<strong>単調減少</strong>）<br>
+        右下がりのグラフ
+      </div>
+      <div class="prop-card amber">
+        <div class="prop-card-title">🔄 $y=2^x$ との関係</div>
+        $\left(\frac{1}{2}\right)^x = 2^{-x}$<br>
+        $y$ 軸に対して<strong>対称</strong>なグラフ
+      </div>
+    </div>
+
+    <div class="point-box">
+      <strong>🔑 $0 < a < 1$ の性質まとめ</strong>
+      ① $x$ が大きいほど $y$ は小さい（単調減少）<br>
+      ② $x = 0$ で $y = 1$（点 $(0,1)$ を通る — $a>1$ と同じ）<br>
+      ③ $y > 0$（$x$ 軸より常に上 — $a>1$ と同じ）<br>
+      ④ $a$ が小さいほど（0に近いほど）急な右下がりになる
+    </div>
+
+    <!-- ミニテスト② -->
+    <div class="mini-fold" id="mfold-ex4m2">
+      <button class="mini-fold-btn" onclick="mToggle('ex4m2')">✏️ ミニテストに挑戦！　▼</button>
+      <div class="mini-fold-inner" id="minner-ex4m2">
+        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説② $0<a<1$ の性質の確認</p>
+        <div id="mq-ex4m2-1">
+          <div class="mini-q-text"><strong>$y=\left(\frac{1}{3}\right)^x$ のグラフで正しいのはどれ？</strong></div>
+          <div class="choices" id="mch-ex4m2-1">
+            <button class="ch" onclick="mAns('ex4m2-1',0,1)"><span class="cnum">①</span>右上がりのグラフ</button>
+            <button class="ch" onclick="mAns('ex4m2-1',1,1)"><span class="cnum">②</span>点$(0,1)$を通る</button>
+            <button class="ch" onclick="mAns('ex4m2-1',2,1)"><span class="cnum">③</span>$y$は負の値をとる</button>
+            <button class="ch" onclick="mAns('ex4m2-1',3,1)"><span class="cnum">④</span>$x=1$で$y=3$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex4m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$0<a<1$ でも $x=0$ のとき $\left(\frac{1}{3}\right)^0 = 1$。<br>点 $(0,1)$ を通るのは底の値に関係なく成り立ちます。</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex4m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\left(\frac{1}{3}\right)^0=1$ → 点 $(0,1)$ を通ります。<br>$0<a<1$ なのでグラフは右下がり（単調減少）です。</div></div></div><button class="reset-btn" onclick="mReset('ex4m2-1',1)">🔄 もう一度</button></div>
+        </div>
+        <div id="mq-ex4m2-2" style="display:none">
+          <div class="mini-q-text"><strong>$\left(\frac{1}{2}\right)^{-2}$、$\left(\frac{1}{2}\right)^0$、$\left(\frac{1}{2}\right)^3$ を大きい順に並べると？</strong></div>
+          <div class="choices" id="mch-ex4m2-2">
+            <button class="ch" onclick="mAns('ex4m2-2',0,0)"><span class="cnum">①</span>$\left(\frac{1}{2}\right)^{-2} > \left(\frac{1}{2}\right)^0 > \left(\frac{1}{2}\right)^3$</button>
+            <button class="ch" onclick="mAns('ex4m2-2',1,0)"><span class="cnum">②</span>$\left(\frac{1}{2}\right)^3 > \left(\frac{1}{2}\right)^0 > \left(\frac{1}{2}\right)^{-2}$</button>
+            <button class="ch" onclick="mAns('ex4m2-2',2,0)"><span class="cnum">③</span>全部等しい</button>
+            <button class="ch" onclick="mAns('ex4m2-2',3,0)"><span class="cnum">④</span>$\left(\frac{1}{2}\right)^0 > \left(\frac{1}{2}\right)^{-2} > \left(\frac{1}{2}\right)^3$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex4m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$0<a<1$ は単調減少 → 指数が小さいほど値が大きい<br>$-2 < 0 < 3$ なので $\left(\frac{1}{2}\right)^{-2} > \left(\frac{1}{2}\right)^0 > \left(\frac{1}{2}\right)^3$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex4m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$0<a<1$ は<strong>単調減少</strong>：指数が大きいほど値は小さい<br>$\left(\frac{1}{2}\right)^{-2}=4$、$\left(\frac{1}{2}\right)^0=1$、$\left(\frac{1}{2}\right)^3=\frac{1}{8}$</div></div></div><button class="reset-btn" onclick="mReset('ex4m2-2',0)">🔄 もう一度</button></div>
+        </div>
+        <div class="mini-complete" id="mc-ex4m2">
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">クリア！2パターン、完璧です。</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 練習② ===== -->
+<div class="page" id="page-pr2">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-pr">演</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">練習問題② — $0 < a < 1$ の性質</div>
+      <div class="page-hdr-desc">単調減少の性質・大小比較</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-pr" id="pb-pr2" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-pr2-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel pr">問 3</div>
+    <p class="q-text">$y=\left(\frac{1}{2}\right)^x$ について正しいのは？</p>
+    <div class="choices" id="ch-q3">
+      <button class="ch" onclick="ans2('q3','pr2',2,0)"><span class="cnum">①</span>$x$が増えると$y$も増える</button>
+      <button class="ch" onclick="ans2('q3','pr2',2,1)"><span class="cnum">②</span>$y=2^x$ と全く同じグラフ</button>
+      <button class="ch" onclick="ans2('q3','pr2',2,2)"><span class="cnum">③</span>$y=2^x$ と$y$軸対称</button>
+      <button class="ch" onclick="ans2('q3','pr2',2,3)"><span class="cnum">④</span>$x=0$で$y=0$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-q3">
+      <span class="fb-icon">🎉</span>
+      <div class="fb-text">正解！
+        <div class="fb-steps">
+          <div class="fb-step">① $\left(\frac{1}{2}\right)^x$ を変形する<br>$\left(\frac{1}{2}\right)^x = (2^{-1})^x = 2^{-x}$</div>
+          <div class="fb-step">② $y=2^{-x}$ と $y=2^x$ の関係<br>$x$ が $-x$ に変わっている → $y$ 軸に対して対称なグラフ</div>
+          <div class="fb-step fb-ans">③ 答え：$y=2^x$ と $y$ 軸対称　✅</div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-ng" id="fb-ng-q3">
+      <span class="fb-icon">💡</span>
+      <div class="fb-text">不正解。手順を確認しましょう。
+        <div class="fb-steps">
+          <div class="fb-step">① $\left(\frac{1}{2}\right)^x = 2^{-x}$ に変形</div>
+          <div class="fb-step">② $y=2^x$ の $x$ に $-x$ を入れた形 → $y$ 軸対称</div>
+          <div class="fb-step fb-ans">③ 答え：③ $y=2^x$ と $y$ 軸対称</div>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetQ2('q3','pr2')">🔄 もう一度</button>
+    </div>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 4</div>
+    <p class="q-text">$\left(\frac{1}{3}\right)^2$、$\left(\frac{1}{3}\right)^{-1}$、$\left(\frac{1}{3}\right)^0$ を小さい順に並べると？</p>
+    <div class="choices" id="ch-q4">
+      <button class="ch" onclick="ans2('q4','pr2',0,0)"><span class="cnum">①</span>$\left(\frac{1}{3}\right)^2 < \left(\frac{1}{3}\right)^0 < \left(\frac{1}{3}\right)^{-1}$</button>
+      <button class="ch" onclick="ans2('q4','pr2',0,1)"><span class="cnum">②</span>$\left(\frac{1}{3}\right)^{-1} < \left(\frac{1}{3}\right)^0 < \left(\frac{1}{3}\right)^2$</button>
+      <button class="ch" onclick="ans2('q4','pr2',0,2)"><span class="cnum">③</span>全部等しい</button>
+      <button class="ch" onclick="ans2('q4','pr2',0,3)"><span class="cnum">④</span>$\left(\frac{1}{3}\right)^0 < \left(\frac{1}{3}\right)^2 < \left(\frac{1}{3}\right)^{-1}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-q4">
+      <span class="fb-icon">🎉</span>
+      <div class="fb-text">正解！
+        <div class="fb-steps">
+          <div class="fb-step">① 底を確認：$\frac{1}{3} < 1$ なので<strong>単調減少</strong><br>→ 指数が大きいほど値は<strong>小さく</strong>なる</div>
+          <div class="fb-step">② 実際に計算して確認<br>$\left(\frac{1}{3}\right)^{-1} = 3$　，　$\left(\frac{1}{3}\right)^0 = 1$　，　$\left(\frac{1}{3}\right)^2 = \frac{1}{9}$</div>
+          <div class="fb-step fb-ans">③ 小さい順：$\frac{1}{9} < 1 < 3$<br>$\left(\frac{1}{3}\right)^2 < \left(\frac{1}{3}\right)^0 < \left(\frac{1}{3}\right)^{-1}$</div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-ng" id="fb-ng-q4">
+      <span class="fb-icon">💡</span>
+      <div class="fb-text">不正解。手順を確認しましょう。
+        <div class="fb-steps">
+          <div class="fb-step">① $\frac{1}{3} < 1$ → 単調減少（指数が大きいほど値は小さい）</div>
+          <div class="fb-step">② 計算：$(\frac{1}{3})^{-1}=3$、$(\frac{1}{3})^0=1$、$(\frac{1}{3})^2=\frac{1}{9}$</div>
+          <div class="fb-step fb-ans">③ 小さい順：$(\frac{1}{3})^2 < (\frac{1}{3})^0 < (\frac{1}{3})^{-1}$</div>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetQ2('q4','pr2')">🔄 もう一度</button>
+    </div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button>
+  </div>
+</div>
+
+<!-- ===== 確認② ===== -->
+<div class="page" id="page-cf2">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-cf">確</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">確認問題② — $0<a<1$ の応用</div>
+      <div class="page-hdr-desc">グラフの読み取り・大小比較の応用</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-cf" id="pb-cf2" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-cf2-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel cf">確認 3</div>
+    <p class="q-text">$y=\left(\frac{1}{2}\right)^x$ のグラフが通る点はどれ？</p>
+    <div class="choices" id="ch-c2a">
+      <button class="ch" onclick="ans2('c2a','cf2',3,0)"><span class="cnum">①</span>$(1,\,2)$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',3,1)"><span class="cnum">②</span>$(2,\,\frac{1}{8})$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',3,2)"><span class="cnum">③</span>$(0,\,0)$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',3,3)"><span class="cnum">④</span>$(-2,\,4)$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c2a">
+      <span class="fb-icon">🎉</span>
+      <div class="fb-text">正解！
+        <div class="fb-steps">
+          <div class="fb-step">① $x=-2$ を代入して計算<br>$y = \left(\frac{1}{2}\right)^{-2}$</div>
+          <div class="fb-step">② 負の指数を処理<br>$\left(\frac{1}{2}\right)^{-2} = \left(\frac{2}{1}\right)^{2} = 2^2 = 4$</div>
+          <div class="fb-step fb-ans">③ $x=-2$ のとき $y=4$ → 点 $(-2,\ 4)$ を通る ✅</div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-ng" id="fb-ng-c2a">
+      <span class="fb-icon">💡</span>
+      <div class="fb-text">不正解。各点を代入して確認しましょう。
+        <div class="fb-steps">
+          <div class="fb-step">① $(\frac{1}{2})^1 = \frac{1}{2}$（①は不正解）<br>② $(\frac{1}{2})^2 = \frac{1}{4}$（②は不正解）<br>③ $(\frac{1}{2})^0 = 1$（③は不正解）</div>
+          <div class="fb-step fb-ans">④ $(\frac{1}{2})^{-2} = 2^2 = 4$ → 点 $(-2,\ 4)$ ✅</div>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetQ2('c2a','cf2')">🔄 もう一度</button>
+    </div>
+    <hr class="prob-divider">
+    <div class="clabel cf">確認 4</div>
+    <p class="q-text">$0 < a < 1$ のとき、$a^{0.2}$、$a^0$、$a^{-0.3}$ を大きい順に並べると？</p>
+    <div class="choices" id="ch-c2b">
+      <button class="ch" onclick="ans2('c2b','cf2',2,0)"><span class="cnum">①</span>$a^{0.2} > a^0 > a^{-0.3}$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',2,1)"><span class="cnum">②</span>$a^0 > a^{0.2} > a^{-0.3}$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',2,2)"><span class="cnum">③</span>$a^{-0.3} > a^0 > a^{0.2}$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',2,3)"><span class="cnum">④</span>$a^{-0.3} > a^{0.2} > a^0$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c2b">
+      <span class="fb-icon">🎉</span>
+      <div class="fb-text">正解！
+        <div class="fb-steps">
+          <div class="fb-step">① 底の確認：$0 < a < 1$ → <strong>単調減少</strong><br>単調減少とは「指数が大きくなるほど値は小さくなる」</div>
+          <div class="fb-step">② 指数の大小を並べる<br>$-0.3 < 0 < 0.2$（数直線上で左から右へ）</div>
+          <div class="fb-step">③ 単調減少なので指数と値の大小は<strong>逆</strong><br>指数が最小の $-0.3$ → 値は最大</div>
+          <div class="fb-step fb-ans">④ 大きい順：$a^{-0.3} > a^0(=1) > a^{0.2}$</div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-ng" id="fb-ng-c2b">
+      <span class="fb-icon">💡</span>
+      <div class="fb-text">不正解。手順を確認しましょう。
+        <div class="fb-steps">
+          <div class="fb-step">① $0<a<1$ → 単調減少（指数が小さいほど値が大きい）</div>
+          <div class="fb-step">② 指数の大小：$-0.3 < 0 < 0.2$</div>
+          <div class="fb-step fb-ans">③ 大きい順：$a^{-0.3} > a^0 > a^{0.2}$</div>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetQ2('c2b','cf2')">🔄 もう一度</button>
+    </div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button>
+  </div>
+</div>
+
+<!-- ===== 解説③ グラフの平行移動 ===== -->
+<div class="page" id="page-ex3">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-ex">例</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">解説③ — グラフの平行移動</div>
+      <div class="page-hdr-desc">$y=a^{x-p}+q$ の形のグラフ</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="clabel ex">解説③ — 指数関数のグラフの平行移動</div>
+
+    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
+      ルールは1つ。「$+$は左、$-$は右」。これだけです。
+    </div>
+    <p class="q-text">
+      $y = 2^x$ のグラフを動かすとどうなるでしょうか？<br>
+      平行移動のルールは2次関数のときと同じです。
+    </p>
+
+    <div class="exp-box blue">
+      <h4>平行移動のルール</h4>
+      <p>
+        $y = a^x$ のグラフを<br><br>
+        ・<strong>$x$ 軸方向に $p$ だけ平行移動</strong> → $y = a^{x-p}$<br>
+        ・<strong>$y$ 軸方向に $q$ だけ平行移動</strong> → $y = a^x + q$<br>
+        ・<strong>両方</strong> → $y = a^{x-p} + q$
+      </p>
+    </div>
+
+    <div class="step-ex" id="tex1">
+      <div class="step-ex-title">例① $y = 2^{x-1}$ のグラフを考えよう</div>
+      <div class="step-ex-btns">
+        <button class="step-ex-btn" onclick="showStep('tex1',1)">STEP 1</button>
+        <button class="step-ex-btn" onclick="showStep('tex1',2)" id="tex1-b2" disabled>STEP 2</button>
+        <button class="step-ex-btn" onclick="showStep('tex1',3)" id="tex1-b3" disabled>STEP 3</button>
+      </div>
+      <div class="step-ex-body" id="tex1-s1" style="display:none;"><span class="step-label teal">STEP 1</span>　元のグラフを確認<br>$y = 2^x$ は点 $(0,1)$、$(1,2)$、$(2,4)$ を通る</div>
+      <div class="step-ex-body" id="tex1-s2" style="display:none;"><span class="step-label blue">STEP 2</span>　$x$ を $x-1$ に置き換え<br>$y = 2^{x-1}$ → $x$ 軸方向に <strong>$+1$</strong> だけ平行移動<br>元の点：$(0,1) \to (1,1)$、$(1,2) \to (2,2)$、$(2,4) \to (3,4)$</div>
+      <div class="step-ex-body ans" id="tex1-s3" style="display:none;"><span class="step-label amber">STEP 3</span>　漸近線も移動！<br>元の漸近線 $y=0$ → そのまま $y=0$（$y$ 軸移動がないので変わらない）<br>新しい通過点：$(1,1)$、$(2,2)$、$(3,4)$</div>
+    </div>
+
+    <div class="step-ex" id="tex2">
+      <div class="step-ex-title">例② $y = 2^x + 3$ のグラフを考えよう</div>
+      <div class="step-ex-btns">
+        <button class="step-ex-btn" onclick="showStep('tex2',1)">STEP 1</button>
+        <button class="step-ex-btn" onclick="showStep('tex2',2)" id="tex2-b2" disabled>STEP 2</button>
+        <button class="step-ex-btn" onclick="showStep('tex2',3)" id="tex2-b3" disabled>STEP 3</button>
+      </div>
+      <div class="step-ex-body" id="tex2-s1" style="display:none;"><span class="step-label teal">STEP 1</span>　元のグラフを確認<br>$y = 2^x$ の漸近線は $y = 0$（$x$ 軸）</div>
+      <div class="step-ex-body" id="tex2-s2" style="display:none;"><span class="step-label blue">STEP 2</span>　$y$ 軸方向に $+3$ 移動<br>$y = 2^x + 3$ → 全体が3上へ<br>元の点：$(0,1) \to (0,4)$、$(1,2) \to (1,5)$</div>
+      <div class="step-ex-body ans" id="tex2-s3" style="display:none;"><span class="step-label amber">STEP 3</span>　漸近線も $+3$ 移動！<br>$y = 0$ → $y = 3$ が新しい漸近線<br>$x \to -\infty$ のとき $y \to 3$（$3$ に近づくが交わらない）</div>
+    </div>
+
+    <div class="formula-box">
+      <div class="formula-big" style="font-size:1.2rem;">$y = a^{x-p} + q$</div>
+      <div class="formula-note">
+        $y = a^x$ を $x$ 軸方向に $p$、$y$ 軸方向に $q$ 平行移動<br>
+        漸近線：$y = 0$ → $y = q$　　通過点：$(0,\,1) \to (p,\,1+q)$
+      </div>
+    </div>
+
+    <div class="point-box">
+      <strong>🔑 平行移動のポイント</strong>
+      $x$ 方向：$x-p$ → 右に $p$ 移動（マイナスに注意！）<br>
+      $y$ 方向：$+q$ → 上に $q$ 移動<br>
+      漸近線：$y=0$ から $y=q$ に変わる
+    </div>
+
+    <!-- ミニテスト③ -->
+    <div class="mini-fold" id="mfold-ex4m3">
+      <button class="mini-fold-btn" onclick="mToggle('ex4m3')">✏️ ミニテストに挑戦！　▼</button>
+      <div class="mini-fold-inner" id="minner-ex4m3">
+        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説③ 平行移動の確認</p>
+        <div id="mq-ex4m3-1">
+          <div class="mini-q-text"><strong>$y = 2^{x+2}$ は $y=2^x$ をどう移動したグラフ？</strong></div>
+          <div class="choices" id="mch-ex4m3-1">
+            <button class="ch" onclick="mAns('ex4m3-1',0,1)"><span class="cnum">①</span>$x$軸方向に$+2$</button>
+            <button class="ch" onclick="mAns('ex4m3-1',1,1)"><span class="cnum">②</span>$x$軸方向に$-2$</button>
+            <button class="ch" onclick="mAns('ex4m3-1',2,1)"><span class="cnum">③</span>$y$軸方向に$+2$</button>
+            <button class="ch" onclick="mAns('ex4m3-1',3,1)"><span class="cnum">④</span>$y$軸方向に$-2$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex4m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$y = 2^{x+2} = 2^{x-(-2)}$<br>$x-p$ の形で $p = -2$ なので $x$ 軸方向に $-2$ 移動（左に2）</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex4m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$x+2 = x-(-2)$ → $p=-2$ なので $x$ 軸方向に $-2$（左へ2）</div></div></div><button class="reset-btn" onclick="mReset('ex4m3-1',1)">🔄 もう一度</button></div>
+        </div>
+        <div id="mq-ex4m3-2" style="display:none">
+          <div class="mini-q-text"><strong>$y = 2^x - 1$ の漸近線は？</strong></div>
+          <div class="choices" id="mch-ex4m3-2">
+            <button class="ch" onclick="mAns('ex4m3-2',0,2)"><span class="cnum">①</span>$x = 0$</button>
+            <button class="ch" onclick="mAns('ex4m3-2',1,2)"><span class="cnum">②</span>$x = -1$</button>
+            <button class="ch" onclick="mAns('ex4m3-2',2,2)"><span class="cnum">③</span>$y = -1$</button>
+            <button class="ch" onclick="mAns('ex4m3-2',3,2)"><span class="cnum">④</span>$y = 1$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex4m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$y = 2^x - 1$ は $y = 2^x$ を $y$ 軸方向に $-1$ 移動。<br>漸近線 $y=0$ も $-1$ 移動して $y = -1$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex4m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$y$ 軸方向に $-1$ 移動 → 漸近線も $y=0$ から $y=-1$ へ</div></div></div><button class="reset-btn" onclick="mReset('ex4m3-2',2)">🔄 もう一度</button></div>
+        </div>
+        <div class="mini-complete" id="mc-ex4m3">
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">クリア！これで入試問題も解けます。</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 練習③ ===== -->
+<div class="page" id="page-pr3">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-pr">演</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">練習問題③ — グラフの平行移動</div>
+      <div class="page-hdr-desc">移動後の通過点・漸近線を求める</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-pr" id="pb-pr3" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-pr3-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel pr">問 5</div>
+    <p class="q-text">$y = 2^{x-3}$ の漸近線と、$x=3$ のときの $y$ の値は？</p>
+    <div class="choices" id="ch-q5">
+      <button class="ch" onclick="ans2('q5','pr3',1,0)"><span class="cnum">①</span>漸近線 $y=3$、$y=1$</button>
+      <button class="ch" onclick="ans2('q5','pr3',1,1)"><span class="cnum">②</span>漸近線 $y=0$、$y=1$</button>
+      <button class="ch" onclick="ans2('q5','pr3',1,2)"><span class="cnum">③</span>漸近線 $y=0$、$y=8$</button>
+      <button class="ch" onclick="ans2('q5','pr3',1,3)"><span class="cnum">④</span>漸近線 $y=3$、$y=8$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-q5">
+      <span class="fb-icon">🎉</span>
+      <div class="fb-text">正解！
+        <div class="fb-steps">
+          <div class="fb-step">① 移動の種類を確認<br>$y = 2^{x-3}$：$x$ が $x-3$ になっている<br>→ $x$ 軸方向に $+3$（右に3）移動</div>
+          <div class="fb-step">② 漸近線を求める<br>$y$ 方向の移動はゼロ → 漸近線は $y=0$ のまま</div>
+          <div class="fb-step fb-ans">③ $x=3$ のときの値<br>$y = 2^{3-3} = 2^0 = oldsymbol{1}$　→ ②が正解</div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-ng" id="fb-ng-q5">
+      <span class="fb-icon">💡</span>
+      <div class="fb-text">不正解。手順を確認しましょう。
+        <div class="fb-steps">
+          <div class="fb-step">① $y=2^{x-3}$：$x$ 軸方向に $+3$ 移動のみ</div>
+          <div class="fb-step">② 漸近線：$y$ 方向の移動なし → $y=0$</div>
+          <div class="fb-step fb-ans">③ $x=3$：$2^{3-3}=2^0=oldsymbol{1}$</div>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetQ2('q5','pr3')">🔄 もう一度</button>
+    </div>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 6</div>
+    <p class="q-text">$y = 3^x + 2$ について、漸近線と点 $(0, y)$ の $y$ の値は？</p>
+    <div class="choices" id="ch-q6">
+      <button class="ch" onclick="ans2('q6','pr3',3,0)"><span class="cnum">①</span>漸近線 $y=0$、$y=1$</button>
+      <button class="ch" onclick="ans2('q6','pr3',3,1)"><span class="cnum">②</span>漸近線 $y=2$、$y=1$</button>
+      <button class="ch" onclick="ans2('q6','pr3',3,2)"><span class="cnum">③</span>漸近線 $y=0$、$y=3$</button>
+      <button class="ch" onclick="ans2('q6','pr3',3,3)"><span class="cnum">④</span>漸近線 $y=2$、$y=3$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-q6">
+      <span class="fb-icon">🎉</span>
+      <div class="fb-text">正解！
+        <div class="fb-steps">
+          <div class="fb-step">① 移動の種類を確認<br>$y = 3^x + 2$：$+2$ は $y$ 軸方向の移動<br>→ グラフ全体が上に2つ移動</div>
+          <div class="fb-step">② 漸近線を求める<br>元の漸近線 $y=0$ も $+2$ 移動 → $y=2$</div>
+          <div class="fb-step fb-ans">③ $x=0$ のときの値<br>$y = 3^0 + 2 = 1 + 2 = oldsymbol{3}$　→ ④が正解</div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-ng" id="fb-ng-q6">
+      <span class="fb-icon">💡</span>
+      <div class="fb-text">不正解。手順を確認しましょう。
+        <div class="fb-steps">
+          <div class="fb-step">① $y=3^x+2$：$y$ 軸方向に $+2$ 移動</div>
+          <div class="fb-step">② 漸近線：$y=0 \to y=2$</div>
+          <div class="fb-step fb-ans">③ $x=0$：$3^0+2=1+2=oldsymbol{3}$</div>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetQ2('q6','pr3')">🔄 もう一度</button>
+    </div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf3')">確認問題に進む →</button>
+  </div>
+</div>
+
+<!-- ===== 確認③ ===== -->
+<div class="page" id="page-cf3">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-cf">確</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">確認問題③ — 平行移動の応用</div>
+      <div class="page-hdr-desc">通過点・漸近線・グラフの特定</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-cf" id="pb-cf3" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-cf3-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel cf">確認 5</div>
+    <p class="q-text">$y = 2^{x+1} - 3$ の漸近線と点 $(0,y)$ の $y$ の値は？</p>
+    <div class="choices" id="ch-c3a">
+      <button class="ch" onclick="ans2('c3a','cf3',3,0)"><span class="cnum">①</span>漸近線 $y=1$、$y=-1$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',3,1)"><span class="cnum">②</span>漸近線 $y=0$、$y=-1$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',3,2)"><span class="cnum">③</span>漸近線 $y=-3$、$y=2$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',3,3)"><span class="cnum">④</span>漸近線 $y=-3$、$y=-1$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c3a">
+      <span class="fb-icon">🎉</span>
+      <div class="fb-text">正解！
+        <div class="fb-steps">
+          <div class="fb-step">① 移動を分解して確認<br>$y = 2^{x+1} - 3$<br>$x$ 軸方向：$x+1 = x-(-1)$ → 左に1移動<br>$y$ 軸方向：$-3$ → 下に3移動</div>
+          <div class="fb-step">② 漸近線を求める<br>$y$ 方向に $-3$ 移動 → 漸近線 $y=0 \to y=-3$</div>
+          <div class="fb-step fb-ans">③ $x=0$ のときの値<br>$y = 2^{0+1} - 3 = 2^1 - 3 = 2 - 3 = oldsymbol{-1}$</div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-ng" id="fb-ng-c3a">
+      <span class="fb-icon">💡</span>
+      <div class="fb-text">不正解。手順を確認しましょう。
+        <div class="fb-steps">
+          <div class="fb-step">① $-3$ が $y$ 方向の移動量 → 漸近線 $y=0 \to y=-3$</div>
+          <div class="fb-step">② $x=0$：$2^{0+1}-3=2^1-3=2-3$</div>
+          <div class="fb-step fb-ans">③ 答え：$oldsymbol{-1}$</div>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetQ2('c3a','cf3')">🔄 もう一度</button>
+    </div>
+    <hr class="prob-divider">
+    <div class="clabel cf">確認 6</div>
+    <p class="q-text">グラフの漸近線が $y=2$ で、$x=0$ のとき $y=3$ となる指数関数は？（底は2）</p>
+    <div class="choices" id="ch-c3b">
+      <button class="ch" onclick="ans2('c3b','cf3',1,0)"><span class="cnum">①</span>$y = 2^x + 3$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',1,1)"><span class="cnum">②</span>$y = 2^x + 2$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',1,2)"><span class="cnum">③</span>$y = 2^{x-2} + 1$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',1,3)"><span class="cnum">④</span>$y = 2^{x+2}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c3b">
+      <span class="fb-icon">🎉</span>
+      <div class="fb-text">正解！
+        <div class="fb-steps">
+          <div class="fb-step">① 漸近線から $y$ 方向の移動量を求める<br>漸近線 $y=2$ → 元の $y=0$ から $+2$ 移動<br>→ 式の形は $y = 2^{\square} + 2$</div>
+          <div class="fb-step">② $x=0$ のとき $y=3$ になるか確認<br>$y = 2^0 + 2 = 1 + 2 = 3$ ✅</div>
+          <div class="fb-step fb-ans">③ 答え：$y = 2^x + 2$　→ ②が正解</div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-ng" id="fb-ng-c3b">
+      <span class="fb-icon">💡</span>
+      <div class="fb-text">不正解。手順を確認しましょう。
+        <div class="fb-steps">
+          <div class="fb-step">① 漸近線 $y=2$ → $y$ 方向に $+2$ → 式は $y=2^x+2$ の形</div>
+          <div class="fb-step">② ①・③・④を確認：漸近線や通過点が条件を満たさない</div>
+          <div class="fb-step fb-ans">③ 答え：$y = 2^x + 2$（$x=0$：$2^0+2=3$ ✅）</div>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetQ2('c3b','cf3')">🔄 もう一度</button>
+    </div>
+  </div>
+  <div class="unit-nav">
+    <div class="unit-nav-row"><a href="index_math2.html" class="unav-btn unav-index">📋 単元表に戻る</a></div>
+    <div class="unit-nav-row">
+      <a href="EX1-3.html" class="unav-btn unav-prev">← 第1章③ 分数指数・累乗根</a>
+      <a href="EX1-5.html" class="unav-btn unav-next">第1章⑤ 指数方程式 →</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+  <div class="fab-msgs" id="fab-msgs">
+    <div class="ai-msg-a">こんにちは！指数関数のグラフについて何でも聞いてね🐱</div>
+  </div>
+  <div class="fab-quick" id="fab-quick">
+    <button class="fab-qbtn" onclick="fabQ('グラフの形の違いを教えて')">グラフの違い</button>
+    <button class="fab-qbtn" onclick="fabQ('漸近線って何？')">漸近線とは？</button>
+    <button class="fab-qbtn" onclick="fabQ('平行移動のやり方を教えて')">平行移動</button>
+  </div>
+  <div class="fab-preview" id="fab-preview">
+    <img id="fab-prev-img" src="" alt=""><button class="fab-prev-del" onclick="clearImg()">✕ 削除</button>
+  </div>
+  <div class="fab-input-row">
+    <label style="cursor:pointer;font-size:1.2rem;" title="画像を添付">📷<input type="file" id="fab-file" accept="image/*" style="display:none" onchange="handleImg(this)"></label>
+    <input class="fab-inp" id="fab-inp" type="text" placeholder="質問を入力…" onkeydown="if(event.key==='Enter')fabSend()">
+    <button class="fab-sbtn" id="fab-sbtn" onclick="fabSend()">▶</button>
+  </div>
+</div>
+
+<script>
+// ===== ページ切替 =====
+function switchPage(pid) {
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  var target = document.getElementById('page-'+pid);
+  if (target) target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ===== 進捗管理 =====
+var answered = {};
+var pageDone = { pr1:0,pr2:0,pr3:0,cf1:0,cf2:0,cf3:0 };
+var pageTotal = { pr1:2,pr2:2,pr3:2,cf1:2,cf2:2,cf3:2 };
+
+function ans2(qid, pageId, correct, idx) {
+  if (answered[qid]) return;
+  answered[qid] = true;
+  var isOk = (idx === correct);
+  document.querySelectorAll('#ch-'+qid+' .ch').forEach(function(b,i){
+    b.disabled = true;
+    if (i === correct) { b.className='ch ok'; b.querySelector('.cnum').style.cssText='background:var(--teal);color:#fff'; }
+    else if (i === idx && !isOk) { b.className='ch ng'; b.querySelector('.cnum').style.cssText='background:var(--pink);color:#fff'; }
+  });
+  var fbOk = document.getElementById('fb-ok-'+qid);
+  var fbNg = document.getElementById('fb-ng-'+qid);
+  if (isOk) { if (fbOk) fbOk.style.display='flex'; launchConfetti(); }
+  else       { if (fbNg) fbNg.style.display='flex'; }
+  var kai = document.getElementById('kai-'+qid);
+  if (kai) { kai.style.display='block'; setTimeout(function(){ kai.scrollIntoView({behavior:'smooth',block:'nearest'}); },150); }
+  if (pageId && pageDone[pageId] !== undefined) {
+    pageDone[pageId]++;
+    var tot = pageTotal[pageId];
+    var pct = Math.round(pageDone[pageId]/tot*100);
+    var pb = document.getElementById('pb-'+pageId);
+    var pbtxt = document.getElementById('pb-'+pageId+'-txt');
+    if (pb) pb.style.width = pct+'%';
+    if (pbtxt) pbtxt.textContent = pageDone[pageId]+' / '+tot+' 完了';
+  }
+  // KaTeX再レンダリング
+  if (window.renderMathInElement) {
+    var ok = document.getElementById('fb-ok-'+qid);
+    var ng = document.getElementById('fb-ng-'+qid);
+    if (ok) renderMathInElement(ok, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+    if (ng) renderMathInElement(ng, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
+}
+
+function resetQ2(qid, pageId) {
+  if (!answered[qid]) return;
+  delete answered[qid];
+  document.querySelectorAll('#ch-'+qid+' .ch').forEach(function(b){
+    b.disabled=false; b.className='ch';
+    var cn=b.querySelector('.cnum'); if(cn) cn.style.cssText='';
+  });
+  var fbOk=document.getElementById('fb-ok-'+qid); if(fbOk) fbOk.style.display='none';
+  var fbNg=document.getElementById('fb-ng-'+qid); if(fbNg) fbNg.style.display='none';
+  var kai=document.getElementById('kai-'+qid);    if(kai)  kai.style.display='none';
+  if (pageId && pageDone[pageId] > 0) {
+    pageDone[pageId]--;
+    var tot = pageTotal[pageId];
+    var pb = document.getElementById('pb-'+pageId);
+    var pbtxt = document.getElementById('pb-'+pageId+'-txt');
+    if (pb) pb.style.width=Math.round(pageDone[pageId]/tot*100)+'%';
+    if (pbtxt) pbtxt.textContent=pageDone[pageId]+' / '+tot+' 完了';
+  }
+}
+
+// ===== ミニテスト =====
+var mAnswered = {};
+function mAns(mid, idx, correct) {
+  if (mAnswered[mid]) return;
+  mAnswered[mid] = true;
+  var parts = mid.split('-');
+  var num = parseInt(parts[parts.length-1]);
+  var grp = parts.slice(0, parts.length-1).join('-');
+  var isOk = (idx === correct);
+  document.querySelectorAll('#mch-'+mid+' .ch').forEach(function(b,i){
+    b.disabled=true;
+    if (i===correct){b.className='ch ok';b.querySelector('.cnum').style.cssText='background:var(--teal);color:#fff';}
+    else if(i===idx&&!isOk){b.className='ch ng';b.querySelector('.cnum').style.cssText='background:var(--pink);color:#fff';}
+  });
+  var ok=document.getElementById('mfb-ok-'+mid);
+  var ng=document.getElementById('mfb-ng-'+mid);
+  if (isOk) { if(ok) ok.style.display='flex'; launchConfetti(); }
+  else       { if(ng) ng.style.display='flex'; }
+  if (isOk) {
+    var next = document.getElementById('mq-'+grp+'-'+(num+1));
+    if (next) {
+      setTimeout(function(){ next.style.display='block'; if(window.renderMathInElement) renderMathInElement(next,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false}); next.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 600);
+    } else {
+      var mc = document.getElementById('mc-'+grp);
+      if (mc) setTimeout(function(){ mc.style.display='block'; mc.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 600);
+    }
+  }
+}
+function mReset(mid, correct) {
+  if (!mAnswered[mid]) return;
+  delete mAnswered[mid];
+  document.querySelectorAll('#mch-'+mid+' .ch').forEach(function(b){
+    b.disabled=false; b.className='ch';
+    var cn=b.querySelector('.cnum'); if(cn) cn.style.cssText='';
+  });
+  var ok=document.getElementById('mfb-ok-'+mid); if(ok) ok.style.display='none';
+  var ng=document.getElementById('mfb-ng-'+mid); if(ng) ng.style.display='none';
+}
+function mToggle(gid) {
+  var inner = document.getElementById('minner-'+gid);
+  var btn = inner.previousElementSibling;
+  if (inner.style.display==='block') {
+    inner.style.display='none'; btn.textContent='✏️ ミニテストに挑戦！　▼';
+  } else {
+    inner.style.display='block'; btn.textContent='✏️ 問題を閉じる　▲';
+    if (window.renderMathInElement) renderMathInElement(inner,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
+}
+
+// ===== ステップ展開 =====
+function showStep(exId, step) {
+  var el = document.getElementById(exId+'-s'+step);
+  if (el) el.style.display='block';
+  if (window.renderMathInElement && el) renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  var btns = document.querySelectorAll('#'+exId+' .step-ex-btn');
+  btns[step-1].classList.add('done'); btns[step-1].disabled=true;
+  if (step < 3) { var nb=document.getElementById(exId+'-b'+(step+1)); if(nb) nb.disabled=false; }
+}
+
+// ===== グラフ =====
+var chart1, chart2;
+function makeData(a, xmin, xmax) {
+  var pts=[];
+  for (var x=xmin; x<=xmax; x+=0.2) { var y=Math.pow(a,x); if(y>0.01&&y<50) pts.push({x:x,y:y}); }
+  return pts;
+}
+function initCharts() {
+  var ctx1 = document.getElementById('chart1');
+  var ctx2 = document.getElementById('chart2');
+  if (!ctx1||!ctx2) return;
+  var opts = {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{type:'linear',min:-4,max:4,grid:{color:'#e0ddd8'},ticks:{font:{size:11}},title:{display:true,text:'x'}},
+      y:{type:'linear',min:-1,max:16,grid:{color:'#e0ddd8'},ticks:{font:{size:11}},title:{display:true,text:'y'}}
+    }
+  };
+  chart1 = new Chart(ctx1, { type:'line', data:{ datasets:[{data:makeData(2,-4,4),borderColor:'#2055b0',borderWidth:2.5,pointRadius:0,tension:0.3}] }, options:JSON.parse(JSON.stringify(opts)) });
+  chart2 = new Chart(ctx2, { type:'line', data:{ datasets:[{data:makeData(0.5,-4,4),borderColor:'#a86000',borderWidth:2.5,pointRadius:0,tension:0.3}] }, options:JSON.parse(JSON.stringify(opts)) });
+}
+function updateChart1() {
+  var a = parseFloat(document.getElementById('sl1').value);
+  document.getElementById('sv1').textContent = a.toFixed(1);
+  chart1.data.datasets[0].data = makeData(a,-4,4);
+  chart1.update();
+}
+function updateChart2() {
+  var a = parseFloat(document.getElementById('sl2').value);
+  document.getElementById('sv2').textContent = a.toFixed(2);
+  chart2.data.datasets[0].data = makeData(a,-4,4);
+  chart2.update();
+}
+document.addEventListener('DOMContentLoaded', function(){ setTimeout(initCharts, 500); });
+
+// ===== コンフェッティ =====
+function launchConfetti() {
+  var colors=['#0d9478','#2055b0','#a86000','#d93652','#6c3fc5'];
+  for(var i=0;i<28;i++){
+    var el=document.createElement('div');
+    el.style.cssText='position:fixed;width:8px;height:8px;border-radius:50%;z-index:9999;pointer-events:none;';
+    el.style.background=colors[Math.floor(Math.random()*colors.length)];
+    el.style.left=Math.random()*100+'vw';el.style.top='60px';
+    document.body.appendChild(el);
+    var tx=(Math.random()-0.5)*200;var ty=Math.random()*400+100;
+    el.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+tx+'px,'+ty+'px) scale(0)',opacity:0}],{duration:1200,easing:'ease-out'}).onfinish=function(){this.effect.target.remove();};
+  }
+}
+
+</script>
+<script>
+window.NEKO_CONFIG = {
+  catSrc: 'data:image/jpeg;base64,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',
+  subject:  '数学II',
+  chapter:  '第1章④',
+  title:    '指数関数のグラフと性質',
+  greeting: '指数関数のグラフについて何でも聞いてね🐱',
+  quickBtns: [
+    {label:'グラフの違い',q:'a>1と0<a<1でグラフはどう違うの？'},
+    {label:'漸近線とは？',q:'漸近線って何？'},
+    {label:'平行移動',q:'平行移動のやり方を教えて'}
+  ],
+  pageMap: {
+    'ex1': '解説①「a>1のとき右上がりのグラフ」を学習中',
+    'pr1': '練習問題①「a>1の性質」に取り組み中',
+    'cf1': '確認問題①「a>1の応用」に取り組み中',
+    'ex2': '解説②「0<a<1のとき右下がりのグラフ」を学習中',
+    'pr2': '練習問題②「0<a<1の性質」に取り組み中',
+    'cf2': '確認問題②「0<a<1の応用」に取り組み中',
+    'ex3': '解説③「グラフの平行移動」を学習中',
+    'pr3': '練習問題③「平行移動の計算」に取り組み中',
+    'cf3': '確認問題③「平行移動の応用」に取り組み中'
+  }
+};
+</script>
+<script src="neko.js"></script>
+</body>
+</html>

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMBA｜数学II 指数関数 第1章⑥ 指数不等式</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f4ef;--sf:#fff;--sf2:#f0ede6;--bd:#d6d2c8;--bd2:#bcb8ae;
+--pink:#d93652;--teal:#0d9478;--blue:#2055b0;--amber:#a86000;--purple:#6c3fc5;
+--tl:#e6f5f1;--bl:#eaf0fb;--al:#fdf2dd;--pl:#fde8eb;--ppl:#f0ebfc;
+--text:#1a1814;--text2:#58544c;--text3:#98948c;--r:12px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;min-height:100vh;}
+.site-header{background:var(--sf);border-bottom:1px solid var(--bd);padding:.65rem 1.5rem;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.logo{font-family:'Shippori Mincho',serif;font-size:1.05rem;color:var(--pink);}
+.logo-sep{color:var(--bd2);}
+.logo-sub{font-size:12px;color:var(--text2);}
+.tab-nav{background:var(--sf);border-bottom:2px solid var(--bd);position:sticky;top:46px;z-index:99;display:flex;padding:0 .5rem;gap:.2rem;overflow-x:auto;}
+.tab-btn{padding:.7rem .9rem;font-size:12px;font-weight:500;color:var(--text2);background:none;border:none;cursor:pointer;font-family:'Noto Sans JP',sans-serif;display:flex;align-items:center;gap:5px;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .15s;white-space:nowrap;}
+.tab-btn:hover{color:var(--text);}
+.tab-btn.active-ex{color:var(--pink);border-bottom-color:var(--pink);}
+.tab-btn.active-pr{color:var(--blue);border-bottom-color:var(--blue);}
+.tab-btn.active-cf{color:var(--amber);border-bottom-color:var(--amber);}
+.tab-pip{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+.pip-ex{background:#fde8eb;color:var(--pink);}
+.pip-pr{background:var(--bl);color:var(--blue);}
+.pip-cf{background:var(--al);color:var(--amber);}
+.page{display:none;animation:fadeTab .2s ease;}
+.page.active{display:block;}
+@keyframes fadeTab{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
+.page-hdr{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1rem 1.4rem;margin-bottom:1.4rem;display:flex;align-items:center;gap:12px;}
+.page-hdr-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;flex-shrink:0;}
+.icon-ex{background:var(--pink);color:#fff;}.icon-pr{background:var(--blue);color:#fff;}.icon-cf{background:var(--amber);color:#fff;}
+.page-hdr-body{flex:1;}
+.page-hdr-title{font-size:15px;font-weight:700;margin-bottom:2px;}
+.page-hdr-desc{font-size:12px;color:var(--text2);}
+.prog-wrap{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:.8rem 1.2rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:12px;}
+.pb-w{flex:1;height:6px;background:var(--bd);border-radius:3px;overflow:hidden;}
+.pb{height:100%;border-radius:3px;transition:width .4s;}
+.pb-pr{background:var(--blue);}
+.pb-cf{background:var(--amber);}
+.pb-txt{font-size:12px;color:var(--text2);white-space:nowrap;}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.4rem 1.5rem;margin-bottom:1rem;}
+.clabel{font-size:11px;font-weight:700;letter-spacing:.1em;margin-bottom:.85rem;display:flex;align-items:center;gap:6px;}
+.clabel::before{content:'';width:3px;height:14px;border-radius:2px;display:inline-block;}
+.clabel.ex{color:var(--pink);}.clabel.ex::before{background:var(--pink);}
+.clabel.pr{color:var(--blue);}.clabel.pr::before{background:var(--blue);}
+.clabel.cf{color:var(--amber);}.clabel.cf::before{background:var(--amber);}
+.q-text{font-size:15px;line-height:1.95;color:var(--text);margin-bottom:1rem;}
+.point-box{background:var(--al);border:1px solid #e0c888;border-radius:9px;padding:.8rem 1.1rem;margin-bottom:.9rem;font-size:13px;color:var(--amber);line-height:1.8;}
+.point-box strong{display:block;font-size:10px;letter-spacing:.08em;margin-bottom:3px;}
+.exp-box{background:var(--sf2);border-radius:9px;padding:.9rem 1.15rem;margin-bottom:.75rem;border-left:3px solid var(--teal);}
+.exp-box h4{font-size:11px;color:var(--teal);font-weight:700;letter-spacing:.06em;margin-bottom:.35rem;}
+.exp-box p{font-size:14px;line-height:1.9;color:var(--text);}
+.exp-box.blue{border-color:var(--blue);}.exp-box.blue h4{color:var(--blue);}
+.exp-box.amber{border-color:var(--amber);}.exp-box.amber h4{color:var(--amber);}
+.exp-box.purple{border-color:var(--purple);}.exp-box.purple h4{color:var(--purple);}
+.exp-box.pink{border-color:var(--pink);}.exp-box.pink h4{color:var(--pink);}
+/* 比較カード */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1rem 0;}
+.cmp-card{border-radius:10px;padding:.9rem 1rem;font-size:13px;line-height:1.85;}
+.cmp-card.blue{background:var(--bl);border:1.5px solid var(--blue);}
+.cmp-card.amber{background:var(--al);border:1.5px solid var(--amber);}
+.cmp-title{font-size:11px;font-weight:700;letter-spacing:.06em;margin-bottom:.45rem;}
+.cmp-card.blue .cmp-title{color:var(--blue);}
+.cmp-card.amber .cmp-title{color:var(--amber);}
+.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:1rem;}
+.ch{background:var(--sf2);border:1.5px solid var(--bd);border-radius:9px;padding:10px 8px;font-size:14px;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .15s;font-family:'Noto Sans JP',sans-serif;width:100%;text-align:left;}
+.ch:hover:not(:disabled){border-color:var(--blue);background:var(--bl);}
+.ch:disabled{cursor:default;}
+.ch.ok{border-color:var(--teal);background:var(--tl);color:var(--teal);}
+.ch.ng{border-color:var(--pink);background:var(--pl);color:var(--pink);}
+.cnum{width:24px;height:24px;border-radius:50%;background:var(--bd);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.ch.ok .cnum{background:var(--teal);color:#fff;}
+.ch.ng .cnum{background:var(--pink);color:#fff;}
+.fb-ok{display:none;align-items:flex-start;gap:12px;background:#e6faf3;border:2px solid #0d9478;border-radius:12px;padding:12px 16px;margin:8px 0 4px;}
+.fb-ng{display:none;align-items:flex-start;gap:12px;background:#fde8eb;border:2px solid #d93652;border-radius:12px;padding:12px 16px;margin:8px 0 4px;}
+.fb-icon{font-size:1.7rem;flex-shrink:0;}
+.fb-text{font-size:13px;font-weight:700;line-height:1.5;flex:1;}
+.fb-ok .fb-text{color:#0d9478;}
+.fb-ng .fb-text{color:#d93652;}
+.fb-steps{margin-top:.5rem;display:flex;flex-direction:column;gap:.4rem;}
+.fb-step{background:rgba(255,255,255,.65);border-radius:7px;padding:.45rem .7rem;font-size:12.5px;line-height:1.8;border-left:3px solid var(--teal);}
+.fb-step.fb-ans{border-left-color:var(--amber);background:rgba(255,255,255,.85);font-weight:600;}
+.fb-ok .fb-step{border-left-color:var(--teal);}
+.fb-ng .fb-step{border-left-color:var(--pink);}
+.fb-ng .fb-step.fb-ans{border-left-color:var(--amber);}
+.reset-btn{background:none;border:1.5px solid #d93652;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;color:#d93652;cursor:pointer;font-family:'Noto Sans JP',sans-serif;margin-top:.5rem;transition:all .15s;}
+.reset-btn:hover{background:#d93652;color:#fff;}
+.prob-divider{border:none;border-top:1px dashed var(--bd);margin:1.8rem 0 1.5rem;}
+.formula-box{background:var(--ppl);border:1.5px solid #c5b8ef;border-radius:12px;padding:1rem 1.4rem;margin:1rem 0;text-align:center;}
+.formula-big{font-size:1.3rem;font-weight:700;color:var(--purple);margin:.4rem 0;line-height:1.7;}
+.formula-note{font-size:12px;color:var(--text2);margin-top:.4rem;}
+/* ステップ展開 */
+.step-ex{background:var(--sf2);border:1px solid var(--bd);border-radius:10px;padding:.8rem 1rem;margin-bottom:.9rem;}
+.step-ex-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.step-ex-btns{display:flex;gap:.4rem;margin-bottom:.5rem;flex-wrap:wrap;}
+.step-ex-btn{border:none;border-radius:7px;padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;}
+.step-ex-btn:nth-child(1){background:var(--tl);color:var(--teal);}
+.step-ex-btn:nth-child(1):hover:not(:disabled){background:var(--teal);color:#fff;}
+.step-ex-btn:nth-child(2){background:var(--bl);color:var(--blue);}
+.step-ex-btn:nth-child(2):hover:not(:disabled){background:var(--blue);color:#fff;}
+.step-ex-btn:nth-child(3){background:var(--al);color:var(--amber);}
+.step-ex-btn:nth-child(3):hover:not(:disabled){background:var(--amber);color:#fff;}
+.step-ex-btn:nth-child(4){background:var(--ppl);color:var(--purple);}
+.step-ex-btn:nth-child(4):hover:not(:disabled){background:var(--purple);color:#fff;}
+.step-ex-btn:disabled{opacity:.35;cursor:default;}
+.step-ex-btn.done{opacity:.6;}
+.step-ex-body{font-size:13px;line-height:1.9;color:var(--text);background:#fff;border-radius:7px;padding:.55rem .8rem;margin-top:.35rem;border-left:3px solid var(--teal);animation:fadeIn .25s ease;}
+.step-ex-body.ans{border-left-color:var(--amber);background:var(--al);}
+.step-label{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.07em;border-radius:4px;padding:1px 7px;margin-right:.3rem;}
+.step-label.teal{background:var(--teal);color:#fff;}
+.step-label.blue{background:var(--blue);color:#fff;}
+.step-label.amber{background:var(--amber);color:#fff;}
+.step-label.purple{background:var(--purple);color:#fff;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+/* ミニテスト */
+.mini-fold{margin-top:1rem;}
+.mini-fold-btn{width:100%;padding:.75rem 1.2rem;background:var(--tl);border:1.5px solid var(--teal);border-radius:10px;font-size:13px;font-weight:700;color:var(--teal);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-align:center;}
+.mini-fold-btn:hover{background:var(--teal);color:#fff;}
+.mini-fold-inner{display:none;margin-top:.6rem;padding:.8rem;background:var(--sf);border:1px solid var(--bd);border-radius:10px;}
+.mini-q-text{font-size:14px;line-height:1.9;margin-bottom:.7rem;color:var(--text);}
+.mini-complete{background:var(--tl);border:1.5px solid var(--teal);border-radius:10px;padding:.8rem 1rem;text-align:center;margin-top:.6rem;display:none;}
+.mini-complete-emoji{font-size:1.6rem;margin-bottom:.2rem;}
+.mini-complete-text{font-size:13px;font-weight:700;color:var(--teal);}
+.mini-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;}
+.mini-nav-btn{flex:1;min-width:130px;padding:9px 12px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;border:2px solid;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-align:center;display:flex;align-items:center;justify-content:center;}
+.mini-nav-btn.index{background:#fff;border-color:var(--bd);color:var(--text2);}
+.mini-nav-btn.index:hover{border-color:var(--blue);color:var(--blue);}
+.mini-nav-btn.next{background:var(--blue);border-color:var(--blue);color:#fff;}
+.mini-nav-btn.next:hover{background:#153a80;}
+/* ページナビ */
+.page-nav-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem;padding:.6rem 0 .2rem;}
+.page-nav-row .mini-nav-btn{flex:1;min-width:140px;}
+/* unit-nav */
+.unit-nav{display:flex;flex-direction:column;gap:10px;margin:1.8rem 0 0;padding-top:1.4rem;border-top:2px dashed var(--bd);}
+.unit-nav-row{display:flex;gap:8px;flex-wrap:wrap;}
+.unav-btn{flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 16px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;border:2px solid;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-align:center;}
+.unav-index{background:#fff;border-color:var(--bd);color:var(--text2);}
+.unav-index:hover{border-color:var(--blue);color:var(--blue);}
+.unav-prev{background:var(--sf2);border-color:var(--bd2);color:var(--text2);}
+.unav-prev:hover{border-color:var(--text2);}
+.unav-next{background:var(--blue);border-color:var(--blue);color:#fff;}
+.unav-next:hover{background:#153a80;}
+/* 警告バナー */
+.warn-box{background:#fff0f3;border:1.5px solid var(--pink);border-radius:9px;padding:.75rem 1rem;margin:.9rem 0;font-size:13px;color:var(--pink);line-height:1.8;}
+.warn-box strong{font-size:10px;display:block;letter-spacing:.08em;margin-bottom:3px;}
+/* FAB */
+.fab-wrap{position:fixed;bottom:24px;right:52px;z-index:9000;}
+.fab-btn{width:72px;height:72px;border-radius:50%;background:#fff;border:3px solid #c4b5fd;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(108,63,197,.4);transition:transform .2s;overflow:hidden;padding:0;}
+.fab-btn:hover{transform:scale(1.08);}
+.fab-btn img{width:100%;height:100%;object-fit:cover;object-position:center bottom;}
+.fab-label{position:absolute;right:82px;bottom:50%;transform:translateY(50%) translateX(6px);background:#6c3fc5;color:#fff;font-size:13px;font-weight:700;white-space:nowrap;padding:7px 14px;border-radius:20px;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;box-shadow:0 3px 10px rgba(108,63,197,.4);}
+.fab-label::after{content:'';position:absolute;right:-8px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-left-color:#6c3fc5;}
+.fab-panel{display:none;position:fixed;bottom:110px;right:20px;width:320px;max-height:480px;background:#fff;border:2px solid #c4b5fd;border-radius:16px;box-shadow:0 8px 32px rgba(108,63,197,.25);z-index:9001;flex-direction:column;overflow:hidden;}
+.fab-panel.open{display:flex;}
+.fab-panel-hdr{background:#6c3fc5;color:#fff;padding:.7rem 1rem;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:space-between;}
+.fab-close{background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;}
+.fab-msgs{flex:1;overflow-y:auto;padding:.8rem;display:flex;flex-direction:column;gap:.6rem;min-height:120px;}
+.ai-msg-u{align-self:flex-end;background:var(--bl);border-radius:12px 12px 2px 12px;padding:.5rem .85rem;font-size:13px;max-width:85%;}
+.ai-msg-a{align-self:flex-start;background:var(--ppl);border-radius:12px 12px 12px 2px;padding:.5rem .85rem;font-size:13px;max-width:90%;white-space:pre-wrap;}
+.ai-msg-t{align-self:flex-start;background:var(--sf2);border-radius:12px;padding:.4rem .8rem;font-size:12px;color:var(--text3);}
+.fab-input-row{padding:.6rem;border-top:1px solid var(--bd);display:flex;gap:.4rem;align-items:center;}
+.fab-inp{flex:1;border:1.5px solid var(--bd);border-radius:9px;padding:.45rem .7rem;font-size:13px;font-family:'Noto Sans JP',sans-serif;outline:none;}
+.fab-inp:focus{border-color:#c4b5fd;}
+.fab-sbtn{background:#6c3fc5;color:#fff;border:none;border-radius:9px;padding:.45rem .8rem;font-size:13px;cursor:pointer;}
+.fab-sbtn:disabled{opacity:.5;}
+.fab-quick{padding:.4rem .6rem .2rem;display:flex;gap:.35rem;flex-wrap:wrap;border-top:1px solid var(--bd);}
+.fab-qbtn{background:var(--ppl);border:1px solid #c4b5fd;border-radius:20px;padding:4px 10px;font-size:11px;color:#6c3fc5;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+.fab-preview{display:none;padding:.3rem .6rem;background:var(--sf2);border-top:1px solid var(--bd);}
+.fab-prev-img{max-height:60px;border-radius:6px;}
+.fab-prev-del{background:none;border:none;color:var(--pink);font-size:12px;cursor:pointer;margin-left:.4rem;}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <span class="logo">GAMBA</span><span class="logo-sep">|</span>
+  <span class="logo-sub">数学II 指数関数 ／ 第1章⑥ 指数不等式</span>
+</header>
+<nav class="tab-nav">
+  <button class="tab-btn active-ex" onclick="switchPage('ex1')"><span class="tab-pip pip-ex">例</span>解説①</button>
+  <button class="tab-btn" onclick="switchPage('pr1')"><span class="tab-pip pip-pr">演</span>練習①</button>
+  <button class="tab-btn" onclick="switchPage('cf1')"><span class="tab-pip pip-cf">確</span>確認①</button>
+  <button class="tab-btn" onclick="switchPage('ex2')"><span class="tab-pip pip-ex">例</span>解説②</button>
+  <button class="tab-btn" onclick="switchPage('pr2')"><span class="tab-pip pip-pr">演</span>練習②</button>
+  <button class="tab-btn" onclick="switchPage('cf2')"><span class="tab-pip pip-cf">確</span>確認②</button>
+  <button class="tab-btn" onclick="switchPage('ex3')"><span class="tab-pip pip-ex">例</span>解説③</button>
+  <button class="tab-btn" onclick="switchPage('pr3')"><span class="tab-pip pip-pr">演</span>練習③</button>
+  <button class="tab-btn" onclick="switchPage('cf3')"><span class="tab-pip pip-cf">確</span>確認③</button>
+</nav>
+<main>
+
+<!-- ===== 解説① 底と不等号の向き ===== -->
+<div class="page active" id="page-ex1">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-ex">例</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">解説① — 指数不等式の基本：底と不等号の向き</div>
+      <div class="page-hdr-desc">$a>1$ なら同向き、$0&lt;a&lt;1$ なら逆向き</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="clabel ex">解説① — 指数不等式〔1〕</div>
+
+    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
+      方程式とほぼ同じ！ただし「底が $1$ より小さいと不等号が逆転」するのが最大のポイント。
+    </div>
+
+    <p class="q-text">
+      指数不等式も「<strong>底をそろえる</strong>」のが基本です。<br>
+      そろえたあとの不等号の向きは<strong>底の大きさによって変わります</strong>。
+    </p>
+
+    <div class="formula-box">
+      <div class="formula-big">
+        $a > 1$ のとき：$a^f \geqq a^g \Longrightarrow f \geqq g$（<span style="color:var(--teal)">同じ向き</span>）<br>
+        $0 < a < 1$ のとき：$a^f \geqq a^g \Longrightarrow f \leqq g$（<span style="color:var(--pink)">逆向き</span>）
+      </div>
+      <div class="formula-note">指数関数が増加か減少かによって、不等号の向きが決まる</div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="cmp-card blue">
+        <div class="cmp-title">📈 $a > 1$（増加関数）</div>
+        $x$ が大きい → $a^x$ も大きい<br>
+        不等号の向き：<strong>そのまま</strong><br>
+        例：$2^x > 2^3 \Rightarrow x > 3$
+      </div>
+      <div class="cmp-card amber">
+        <div class="cmp-title">📉 $0 < a < 1$（減少関数）</div>
+        $x$ が大きい → $a^x$ は小さい<br>
+        不等号の向き：<strong>逆転！</strong><br>
+        例：$\left(\frac{1}{2}\right)^x > \left(\frac{1}{2}\right)^3 \Rightarrow x < 3$
+      </div>
+    </div>
+
+    <div class="exp-box blue">
+      <h4>なぜ逆転するの？イメージで理解</h4>
+      <p>
+        $y = \left(\frac{1}{2}\right)^x$ は $x$ が増えると $y$ が<strong>減る</strong>グラフ（右下がり）。<br>
+        だから「$y$ が大きい」→「$x$ が小さい」という逆の関係になる。<br>
+        底を見て「$1$ より大きいか小さいか」を確認する習慣をつけよう！
+      </p>
+    </div>
+
+    <!-- 例題1 a>1 -->
+    <div class="step-ex" id="se1">
+      <div class="step-ex-title">【例題①】$5^x \geqq 125$ を解け。</div>
+      <div class="step-ex-btns">
+        <button class="step-ex-btn" onclick="showStep('se1',1)" id="se1-btn1">STEP 1 右辺を $5$ のべき乗に</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se1',2)" id="se1-btn2">STEP 2 底の確認と不等号</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se1',3)" id="se1-btn3">答え</button>
+      </div>
+      <div id="se1-s1" style="display:none" class="step-ex-body">
+        <span class="step-label teal">STEP 1</span>
+        $125 = 5^3$ と変形：<br>
+        $5^x \geqq 5^3$
+      </div>
+      <div id="se1-s2" style="display:none" class="step-ex-body">
+        <span class="step-label blue">STEP 2</span>
+        底 $5 > 1$ なので、$5^x$ は<strong>増加関数</strong><br>
+        → 不等号の向き<strong>そのまま</strong>：<br>
+        $x \geqq 3$
+      </div>
+      <div id="se1-s3" style="display:none" class="step-ex-body ans">
+        <span class="step-label amber">答え</span>
+        $x \geqq 3$
+      </div>
+    </div>
+
+    <!-- 例題2 0<a<1 -->
+    <div class="step-ex" id="se2">
+      <div class="step-ex-title">【例題②】$\left(\dfrac{1}{2}\right)^{2x+1} < 8$ を解け。</div>
+      <div class="step-ex-btns">
+        <button class="step-ex-btn" onclick="showStep('se2',1)" id="se2-btn1">STEP 1 底をそろえる</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se2',2)" id="se2-btn2">STEP 2 底の確認と不等号</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se2',3)" id="se2-btn3">STEP 3 解く</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se2',4)" id="se2-btn4">答え</button>
+      </div>
+      <div id="se2-s1" style="display:none" class="step-ex-body">
+        <span class="step-label teal">STEP 1</span>
+        $8 = 2^3 = \left(\dfrac{1}{2}\right)^{-3}$ と変形：<br>
+        $\left(\dfrac{1}{2}\right)^{2x+1} < \left(\dfrac{1}{2}\right)^{-3}$
+      </div>
+      <div id="se2-s2" style="display:none" class="step-ex-body">
+        <span class="step-label blue">STEP 2</span>
+        底 $\dfrac{1}{2} < 1$ なので、$\left(\dfrac{1}{2}\right)^x$ は<strong>減少関数</strong><br>
+        → 不等号の向き<strong>逆転</strong>：<br>
+        $2x + 1 > -3$
+      </div>
+      <div id="se2-s3" style="display:none" class="step-ex-body">
+        <span class="step-label amber">STEP 3</span>
+        $2x > -4$<br>
+        $x > -2$
+      </div>
+      <div id="se2-s4" style="display:none" class="step-ex-body ans">
+        <span class="step-label amber">答え</span>
+        $x > -2$
+      </div>
+    </div>
+
+    <div class="point-box">
+      <strong>🔑 解法の手順まとめ</strong>
+      ① 両辺を<strong>同じ底のべき乗</strong>に変形する<br>
+      ② 底を確認：$a > 1$ なら<span style="color:var(--blue)">不等号そのまま</span>、$0 < a < 1$ なら<span style="color:var(--pink)">不等号逆転</span><br>
+      ③ 指数の不等式を解いて $x$ の範囲を求める
+    </div>
+
+    <!-- ミニテスト -->
+    <div class="mini-fold" id="mfold-ex6m1">
+      <button class="mini-fold-btn" onclick="mToggle('ex6m1')">✏️ ミニテストに挑戦！　▼</button>
+      <div class="mini-fold-inner" id="minner-ex6m1">
+        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説① 不等号の向きの確認</p>
+        <div id="mq-ex6m1-1">
+          <div class="mini-q-text"><strong>$3^x > 3^5$ を解くと？（底 $3 > 1$）</strong></div>
+          <div class="choices" id="mch-ex6m1-1">
+            <button class="ch" onclick="mAns('ex6m1-1',0,1)"><span class="cnum">①</span>$x > 5$</button>
+            <button class="ch" onclick="mAns('ex6m1-1',1,1)"><span class="cnum">②</span>$x < 5$</button>
+            <button class="ch" onclick="mAns('ex6m1-1',2,1)"><span class="cnum">③</span>$x \geqq 5$</button>
+            <button class="ch" onclick="mAns('ex6m1-1',3,1)"><span class="cnum">④</span>$x \leqq 5$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex6m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底 $3 > 1$ → 増加関数 → 不等号そのまま<br>$x > 5$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底 $3 > 1$ なので増加関数 → 不等号の向きはそのまま<br>$3^x > 3^5 \Rightarrow x > 5$</div></div></div><button class="reset-btn" onclick="mReset('ex6m1-1',1)">🔄 もう一度</button></div>
+        </div>
+        <div id="mq-ex6m1-2" style="display:none">
+          <div class="mini-q-text"><strong>$\left(\dfrac{1}{3}\right)^x > \left(\dfrac{1}{3}\right)^4$ を解くと？</strong></div>
+          <div class="choices" id="mch-ex6m1-2">
+            <button class="ch" onclick="mAns('ex6m1-2',0,1)"><span class="cnum">①</span>$x > 4$</button>
+            <button class="ch" onclick="mAns('ex6m1-2',1,1)"><span class="cnum">②</span>$x < 4$</button>
+            <button class="ch" onclick="mAns('ex6m1-2',2,1)"><span class="cnum">③</span>$x \geqq 4$</button>
+            <button class="ch" onclick="mAns('ex6m1-2',3,1)"><span class="cnum">④</span>$x \leqq 4$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex6m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底 $\dfrac{1}{3} < 1$ → 減少関数 → 不等号<strong>逆転</strong><br>$x < 4$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底 $\dfrac{1}{3} < 1$ → 減少関数 → 不等号は<strong>逆向き</strong>になる<br>$\left(\frac{1}{3}\right)^x > \left(\frac{1}{3}\right)^4 \Rightarrow x < 4$</div></div></div><button class="reset-btn" onclick="mReset('ex6m1-2',1)">🔄 もう一度</button></div>
+        </div>
+        <div class="mini-complete" id="mc-ex6m1">
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">クリア！不等号の向きルール、マスターできましたね。</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr1')">練習問題に進む →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 練習① ===== -->
+<div class="page" id="page-pr1">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-pr">演</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">練習問題① — 基本の指数不等式</div>
+      <div class="page-hdr-desc">底をそろえて不等号の向きを判断する練習</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-pr" id="pb-pr1" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-pr1-txt">0 / 3 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel pr">問 1</div>
+    <p class="q-text">$2^{4-3x} < \dfrac{\sqrt{2}}{4}$ を解け。</p>
+    <div class="choices" id="ch-p1q1">
+      <button class="ch" onclick="ans2('p1q1','pr1',2,0)"><span class="cnum">①</span>$x > \dfrac{11}{3}$</button>
+      <button class="ch" onclick="ans2('p1q1','pr1',2,1)"><span class="cnum">②</span>$x < \dfrac{11}{6}$</button>
+      <button class="ch" onclick="ans2('p1q1','pr1',2,2)"><span class="cnum">③</span>$x > \dfrac{11}{6}$</button>
+      <button class="ch" onclick="ans2('p1q1','pr1',2,3)"><span class="cnum">④</span>$x > \dfrac{5}{6}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p1q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\dfrac{\sqrt{2}}{4} = 2^{\frac{1}{2}} \cdot 2^{-2} = 2^{-\frac{3}{2}}$</div><div class="fb-step">底 $2 > 1$ → 不等号そのまま：$4 - 3x < -\dfrac{3}{2}$</div><div class="fb-step fb-ans">$-3x < -\dfrac{11}{2}$、$x > \dfrac{11}{6}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p1q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\dfrac{\sqrt{2}}{4} = \dfrac{2^{1/2}}{2^2} = 2^{-3/2}$</div><div class="fb-step">$2^{4-3x} < 2^{-3/2}$、底 $2>1$ なので $4-3x < -\frac{3}{2}$</div><div class="fb-step fb-ans">$-3x < -\frac{11}{2} \Rightarrow x > \frac{11}{6}$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q1','pr1')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 2</div>
+    <p class="q-text">$\left(\dfrac{1}{3}\right)^{2x+1} \leqq \dfrac{1}{81^x}$ を解け。</p>
+    <div class="choices" id="ch-p1q2">
+      <button class="ch" onclick="ans2('p1q2','pr1',2,0)"><span class="cnum">①</span>$x \geqq -\dfrac{1}{2}$</button>
+      <button class="ch" onclick="ans2('p1q2','pr1',2,1)"><span class="cnum">②</span>$x \leqq \dfrac{1}{2}$</button>
+      <button class="ch" onclick="ans2('p1q2','pr1',2,2)"><span class="cnum">③</span>$x \leqq \dfrac{1}{2}$ のまちがい → $x \geqq -\dfrac{1}{2}$</button>
+      <button class="ch" onclick="ans2('p1q2','pr1',2,3)"><span class="cnum">④</span>$x \leqq -1$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p1q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\dfrac{1}{81^x} = \dfrac{1}{(3^4)^x} = 3^{-4x} = \left(\dfrac{1}{3}\right)^{4x}$</div><div class="fb-step">$\left(\dfrac{1}{3}\right)^{2x+1} \leqq \left(\dfrac{1}{3}\right)^{4x}$</div><div class="fb-step">底 $\dfrac{1}{3} < 1$ → 不等号<strong>逆転</strong>：$2x+1 \geqq 4x$</div><div class="fb-step fb-ans">$-2x \geqq -1$、$x \leqq \dfrac{1}{2}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p1q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\frac{1}{81^x} = \left(\frac{1}{3}\right)^{4x}$ と変形して底をそろえる</div><div class="fb-step">底 $\frac{1}{3} < 1$ → 不等号逆転 $\Rightarrow 2x+1 \geqq 4x \Rightarrow x \leqq \frac{1}{2}$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q2','pr1')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 3</div>
+    <p class="q-text">$\left(\dfrac{1}{16}\right)^{x-1} > 2^{3x^2}$ を解け。〈大阪薬科大〉</p>
+    <div class="choices" id="ch-p1q3">
+      <button class="ch" onclick="ans2('p1q3','pr1',3,0)"><span class="cnum">①</span>$-2 < x < \dfrac{1}{3}$</button>
+      <button class="ch" onclick="ans2('p1q3','pr1',3,1)"><span class="cnum">②</span>$x < -2$ または $x > \dfrac{2}{3}$</button>
+      <button class="ch" onclick="ans2('p1q3','pr1',3,2)"><span class="cnum">③</span>$0 < x < \dfrac{2}{3}$</button>
+      <button class="ch" onclick="ans2('p1q3','pr1',3,3)"><span class="cnum">④</span>$-2 < x < \dfrac{2}{3}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p1q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\left(\dfrac{1}{16}\right)^{x-1} = (2^{-4})^{x-1} = 2^{-4x+4}$</div><div class="fb-step">$2^{-4x+4} > 2^{3x^2}$、底 $2>1$ → 不等号そのまま</div><div class="fb-step">$3x^2 < -4x+4$、$3x^2+4x-4 < 0$、$(3x-2)(x+2) < 0$</div><div class="fb-step fb-ans">$-2 < x < \dfrac{2}{3}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p1q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\left(\frac{1}{16}\right)^{x-1} = 2^{-4x+4}$ に変形し底を $2$ にそろえる</div><div class="fb-step">$-4x+4 > 3x^2 \Rightarrow 3x^2+4x-4 < 0$</div><div class="fb-step fb-ans">$(3x-2)(x+2) < 0 \Rightarrow -2 < x < \frac{2}{3}$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q3','pr1')">🔄 もう一度</button></div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button>
+  </div>
+</div>
+
+<!-- ===== 確認① ===== -->
+<div class="page" id="page-cf1">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-cf">確</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">確認問題① — 不等号の向きの応用</div>
+      <div class="page-hdr-desc">底をそろえてから不等号の向きを正しく判断する</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-cf" id="pb-cf1" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-cf1-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel cf">確認 1</div>
+    <p class="q-text">$8^x < 32$ を解け。（底を $2$ にそろえる）</p>
+    <div class="choices" id="ch-c1a">
+      <button class="ch" onclick="ans2('c1a','cf1',1,0)"><span class="cnum">①</span>$x > \dfrac{5}{3}$</button>
+      <button class="ch" onclick="ans2('c1a','cf1',1,1)"><span class="cnum">②</span>$x < \dfrac{5}{3}$</button>
+      <button class="ch" onclick="ans2('c1a','cf1',1,2)"><span class="cnum">③</span>$x < \dfrac{3}{5}$</button>
+      <button class="ch" onclick="ans2('c1a','cf1',1,3)"><span class="cnum">④</span>$x > 5$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c1a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$8 = 2^3$、$32 = 2^5$ を使う：$(2^3)^x < 2^5$</div><div class="fb-step">$2^{3x} < 2^5$、底 $2 > 1$ → そのまま</div><div class="fb-step fb-ans">$3x < 5$、$x < \dfrac{5}{3}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c1a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$8^x = (2^3)^x = 2^{3x}$、$32 = 2^5$</div><div class="fb-step fb-ans">$2^{3x} < 2^5$、底 $2>1$ なのでそのまま → $x < \frac{5}{3}$</div></div></div><button class="reset-btn" onclick="resetQ2('c1a','cf1')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel cf">確認 2</div>
+    <p class="q-text">$\left(\dfrac{1}{9}\right)^x \geqq \left(\dfrac{1}{27}\right)^{x-1}$ を解け。</p>
+    <div class="choices" id="ch-c1b">
+      <button class="ch" onclick="ans2('c1b','cf1',3,0)"><span class="cnum">①</span>$x \geqq 3$</button>
+      <button class="ch" onclick="ans2('c1b','cf1',3,1)"><span class="cnum">②</span>$x \leqq -3$</button>
+      <button class="ch" onclick="ans2('c1b','cf1',3,2)"><span class="cnum">③</span>$x \leqq 0$</button>
+      <button class="ch" onclick="ans2('c1b','cf1',3,3)"><span class="cnum">④</span>$x \leqq 3$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c1b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\frac{1}{9} = \left(\frac{1}{3}\right)^2$、$\frac{1}{27} = \left(\frac{1}{3}\right)^3$ を使う</div><div class="fb-step">$\left(\frac{1}{3}\right)^{2x} \geqq \left(\frac{1}{3}\right)^{3(x-1)} = \left(\frac{1}{3}\right)^{3x-3}$</div><div class="fb-step">底 $\frac{1}{3} < 1$ → 不等号<strong>逆転</strong>：$2x \leqq 3x-3$</div><div class="fb-step fb-ans">$-x \leqq -3$、$x \geqq 3$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c1b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底を $\frac{1}{3}$ にそろえ：$\left(\frac{1}{3}\right)^{2x} \geqq \left(\frac{1}{3}\right)^{3x-3}$<br>底 $<1$ → 逆転 → $2x \leqq 3x-3$</div><div class="fb-step fb-ans">$x \geqq 3$</div></div></div><button class="reset-btn" onclick="resetQ2('c1b','cf1')">🔄 もう一度</button></div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button>
+  </div>
+</div>
+
+<!-- ===== 解説② t置換で2次不等式 ===== -->
+<div class="page" id="page-ex2">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-ex">例</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">解説② — $t$ 置換で2次不等式に変形</div>
+      <div class="page-hdr-desc">$a^x = t$ とおいて $t$ の不等式として解く</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="clabel ex">解説② — 指数不等式〔2〕</div>
+
+    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
+      指数方程式の $t$ 置換と同じ発想！ただし不等号の向きに注意が加わる。
+    </div>
+
+    <p class="q-text">
+      $9^x - 4 \cdot 3^x + 3 \leqq 0$ のような不等式では底をそろえてもそのままでは解けません。<br>
+      <strong>$3^x = t$（$t > 0$）</strong>と置いて $t$ の2次不等式に変形します。
+    </p>
+
+    <div class="warn-box">
+      <strong>⚠️ 注意</strong>
+      $t$ の不等式を解いたあと、$a^x = t$（$t > 0$）に戻すとき、<br>
+      底 $a$ の大きさで不等号の向きが変わることに注意！
+    </div>
+
+    <!-- 例題 -->
+    <div class="step-ex" id="se3">
+      <div class="step-ex-title">【例題】$9^x - 4 \cdot 3^{x+1} + 27 \leqq 0$ を解け。</div>
+      <div class="step-ex-btns">
+        <button class="step-ex-btn" onclick="showStep('se3',1)" id="se3-btn1">STEP 1 変形して $t$ 置換</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se3',2)" id="se3-btn2">STEP 2 2次不等式を解く</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se3',3)" id="se3-btn3">STEP 3 $3^x$ に戻す</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se3',4)" id="se3-btn4">答え</button>
+      </div>
+      <div id="se3-s1" style="display:none" class="step-ex-body">
+        <span class="step-label teal">STEP 1</span>
+        $9^x = (3^x)^2$、$4 \cdot 3^{x+1} = 12 \cdot 3^x$ と変形。<br>
+        $3^x = t$（$t > 0$）と置くと：<br>
+        $t^2 - 12t + 27 \leqq 0$
+      </div>
+      <div id="se3-s2" style="display:none" class="step-ex-body">
+        <span class="step-label blue">STEP 2</span>
+        因数分解：$(t - 3)(t - 9) \leqq 0$<br>
+        $3 \leqq t \leqq 9$
+      </div>
+      <div id="se3-s3" style="display:none" class="step-ex-body">
+        <span class="step-label amber">STEP 3</span>
+        $t = 3^x$ に戻す：$3 \leqq 3^x \leqq 9$<br>
+        $3^1 \leqq 3^x \leqq 3^2$<br>
+        底 $3 > 1$ → 不等号そのまま：$1 \leqq x \leqq 2$
+      </div>
+      <div id="se3-s4" style="display:none" class="step-ex-body ans">
+        <span class="step-label amber">答え</span>
+        $1 \leqq x \leqq 2$
+      </div>
+    </div>
+
+    <!-- 例題2 -->
+    <div class="step-ex" id="se4">
+      <div class="step-ex-title">【例題】$4^x - 5 \cdot 2^x + 4 \leqq 0$ を解け。</div>
+      <div class="step-ex-btns">
+        <button class="step-ex-btn" onclick="showStep('se4',1)" id="se4-btn1">STEP 1 $t$ 置換</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se4',2)" id="se4-btn2">STEP 2 不等式を解く</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se4',3)" id="se4-btn3">答え</button>
+      </div>
+      <div id="se4-s1" style="display:none" class="step-ex-body">
+        <span class="step-label teal">STEP 1</span>
+        $2^x = t$（$t > 0$）と置くと：<br>
+        $t^2 - 5t + 4 \leqq 0$
+      </div>
+      <div id="se4-s2" style="display:none" class="step-ex-body">
+        <span class="step-label blue">STEP 2</span>
+        $(t-1)(t-4) \leqq 0$、$1 \leqq t \leqq 4$<br>
+        $2^x = t$ に戻す：$1 \leqq 2^x \leqq 4$<br>
+        $2^0 \leqq 2^x \leqq 2^2$<br>
+        底 $2 > 1$ → そのまま：$0 \leqq x \leqq 2$
+      </div>
+      <div id="se4-s3" style="display:none" class="step-ex-body ans">
+        <span class="step-label amber">答え</span>
+        $0 \leqq x \leqq 2$
+      </div>
+    </div>
+
+    <div class="point-box">
+      <strong>🔑 $t$ 置換（不等式）の流れ</strong>
+      ① $a^x = t$（$t > 0$）と置いて $t$ の2次不等式に変形<br>
+      ② $t$ の不等式を解いて $t$ の範囲を求める<br>
+      ③ $t = a^x$ に戻し、底の大小で不等号の向きを確認して $x$ の範囲を求める
+    </div>
+
+    <div class="mini-fold" id="mfold-ex6m2">
+      <button class="mini-fold-btn" onclick="mToggle('ex6m2')">✏️ ミニテストに挑戦！　▼</button>
+      <div class="mini-fold-inner" id="minner-ex6m2">
+        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説② $t$ 置換不等式の確認</p>
+        <div id="mq-ex6m2-1">
+          <div class="mini-q-text"><strong>$9^x - 4 \cdot 3^x + 3 \leqq 0$ で $3^x = t$ と置くと？</strong></div>
+          <div class="choices" id="mch-ex6m2-1">
+            <button class="ch" onclick="mAns('ex6m2-1',0,1)"><span class="cnum">①</span>$t^2 + 4t + 3 \leqq 0$</button>
+            <button class="ch" onclick="mAns('ex6m2-1',1,1)"><span class="cnum">②</span>$t^2 - 4t + 3 \leqq 0$</button>
+            <button class="ch" onclick="mAns('ex6m2-1',2,1)"><span class="cnum">③</span>$t^2 - 4t - 3 \leqq 0$</button>
+            <button class="ch" onclick="mAns('ex6m2-1',3,1)"><span class="cnum">④</span>$t^2 + 4t - 3 \leqq 0$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex6m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$9^x = (3^x)^2 = t^2$ を使って代入すると<br>$t^2 - 4t + 3 \leqq 0$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$9^x = (3^2)^x = (3^x)^2 = t^2$ を使う<br>$t^2 - 4t + 3 \leqq 0$</div></div></div><button class="reset-btn" onclick="mReset('ex6m2-1',1)">🔄 もう一度</button></div>
+        </div>
+        <div id="mq-ex6m2-2" style="display:none">
+          <div class="mini-q-text"><strong>$t^2 - 4t + 3 \leqq 0$ を解くと？</strong></div>
+          <div class="choices" id="mch-ex6m2-2">
+            <button class="ch" onclick="mAns('ex6m2-2',0,1)"><span class="cnum">①</span>$1 \leqq t \leqq 3$</button>
+            <button class="ch" onclick="mAns('ex6m2-2',1,1)"><span class="cnum">②</span>$t \leqq 1$ または $t \geqq 3$</button>
+            <button class="ch" onclick="mAns('ex6m2-2',2,1)"><span class="cnum">③</span>$-3 \leqq t \leqq -1$</button>
+            <button class="ch" onclick="mAns('ex6m2-2',3,1)"><span class="cnum">④</span>$t \leqq -3$ または $t \geqq -1$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex6m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(t-1)(t-3) \leqq 0 \Rightarrow 1 \leqq t \leqq 3$<br>$3^x = t$ に戻す：$3^0 \leqq 3^x \leqq 3^1$</div><div class="fb-step fb-ans">底 $3 > 1$ → そのまま → $0 \leqq x \leqq 1$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-1)(t-3) \leqq 0$ の解は $1 \leqq t \leqq 3$</div></div></div><button class="reset-btn" onclick="mReset('ex6m2-2',1)">🔄 もう一度</button></div>
+        </div>
+        <div class="mini-complete" id="mc-ex6m2">
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">クリア！$t$ 置換の不等式、バッチリですね。</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 練習② ===== -->
+<div class="page" id="page-pr2">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-pr">演</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">練習問題② — $t$ 置換で解く不等式</div>
+      <div class="page-hdr-desc">2次不等式化して範囲を求める練習</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-pr" id="pb-pr2" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-pr2-txt">0 / 3 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel pr">問 1</div>
+    <p class="q-text">$9^x - 10 \cdot 3^x + 9 \leqq 0$ を解け。</p>
+    <div class="choices" id="ch-p2q1">
+      <button class="ch" onclick="ans2('p2q1','pr2',1,0)"><span class="cnum">①</span>$0 < x \leqq 2$</button>
+      <button class="ch" onclick="ans2('p2q1','pr2',1,1)"><span class="cnum">②</span>$0 \leqq x \leqq 2$</button>
+      <button class="ch" onclick="ans2('p2q1','pr2',1,2)"><span class="cnum">③</span>$1 \leqq x \leqq 3$</button>
+      <button class="ch" onclick="ans2('p2q1','pr2',1,3)"><span class="cnum">④</span>$x \leqq 0$ または $x \geqq 2$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p2q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^x = t$（$t > 0$）：$t^2 - 10t + 9 \leqq 0$</div><div class="fb-step">$(t-1)(t-9) \leqq 0$、$1 \leqq t \leqq 9$</div><div class="fb-step fb-ans">$3^0 \leqq 3^x \leqq 3^2$、底 $3>1$ → $0 \leqq x \leqq 2$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p2q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$t^2 - 10t + 9 = (t-1)(t-9) \leqq 0 \Rightarrow 1 \leqq t \leqq 9$</div><div class="fb-step fb-ans">$3^x$に戻す：$3^0 \leqq 3^x \leqq 3^2 \Rightarrow 0 \leqq x \leqq 2$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q1','pr2')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 2</div>
+    <p class="q-text">$4^x - 5 \cdot 2^x + 4 > 0$ を解け。</p>
+    <div class="choices" id="ch-p2q2">
+      <button class="ch" onclick="ans2('p2q2','pr2',3,0)"><span class="cnum">①</span>$0 < x < 2$</button>
+      <button class="ch" onclick="ans2('p2q2','pr2',3,1)"><span class="cnum">②</span>$-2 < x < 0$</button>
+      <button class="ch" onclick="ans2('p2q2','pr2',3,2)"><span class="cnum">③</span>$x \leqq 0$ または $x \geqq 2$</button>
+      <button class="ch" onclick="ans2('p2q2','pr2',3,3)"><span class="cnum">④</span>$x < 0$ または $x > 2$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p2q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$（$t>0$）：$t^2-5t+4 > 0$</div><div class="fb-step">$(t-1)(t-4) > 0$、$t < 1$ または $t > 4$（$t > 0$ も考慮し $0 < t < 1$ または $t > 4$）</div><div class="fb-step fb-ans">$2^x < 2^0 \Rightarrow x < 0$、または $2^x > 2^2 \Rightarrow x > 2$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p2q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-1)(t-4) > 0 \Rightarrow t < 1$ または $t > 4$（$t > 0$ なので $0 < t < 1$ or $t > 4$）</div><div class="fb-step fb-ans">$2^x < 1 \Rightarrow x < 0$、$2^x > 4 \Rightarrow x > 2$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q2','pr2')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 3</div>
+    <p class="q-text">$25^x - 6 \cdot 5^x + 5 < 0$ を解け。</p>
+    <div class="choices" id="ch-p2q3">
+      <button class="ch" onclick="ans2('p2q3','pr2',0,0)"><span class="cnum">①</span>$0 < x < 1$</button>
+      <button class="ch" onclick="ans2('p2q3','pr2',0,1)"><span class="cnum">②</span>$0 \leqq x \leqq 1$</button>
+      <button class="ch" onclick="ans2('p2q3','pr2',0,2)"><span class="cnum">③</span>$1 < x < 2$</button>
+      <button class="ch" onclick="ans2('p2q3','pr2',0,3)"><span class="cnum">④</span>$x < 0$ または $x > 1$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p2q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5^x = t$（$t>0$）：$t^2 - 6t + 5 < 0$</div><div class="fb-step">$(t-1)(t-5) < 0$、$1 < t < 5$</div><div class="fb-step fb-ans">$5^0 < 5^x < 5^1$、底 $5>1$ → $0 < x < 1$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p2q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-1)(t-5) < 0 \Rightarrow 1 < t < 5$</div><div class="fb-step fb-ans">$5^x$ に戻す：$5^0 < 5^x < 5^1 \Rightarrow 0 < x < 1$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q3','pr2')">🔄 もう一度</button></div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button>
+  </div>
+</div>
+
+<!-- ===== 確認② ===== -->
+<div class="page" id="page-cf2">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-cf">確</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">確認問題② — $t$ 置換不等式の応用</div>
+      <div class="page-hdr-desc">複合的な変形が必要な問題で定着を確認</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-cf" id="pb-cf2" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-cf2-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel cf">確認 1</div>
+    <p class="q-text">$2^{2x} - 5 \cdot 2^{x-1} + 1 < 0$ を解け。〈法政大（工学部）〉</p>
+    <div class="choices" id="ch-c2a">
+      <button class="ch" onclick="ans2('c2a','cf2',3,0)"><span class="cnum">①</span>$0 < x < 2$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',3,1)"><span class="cnum">②</span>$0 \leqq x \leqq 2$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',3,2)"><span class="cnum">③</span>$-2 < x < 0$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',3,3)"><span class="cnum">④</span>$-1 < x < 1$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c2a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$（$t > 0$）：$2^{2x} = t^2$、$5 \cdot 2^{x-1} = \dfrac{5}{2}t$</div><div class="fb-step">$t^2 - \dfrac{5}{2}t + 1 < 0$、両辺 $\times 2$：$2t^2 - 5t + 2 < 0$</div><div class="fb-step">$(2t-1)(t-2) < 0$、$\dfrac{1}{2} < t < 2$</div><div class="fb-step fb-ans">$2^{-1} < 2^x < 2^1$、底 $2>1$ → $-1 < x < 1$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c2a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2^{x-1} = \frac{1}{2} \cdot 2^x = \frac{t}{2}$ なので $5 \cdot 2^{x-1} = \frac{5t}{2}$</div><div class="fb-step">$t^2 - \frac{5}{2}t + 1 < 0 \Rightarrow 2t^2-5t+2 < 0 \Rightarrow (2t-1)(t-2) < 0$</div><div class="fb-step fb-ans">$\frac{1}{2} < t < 2 \Rightarrow -1 < x < 1$</div></div></div><button class="reset-btn" onclick="resetQ2('c2a','cf2')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel cf">確認 2</div>
+    <p class="q-text">$1 > a > 0$ のとき、$a^{2x} + 2a^{x+2} - 3a^4 \geqq 0$ を解け。〈早大－政経〉</p>
+    <div class="choices" id="ch-c2b">
+      <button class="ch" onclick="ans2('c2b','cf2',3,0)"><span class="cnum">①</span>$x \geqq 1$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',3,1)"><span class="cnum">②</span>$x \leqq -2$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',3,2)"><span class="cnum">③</span>$x \geqq 2$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',3,3)"><span class="cnum">④</span>$x \leqq 2$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c2b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^x = t$（$t > 0$）と置く：$(a^x)^2 + 2a^2 \cdot a^x - 3a^4 \geqq 0$</div><div class="fb-step">$t^2 + 2a^2 t - 3a^4 \geqq 0$、$(t + 3a^2)(t - a^2) \geqq 0$</div><div class="fb-step">$t + 3a^2 > 0$ なので $t \geqq a^2$、つまり $a^x \geqq a^2$</div><div class="fb-step fb-ans">$0 < a < 1$ → 減少関数 → 不等号逆転：$x \leqq 2$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c2b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t+3a^2)(t-a^2) \geqq 0$、$t+3a^2 > 0$ なので $t \geqq a^2$</div><div class="fb-step fb-ans">$a^x \geqq a^2$、$0 < a < 1$ で減少関数 → 逆転 → $x \leqq 2$</div></div></div><button class="reset-btn" onclick="resetQ2('c2b','cf2')">🔄 もう一度</button></div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button>
+  </div>
+</div>
+
+<!-- ===== 解説③ 発展（3次・(t-2)²型） ===== -->
+<div class="page" id="page-ex3">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-ex">例</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">解説③ — 発展：3次型と $(t-c)^2$ 型</div>
+      <div class="page-hdr-desc">因数分解の工夫と $(t-c)^2 \geqq 0$ の利用</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="clabel ex">解説③ — 指数不等式〔3〕</div>
+
+    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
+      入試でよく出る発展パターン！$(t-c)^2 \geqq 0$ を使うテクニックをマスターしよう。
+    </div>
+
+    <div class="exp-box blue">
+      <h4>パターン A：$(t-c)^2 \geqq 0$ の利用</h4>
+      <p>
+        $8^x - 5 \cdot 4^x + 2^{x+3} - 4 &lt; 0$ のような不等式で、<br>
+        $2^x = t$ と置くと3次不等式 $t^3 - 5t^2 + 8t - 4 &lt; 0$ になる。<br>
+        因数分解すると $(t-2)^2(t-1) &lt; 0$。<br>
+        <strong>$(t-2)^2 \geqq 0$ は常に成り立つ</strong>ので、不等号は $(t-1)$ の符号だけで決まる。
+      </p>
+    </div>
+
+    <!-- 例題：3次型 -->
+    <div class="step-ex" id="se5">
+      <div class="step-ex-title">【例題】$8^x - 5 \cdot 4^x + 2^{x+3} - 4 < 0$ を解け。</div>
+      <div class="step-ex-btns">
+        <button class="step-ex-btn" onclick="showStep('se5',1)" id="se5-btn1">STEP 1 $t$ 置換して整理</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se5',2)" id="se5-btn2">STEP 2 因数分解</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se5',3)" id="se5-btn3">STEP 3 $(t-2)^2$ を利用</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se5',4)" id="se5-btn4">答え</button>
+      </div>
+      <div id="se5-s1" style="display:none" class="step-ex-body">
+        <span class="step-label teal">STEP 1</span>
+        $8^x = (2^x)^3$、$4^x = (2^x)^2$、$2^{x+3} = 8 \cdot 2^x$<br>
+        $2^x = t$（$t > 0$）と置くと：<br>
+        $t^3 - 5t^2 + 8t - 4 < 0$
+      </div>
+      <div id="se5-s2" style="display:none" class="step-ex-body">
+        <span class="step-label blue">STEP 2</span>
+        $t = 2$ を試す：$8 - 20 + 16 - 4 = 0$ ✓<br>
+        $(t-2)$ で因数分解：$(t-2)(t^2-3t+2) < 0$<br>
+        $= (t-2)(t-1)(t-2) < 0$<br>
+        $= (t-2)^2(t-1) < 0$
+      </div>
+      <div id="se5-s3" style="display:none" class="step-ex-body">
+        <span class="step-label amber">STEP 3</span>
+        $(t-2)^2 \geqq 0$ は常に成立。<br>
+        かつ $(t-2)^2 = 0$ になる $t = 2$ のとき全体 $= 0$（$< 0$ を満たさない）<br>
+        よって $t \neq 2$ かつ $(t-1) < 0$ → $0 < t < 1$（$t > 0$ なので）<br>
+        $0 < 2^x < 1 = 2^0$ → 底 $2 > 1$ → $x < 0$
+      </div>
+      <div id="se5-s4" style="display:none" class="step-ex-body ans">
+        <span class="step-label amber">答え</span>
+        $x < 0$
+      </div>
+    </div>
+
+    <!-- 例題2：3次 福岡教育大型 -->
+    <div class="step-ex" id="se6">
+      <div class="step-ex-title">【例題】$3^{3x+3} - 7 \cdot 3^{2x+1} - 7 \cdot 3^x + 1 < 0$ を解け。〈福岡教育大〉</div>
+      <div class="step-ex-btns">
+        <button class="step-ex-btn" onclick="showStep('se6',1)" id="se6-btn1">STEP 1 $t$ 置換</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se6',2)" id="se6-btn2">STEP 2 因数分解</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se6',3)" id="se6-btn3">STEP 3 $t$ の範囲と $x$</button>
+        <button class="step-ex-btn" disabled onclick="showStep('se6',4)" id="se6-btn4">答え</button>
+      </div>
+      <div id="se6-s1" style="display:none" class="step-ex-body">
+        <span class="step-label teal">STEP 1</span>
+        $3^{3x+3} = 27(3^x)^3$、$7 \cdot 3^{2x+1} = 21(3^x)^2$<br>
+        $3^x = t$（$t > 0$）と置くと：<br>
+        $27t^3 - 21t^2 - 7t + 1 < 0$
+      </div>
+      <div id="se6-s2" style="display:none" class="step-ex-body">
+        <span class="step-label blue">STEP 2</span>
+        $t = 1$ で $27 - 21 - 7 + 1 = 0$ ✓<br>
+        $(t-1)(27t^2 + 6t - 1) < 0$<br>
+        $= (t-1)(9t-1)(3t+1) < 0$<br>
+        $t > 0$ なので $(3t+1) > 0$ より $(t-1)(9t-1) < 0$
+      </div>
+      <div id="se6-s3" style="display:none" class="step-ex-body">
+        <span class="step-label amber">STEP 3</span>
+        $(t-1)(9t-1) < 0$、$\dfrac{1}{9} < t < 1$<br>
+        $3^{-2} < 3^x < 3^0$、底 $3 > 1$ → そのまま：<br>
+        $-2 < x < 0$
+      </div>
+      <div id="se6-s4" style="display:none" class="step-ex-body ans">
+        <span class="step-label amber">答え</span>
+        $-2 < x < 0$
+      </div>
+    </div>
+
+    <div class="point-box">
+      <strong>🔑 発展パターンのポイント</strong>
+      ＜$(t-c)^2$ 型＞ $(t-c)^2 \geqq 0$ を使って不等号は残りの因数だけで判断<br>
+      ＜3次型＞ 因数定理で1つ根を見つけ、組立除法で分解して解く<br>
+      共通：$t > 0$ の条件を忘れずに、最後は底で不等号の向きを確認
+    </div>
+
+    <div class="mini-fold" id="mfold-ex6m3">
+      <button class="mini-fold-btn" onclick="mToggle('ex6m3')">✏️ ミニテストに挑戦！　▼</button>
+      <div class="mini-fold-inner" id="minner-ex6m3">
+        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説③ 発展の確認</p>
+        <div id="mq-ex6m3-1">
+          <div class="mini-q-text"><strong>$(t-2)^2(t-1) &lt; 0$ で $t > 0$ のとき、$t$ の範囲は？</strong></div>
+          <div class="choices" id="mch-ex6m3-1">
+            <button class="ch" onclick="mAns('ex6m3-1',0,1)"><span class="cnum">①</span>$0 < t < 1$</button>
+            <button class="ch" onclick="mAns('ex6m3-1',1,1)"><span class="cnum">②</span>$1 < t < 2$</button>
+            <button class="ch" onclick="mAns('ex6m3-1',2,1)"><span class="cnum">③</span>$0 < t < 2$（$t \neq 1$）</button>
+            <button class="ch" onclick="mAns('ex6m3-1',3,1)"><span class="cnum">④</span>$t < 1$（$t \neq 0$）</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex6m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(t-2)^2 \geqq 0$ 常に成立。$t = 2$ で全体 $= 0$（不適）<br>$< 0$ となるには $(t-1) < 0$ → $t < 1$</div><div class="fb-step fb-ans">$t > 0$ と合わせて $0 < t < 1$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-2)^2 \geqq 0$ は常に成立するので、$< 0$ になるには $(t-1) < 0$ が必要<br>$t < 1$ かつ $t \neq 2$（自動で満たされる）かつ $t > 0$</div><div class="fb-step fb-ans">$0 < t < 1$</div></div></div><button class="reset-btn" onclick="mReset('ex6m3-1',1)">🔄 もう一度</button></div>
+        </div>
+        <div id="mq-ex6m3-2" style="display:none">
+          <div class="mini-q-text"><strong>$0 < 2^x < 1$ を解くと？</strong></div>
+          <div class="choices" id="mch-ex6m3-2">
+            <button class="ch" onclick="mAns('ex6m3-2',0,1)"><span class="cnum">①</span>$x < 0$</button>
+            <button class="ch" onclick="mAns('ex6m3-2',1,1)"><span class="cnum">②</span>$x > 0$</button>
+            <button class="ch" onclick="mAns('ex6m3-2',2,1)"><span class="cnum">③</span>$0 < x < 1$</button>
+            <button class="ch" onclick="mAns('ex6m3-2',3,1)"><span class="cnum">④</span>$x < 1$</button>
+          </div>
+          <div class="fb-ok" id="mfb-ok-ex6m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^0 = 1$ なので $0 < 2^x < 2^0$<br>底 $2 > 1$ → 不等号そのまま → $x < 0$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$1 = 2^0$ なので $2^x < 2^0$<br>底 $2 > 1$（増加関数）なので不等号そのまま → $x < 0$</div></div></div><button class="reset-btn" onclick="mReset('ex6m3-2',1)">🔄 もう一度</button></div>
+        </div>
+        <div class="mini-complete" id="mc-ex6m3">
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">クリア！発展パターンも攻略できましたね。</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 練習③ ===== -->
+<div class="page" id="page-pr3">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-pr">演</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">練習問題③ — 発展パターンの練習</div>
+      <div class="page-hdr-desc">3次型・$(t-c)^2$ 型の不等式を解く</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-pr" id="pb-pr3" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-pr3-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel pr">問 1</div>
+    <p class="q-text">$2^{2x} - 5 \cdot 2^x + 4 \leqq 0$ から $0 \leqq x \leqq 2$ が導けます。<br>では、$2^{2x} - 5 \cdot 2^{x-1} + 1 < 0$ の解は？</p>
+    <div class="choices" id="ch-p3q1">
+      <button class="ch" onclick="ans2('p3q1','pr3',3,0)"><span class="cnum">①</span>$0 < x < 2$</button>
+      <button class="ch" onclick="ans2('p3q1','pr3',3,1)"><span class="cnum">②</span>$-2 < x < 0$</button>
+      <button class="ch" onclick="ans2('p3q1','pr3',3,2)"><span class="cnum">③</span>$0 \leqq x \leqq 2$</button>
+      <button class="ch" onclick="ans2('p3q1','pr3',3,3)"><span class="cnum">④</span>$-1 < x < 1$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p3q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^{x-1} = \frac{t}{2}$（$t = 2^x$）なので $t^2 - \frac{5}{2}t + 1 < 0$</div><div class="fb-step">$2t^2 - 5t + 2 < 0$、$(2t-1)(t-2) < 0$、$\frac{1}{2} < t < 2$</div><div class="fb-step fb-ans">$2^{-1} < 2^x < 2^1$、底 $2>1$ → $-1 < x < 1$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p3q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$5 \cdot 2^{x-1} = \frac{5}{2} \cdot 2^x = \frac{5t}{2}$ に注意！</div><div class="fb-step">$2t^2 - 5t + 2 < 0 \Rightarrow (2t-1)(t-2) < 0 \Rightarrow \frac{1}{2} < t < 2$</div><div class="fb-step fb-ans">$-1 < x < 1$</div></div></div><button class="reset-btn" onclick="resetQ2('p3q1','pr3')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 2</div>
+    <p class="q-text">$8^x - 5 \cdot 4^x + 2^{x+3} - 4 < 0$ を解け。<br>（$(t-2)^2(t-1) < 0$ の形を使う）</p>
+    <div class="choices" id="ch-p3q2">
+      <button class="ch" onclick="ans2('p3q2','pr3',3,0)"><span class="cnum">①</span>$x > 0$</button>
+      <button class="ch" onclick="ans2('p3q2','pr3',3,1)"><span class="cnum">②</span>$0 < x < 2$</button>
+      <button class="ch" onclick="ans2('p3q2','pr3',3,2)"><span class="cnum">③</span>$-2 < x < 0$</button>
+      <button class="ch" onclick="ans2('p3q2','pr3',3,3)"><span class="cnum">④</span>$x < 0$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p3q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$ → $t^3 - 5t^2 + 8t - 4 < 0$<br>$(t-2)^2(t-1) < 0$</div><div class="fb-step">$(t-2)^2 \geqq 0$ なので $(t-1) < 0$ かつ $t \neq 2$<br>$0 < t < 1$（$t > 0$ も考慮）</div><div class="fb-step fb-ans">$0 < 2^x < 1 = 2^0$、底 $2>1$ → $x < 0$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p3q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-2)^2(t-1) < 0$ で $(t-2)^2 \geqq 0$ より $(t-1) < 0$ が必要<br>$t < 1$、$t > 0$ より $0 < t < 1$</div><div class="fb-step fb-ans">$2^x < 2^0 \Rightarrow x < 0$</div></div></div><button class="reset-btn" onclick="resetQ2('p3q2','pr3')">🔄 もう一度</button></div>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf3')">確認問題に進む →</button>
+  </div>
+</div>
+
+<!-- ===== 確認③ ===== -->
+<div class="page" id="page-cf3">
+  <div class="page-hdr">
+    <div class="page-hdr-icon icon-cf">確</div>
+    <div class="page-hdr-body">
+      <div class="page-hdr-title">確認問題③ — 総合問題</div>
+      <div class="page-hdr-desc">指数不等式の全パターンを総合的に確認</div>
+    </div>
+  </div>
+  <div class="prog-wrap">
+    <div class="pb-w"><div class="pb pb-cf" id="pb-cf3" style="width:0%"></div></div>
+    <span class="pb-txt" id="pb-cf3-txt">0 / 2 完了</span>
+  </div>
+  <div class="card">
+    <div class="clabel cf">確認 1</div>
+    <p class="q-text">$\left(\dfrac{1}{3}\right)^{2x+1} \leqq \dfrac{1}{3}$ を解け。</p>
+    <div class="choices" id="ch-c3a">
+      <button class="ch" onclick="ans2('c3a','cf3',0,0)"><span class="cnum">①</span>$x \geqq 0$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',0,1)"><span class="cnum">②</span>$x \leqq 0$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',0,2)"><span class="cnum">③</span>$x \geqq \dfrac{1}{2}$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',0,3)"><span class="cnum">④</span>$x \leqq \dfrac{1}{2}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c3a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\dfrac{1}{3} = \left(\dfrac{1}{3}\right)^1$ と変形：$\left(\dfrac{1}{3}\right)^{2x+1} \leqq \left(\dfrac{1}{3}\right)^1$</div><div class="fb-step">底 $\dfrac{1}{3} < 1$ → 不等号<strong>逆転</strong>：$2x+1 \geqq 1$</div><div class="fb-step fb-ans">$2x \geqq 0$、$x \geqq 0$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c3a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底 $\frac{1}{3} < 1$ → 減少関数 → 不等号逆転</div><div class="fb-step fb-ans">$2x+1 \geqq 1 \Rightarrow x \geqq 0$</div></div></div><button class="reset-btn" onclick="resetQ2('c3a','cf3')">🔄 もう一度</button></div>
+    <hr class="prob-divider">
+    <div class="clabel cf">確認 2</div>
+    <p class="q-text">$2^{2x} - 5 \cdot 2^x + 4 < 0$ を解け。</p>
+    <div class="choices" id="ch-c3b">
+      <button class="ch" onclick="ans2('c3b','cf3',2,0)"><span class="cnum">①</span>$x \leqq 0$ または $x \geqq 2$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',2,1)"><span class="cnum">②</span>$-2 < x < 0$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',2,2)"><span class="cnum">③</span>$0 < x < 2$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',2,3)"><span class="cnum">④</span>$1 < x < 4$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c3b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$（$t>0$）：$t^2 - 5t + 4 < 0$</div><div class="fb-step">$(t-1)(t-4) < 0$、$1 < t < 4$</div><div class="fb-step fb-ans">$2^0 < 2^x < 2^2$、底 $2>1$ → $0 < x < 2$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c3b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$t^2 - 5t + 4 = (t-1)(t-4) < 0 \Rightarrow 1 < t < 4$</div><div class="fb-step fb-ans">$2^x$ に戻す：$1 < 2^x < 4 \Rightarrow 0 < x < 2$</div></div></div><button class="reset-btn" onclick="resetQ2('c3b','cf3')">🔄 もう一度</button></div>
+  </div>
+
+  <!-- ユニットナビ -->
+  <div class="unit-nav">
+    <div class="unit-nav-row">
+      <a href="index_math2.html" class="unav-btn unav-index">📋 単元表</a>
+    </div>
+    <div class="unit-nav-row">
+      <a href="EX1-5.html" class="unav-btn unav-prev">← 第1章⑤ 指数方程式</a>
+      <a href="EX1-7.html" class="unav-btn unav-next">第1章⑦ 指数関数の最大・最小 →</a>
+    </div>
+  </div>
+</div>
+
+</main>
+<script>
+// ===== ページ切替 =====
+function switchPage(id) {
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  var el = document.getElementById('page-' + id);
+  if (el) el.classList.add('active');
+  var btns = document.querySelectorAll('.tab-btn');
+  btns.forEach(function(b){ b.className = b.className.replace(/active-\w+/g,'').trim(); });
+  var map = {ex1:'active-ex',pr1:'active-pr',cf1:'active-cf',ex2:'active-ex',pr2:'active-pr',cf2:'active-cf',ex3:'active-ex',pr3:'active-pr',cf3:'active-cf'};
+  var idx = {ex1:0,pr1:1,cf1:2,ex2:3,pr2:4,cf2:5,ex3:6,pr3:7,cf3:8};
+  if (idx[id] !== undefined) btns[idx[id]].classList.add(map[id]);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ===== ステップ展開 =====
+function showStep(sid, n) {
+  var total = 0;
+  for (var i=1; i<=10; i++) {
+    if (document.getElementById(sid+'-s'+i)) total = i;
+    else break;
+  }
+  for (var j=1; j<=total; j++) {
+    var s = document.getElementById(sid+'-s'+j);
+    if (s) s.style.display = (j <= n) ? 'block' : 'none';
+    var b = document.getElementById(sid+'-btn'+j);
+    if (b) {
+      b.disabled = (j > n);
+      if (j < n) b.classList.add('done');
+    }
+  }
+  var nextBtn = document.getElementById(sid+'-btn'+(n+1));
+  if (nextBtn) nextBtn.disabled = false;
+  if (window.renderMathInElement) renderMathInElement(document.getElementById(sid), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+
+// ===== 進捗バー =====
+var progress = {};
+function updatePb(section) {
+  var max = {pr1:3, cf1:2, pr2:3, cf2:2, pr3:2, cf3:2};
+  var m = max[section] || 2;
+  var cur = progress[section] || 0;
+  var pb = document.getElementById('pb-' + section);
+  var tx = document.getElementById('pb-' + section + '-txt');
+  if (pb) pb.style.width = Math.round(cur / m * 100) + '%';
+  if (tx) tx.textContent = cur + ' / ' + m + ' 完了';
+}
+
+// ===== 選択肢（練習・確認）=====
+function ans2(qid, section, correct, chosen) {
+  var btns = document.querySelectorAll('#ch-' + qid + ' .ch');
+  btns.forEach(function(b){ b.disabled = true; });
+  btns[chosen].classList.add(chosen === correct ? 'ok' : 'ng');
+  var ok = document.getElementById('fb-ok-' + qid);
+  var ng = document.getElementById('fb-ng-' + qid);
+  if (chosen === correct) {
+    if (ok) ok.style.display = 'flex';
+    if (!progress[section]) progress[section] = 0;
+    progress[section]++;
+    updatePb(section);
+    launchConfetti();
+  } else {
+    if (ng) ng.style.display = 'flex';
+  }
+  if (window.renderMathInElement) {
+    var fb = chosen === correct ? ok : ng;
+    if (fb) renderMathInElement(fb, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
+}
+function resetQ2(qid, section) {
+  var btns = document.querySelectorAll('#ch-' + qid + ' .ch');
+  btns.forEach(function(b){ b.disabled = false; b.classList.remove('ok','ng'); });
+  var ok = document.getElementById('fb-ok-' + qid);
+  var ng = document.getElementById('fb-ng-' + qid);
+  if (ok) ok.style.display = 'none';
+  if (ng) ng.style.display = 'none';
+}
+
+// ===== ミニテスト =====
+function mToggle(id) {
+  var el = document.getElementById('minner-' + id);
+  if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+var mProgress = {};
+var mMax = {ex6m1: 2, ex6m2: 2, ex6m3: 2};
+
+function mAns(qid, correct, chosen) {
+  var prefix = qid.replace(/-\d+$/, '');
+  var btns = document.querySelectorAll('#mch-' + qid + ' .ch');
+  btns.forEach(function(b){ b.disabled = true; });
+  btns[chosen].classList.add(chosen === correct ? 'ok' : 'ng');
+  var ok = document.getElementById('mfb-ok-' + qid);
+  var ng = document.getElementById('mfb-ng-' + qid);
+  if (chosen === correct) {
+    if (ok) ok.style.display = 'flex';
+    if (!mProgress[prefix]) mProgress[prefix] = 0;
+    mProgress[prefix]++;
+    launchConfetti();
+    var max = mMax[prefix] || 2;
+    if (mProgress[prefix] >= max) {
+      setTimeout(function(){
+        var mc = document.getElementById('mc-' + prefix);
+        if (mc) mc.style.display = 'block';
+      }, 600);
+    } else {
+      var nextN = mProgress[prefix] + 1;
+      setTimeout(function(){
+        var nq = document.getElementById('mq-' + prefix + '-' + nextN);
+        if (nq) { nq.style.display = 'block'; if (window.renderMathInElement) renderMathInElement(nq, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false}); }
+      }, 500);
+    }
+  } else {
+    if (ng) ng.style.display = 'flex';
+  }
+  if (window.renderMathInElement) {
+    var fb = chosen === correct ? ok : ng;
+    if (fb) renderMathInElement(fb, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
+}
+function mReset(qid, correct) {
+  var btns = document.querySelectorAll('#mch-' + qid + ' .ch');
+  btns.forEach(function(b){ b.disabled = false; b.classList.remove('ok','ng'); });
+  var ok = document.getElementById('mfb-ok-' + qid);
+  var ng = document.getElementById('mfb-ng-' + qid);
+  if (ok) ok.style.display = 'none';
+  if (ng) ng.style.display = 'none';
+}
+
+// ===== コンフェッティ =====
+function launchConfetti() {
+  var colors=['#0d9478','#2055b0','#a86000','#d93652','#6c3fc5'];
+  for (var i=0;i<28;i++) {
+    var el=document.createElement('div');
+    el.style.cssText='position:fixed;width:8px;height:8px;border-radius:50%;z-index:9999;pointer-events:none;';
+    el.style.background=colors[Math.floor(Math.random()*colors.length)];
+    el.style.left=Math.random()*100+'vw';el.style.top='60px';
+    document.body.appendChild(el);
+    var tx=(Math.random()-0.5)*200;var ty=Math.random()*400+100;
+    el.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+tx+'px,'+ty+'px) scale(0)',opacity:0}],{duration:1200,easing:'ease-out'}).onfinish=function(){this.effect.target.remove();};
+  }
+}
+</script>
+<script>
+window.NEKO_CONFIG = {
+  subject:  '数学II',
+  chapter:  '第1章⑥',
+  title:    '指数不等式',
+  greeting: '指数不等式について何でも聞いてね🐱',
+  quickBtns: [
+    {label:'不等号の逆転',q:'底が1より小さいと不等号が逆転するのはなぜ？'},
+    {label:'t置換の手順',q:'t置換を使った不等式の解き方を教えて'},
+    {label:'(t-c)²の使い方',q:'(t-c)²≧0を使う問題の解き方を教えて'}
+  ],
+  pageMap: {
+    'ex1': '解説①「底と不等号の向き（a>1で同向き・0<a<1で逆向き）」を学習中',
+    'pr1': '練習問題①「基本の指数不等式」に取り組み中',
+    'cf1': '確認問題①「不等号の向きの応用」に取り組み中',
+    'ex2': '解説②「t置換で2次不等式に変形する方法」を学習中',
+    'pr2': '練習問題②「t置換不等式の練習」に取り組み中',
+    'cf2': '確認問題②「t置換不等式の応用」に取り組み中',
+    'ex3': '解説③「(t-c)²型・3次不等式の発展問題」を学習中',
+    'pr3': '練習問題③「発展パターンの練習」に取り組み中',
+    'cf3': '確認問題③「指数不等式の総合問題」に取り組み中'
+  }
+};
+</script>
+<script src="neko.js"></script>
+</body>
+</html>
