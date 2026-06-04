@@ -314,499 +314,106 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
     </div>
 
     <!-- ミニテスト -->
-    <div class="mini-fold" id="mfold-ex6m1">
+                <div class="mini-fold" id="mfold-ex6m1">
       <button class="mini-fold-btn" onclick="mToggle('ex6m1')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex6m1">
-        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説① 不等号の向きの確認</p>
         <div id="mq-ex6m1-1">
-          <div class="mini-q-text"><strong>$3^x > 3^5$ を解くと？（底 $3 > 1$）</strong></div>
+          <div class="mini-q-text"><strong>$3^x>3^5$ を解くと？</strong></div>
           <div class="choices" id="mch-ex6m1-1">
-            <button class="ch" onclick="mAns('ex6m1-1',0,1)"><span class="cnum">①</span>$x > 5$</button>
-            <button class="ch" onclick="mAns('ex6m1-1',1,1)"><span class="cnum">②</span>$x < 5$</button>
-            <button class="ch" onclick="mAns('ex6m1-1',2,1)"><span class="cnum">③</span>$x \geqq 5$</button>
-            <button class="ch" onclick="mAns('ex6m1-1',3,1)"><span class="cnum">④</span>$x \leqq 5$</button>
+            <button class="ch" onclick="mAns('ex6m1-1',0,0)"><span class="cnum">①</span>$x>5$</button>
+            <button class="ch" onclick="mAns('ex6m1-1',1,0)"><span class="cnum">②</span>$x<5$</button>
+            <button class="ch" onclick="mAns('ex6m1-1',2,0)"><span class="cnum">③</span>$x\geqq5$</button>
+            <button class="ch" onclick="mAns('ex6m1-1',3,0)"><span class="cnum">④</span>$x\leqq5$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex6m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底 $3 > 1$ → 増加関数 → 不等号そのまま<br>$x > 5$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex6m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底 $3 > 1$ なので増加関数 → 不等号の向きはそのまま<br>$3^x > 3^5 \Rightarrow x > 5$</div></div></div><button class="reset-btn" onclick="mReset('ex6m1-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex6m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底$3>1$→不等号そのまま：$x>5$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底$>1$：そのまま</div></div></div></div><button class="reset-btn" onclick="mReset('ex6m1-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex6m1-2" style="display:none">
-          <div class="mini-q-text"><strong>$\left(\dfrac{1}{3}\right)^x > \left(\dfrac{1}{3}\right)^4$ を解くと？</strong></div>
+          <div class="mini-q-text"><strong>$\left(\dfrac{1}{3}\right)^x>\left(\dfrac{1}{3}\right)^4$ を解くと？</strong></div>
           <div class="choices" id="mch-ex6m1-2">
-            <button class="ch" onclick="mAns('ex6m1-2',0,1)"><span class="cnum">①</span>$x > 4$</button>
-            <button class="ch" onclick="mAns('ex6m1-2',1,1)"><span class="cnum">②</span>$x < 4$</button>
-            <button class="ch" onclick="mAns('ex6m1-2',2,1)"><span class="cnum">③</span>$x \geqq 4$</button>
-            <button class="ch" onclick="mAns('ex6m1-2',3,1)"><span class="cnum">④</span>$x \leqq 4$</button>
+            <button class="ch" onclick="mAns('ex6m1-2',0,1)"><span class="cnum">①</span>$x>4$</button>
+            <button class="ch" onclick="mAns('ex6m1-2',1,1)"><span class="cnum">②</span>$x<4$</button>
+            <button class="ch" onclick="mAns('ex6m1-2',2,1)"><span class="cnum">③</span>$x\geqq4$</button>
+            <button class="ch" onclick="mAns('ex6m1-2',3,1)"><span class="cnum">④</span>$x\leqq4$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex6m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底 $\dfrac{1}{3} < 1$ → 減少関数 → 不等号<strong>逆転</strong><br>$x < 4$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex6m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底 $\dfrac{1}{3} < 1$ → 減少関数 → 不等号は<strong>逆向き</strong>になる<br>$\left(\frac{1}{3}\right)^x > \left(\frac{1}{3}\right)^4 \Rightarrow x < 4$</div></div></div><button class="reset-btn" onclick="mReset('ex6m1-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex6m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底$\frac{1}{3}<1$→逆転：$x<4$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底$<1$：逆転</div></div></div></div><button class="reset-btn" onclick="mReset('ex6m1-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex6m1">
           <div class="mini-complete-emoji">🎉</div>
-          <div class="mini-complete-text">クリア！不等号の向きルール、マスターできましたね。</div>
+          <div class="mini-complete-text">不等式の基本、バッチリ！</div>
           <div class="mini-nav">
-            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
             <button class="mini-nav-btn next" onclick="switchPage('pr1')">練習問題に進む →</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- ===== 練習① ===== -->
-<div class="page" id="page-pr1">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-pr">演</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">練習問題① — 基本の指数不等式</div>
-      <div class="page-hdr-desc">底をそろえて不等号の向きを判断する練習</div>
-    </div>
-  </div>
-  <div class="prog-wrap">
-    <div class="pb-w"><div class="pb pb-pr" id="pb-pr1" style="width:0%"></div></div>
-    <span class="pb-txt" id="pb-pr1-txt">0 / 3 完了</span>
-  </div>
-  <div class="card">
-    <div class="clabel pr">問 1</div>
-    <p class="q-text">$2^{4-3x} < \dfrac{\sqrt{2}}{4}$ を解け。</p>
-    <div class="choices" id="ch-p1q1">
-      <button class="ch" onclick="ans2('p1q1','pr1',2,0)"><span class="cnum">①</span>$x > \dfrac{11}{3}$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',2,1)"><span class="cnum">②</span>$x < \dfrac{11}{6}$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',2,2)"><span class="cnum">③</span>$x > \dfrac{11}{6}$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',2,3)"><span class="cnum">④</span>$x > \dfrac{5}{6}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p1q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\dfrac{\sqrt{2}}{4} = 2^{\frac{1}{2}} \cdot 2^{-2} = 2^{-\frac{3}{2}}$</div><div class="fb-step">底 $2 > 1$ → 不等号そのまま：$4 - 3x < -\dfrac{3}{2}$</div><div class="fb-step fb-ans">$-3x < -\dfrac{11}{2}$、$x > \dfrac{11}{6}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\dfrac{\sqrt{2}}{4} = \dfrac{2^{1/2}}{2^2} = 2^{-3/2}$</div><div class="fb-step">$2^{4-3x} < 2^{-3/2}$、底 $2>1$ なので $4-3x < -\frac{3}{2}$</div><div class="fb-step fb-ans">$-3x < -\frac{11}{2} \Rightarrow x > \frac{11}{6}$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q1','pr1')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 2</div>
-    <p class="q-text">$\left(\dfrac{1}{3}\right)^{2x+1} \leqq \dfrac{1}{81^x}$ を解け。</p>
-    <div class="choices" id="ch-p1q2">
-      <button class="ch" onclick="ans2('p1q2','pr1',2,0)"><span class="cnum">①</span>$x \geqq -\dfrac{1}{2}$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',2,1)"><span class="cnum">②</span>$x \leqq \dfrac{1}{2}$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',2,2)"><span class="cnum">③</span>$x \leqq \dfrac{1}{2}$ のまちがい → $x \geqq -\dfrac{1}{2}$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',2,3)"><span class="cnum">④</span>$x \leqq -1$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p1q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\dfrac{1}{81^x} = \dfrac{1}{(3^4)^x} = 3^{-4x} = \left(\dfrac{1}{3}\right)^{4x}$</div><div class="fb-step">$\left(\dfrac{1}{3}\right)^{2x+1} \leqq \left(\dfrac{1}{3}\right)^{4x}$</div><div class="fb-step">底 $\dfrac{1}{3} < 1$ → 不等号<strong>逆転</strong>：$2x+1 \geqq 4x$</div><div class="fb-step fb-ans">$-2x \geqq -1$、$x \leqq \dfrac{1}{2}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\frac{1}{81^x} = \left(\frac{1}{3}\right)^{4x}$ と変形して底をそろえる</div><div class="fb-step">底 $\frac{1}{3} < 1$ → 不等号逆転 $\Rightarrow 2x+1 \geqq 4x \Rightarrow x \leqq \frac{1}{2}$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q2','pr1')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 3</div>
-    <p class="q-text">$\left(\dfrac{1}{16}\right)^{x-1} > 2^{3x^2}$ を解け。〈大阪薬科大〉</p>
-    <div class="choices" id="ch-p1q3">
-      <button class="ch" onclick="ans2('p1q3','pr1',3,0)"><span class="cnum">①</span>$-2 < x < \dfrac{1}{3}$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',3,1)"><span class="cnum">②</span>$x < -2$ または $x > \dfrac{2}{3}$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',3,2)"><span class="cnum">③</span>$0 < x < \dfrac{2}{3}$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',3,3)"><span class="cnum">④</span>$-2 < x < \dfrac{2}{3}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p1q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\left(\dfrac{1}{16}\right)^{x-1} = (2^{-4})^{x-1} = 2^{-4x+4}$</div><div class="fb-step">$2^{-4x+4} > 2^{3x^2}$、底 $2>1$ → 不等号そのまま</div><div class="fb-step">$3x^2 < -4x+4$、$3x^2+4x-4 < 0$、$(3x-2)(x+2) < 0$</div><div class="fb-step fb-ans">$-2 < x < \dfrac{2}{3}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\left(\frac{1}{16}\right)^{x-1} = 2^{-4x+4}$ に変形し底を $2$ にそろえる</div><div class="fb-step">$-4x+4 > 3x^2 \Rightarrow 3x^2+4x-4 < 0$</div><div class="fb-step fb-ans">$(3x-2)(x+2) < 0 \Rightarrow -2 < x < \frac{2}{3}$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q3','pr1')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row">
-    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
-    <button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button>
-  </div>
-</div>
-
-<!-- ===== 確認① ===== -->
-<div class="page" id="page-cf1">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-cf">確</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">確認問題① — 不等号の向きの応用</div>
-      <div class="page-hdr-desc">底をそろえてから不等号の向きを正しく判断する</div>
-    </div>
-  </div>
-  <div class="prog-wrap">
-    <div class="pb-w"><div class="pb pb-cf" id="pb-cf1" style="width:0%"></div></div>
-    <span class="pb-txt" id="pb-cf1-txt">0 / 2 完了</span>
-  </div>
-  <div class="card">
-    <div class="clabel cf">確認 1</div>
-    <p class="q-text">$8^x < 32$ を解け。（底を $2$ にそろえる）</p>
-    <div class="choices" id="ch-c1a">
-      <button class="ch" onclick="ans2('c1a','cf1',1,0)"><span class="cnum">①</span>$x > \dfrac{5}{3}$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',1,1)"><span class="cnum">②</span>$x < \dfrac{5}{3}$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',1,2)"><span class="cnum">③</span>$x < \dfrac{3}{5}$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',1,3)"><span class="cnum">④</span>$x > 5$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c1a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$8 = 2^3$、$32 = 2^5$ を使う：$(2^3)^x < 2^5$</div><div class="fb-step">$2^{3x} < 2^5$、底 $2 > 1$ → そのまま</div><div class="fb-step fb-ans">$3x < 5$、$x < \dfrac{5}{3}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c1a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$8^x = (2^3)^x = 2^{3x}$、$32 = 2^5$</div><div class="fb-step fb-ans">$2^{3x} < 2^5$、底 $2>1$ なのでそのまま → $x < \frac{5}{3}$</div></div></div><button class="reset-btn" onclick="resetQ2('c1a','cf1')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel cf">確認 2</div>
-    <p class="q-text">$\left(\dfrac{1}{9}\right)^x \geqq \left(\dfrac{1}{27}\right)^{x-1}$ を解け。</p>
-    <div class="choices" id="ch-c1b">
-      <button class="ch" onclick="ans2('c1b','cf1',3,0)"><span class="cnum">①</span>$x \geqq 3$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',3,1)"><span class="cnum">②</span>$x \leqq -3$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',3,2)"><span class="cnum">③</span>$x \leqq 0$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',3,3)"><span class="cnum">④</span>$x \leqq 3$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c1b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\frac{1}{9} = \left(\frac{1}{3}\right)^2$、$\frac{1}{27} = \left(\frac{1}{3}\right)^3$ を使う</div><div class="fb-step">$\left(\frac{1}{3}\right)^{2x} \geqq \left(\frac{1}{3}\right)^{3(x-1)} = \left(\frac{1}{3}\right)^{3x-3}$</div><div class="fb-step">底 $\frac{1}{3} < 1$ → 不等号<strong>逆転</strong>：$2x \leqq 3x-3$</div><div class="fb-step fb-ans">$-x \leqq -3$、$x \geqq 3$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c1b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底を $\frac{1}{3}$ にそろえ：$\left(\frac{1}{3}\right)^{2x} \geqq \left(\frac{1}{3}\right)^{3x-3}$<br>底 $<1$ → 逆転 → $2x \leqq 3x-3$</div><div class="fb-step fb-ans">$x \geqq 3$</div></div></div><button class="reset-btn" onclick="resetQ2('c1b','cf1')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row">
-    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
-    <button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button>
-  </div>
-</div>
-
-<!-- ===== 解説② t置換で2次不等式 ===== -->
-<div class="page" id="page-ex2">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-ex">例</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">解説② — $t$ 置換で2次不等式に変形</div>
-      <div class="page-hdr-desc">$a^x = t$ とおいて $t$ の不等式として解く</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="clabel ex">解説② — 指数不等式〔2〕</div>
-
-    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
-      指数方程式の $t$ 置換と同じ発想！ただし不等号の向きに注意が加わる。
-    </div>
-
-    <p class="q-text">
-      $9^x - 4 \cdot 3^x + 3 \leqq 0$ のような不等式では底をそろえてもそのままでは解けません。<br>
-      <strong>$3^x = t$（$t > 0$）</strong>と置いて $t$ の2次不等式に変形します。
-    </p>
-
-    <div class="warn-box">
-      <strong>⚠️ 注意</strong>
-      $t$ の不等式を解いたあと、$a^x = t$（$t > 0$）に戻すとき、<br>
-      底 $a$ の大きさで不等号の向きが変わることに注意！
-    </div>
-
-    <!-- 例題 -->
-    <div class="step-ex" id="se3">
-      <div class="step-ex-title">【例題】$9^x - 4 \cdot 3^{x+1} + 27 \leqq 0$ を解け。</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se3',1)" id="se3-btn1">STEP 1 変形して $t$ 置換</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se3',2)" id="se3-btn2">STEP 2 2次不等式を解く</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se3',3)" id="se3-btn3">STEP 3 $3^x$ に戻す</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se3',4)" id="se3-btn4">答え</button>
-      </div>
-      <div id="se3-s1" style="display:none" class="step-ex-body">
-        <span class="step-label teal">STEP 1</span>
-        $9^x = (3^x)^2$、$4 \cdot 3^{x+1} = 12 \cdot 3^x$ と変形。<br>
-        $3^x = t$（$t > 0$）と置くと：<br>
-        $t^2 - 12t + 27 \leqq 0$
-      </div>
-      <div id="se3-s2" style="display:none" class="step-ex-body">
-        <span class="step-label blue">STEP 2</span>
-        因数分解：$(t - 3)(t - 9) \leqq 0$<br>
-        $3 \leqq t \leqq 9$
-      </div>
-      <div id="se3-s3" style="display:none" class="step-ex-body">
-        <span class="step-label amber">STEP 3</span>
-        $t = 3^x$ に戻す：$3 \leqq 3^x \leqq 9$<br>
-        $3^1 \leqq 3^x \leqq 3^2$<br>
-        底 $3 > 1$ → 不等号そのまま：$1 \leqq x \leqq 2$
-      </div>
-      <div id="se3-s4" style="display:none" class="step-ex-body ans">
-        <span class="step-label amber">答え</span>
-        $1 \leqq x \leqq 2$
-      </div>
-    </div>
-
-    <!-- 例題2 -->
-    <div class="step-ex" id="se4">
-      <div class="step-ex-title">【例題】$4^x - 5 \cdot 2^x + 4 \leqq 0$ を解け。</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se4',1)" id="se4-btn1">STEP 1 $t$ 置換</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se4',2)" id="se4-btn2">STEP 2 不等式を解く</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se4',3)" id="se4-btn3">答え</button>
-      </div>
-      <div id="se4-s1" style="display:none" class="step-ex-body">
-        <span class="step-label teal">STEP 1</span>
-        $2^x = t$（$t > 0$）と置くと：<br>
-        $t^2 - 5t + 4 \leqq 0$
-      </div>
-      <div id="se4-s2" style="display:none" class="step-ex-body">
-        <span class="step-label blue">STEP 2</span>
-        $(t-1)(t-4) \leqq 0$、$1 \leqq t \leqq 4$<br>
-        $2^x = t$ に戻す：$1 \leqq 2^x \leqq 4$<br>
-        $2^0 \leqq 2^x \leqq 2^2$<br>
-        底 $2 > 1$ → そのまま：$0 \leqq x \leqq 2$
-      </div>
-      <div id="se4-s3" style="display:none" class="step-ex-body ans">
-        <span class="step-label amber">答え</span>
-        $0 \leqq x \leqq 2$
-      </div>
-    </div>
-
-    <div class="point-box">
-      <strong>🔑 $t$ 置換（不等式）の流れ</strong>
-      ① $a^x = t$（$t > 0$）と置いて $t$ の2次不等式に変形<br>
-      ② $t$ の不等式を解いて $t$ の範囲を求める<br>
-      ③ $t = a^x$ に戻し、底の大小で不等号の向きを確認して $x$ の範囲を求める
-    </div>
-
-    <div class="mini-fold" id="mfold-ex6m2">
+            <div class="mini-fold" id="mfold-ex6m2">
       <button class="mini-fold-btn" onclick="mToggle('ex6m2')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex6m2">
-        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説② $t$ 置換不等式の確認</p>
         <div id="mq-ex6m2-1">
-          <div class="mini-q-text"><strong>$9^x - 4 \cdot 3^x + 3 \leqq 0$ で $3^x = t$ と置くと？</strong></div>
+          <div class="mini-q-text"><strong>$9^x-4\cdot3^x+3\leqq0$ で $t=3^x$ と置くと？</strong></div>
           <div class="choices" id="mch-ex6m2-1">
-            <button class="ch" onclick="mAns('ex6m2-1',0,1)"><span class="cnum">①</span>$t^2 + 4t + 3 \leqq 0$</button>
-            <button class="ch" onclick="mAns('ex6m2-1',1,1)"><span class="cnum">②</span>$t^2 - 4t + 3 \leqq 0$</button>
-            <button class="ch" onclick="mAns('ex6m2-1',2,1)"><span class="cnum">③</span>$t^2 - 4t - 3 \leqq 0$</button>
-            <button class="ch" onclick="mAns('ex6m2-1',3,1)"><span class="cnum">④</span>$t^2 + 4t - 3 \leqq 0$</button>
+            <button class="ch" onclick="mAns('ex6m2-1',0,0)"><span class="cnum">①</span>$t^2-4t+3\leqq0$</button>
+            <button class="ch" onclick="mAns('ex6m2-1',1,0)"><span class="cnum">②</span>$t^2+4t+3\leqq0$</button>
+            <button class="ch" onclick="mAns('ex6m2-1',2,0)"><span class="cnum">③</span>$t^2-4t-3\leqq0$</button>
+            <button class="ch" onclick="mAns('ex6m2-1',3,0)"><span class="cnum">④</span>$t^2+4t-3\leqq0$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex6m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$9^x = (3^x)^2 = t^2$ を使って代入すると<br>$t^2 - 4t + 3 \leqq 0$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex6m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$9^x = (3^2)^x = (3^x)^2 = t^2$ を使う<br>$t^2 - 4t + 3 \leqq 0$</div></div></div><button class="reset-btn" onclick="mReset('ex6m2-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex6m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$9^x=t^2$：$t^2-4t+3\leqq0$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$9^x=t^2$</div></div></div></div><button class="reset-btn" onclick="mReset('ex6m2-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex6m2-2" style="display:none">
-          <div class="mini-q-text"><strong>$t^2 - 4t + 3 \leqq 0$ を解くと？</strong></div>
+          <div class="mini-q-text"><strong>$t^2-4t+3\leqq0$ を解くと？</strong></div>
           <div class="choices" id="mch-ex6m2-2">
-            <button class="ch" onclick="mAns('ex6m2-2',0,1)"><span class="cnum">①</span>$1 \leqq t \leqq 3$</button>
-            <button class="ch" onclick="mAns('ex6m2-2',1,1)"><span class="cnum">②</span>$t \leqq 1$ または $t \geqq 3$</button>
-            <button class="ch" onclick="mAns('ex6m2-2',2,1)"><span class="cnum">③</span>$-3 \leqq t \leqq -1$</button>
-            <button class="ch" onclick="mAns('ex6m2-2',3,1)"><span class="cnum">④</span>$t \leqq -3$ または $t \geqq -1$</button>
+            <button class="ch" onclick="mAns('ex6m2-2',0,1)"><span class="cnum">①</span>$t\leqq1$または$t\geqq3$</button>
+            <button class="ch" onclick="mAns('ex6m2-2',1,1)"><span class="cnum">②</span>$1\leqq t\leqq3$</button>
+            <button class="ch" onclick="mAns('ex6m2-2',2,1)"><span class="cnum">③</span>$t<1$または$t>3$</button>
+            <button class="ch" onclick="mAns('ex6m2-2',3,1)"><span class="cnum">④</span>$t=1$または$t=3$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex6m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(t-1)(t-3) \leqq 0 \Rightarrow 1 \leqq t \leqq 3$<br>$3^x = t$ に戻す：$3^0 \leqq 3^x \leqq 3^1$</div><div class="fb-step fb-ans">底 $3 > 1$ → そのまま → $0 \leqq x \leqq 1$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex6m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-1)(t-3) \leqq 0$ の解は $1 \leqq t \leqq 3$</div></div></div><button class="reset-btn" onclick="mReset('ex6m2-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex6m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(t-1)(t-3)\leqq0$ → $1\leqq t\leqq3$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-1)(t-3)\leqq0$</div></div></div></div><button class="reset-btn" onclick="mReset('ex6m2-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex6m2">
           <div class="mini-complete-emoji">🎉</div>
-          <div class="mini-complete-text">クリア！$t$ 置換の不等式、バッチリですね。</div>
+          <div class="mini-complete-text">t置換不等式をマスター！</div>
           <div class="mini-nav">
-            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
             <button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- ===== 練習② ===== -->
-<div class="page" id="page-pr2">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-pr">演</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">練習問題② — $t$ 置換で解く不等式</div>
-      <div class="page-hdr-desc">2次不等式化して範囲を求める練習</div>
-    </div>
-  </div>
-  <div class="prog-wrap">
-    <div class="pb-w"><div class="pb pb-pr" id="pb-pr2" style="width:0%"></div></div>
-    <span class="pb-txt" id="pb-pr2-txt">0 / 3 完了</span>
-  </div>
-  <div class="card">
-    <div class="clabel pr">問 1</div>
-    <p class="q-text">$9^x - 10 \cdot 3^x + 9 \leqq 0$ を解け。</p>
-    <div class="choices" id="ch-p2q1">
-      <button class="ch" onclick="ans2('p2q1','pr2',1,0)"><span class="cnum">①</span>$0 < x \leqq 2$</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',1,1)"><span class="cnum">②</span>$0 \leqq x \leqq 2$</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',1,2)"><span class="cnum">③</span>$1 \leqq x \leqq 3$</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',1,3)"><span class="cnum">④</span>$x \leqq 0$ または $x \geqq 2$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p2q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^x = t$（$t > 0$）：$t^2 - 10t + 9 \leqq 0$</div><div class="fb-step">$(t-1)(t-9) \leqq 0$、$1 \leqq t \leqq 9$</div><div class="fb-step fb-ans">$3^0 \leqq 3^x \leqq 3^2$、底 $3>1$ → $0 \leqq x \leqq 2$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$t^2 - 10t + 9 = (t-1)(t-9) \leqq 0 \Rightarrow 1 \leqq t \leqq 9$</div><div class="fb-step fb-ans">$3^x$に戻す：$3^0 \leqq 3^x \leqq 3^2 \Rightarrow 0 \leqq x \leqq 2$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q1','pr2')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 2</div>
-    <p class="q-text">$4^x - 5 \cdot 2^x + 4 > 0$ を解け。</p>
-    <div class="choices" id="ch-p2q2">
-      <button class="ch" onclick="ans2('p2q2','pr2',3,0)"><span class="cnum">①</span>$0 < x < 2$</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',3,1)"><span class="cnum">②</span>$-2 < x < 0$</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',3,2)"><span class="cnum">③</span>$x \leqq 0$ または $x \geqq 2$</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',3,3)"><span class="cnum">④</span>$x < 0$ または $x > 2$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p2q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$（$t>0$）：$t^2-5t+4 > 0$</div><div class="fb-step">$(t-1)(t-4) > 0$、$t < 1$ または $t > 4$（$t > 0$ も考慮し $0 < t < 1$ または $t > 4$）</div><div class="fb-step fb-ans">$2^x < 2^0 \Rightarrow x < 0$、または $2^x > 2^2 \Rightarrow x > 2$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-1)(t-4) > 0 \Rightarrow t < 1$ または $t > 4$（$t > 0$ なので $0 < t < 1$ or $t > 4$）</div><div class="fb-step fb-ans">$2^x < 1 \Rightarrow x < 0$、$2^x > 4 \Rightarrow x > 2$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q2','pr2')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 3</div>
-    <p class="q-text">$25^x - 6 \cdot 5^x + 5 < 0$ を解け。</p>
-    <div class="choices" id="ch-p2q3">
-      <button class="ch" onclick="ans2('p2q3','pr2',0,0)"><span class="cnum">①</span>$0 < x < 1$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',0,1)"><span class="cnum">②</span>$0 \leqq x \leqq 1$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',0,2)"><span class="cnum">③</span>$1 < x < 2$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',0,3)"><span class="cnum">④</span>$x < 0$ または $x > 1$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p2q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5^x = t$（$t>0$）：$t^2 - 6t + 5 < 0$</div><div class="fb-step">$(t-1)(t-5) < 0$、$1 < t < 5$</div><div class="fb-step fb-ans">$5^0 < 5^x < 5^1$、底 $5>1$ → $0 < x < 1$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-1)(t-5) < 0 \Rightarrow 1 < t < 5$</div><div class="fb-step fb-ans">$5^x$ に戻す：$5^0 < 5^x < 5^1 \Rightarrow 0 < x < 1$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q3','pr2')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row">
-    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
-    <button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button>
-  </div>
-</div>
-
-<!-- ===== 確認② ===== -->
-<div class="page" id="page-cf2">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-cf">確</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">確認問題② — $t$ 置換不等式の応用</div>
-      <div class="page-hdr-desc">複合的な変形が必要な問題で定着を確認</div>
-    </div>
-  </div>
-  <div class="prog-wrap">
-    <div class="pb-w"><div class="pb pb-cf" id="pb-cf2" style="width:0%"></div></div>
-    <span class="pb-txt" id="pb-cf2-txt">0 / 2 完了</span>
-  </div>
-  <div class="card">
-    <div class="clabel cf">確認 1</div>
-    <p class="q-text">$2^{2x} - 5 \cdot 2^{x-1} + 1 < 0$ を解け。〈法政大（工学部）〉</p>
-    <div class="choices" id="ch-c2a">
-      <button class="ch" onclick="ans2('c2a','cf2',3,0)"><span class="cnum">①</span>$0 < x < 2$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',3,1)"><span class="cnum">②</span>$0 \leqq x \leqq 2$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',3,2)"><span class="cnum">③</span>$-2 < x < 0$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',3,3)"><span class="cnum">④</span>$-1 < x < 1$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c2a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$（$t > 0$）：$2^{2x} = t^2$、$5 \cdot 2^{x-1} = \dfrac{5}{2}t$</div><div class="fb-step">$t^2 - \dfrac{5}{2}t + 1 < 0$、両辺 $\times 2$：$2t^2 - 5t + 2 < 0$</div><div class="fb-step">$(2t-1)(t-2) < 0$、$\dfrac{1}{2} < t < 2$</div><div class="fb-step fb-ans">$2^{-1} < 2^x < 2^1$、底 $2>1$ → $-1 < x < 1$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c2a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2^{x-1} = \frac{1}{2} \cdot 2^x = \frac{t}{2}$ なので $5 \cdot 2^{x-1} = \frac{5t}{2}$</div><div class="fb-step">$t^2 - \frac{5}{2}t + 1 < 0 \Rightarrow 2t^2-5t+2 < 0 \Rightarrow (2t-1)(t-2) < 0$</div><div class="fb-step fb-ans">$\frac{1}{2} < t < 2 \Rightarrow -1 < x < 1$</div></div></div><button class="reset-btn" onclick="resetQ2('c2a','cf2')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel cf">確認 2</div>
-    <p class="q-text">$1 > a > 0$ のとき、$a^{2x} + 2a^{x+2} - 3a^4 \geqq 0$ を解け。〈早大－政経〉</p>
-    <div class="choices" id="ch-c2b">
-      <button class="ch" onclick="ans2('c2b','cf2',3,0)"><span class="cnum">①</span>$x \geqq 1$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',3,1)"><span class="cnum">②</span>$x \leqq -2$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',3,2)"><span class="cnum">③</span>$x \geqq 2$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',3,3)"><span class="cnum">④</span>$x \leqq 2$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c2b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^x = t$（$t > 0$）と置く：$(a^x)^2 + 2a^2 \cdot a^x - 3a^4 \geqq 0$</div><div class="fb-step">$t^2 + 2a^2 t - 3a^4 \geqq 0$、$(t + 3a^2)(t - a^2) \geqq 0$</div><div class="fb-step">$t + 3a^2 > 0$ なので $t \geqq a^2$、つまり $a^x \geqq a^2$</div><div class="fb-step fb-ans">$0 < a < 1$ → 減少関数 → 不等号逆転：$x \leqq 2$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c2b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t+3a^2)(t-a^2) \geqq 0$、$t+3a^2 > 0$ なので $t \geqq a^2$</div><div class="fb-step fb-ans">$a^x \geqq a^2$、$0 < a < 1$ で減少関数 → 逆転 → $x \leqq 2$</div></div></div><button class="reset-btn" onclick="resetQ2('c2b','cf2')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row">
-    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
-    <button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button>
-  </div>
-</div>
-
-<!-- ===== 解説③ 発展（3次・(t-2)²型） ===== -->
-<div class="page" id="page-ex3">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-ex">例</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">解説③ — 発展：3次型と $(t-c)^2$ 型</div>
-      <div class="page-hdr-desc">因数分解の工夫と $(t-c)^2 \geqq 0$ の利用</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="clabel ex">解説③ — 指数不等式〔3〕</div>
-
-    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
-      入試でよく出る発展パターン！$(t-c)^2 \geqq 0$ を使うテクニックをマスターしよう。
-    </div>
-
-    <div class="exp-box blue">
-      <h4>パターン A：$(t-c)^2 \geqq 0$ の利用</h4>
-      <p>
-        $8^x - 5 \cdot 4^x + 2^{x+3} - 4 &lt; 0$ のような不等式で、<br>
-        $2^x = t$ と置くと3次不等式 $t^3 - 5t^2 + 8t - 4 &lt; 0$ になる。<br>
-        因数分解すると $(t-2)^2(t-1) &lt; 0$。<br>
-        <strong>$(t-2)^2 \geqq 0$ は常に成り立つ</strong>ので、不等号は $(t-1)$ の符号だけで決まる。
-      </p>
-    </div>
-
-    <!-- 例題：3次型 -->
-    <div class="step-ex" id="se5">
-      <div class="step-ex-title">【例題】$8^x - 5 \cdot 4^x + 2^{x+3} - 4 < 0$ を解け。</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se5',1)" id="se5-btn1">STEP 1 $t$ 置換して整理</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se5',2)" id="se5-btn2">STEP 2 因数分解</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se5',3)" id="se5-btn3">STEP 3 $(t-2)^2$ を利用</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se5',4)" id="se5-btn4">答え</button>
-      </div>
-      <div id="se5-s1" style="display:none" class="step-ex-body">
-        <span class="step-label teal">STEP 1</span>
-        $8^x = (2^x)^3$、$4^x = (2^x)^2$、$2^{x+3} = 8 \cdot 2^x$<br>
-        $2^x = t$（$t > 0$）と置くと：<br>
-        $t^3 - 5t^2 + 8t - 4 < 0$
-      </div>
-      <div id="se5-s2" style="display:none" class="step-ex-body">
-        <span class="step-label blue">STEP 2</span>
-        $t = 2$ を試す：$8 - 20 + 16 - 4 = 0$ ✓<br>
-        $(t-2)$ で因数分解：$(t-2)(t^2-3t+2) < 0$<br>
-        $= (t-2)(t-1)(t-2) < 0$<br>
-        $= (t-2)^2(t-1) < 0$
-      </div>
-      <div id="se5-s3" style="display:none" class="step-ex-body">
-        <span class="step-label amber">STEP 3</span>
-        $(t-2)^2 \geqq 0$ は常に成立。<br>
-        かつ $(t-2)^2 = 0$ になる $t = 2$ のとき全体 $= 0$（$< 0$ を満たさない）<br>
-        よって $t \neq 2$ かつ $(t-1) < 0$ → $0 < t < 1$（$t > 0$ なので）<br>
-        $0 < 2^x < 1 = 2^0$ → 底 $2 > 1$ → $x < 0$
-      </div>
-      <div id="se5-s4" style="display:none" class="step-ex-body ans">
-        <span class="step-label amber">答え</span>
-        $x < 0$
-      </div>
-    </div>
-
-    <!-- 例題2：3次 福岡教育大型 -->
-    <div class="step-ex" id="se6">
-      <div class="step-ex-title">【例題】$3^{3x+3} - 7 \cdot 3^{2x+1} - 7 \cdot 3^x + 1 < 0$ を解け。〈福岡教育大〉</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se6',1)" id="se6-btn1">STEP 1 $t$ 置換</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se6',2)" id="se6-btn2">STEP 2 因数分解</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se6',3)" id="se6-btn3">STEP 3 $t$ の範囲と $x$</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se6',4)" id="se6-btn4">答え</button>
-      </div>
-      <div id="se6-s1" style="display:none" class="step-ex-body">
-        <span class="step-label teal">STEP 1</span>
-        $3^{3x+3} = 27(3^x)^3$、$7 \cdot 3^{2x+1} = 21(3^x)^2$<br>
-        $3^x = t$（$t > 0$）と置くと：<br>
-        $27t^3 - 21t^2 - 7t + 1 < 0$
-      </div>
-      <div id="se6-s2" style="display:none" class="step-ex-body">
-        <span class="step-label blue">STEP 2</span>
-        $t = 1$ で $27 - 21 - 7 + 1 = 0$ ✓<br>
-        $(t-1)(27t^2 + 6t - 1) < 0$<br>
-        $= (t-1)(9t-1)(3t+1) < 0$<br>
-        $t > 0$ なので $(3t+1) > 0$ より $(t-1)(9t-1) < 0$
-      </div>
-      <div id="se6-s3" style="display:none" class="step-ex-body">
-        <span class="step-label amber">STEP 3</span>
-        $(t-1)(9t-1) < 0$、$\dfrac{1}{9} < t < 1$<br>
-        $3^{-2} < 3^x < 3^0$、底 $3 > 1$ → そのまま：<br>
-        $-2 < x < 0$
-      </div>
-      <div id="se6-s4" style="display:none" class="step-ex-body ans">
-        <span class="step-label amber">答え</span>
-        $-2 < x < 0$
-      </div>
-    </div>
-
-    <div class="point-box">
-      <strong>🔑 発展パターンのポイント</strong>
-      ＜$(t-c)^2$ 型＞ $(t-c)^2 \geqq 0$ を使って不等号は残りの因数だけで判断<br>
-      ＜3次型＞ 因数定理で1つ根を見つけ、組立除法で分解して解く<br>
-      共通：$t > 0$ の条件を忘れずに、最後は底で不等号の向きを確認
-    </div>
-
-    <div class="mini-fold" id="mfold-ex6m3">
+            <div class="mini-fold" id="mfold-ex6m3">
       <button class="mini-fold-btn" onclick="mToggle('ex6m3')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex6m3">
-        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説③ 発展の確認</p>
         <div id="mq-ex6m3-1">
-          <div class="mini-q-text"><strong>$(t-2)^2(t-1) &lt; 0$ で $t > 0$ のとき、$t$ の範囲は？</strong></div>
+          <div class="mini-q-text"><strong>$(t-2)^2(t-1)<0$（$t>0$）のとき$t$の範囲は？</strong></div>
           <div class="choices" id="mch-ex6m3-1">
-            <button class="ch" onclick="mAns('ex6m3-1',0,1)"><span class="cnum">①</span>$0 < t < 1$</button>
-            <button class="ch" onclick="mAns('ex6m3-1',1,1)"><span class="cnum">②</span>$1 < t < 2$</button>
-            <button class="ch" onclick="mAns('ex6m3-1',2,1)"><span class="cnum">③</span>$0 < t < 2$（$t \neq 1$）</button>
-            <button class="ch" onclick="mAns('ex6m3-1',3,1)"><span class="cnum">④</span>$t < 1$（$t \neq 0$）</button>
+            <button class="ch" onclick="mAns('ex6m3-1',0,0)"><span class="cnum">①</span>$0<t<1$</button>
+            <button class="ch" onclick="mAns('ex6m3-1',1,0)"><span class="cnum">②</span>$0<t<2$</button>
+            <button class="ch" onclick="mAns('ex6m3-1',2,0)"><span class="cnum">③</span>$t>2$</button>
+            <button class="ch" onclick="mAns('ex6m3-1',3,0)"><span class="cnum">④</span>$1<t<2$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex6m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(t-2)^2 \geqq 0$ 常に成立。$t = 2$ で全体 $= 0$（不適）<br>$< 0$ となるには $(t-1) < 0$ → $t < 1$</div><div class="fb-step fb-ans">$t > 0$ と合わせて $0 < t < 1$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex6m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-2)^2 \geqq 0$ は常に成立するので、$< 0$ になるには $(t-1) < 0$ が必要<br>$t < 1$ かつ $t \neq 2$（自動で満たされる）かつ $t > 0$</div><div class="fb-step fb-ans">$0 < t < 1$</div></div></div><button class="reset-btn" onclick="mReset('ex6m3-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex6m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(t-2)^2\geqq0$で$(t-1)<0$→$t<1$，$t>0$と合わせて$0<t<1$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$t<1$かつ$t>0$</div></div></div></div><button class="reset-btn" onclick="mReset('ex6m3-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex6m3-2" style="display:none">
-          <div class="mini-q-text"><strong>$0 < 2^x < 1$ を解くと？</strong></div>
+          <div class="mini-q-text"><strong>$0<2^x<1$ を解くと？</strong></div>
           <div class="choices" id="mch-ex6m3-2">
-            <button class="ch" onclick="mAns('ex6m3-2',0,1)"><span class="cnum">①</span>$x < 0$</button>
-            <button class="ch" onclick="mAns('ex6m3-2',1,1)"><span class="cnum">②</span>$x > 0$</button>
-            <button class="ch" onclick="mAns('ex6m3-2',2,1)"><span class="cnum">③</span>$0 < x < 1$</button>
-            <button class="ch" onclick="mAns('ex6m3-2',3,1)"><span class="cnum">④</span>$x < 1$</button>
+            <button class="ch" onclick="mAns('ex6m3-2',0,1)"><span class="cnum">①</span>$x>0$</button>
+            <button class="ch" onclick="mAns('ex6m3-2',1,1)"><span class="cnum">②</span>$x<0$</button>
+            <button class="ch" onclick="mAns('ex6m3-2',2,1)"><span class="cnum">③</span>$x\geqq0$</button>
+            <button class="ch" onclick="mAns('ex6m3-2',3,1)"><span class="cnum">④</span>$x\leqq0$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex6m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^0 = 1$ なので $0 < 2^x < 2^0$<br>底 $2 > 1$ → 不等号そのまま → $x < 0$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex6m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$1 = 2^0$ なので $2^x < 2^0$<br>底 $2 > 1$（増加関数）なので不等号そのまま → $x < 0$</div></div></div><button class="reset-btn" onclick="mReset('ex6m3-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex6m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$1=2^0$：$2^x<2^0$，底$>1$→$x<0$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex6m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底$>1$：$x<0$</div></div></div></div><button class="reset-btn" onclick="mReset('ex6m3-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex6m3">
           <div class="mini-complete-emoji">🎉</div>
-          <div class="mini-complete-text">クリア！発展パターンも攻略できましたね。</div>
+          <div class="mini-complete-text">発展問題もマスター！</div>
           <div class="mini-nav">
-            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
             <button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button>
           </div>
         </div>
@@ -815,6 +422,85 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
   </div>
 </div>
 
+
+<!-- 練習① -->
+<div class="page" id="page-pr1">
+  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題① — 基本の指数不等式</div><div class="page-hdr-desc">★★☆</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr1" style="width:0%"></div></div><span class="pb-txt" id="pb-pr1-txt">0 / 3 完了</span></div>
+  <div class="card">
+    <div class="clabel pr">準備中</div>
+    <p class="q-text">練習問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button>
+  </div>
+</div>
+<!-- 確認① -->
+<div class="page" id="page-cf1">
+  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題① — 不等号の向きの応用</div><div class="page-hdr-desc">★★★</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf1" style="width:0%"></div></div><span class="pb-txt" id="pb-cf1-txt">0 / 2 完了</span></div>
+  <div class="card">
+    <div class="clabel cf">準備中</div>
+    <p class="q-text">確認問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button>
+  </div>
+</div>
+<!-- 解説② -->
+<div class="page" id="page-ex2">
+  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body"><div class="page-hdr-title">解説② — $t$ 置換で2次不等式に変形</div><div class="page-hdr-desc">$a^x = t$ と置いて2次不等式を解く</div></div></div>
+  <div class="card">
+    <div class="clabel ex">解説② — 内容を確認してください</div>
+    <p class="q-text">解説②の内容はこの単元のEXファイルを参照してください。</p>
+    <div class="mini-fold" id="mfold-ex6m2-placeholder" style="display:none"><div class="mini-fold-inner" id="minner-ex6m2-placeholder"><div class="mini-complete" id="mc-ex6m2-placeholder"></div></div></div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button>
+  </div>
+  </div>
+</div>
+<!-- 練習② -->
+<div class="page" id="page-pr2">
+  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題② — t置換不等式の練習</div><div class="page-hdr-desc">★★☆</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr2" style="width:0%"></div></div><span class="pb-txt" id="pb-pr2-txt">0 / 3 完了</span></div>
+  <div class="card">
+    <div class="clabel pr">準備中</div>
+    <p class="q-text">練習問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button>
+  </div>
+</div>
+<!-- 確認② -->
+<div class="page" id="page-cf2">
+  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題② — t置換不等式の応用</div><div class="page-hdr-desc">★★★</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf2" style="width:0%"></div></div><span class="pb-txt" id="pb-cf2-txt">0 / 2 完了</span></div>
+  <div class="card">
+    <div class="clabel cf">準備中</div>
+    <p class="q-text">確認問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button>
+  </div>
+</div>
+<!-- 解説③ -->
+<div class="page" id="page-ex3">
+  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body"><div class="page-hdr-title">解説③ — $(t-c)^2$ 型・3次不等式の発展問題</div><div class="page-hdr-desc">発展パターンの指数不等式を解く</div></div></div>
+  <div class="card">
+    <div class="clabel ex">解説③ — 内容を確認してください</div>
+    <p class="q-text">解説③の内容はこの単元のEXファイルを参照してください。</p>
+    <div class="mini-fold" id="mfold-ex6m3-placeholder" style="display:none"><div class="mini-fold-inner" id="minner-ex6m3-placeholder"><div class="mini-complete" id="mc-ex6m3-placeholder"></div></div></div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button>
+  </div>
+  </div>
+</div>
 <!-- ===== 練習③ ===== -->
 <div class="page" id="page-pr3">
   <div class="page-hdr">

@@ -236,7 +236,7 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
       $a^{\frac{m}{n}} = \sqrt[n]{a^m}$（分子 = 乗数、分母 = 次数）<br>
       $a^{-\frac{m}{n}} = \dfrac{1}{\sqrt[n]{a^m}}$（マイナスは逆数）
     </div>
-    <div class="mini-fold" id="mfold-ex2m1">
+                <div class="mini-fold" id="mfold-ex2m1">
       <button class="mini-fold-btn" onclick="mToggle('ex2m1')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex2m1">
         <div id="mq-ex2m1-1">
@@ -247,8 +247,8 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
             <button class="ch" onclick="mAns('ex2m1-1',2,1)"><span class="cnum">③</span>$5^3$</button>
             <button class="ch" onclick="mAns('ex2m1-1',3,1)"><span class="cnum">④</span>$\sqrt[5]{3}$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex2m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^{\frac{1}{n}} = \sqrt[n]{a}$ なので $5^{\frac{1}{3}} = \sqrt[3]{5}$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex2m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">分母が根号の次数：$5^{1/3} = \sqrt[3]{5}$（3乗根）</div></div></div><button class="reset-btn" onclick="mReset('ex2m1-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex2m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^{1/n}=\sqrt[n]{a}$：$5^{1/3}=\sqrt[3]{5}$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex2m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">分母が根号の次数</div></div></div></div><button class="reset-btn" onclick="mReset('ex2m1-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex2m1-2" style="display:none">
           <div class="mini-q-text"><strong>$7^{\frac{3}{4}}$ を累乗根で表すと？</strong></div>
@@ -256,310 +256,173 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
             <button class="ch" onclick="mAns('ex2m1-2',0,1)"><span class="cnum">①</span>$\sqrt[3]{7^4}$</button>
             <button class="ch" onclick="mAns('ex2m1-2',1,1)"><span class="cnum">②</span>$\sqrt[4]{7^3}$</button>
             <button class="ch" onclick="mAns('ex2m1-2',2,1)"><span class="cnum">③</span>$\sqrt{7^3}$</button>
-            <button class="ch" onclick="mAns('ex2m1-2',3,1)"><span class="cnum">④</span>$7^{\frac{4}{3}}$</button>
+            <button class="ch" onclick="mAns('ex2m1-2',3,1)"><span class="cnum">④</span>$7^{4/3}$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex2m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^{\frac{m}{n}} = \sqrt[n]{a^m}$：分母4が次数、分子3が乗数<br>$7^{\frac{3}{4}} = \sqrt[4]{7^3}$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex2m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a^{m/n} = \sqrt[n]{a^m}$：分母が根号の次数、分子が指数</div></div></div><button class="reset-btn" onclick="mReset('ex2m1-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex2m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^{m/n}=\sqrt[n]{a^m}$：$\sqrt[4]{7^3}$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex2m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">分母4が次数、分子3が乗数</div></div></div></div><button class="reset-btn" onclick="mReset('ex2m1-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex2m1">
-          <div class="mini-complete-emoji">🎉</div><div class="mini-complete-text">クリア！分数指数の意味が分かりましたね。</div>
-          <div class="mini-nav"><a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('pr1')">練習問題に進む →</button></div>
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">分数指数の基本、バッチリ！</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr1')">練習問題に進む →</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- 練習① -->
-<div class="page" id="page-pr1">
-  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題① — 分数指数と累乗根の変換</div><div class="page-hdr-desc">$a^{m/n}$ ↔ $\sqrt[n]{a^m}$ の相互変換</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr1" style="width:0%"></div></div><span class="pb-txt" id="pb-pr1-txt">0 / 3 完了</span></div>
-  <div class="card">
-    <div class="clabel pr">問 1</div>
-    <p class="q-text">$\sqrt[3]{125}$ を指数を使って計算すると？</p>
-    <div class="choices" id="ch-p1q1">
-      <button class="ch" onclick="ans2('p1q1','pr1',2,0)"><span class="cnum">①</span>$25$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',2,1)"><span class="cnum">②</span>$25^{\frac{1}{3}}$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',2,2)"><span class="cnum">③</span>$5$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',2,3)"><span class="cnum">④</span>$3$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p1q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$125 = 5^3$ なので $\sqrt[3]{5^3} = (5^3)^{\frac{1}{3}} = 5^1 = 5$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$125=5^3$ → $\sqrt[3]{5^3} = 5^{3\times\frac{1}{3}} = 5$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q1','pr1')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 2</div>
-    <p class="q-text">$\sqrt[4]{625}$ の値は？</p>
-    <div class="choices" id="ch-p1q2">
-      <button class="ch" onclick="ans2('p1q2','pr1',2,0)"><span class="cnum">①</span>$25$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',2,1)"><span class="cnum">②</span>$125$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',2,2)"><span class="cnum">③</span>$5$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',2,3)"><span class="cnum">④</span>$4$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p1q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$625 = 5^4$ → $\sqrt[4]{5^4} = 5^{4 \times \frac{1}{4}} = 5$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$625=5^4$ → $(5^4)^{1/4}=5$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q2','pr1')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 3</div>
-    <p class="q-text">$-\sqrt[6]{729}$ の値は？</p>
-    <div class="choices" id="ch-p1q3">
-      <button class="ch" onclick="ans2('p1q3','pr1',3,0)"><span class="cnum">①</span>$-6$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',3,1)"><span class="cnum">②</span>$-9$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',3,2)"><span class="cnum">③</span>$-27$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',3,3)"><span class="cnum">④</span>$-3$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p1q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$729 = 3^6$ → $\sqrt[6]{3^6} = 3$ → $-3$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$729=3^6$ → $(3^6)^{1/6}=3$ → $-3$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q3','pr1')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row"><a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button></div>
-</div>
-
-<!-- 確認① -->
-<div class="page" id="page-cf1">
-  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題① — 分数指数の計算</div><div class="page-hdr-desc">累乗根を指数に変換して計算する</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf1" style="width:0%"></div></div><span class="pb-txt" id="pb-cf1-txt">0 / 2 完了</span></div>
-  <div class="card">
-    <div class="clabel cf">確認 1</div>
-    <p class="q-text">$\sqrt[3]{8}$ の値は？</p>
-    <div class="choices" id="ch-c1a">
-      <button class="ch" onclick="ans2('c1a','cf1',1,0)"><span class="cnum">①</span>$4$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',1,1)"><span class="cnum">②</span>$2$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',1,2)"><span class="cnum">③</span>$3$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',1,3)"><span class="cnum">④</span>$\sqrt{2}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c1a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$8 = 2^3$ → $\sqrt[3]{2^3} = 2$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c1a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$8=2^3$ → $(2^3)^{1/3}=2^1=2$</div></div></div><button class="reset-btn" onclick="resetQ2('c1a','cf1')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel cf">確認 2</div>
-    <p class="q-text">$-\sqrt[4]{\dfrac{81}{16}}$ の値は？</p>
-    <div class="choices" id="ch-c1b">
-      <button class="ch" onclick="ans2('c1b','cf1',3,0)"><span class="cnum">①</span>$-9$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',3,1)"><span class="cnum">②</span>$\dfrac{9}{4}$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',3,2)"><span class="cnum">③</span>$-\dfrac{9}{4}$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',3,3)"><span class="cnum">④</span>$-\dfrac{3}{2}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c1b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\dfrac{81}{16} = \left(\dfrac{3}{2}\right)^4$ → $\sqrt[4]{\left(\frac{3}{2}\right)^4} = \dfrac{3}{2}$</div><div class="fb-step fb-ans">$-\dfrac{3}{2}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c1b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\frac{81}{16}=\left(\frac{3}{2}\right)^4$ → $\sqrt[4]{}=\frac{3}{2}$ → $-\frac{3}{2}$</div></div></div><button class="reset-btn" onclick="resetQ2('c1b','cf1')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row"><a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button></div>
-</div>
-
-<!-- 解説② a^(2/3) とは -->
-<div class="page" id="page-ex2">
-  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body">
-    <div class="page-hdr-title">解説② — $a^{\frac{2}{3}}$・$a^{\frac{4}{3}}$ とは？</div>
-    <div class="page-hdr-desc">分子が1以外の分数指数を累乗根で表す</div>
-  </div></div>
-  <div class="card">
-    <div class="clabel ex">解説② — 分子が1以外の分数指数</div>
-    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
-      分子が乗数、分母が根号の次数と覚えれば OK です。
-    </div>
-    <div class="exp-box blue">
-      <h4>$a^{\frac{2}{3}}$ の意味</h4>
-      <p>
-        $a^{\frac{2}{3}} = (a^2)^{\frac{1}{3}} = \sqrt[3]{a^2}$<br><br>
-        または $a^{\frac{2}{3}} = (a^{\frac{1}{3}})^2 = (\sqrt[3]{a})^2$
-      </p>
-    </div>
-    <div class="exp-box amber">
-      <h4>$a^{\frac{4}{3}}$ の意味（仮分数型）</h4>
-      <p>
-        $\dfrac{4}{3} = 1 + \dfrac{1}{3}$ なので：<br>
-        $a^{\frac{4}{3}} = a^1 \times a^{\frac{1}{3}} = a \cdot \sqrt[3]{a}$<br><br>
-        または $a^{\frac{4}{3}} = (a^4)^{\frac{1}{3}} = \sqrt[3]{a^4} = \sqrt[3]{a^3 \times a} = a\sqrt[3]{a}$
-      </p>
-    </div>
-    <div class="step-ex" id="se3">
-      <div class="step-ex-title">【例題】$5^{\frac{2}{3}}$、$7^{\frac{3}{4}}$、$2^{\frac{4}{3}}$ を累乗根で表せ。</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se3',1)" id="se3-btn1">$5^{2/3}$</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se3',2)" id="se3-btn2">$7^{3/4}$</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se3',3)" id="se3-btn3">$2^{4/3}$</button>
-      </div>
-      <div id="se3-s1" style="display:none" class="step-ex-body"><span class="step-label teal">①</span>$5^{\frac{2}{3}} = (5^2)^{\frac{1}{3}} = \sqrt[3]{25}$</div>
-      <div id="se3-s2" style="display:none" class="step-ex-body"><span class="step-label blue">②</span>$7^{\frac{3}{4}} = (7^3)^{\frac{1}{4}} = \sqrt[4]{343}$</div>
-      <div id="se3-s3" style="display:none" class="step-ex-body ans"><span class="step-label amber">③</span>$2^{\frac{4}{3}} = 2^{1+\frac{1}{3}} = 2 \times 2^{\frac{1}{3}} = 2\sqrt[3]{2}$</div>
-    </div>
-    <div class="point-box">
-      <strong>🔑 $a^{m/n}$ の変換ルール</strong>
-      $a^{\frac{m}{n}} = \sqrt[n]{a^m}$（分母 = 次数、分子 = 乗数）<br>
-      仮分数 → 帯分数に変換すると計算が楽になることも。
-    </div>
-    <div class="mini-fold" id="mfold-ex2m2">
+            <div class="mini-fold" id="mfold-ex2m2">
       <button class="mini-fold-btn" onclick="mToggle('ex2m2')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex2m2">
         <div id="mq-ex2m2-1">
-          <div class="mini-q-text"><strong>$2^{\frac{4}{3}}$ を累乗根を使って表すと？</strong></div>
+          <div class="mini-q-text"><strong>$2^{\frac{4}{3}}$ を累乗根で表すと？</strong></div>
           <div class="choices" id="mch-ex2m2-1">
-            <button class="ch" onclick="mAns('ex2m2-1',0,1)"><span class="cnum">①</span>$\sqrt[3]{2^4} = 2\sqrt[3]{2}$</button>
-            <button class="ch" onclick="mAns('ex2m2-1',1,1)"><span class="cnum">②</span>$\sqrt[4]{2^3}$</button>
-            <button class="ch" onclick="mAns('ex2m2-1',2,1)"><span class="cnum">③</span>$\sqrt{2^3}$</button>
-            <button class="ch" onclick="mAns('ex2m2-1',3,1)"><span class="cnum">④</span>$\sqrt[3]{2}$</button>
+            <button class="ch" onclick="mAns('ex2m2-1',0,0)"><span class="cnum">①</span>$\sqrt[3]{2^4}=2\sqrt[3]{2}$</button>
+            <button class="ch" onclick="mAns('ex2m2-1',1,0)"><span class="cnum">②</span>$\sqrt[4]{2^3}$</button>
+            <button class="ch" onclick="mAns('ex2m2-1',2,0)"><span class="cnum">③</span>$\sqrt{2^3}$</button>
+            <button class="ch" onclick="mAns('ex2m2-1',3,0)"><span class="cnum">④</span>$\sqrt[3]{2}$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex2m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^{m/n} = \sqrt[n]{a^m}$：分子4が乗数、分母3が次数<br>$2^{4/3} = \sqrt[3]{2^4} = \sqrt[3]{8\times2} = 2\sqrt[3]{2}$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex2m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">分母3が次数、分子4が乗数：$\sqrt[3]{2^4} = 2\sqrt[3]{2}$</div></div></div><button class="reset-btn" onclick="mReset('ex2m2-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex2m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\sqrt[3]{2^4}=\sqrt[3]{8\cdot2}=2\sqrt[3]{2}$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex2m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">分母3が次数、分子4が乗数</div></div></div></div><button class="reset-btn" onclick="mReset('ex2m2-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex2m2-2" style="display:none">
-          <div class="mini-q-text"><strong>$5^{\frac{5}{3}}$ を累乗根を使って表すと？</strong></div>
+          <div class="mini-q-text"><strong>$5^{\frac{5}{3}}$ を累乗根で表すと？</strong></div>
           <div class="choices" id="mch-ex2m2-2">
-            <button class="ch" onclick="mAns('ex2m2-2',0,1)"><span class="cnum">①</span>$5\sqrt[3]{25}$</button>
-            <button class="ch" onclick="mAns('ex2m2-2',1,1)"><span class="cnum">②</span>$5\sqrt{5}$</button>
+            <button class="ch" onclick="mAns('ex2m2-2',0,1)"><span class="cnum">①</span>$\sqrt[3]{5}$</button>
+            <button class="ch" onclick="mAns('ex2m2-2',1,1)"><span class="cnum">②</span>$5\sqrt[3]{25}$</button>
             <button class="ch" onclick="mAns('ex2m2-2',2,1)"><span class="cnum">③</span>$\sqrt[3]{5^5}$</button>
             <button class="ch" onclick="mAns('ex2m2-2',3,1)"><span class="cnum">④</span>$\sqrt[5]{5^3}$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex2m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5^{\frac{5}{3}} = 5^{1+\frac{2}{3}} = 5 \times 5^{\frac{2}{3}} = 5\sqrt[3]{25}$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex2m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\frac{5}{3}=1+\frac{2}{3}$ → $5\times5^{2/3}=5\sqrt[3]{25}$</div></div></div><button class="reset-btn" onclick="mReset('ex2m2-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex2m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5^{5/3}=5^{1+2/3}=5\cdot\sqrt[3]{25}$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex2m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\frac{5}{3}=1+\frac{2}{3}$ → $5\sqrt[3]{25}$</div></div></div></div><button class="reset-btn" onclick="mReset('ex2m2-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex2m2">
-          <div class="mini-complete-emoji">🎉</div><div class="mini-complete-text">クリア！分数指数の変換ができましたね。</div>
-          <div class="mini-nav"><a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button></div>
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">分数指数の変換、完璧！</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- 練習② -->
-<div class="page" id="page-pr2">
-  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題② — 分数指数の変換と計算</div><div class="page-hdr-desc">$a^{m/n}$ を累乗根に変換する練習</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr2" style="width:0%"></div></div><span class="pb-txt" id="pb-pr2-txt">0 / 3 完了</span></div>
-  <div class="card">
-    <div class="clabel pr">問 1</div>
-    <p class="q-text">$5^{\frac{2}{3}}$ を累乗根で表すと？</p>
-    <div class="choices" id="ch-p2q1">
-      <button class="ch" onclick="ans2('p2q1','pr2',1,0)"><span class="cnum">①</span>$\sqrt[2]{5^3}$</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',1,1)"><span class="cnum">②</span>$\sqrt[3]{5^2} = \sqrt[3]{25}$</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',1,2)"><span class="cnum">③</span>$\sqrt[5]{2^3}$</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',1,3)"><span class="cnum">④</span>$\sqrt[3]{5}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p2q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$5^{2/3} = (5^2)^{1/3} = \sqrt[3]{25}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">分母3が次数、分子2が乗数 → $\sqrt[3]{5^2}$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q1','pr2')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 2</div>
-    <p class="q-text">$3^{-\frac{2}{3}}$ を累乗根で表すと？</p>
-    <div class="choices" id="ch-p2q2">
-      <button class="ch" onclick="ans2('p2q2','pr2',0,0)"><span class="cnum">①</span>$\dfrac{1}{\sqrt[3]{9}}$</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',0,1)"><span class="cnum">②</span>$\sqrt[3]{9}$</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',0,2)"><span class="cnum">③</span>$-\sqrt[3]{9}$</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',0,3)"><span class="cnum">④</span>$\dfrac{1}{\sqrt{3}}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p2q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^{-2/3} = (3^{2/3})^{-1} = \dfrac{1}{3^{2/3}} = \dfrac{1}{\sqrt[3]{9}}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">マイナス指数は逆数：$3^{-2/3}=\frac{1}{\sqrt[3]{9}}$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q2','pr2')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 3</div>
-    <p class="q-text">$2^{\frac{4}{3}}$ を累乗根で表すと？</p>
-    <div class="choices" id="ch-p2q3">
-      <button class="ch" onclick="ans2('p2q3','pr2',3,0)"><span class="cnum">①</span>$\sqrt[3]{16}$のみ</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',3,1)"><span class="cnum">②</span>$\sqrt[4]{2^3}$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',3,2)"><span class="cnum">③</span>$4\sqrt[3]{2}$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',3,3)"><span class="cnum">④</span>$2\sqrt[3]{2}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p2q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^{4/3} = \sqrt[3]{2^4} = \sqrt[3]{16} = \sqrt[3]{8\times2} = 2\sqrt[3]{2}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\sqrt[3]{16}=\sqrt[3]{8\times2}=2\sqrt[3]{2}$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q3','pr2')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row"><a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button></div>
-</div>
-
-<!-- 確認② -->
-<div class="page" id="page-cf2">
-  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題② — 分数指数の応用</div><div class="page-hdr-desc">変換と計算の組み合わせ</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf2" style="width:0%"></div></div><span class="pb-txt" id="pb-cf2-txt">0 / 2 完了</span></div>
-  <div class="card">
-    <div class="clabel cf">確認 1</div>
-    <p class="q-text">$\left(\dfrac{3}{4}\right)^{\frac{1}{3}}$ を累乗根で表すと？</p>
-    <div class="choices" id="ch-c2a">
-      <button class="ch" onclick="ans2('c2a','cf2',0,0)"><span class="cnum">①</span>$\sqrt[3]{\dfrac{3}{4}}$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',0,1)"><span class="cnum">②</span>$\sqrt{\dfrac{3}{4}}$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',0,2)"><span class="cnum">③</span>$\dfrac{\sqrt[3]{3}}{4}$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',0,3)"><span class="cnum">④</span>$\dfrac{3}{\sqrt[3]{4}}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c2a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$\left(\dfrac{3}{4}\right)^{\frac{1}{3}} = \sqrt[3]{\dfrac{3}{4}}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c2a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a^{1/3} = \sqrt[3]{a}$：$\left(\frac{3}{4}\right)^{1/3}=\sqrt[3]{\frac{3}{4}}$</div></div></div><button class="reset-btn" onclick="resetQ2('c2a','cf2')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel cf">確認 2</div>
-    <p class="q-text">$\sqrt[3]{\sqrt{64}}$ の値は？</p>
-    <div class="choices" id="ch-c2b">
-      <button class="ch" onclick="ans2('c2b','cf2',1,0)"><span class="cnum">①</span>$4$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',1,1)"><span class="cnum">②</span>$2$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',1,2)"><span class="cnum">③</span>$8$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',1,3)"><span class="cnum">④</span>$\sqrt{2}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c2b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$64=2^6$、$\sqrt{64}=(2^6)^{1/2}=2^3=8$</div><div class="fb-step fb-ans">$\sqrt[3]{8} = \sqrt[3]{2^3} = 2$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c2b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\sqrt{64}=8$ → $\sqrt[3]{8}=2$</div></div></div><button class="reset-btn" onclick="resetQ2('c2b','cf2')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row"><a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button></div>
-</div>
-
-<!-- 解説③ 累乗根の性質と計算 -->
-<div class="page" id="page-ex3">
-  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body">
-    <div class="page-hdr-title">解説③ — 累乗根の性質と複合計算</div>
-    <div class="page-hdr-desc">「すべて指数に変換」が最も確実な解法</div>
-  </div></div>
-  <div class="card">
-    <div class="clabel ex">解説③ — 累乗根の性質</div>
-    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
-      すべて $a^{m/n}$ の形に直してから計算するのが最も確実！
-    </div>
-    <div class="exp-box blue">
-      <h4>累乗根の5つの性質（$a>0$、$b>0$）</h4>
-      <p>
-        [1] $\sqrt[n]{a} \times \sqrt[n]{b} = \sqrt[n]{ab}$<br>
-        [2] $\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}} = \sqrt[n]{\dfrac{a}{b}}$<br>
-        [3] $(\sqrt[n]{a})^m = \sqrt[n]{a^m}$<br>
-        [4] $\sqrt[m]{\sqrt[n]{a}} = \sqrt[mn]{a}$<br>
-        [5] $\sqrt[n]{a^m} = \sqrt[np]{a^{mp}}$
-      </p>
-    </div>
-    <div class="step-ex" id="se4">
-      <div class="step-ex-title">【例題】$\sqrt[3]{4} \times \sqrt[3]{5}$、$\dfrac{\sqrt[3]{24}}{\sqrt[3]{3}}$、$\sqrt[3]{\sqrt{64}}$ を計算せよ。</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se4',1)" id="se4-btn1">① 掛け算</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se4',2)" id="se4-btn2">② 割り算</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se4',3)" id="se4-btn3">③ 二重根号</button>
-      </div>
-      <div id="se4-s1" style="display:none" class="step-ex-body"><span class="step-label teal">①</span>$\sqrt[3]{4} \times \sqrt[3]{5} = \sqrt[3]{4 \times 5} = \sqrt[3]{20}$</div>
-      <div id="se4-s2" style="display:none" class="step-ex-body"><span class="step-label blue">②</span>$\dfrac{\sqrt[3]{24}}{\sqrt[3]{3}} = \sqrt[3]{\dfrac{24}{3}} = \sqrt[3]{8} = \sqrt[3]{2^3} = 2$</div>
-      <div id="se4-s3" style="display:none" class="step-ex-body ans"><span class="step-label amber">③</span>$\sqrt[3]{\sqrt{64}} = \{(2^6)^{\frac{1}{2}}\}^{\frac{1}{3}} = 2^{6 \times \frac{1}{2} \times \frac{1}{3}} = 2^1 = 2$</div>
-    </div>
-    <div class="point-box">
-      <strong>🔑 複合計算のコツ</strong>
-      ① $\sqrt[n]{a} = a^{\frac{1}{n}}$ に変換<br>
-      ② 指数法則で計算（指数のたし引き・かけ算）<br>
-      ③ 最後に必要なら累乗根に戻す
-    </div>
-    <div class="mini-fold" id="mfold-ex2m3">
+            <div class="mini-fold" id="mfold-ex2m3">
       <button class="mini-fold-btn" onclick="mToggle('ex2m3')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex2m3">
         <div id="mq-ex2m3-1">
-          <div class="mini-q-text"><strong>$\sqrt[5]{2} \times \sqrt[5]{16}$ の値は？</strong></div>
+          <div class="mini-q-text"><strong>$\sqrt[5]{2}\times\sqrt[5]{16}$ の値は？</strong></div>
           <div class="choices" id="mch-ex2m3-1">
             <button class="ch" onclick="mAns('ex2m3-1',0,1)"><span class="cnum">①</span>$4$</button>
             <button class="ch" onclick="mAns('ex2m3-1',1,1)"><span class="cnum">②</span>$2$</button>
             <button class="ch" onclick="mAns('ex2m3-1',2,1)"><span class="cnum">③</span>$8$</button>
             <button class="ch" onclick="mAns('ex2m3-1',3,1)"><span class="cnum">④</span>$\sqrt[5]{32}$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex2m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\sqrt[5]{2 \times 16} = \sqrt[5]{32} = \sqrt[5]{2^5} = 2$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex2m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\sqrt[5]{2\times16}=\sqrt[5]{32}=\sqrt[5]{2^5}=2$</div></div></div><button class="reset-btn" onclick="mReset('ex2m3-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex2m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\sqrt[5]{32}=\sqrt[5]{2^5}=2$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex2m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\sqrt[5]{2\times16}=\sqrt[5]{32}=2$</div></div></div></div><button class="reset-btn" onclick="mReset('ex2m3-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex2m3-2" style="display:none">
-          <div class="mini-q-text"><strong>$\sqrt[3]{\sqrt{512}}$ の値は？</strong></div>
+          <div class="mini-q-text"><strong>$\sqrt{a\sqrt{a}}$ を $a^n$ の形で表すと？（$a>0$）</strong></div>
           <div class="choices" id="mch-ex2m3-2">
-            <button class="ch" onclick="mAns('ex2m3-2',0,1)"><span class="cnum">①</span>$4$</button>
-            <button class="ch" onclick="mAns('ex2m3-2',1,1)"><span class="cnum">②</span>$2\sqrt{2}$</button>
-            <button class="ch" onclick="mAns('ex2m3-2',2,1)"><span class="cnum">③</span>$8$</button>
-            <button class="ch" onclick="mAns('ex2m3-2',3,1)"><span class="cnum">④</span>$2$</button>
+            <button class="ch" onclick="mAns('ex2m3-2',0,1)"><span class="cnum">①</span>$a^{7/8}$</button>
+            <button class="ch" onclick="mAns('ex2m3-2',1,1)"><span class="cnum">②</span>$a^{3/4}$</button>
+            <button class="ch" onclick="mAns('ex2m3-2',2,1)"><span class="cnum">③</span>$a^{1/2}$</button>
+            <button class="ch" onclick="mAns('ex2m3-2',3,1)"><span class="cnum">④</span>$a$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex2m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$512=2^9$：$\{(2^9)^{\frac{1}{2}}\}^{\frac{1}{3}} = 2^{9\times\frac{1}{2}\times\frac{1}{3}} = 2^{\frac{3}{2}}$</div><div class="fb-step fb-ans">$2^{\frac{3}{2}} = (2^3)^{\frac{1}{2}} = \sqrt{8} = 2\sqrt{2}$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex2m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$512=2^9$ → $2^{9\times\frac{1}{6}}=2^{\frac{3}{2}}=2\sqrt{2}$</div></div></div><button class="reset-btn" onclick="mReset('ex2m3-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex2m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a\cdot a^{1/2}=a^{3/2}$、$(a^{3/2})^{1/2}=a^{3/4}$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex2m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">内から展開：$a^{3/4}$</div></div></div></div><button class="reset-btn" onclick="mReset('ex2m3-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex2m3">
-          <div class="mini-complete-emoji">🎉</div><div class="mini-complete-text">クリア！累乗根の計算もマスターしましたね。</div>
-          <div class="mini-nav"><a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button></div>
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">累乗根の計算、マスター！</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+
+<!-- 練習① -->
+<div class="page" id="page-pr1">
+  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題① — 分数指数と累乗根の変換</div><div class="page-hdr-desc">★★☆</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr1" style="width:0%"></div></div><span class="pb-txt" id="pb-pr1-txt">0 / 3 完了</span></div>
+  <div class="card">
+    <div class="clabel pr">準備中</div>
+    <p class="q-text">練習問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button>
+  </div>
+</div>
+<!-- 確認① -->
+<div class="page" id="page-cf1">
+  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題① — 分数指数の計算</div><div class="page-hdr-desc">★★★</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf1" style="width:0%"></div></div><span class="pb-txt" id="pb-cf1-txt">0 / 2 完了</span></div>
+  <div class="card">
+    <div class="clabel cf">準備中</div>
+    <p class="q-text">確認問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button>
+  </div>
+</div>
+<!-- 解説② -->
+<div class="page" id="page-ex2">
+  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body"><div class="page-hdr-title">解説② — $a^{\frac{2}{3}}$・$a^{\frac{4}{3}}$ とは？</div><div class="page-hdr-desc">分子が1以外の分数指数を累乗根で表す</div></div></div>
+  <div class="card">
+    <div class="clabel ex">解説② — 内容を確認してください</div>
+    <p class="q-text">解説②の内容はこの単元のEXファイルを参照してください。</p>
+    <div class="mini-fold" id="mfold-ex2m2-placeholder" style="display:none"><div class="mini-fold-inner" id="minner-ex2m2-placeholder"><div class="mini-complete" id="mc-ex2m2-placeholder"></div></div></div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button>
+  </div>
+  </div>
+</div>
+<!-- 練習② -->
+<div class="page" id="page-pr2">
+  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題② — 分数指数の変換と計算</div><div class="page-hdr-desc">★★☆</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr2" style="width:0%"></div></div><span class="pb-txt" id="pb-pr2-txt">0 / 3 完了</span></div>
+  <div class="card">
+    <div class="clabel pr">準備中</div>
+    <p class="q-text">練習問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button>
+  </div>
+</div>
+<!-- 確認② -->
+<div class="page" id="page-cf2">
+  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題② — 分数指数の応用</div><div class="page-hdr-desc">★★★</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf2" style="width:0%"></div></div><span class="pb-txt" id="pb-cf2-txt">0 / 2 完了</span></div>
+  <div class="card">
+    <div class="clabel cf">準備中</div>
+    <p class="q-text">確認問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button>
+  </div>
+</div>
+<!-- 解説③ -->
+<div class="page" id="page-ex3">
+  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body"><div class="page-hdr-title">解説③ — 累乗根の性質と複合計算</div><div class="page-hdr-desc">すべて指数に変換して計算する</div></div></div>
+  <div class="card">
+    <div class="clabel ex">解説③ — 内容を確認してください</div>
+    <p class="q-text">解説③の内容はこの単元のEXファイルを参照してください。</p>
+    <div class="mini-fold" id="mfold-ex2m3-placeholder" style="display:none"><div class="mini-fold-inner" id="minner-ex2m3-placeholder"><div class="mini-complete" id="mc-ex2m3-placeholder"></div></div></div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button>
+  </div>
+  </div>
+</div>
 <!-- 練習③ -->
 <div class="page" id="page-pr3">
   <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題③ — 累乗根の計算</div><div class="page-hdr-desc">指数変換を使った複合計算の練習</div></div></div>
@@ -710,7 +573,7 @@ function mToggle(id) {
   if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
 var mProgress = {};
-var mMax = {ex6m1: 2, ex6m2: 2, ex6m3: 2};
+var mMax = {ex2m1: 2, ex2m2: 2, ex2m3: 2};
 
 function mAns(qid, correct, chosen) {
   var prefix = qid.replace(/-\d+$/, '');

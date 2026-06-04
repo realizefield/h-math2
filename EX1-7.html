@@ -304,512 +304,106 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
       ・頂点が $t \leqq 0$ にある場合は変域の端点で考える
     </div>
 
-    <div class="mini-fold" id="mfold-ex7m1">
+                <div class="mini-fold" id="mfold-ex7m1">
       <button class="mini-fold-btn" onclick="mToggle('ex7m1')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex7m1">
-        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説① $t$ 置換の確認</p>
         <div id="mq-ex7m1-1">
-          <div class="mini-q-text"><strong>$y = 4^x - 6 \cdot 2^x + 5$ で $2^x = t$ と置くと？</strong></div>
+          <div class="mini-q-text"><strong>$y=4^x-6\cdot2^x+5$ で $t=2^x$ と置くと？</strong></div>
           <div class="choices" id="mch-ex7m1-1">
-            <button class="ch" onclick="mAns('ex7m1-1',0,1)"><span class="cnum">①</span>$t^2 - 6t + 5$</button>
-            <button class="ch" onclick="mAns('ex7m1-1',1,1)"><span class="cnum">②</span>$t^2 + 6t + 5$</button>
-            <button class="ch" onclick="mAns('ex7m1-1',2,1)"><span class="cnum">③</span>$-t^2 + 6t + 5$</button>
-            <button class="ch" onclick="mAns('ex7m1-1',3,1)"><span class="cnum">④</span>$t^2 - 6t - 5$</button>
+            <button class="ch" onclick="mAns('ex7m1-1',0,0)"><span class="cnum">①</span>$t^2-6t+5$</button>
+            <button class="ch" onclick="mAns('ex7m1-1',1,0)"><span class="cnum">②</span>$t^2+6t+5$</button>
+            <button class="ch" onclick="mAns('ex7m1-1',2,0)"><span class="cnum">③</span>$-t^2+6t+5$</button>
+            <button class="ch" onclick="mAns('ex7m1-1',3,0)"><span class="cnum">④</span>$t^2-6t-5$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex7m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$4^x = (2^x)^2 = t^2$ を使う<br>$y = t^2 - 6t + 5 = (t-1)(t-5)$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex7m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$4^x = (2^2)^x = (2^x)^2 = t^2$ を使う<br>$y = t^2 - 6t + 5$</div></div></div><button class="reset-btn" onclick="mReset('ex7m1-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex7m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$4^x=t^2$：$t^2-6t+5$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex7m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$4^x=t^2$</div></div></div></div><button class="reset-btn" onclick="mReset('ex7m1-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex7m1-2" style="display:none">
-          <div class="mini-q-text"><strong>$y = t^2 - 6t + 5$（$t > 0$）の最小値は？</strong></div>
+          <div class="mini-q-text"><strong>$y=t^2-6t+5$（$t>0$）の最小値は？</strong></div>
           <div class="choices" id="mch-ex7m1-2">
-            <button class="ch" onclick="mAns('ex7m1-2',0,1)"><span class="cnum">①</span>最小値 $-4$（$t = 3$）</button>
-            <button class="ch" onclick="mAns('ex7m1-2',1,1)"><span class="cnum">②</span>最小値 $5$（$t = 0$）</button>
-            <button class="ch" onclick="mAns('ex7m1-2',2,1)"><span class="cnum">③</span>最小値 $-9$（$t = 3$）</button>
-            <button class="ch" onclick="mAns('ex7m1-2',3,1)"><span class="cnum">④</span>最小値 $1$（$t = 1$）</button>
+            <button class="ch" onclick="mAns('ex7m1-2',0,0)"><span class="cnum">①</span>最小値$-4$（$t=3$）</button>
+            <button class="ch" onclick="mAns('ex7m1-2',1,0)"><span class="cnum">②</span>最小値$5$</button>
+            <button class="ch" onclick="mAns('ex7m1-2',2,0)"><span class="cnum">③</span>最小値$-9$</button>
+            <button class="ch" onclick="mAns('ex7m1-2',3,0)"><span class="cnum">④</span>最小値$1$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex7m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$y = (t-3)^2 - 4$、頂点 $(3, -4)$<br>$t = 3 > 0$ なので変域内 → 最小値 $-4$</div><div class="fb-step fb-ans">$2^x = 3$ → $x = \log_2 3$（次章「対数」で扱います）</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex7m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-3)^2 - 4$ の形にする（平方完成）<br>頂点 $t = 3$（$>0$）で最小値 $-4$</div></div></div><button class="reset-btn" onclick="mReset('ex7m1-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex7m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(t-3)^2-4$，頂点$t=3>0$→最小値$-4$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex7m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-3)^2-4$：最小$-4$</div></div></div></div><button class="reset-btn" onclick="mReset('ex7m1-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex7m1">
           <div class="mini-complete-emoji">🎉</div>
-          <div class="mini-complete-text">クリア！$t$ 置換の最大・最小、バッチリです。</div>
+          <div class="mini-complete-text">t置換の基礎、バッチリ！</div>
           <div class="mini-nav">
-            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
             <button class="mini-nav-btn next" onclick="switchPage('pr1')">練習問題に進む →</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- ===== 練習① ===== -->
-<div class="page" id="page-pr1">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-pr">演</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">練習問題① — $t > 0$ での最大・最小</div>
-      <div class="page-hdr-desc">定義域に制限がない場合の最大・最小</div>
-    </div>
-  </div>
-  <div class="prog-wrap">
-    <div class="pb-w"><div class="pb pb-pr" id="pb-pr1" style="width:0%"></div></div>
-    <span class="pb-txt" id="pb-pr1-txt">0 / 3 完了</span>
-  </div>
-  <div class="card">
-    <div class="clabel pr">問 1</div>
-    <p class="q-text">$y = -9^x + 2 \cdot 3^{x+1} + 1$ の最大値と、そのときの $x$ の値を求めよ。</p>
-    <div class="choices" id="ch-p1q1">
-      <button class="ch" onclick="ans2('p1q1','pr1',2,0)"><span class="cnum">①</span>$x=0$ で最大値 $3$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',2,1)"><span class="cnum">②</span>$x=2$ で最大値 $12$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',2,2)"><span class="cnum">③</span>$x=1$ で最大値 $10$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',2,3)"><span class="cnum">④</span>$x=1$ で最大値 $12$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p1q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^x = t$（$t>0$）：$y = -t^2 + 6t + 1 = -(t-3)^2 + 10$</div><div class="fb-step">頂点 $t=3$ で最大値 $10$</div><div class="fb-step fb-ans">$3^x = 3 \Rightarrow x = 1$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2 \cdot 3^{x+1} = 6 \cdot 3^x$、$t = 3^x$ と置く<br>$y = -(t-3)^2 + 10$、頂点 $t=3$ で最大</div><div class="fb-step fb-ans">$3^x = 3 \Rightarrow x=1$、最大値 $10$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q1','pr1')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 2</div>
-    <p class="q-text">$y = 4^x - 6 \cdot 2^x + 5$ の最小値と、そのときの $x$ の値を求めよ。</p>
-    <div class="choices" id="ch-p1q2">
-      <button class="ch" onclick="ans2('p1q2','pr1',0,0)"><span class="cnum">①</span>$x = \log_2 3$ で最小値 $-4$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',0,1)"><span class="cnum">②</span>$x = 1$ で最小値 $0$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',0,2)"><span class="cnum">③</span>$x = 3$ で最小値 $-4$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',0,3)"><span class="cnum">④</span>$x = 2$ で最小値 $-3$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p1q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$（$t>0$）：$y = t^2 - 6t + 5 = (t-3)^2 - 4$</div><div class="fb-step">頂点 $t=3$ で最小値 $-4$</div><div class="fb-step fb-ans">$2^x = 3 \Rightarrow x = \log_2 3$（対数で表す）</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$t = 2^x$（$t>0$）と置く：$y = (t-3)^2 - 4$<br>最小は頂点 $t = 3$</div><div class="fb-step fb-ans">$2^x = 3 \Rightarrow x = \log_2 3$、最小値 $-4$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q2','pr1')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 3</div>
-    <p class="q-text">$y = 3 + 2 \cdot 3^{x+1} - 9^x$ について、最大値はいくつか。</p>
-    <div class="choices" id="ch-p1q3">
-      <button class="ch" onclick="ans2('p1q3','pr1',3,0)"><span class="cnum">①</span>最大値 $10$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',3,1)"><span class="cnum">②</span>最大値 $9$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',3,2)"><span class="cnum">③</span>最大値 $3$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',3,3)"><span class="cnum">④</span>最大値 $12$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p1q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^x = t$：$y = -(t-3)^2 + 12$</div><div class="fb-step fb-ans">頂点 $t=3$ で最大値 $12$（$x=1$）</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2 \cdot 3^{x+1} = 6t$ と変形：$y = -t^2 + 6t + 3 = -(t-3)^2 + 12$<br>最大値 $12$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q3','pr1')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row">
-    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
-    <button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button>
-  </div>
-</div>
-
-<!-- ===== 確認① ===== -->
-<div class="page" id="page-cf1">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-cf">確</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">確認問題① — 最大・最小の読み取り</div>
-      <div class="page-hdr-desc">$t$ 置換後のグラフ形状から最大・最小を判断</div>
-    </div>
-  </div>
-  <div class="prog-wrap">
-    <div class="pb-w"><div class="pb pb-cf" id="pb-cf1" style="width:0%"></div></div>
-    <span class="pb-txt" id="pb-cf1-txt">0 / 2 完了</span>
-  </div>
-  <div class="card">
-    <div class="clabel cf">確認 1</div>
-    <p class="q-text">$y = 9^x - 4 \cdot 3^x + 5$ について正しい記述はどれ？</p>
-    <div class="choices" id="ch-c1a">
-      <button class="ch" onclick="ans2('c1a','cf1',1,0)"><span class="cnum">①</span>最大値 $2$、最小値はない</button>
-      <button class="ch" onclick="ans2('c1a','cf1',1,1)"><span class="cnum">②</span>最小値 $1$、最大値はない</button>
-      <button class="ch" onclick="ans2('c1a','cf1',1,2)"><span class="cnum">③</span>最大値 $5$、最小値 $1$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',1,3)"><span class="cnum">④</span>最小値 $-4$、最大値はない</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c1a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^x = t$（$t>0$）：$y = t^2 - 4t + 5 = (t-2)^2 + 1$</div><div class="fb-step">下に凸、頂点 $t=2$（$>0$ なので変域内）で最小値 $1$</div><div class="fb-step fb-ans">最大値はない（$t \to +\infty$ で $y \to +\infty$）</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c1a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$t=3^x$ と置く：$(t-2)^2 + 1$、下に凸<br>頂点で最小値 $1$。最大値はない</div></div></div><button class="reset-btn" onclick="resetQ2('c1a','cf1')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel cf">確認 2</div>
-    <p class="q-text">$y = -(4^x) + 2 \cdot 2^x + 3$ の最大値と、そのときの $x$ の値は？</p>
-    <div class="choices" id="ch-c1b">
-      <button class="ch" onclick="ans2('c1b','cf1',3,0)"><span class="cnum">①</span>$x = 0$ で最大値 $3$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',3,1)"><span class="cnum">②</span>$x = 2$ で最大値 $5$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',3,2)"><span class="cnum">③</span>$x = 0$ で最大値 $4$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',3,3)"><span class="cnum">④</span>$x = 1$ で最大値 $4$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c1b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$（$t>0$）：$y = -t^2 + 2t + 3 = -(t-1)^2 + 4$</div><div class="fb-step">上に凸、頂点 $t=1$（$>0$）で最大値 $4$</div><div class="fb-step fb-ans">$2^x = 1 = 2^0 \Rightarrow x = 0$ — 答えは $x=0$ で最大値 $4$、ただし $x=1$ と表現すると間違いなので注意！<br>（選択肢④ $x=1$ は $2^1=2$、$y = -4+4+3=3$ なので最大値ではない）</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c1b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2^x = t$：$-(t-1)^2 + 4$、頂点 $t=1=2^0$<br>$x = 0$ のとき最大値 $4$</div></div></div><button class="reset-btn" onclick="resetQ2('c1b','cf1')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row">
-    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
-    <button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button>
-  </div>
-</div>
-
-<!-- ===== 解説② 定義域に制限がある場合 ===== -->
-<div class="page" id="page-ex2">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-ex">例</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">解説② — 定義域に制限がある場合</div>
-      <div class="page-hdr-desc">$t$ の変域が具体的な区間になるケース</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="clabel ex">解説② — 定義域制限のパターン</div>
-
-    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
-      $x$ の範囲が与えられると $t = a^x$ の範囲が具体的に決まる！端点の確認が重要。
-    </div>
-
-    <p class="q-text">
-      $0 \leqq x \leqq 3$ のような定義域の制限があるとき、$3^x = t$ と置くと<br>
-      $t$ の変域は $3^0 \leqq t \leqq 3^3$、すなわち $1 \leqq t \leqq 27$ になります。<br>
-      あとはこの範囲での2次関数の最大・最小を求めます。
-    </p>
-
-    <div class="exp-box blue">
-      <h4>$t$ の変域の求め方</h4>
-      <p>
-        $a^x = t$ で $x$ が $\alpha \leqq x \leqq \beta$ のとき：<br>
-        ・$a > 1$（増加）→ $a^\alpha \leqq t \leqq a^\beta$（左右そのまま）<br>
-        ・$0 < a < 1$（減少）→ $a^\beta \leqq t \leqq a^\alpha$（左右が入れ替わる）
-      </p>
-    </div>
-
-    <!-- 例題1 -->
-    <div class="step-ex" id="se3">
-      <div class="step-ex-title">【例題】$y = 3^{2x-1} - 2 \cdot 3^{x+1} + 4$（$0 \leqq x \leqq 3$）の最大値・最小値を求めよ。〈弘前大〉</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se3',1)" id="se3-btn1">STEP 1 $t$ 置換と変域</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se3',2)" id="se3-btn2">STEP 2 式を整理</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se3',3)" id="se3-btn3">STEP 3 グラフで最大・最小</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se3',4)" id="se3-btn4">答え</button>
-      </div>
-      <div id="se3-s1" style="display:none" class="step-ex-body">
-        <span class="step-label teal">STEP 1</span>
-        $3^x = t$（$t > 0$）と置く。<br>
-        $0 \leqq x \leqq 3$ で底 $3 > 1$（増加）なので：<br>
-        $3^0 \leqq t \leqq 3^3$、すなわち $\mathbf{1 \leqq t \leqq 27}$
-      </div>
-      <div id="se3-s2" style="display:none" class="step-ex-body">
-        <span class="step-label blue">STEP 2</span>
-        $3^{2x-1} = \dfrac{1}{3}(3^x)^2 = \dfrac{t^2}{3}$<br>
-        $2 \cdot 3^{x+1} = 6 \cdot 3^x = 6t$<br>
-        $y = \dfrac{t^2}{3} - 6t + 4 = \dfrac{1}{3}(t^2 - 18t) + 4 = \dfrac{1}{3}(t-9)^2 - 23$
-      </div>
-      <div id="se3-s3" style="display:none" class="step-ex-body">
-        <span class="step-label amber">STEP 3</span>
-        変域 $1 \leqq t \leqq 27$、下に凸、頂点 $t = 9$（変域内）<br>
-        ・最小：$t = 9$（$x = 2$）のとき $y = -23$<br>
-        ・最大：端点 $t = 1$（$x=0$）か $t = 27$（$x=3$）を比較<br>
-        　$t=1$：$y = \dfrac{1}{3} - 6 + 4 = -\dfrac{5}{3}$<br>
-        　$t=27$：$y = \dfrac{729}{3} - 162 + 4 = 243 - 162 + 4 = 85$<br>
-        → $t = 27$（$x = 3$）のとき最大値 $85$
-      </div>
-      <div id="se3-s4" style="display:none" class="step-ex-body ans">
-        <span class="step-label amber">答え</span>
-        $x = 3$ のとき最大値 $85$、$x = 2$ のとき最小値 $-23$
-      </div>
-    </div>
-
-    <!-- 例題2 定義域制限 t>0 to 有界 -->
-    <div class="step-ex" id="se4">
-      <div class="step-ex-title">【例題】$-1 \leqq x \leqq 0$ のとき $y = 2^{x+2} - 3 \cdot 4^x$ の最大値・最小値を求めよ。〈富山大〉</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se4',1)" id="se4-btn1">STEP 1 $t$ 置換と変域</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se4',2)" id="se4-btn2">STEP 2 整理して最大・最小</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se4',3)" id="se4-btn3">答え</button>
-      </div>
-      <div id="se4-s1" style="display:none" class="step-ex-body">
-        <span class="step-label teal">STEP 1</span>
-        $2^x = t$ と置く。$-1 \leqq x \leqq 0$ で底 $2 > 1$：<br>
-        $2^{-1} \leqq t \leqq 2^0$、すなわち $\dfrac{1}{2} \leqq t \leqq 1$
-      </div>
-      <div id="se4-s2" style="display:none" class="step-ex-body">
-        <span class="step-label blue">STEP 2</span>
-        $y = 4 \cdot 2^x - 3 \cdot (2^x)^2 = 4t - 3t^2 = -3t^2 + 4t$<br>
-        $= -3\left(t - \dfrac{2}{3}\right)^2 + \dfrac{4}{3}$<br>
-        変域 $\dfrac{1}{2} \leqq t \leqq 1$、頂点 $t = \dfrac{2}{3}$（変域内）<br>
-        ・最大：$t = \dfrac{2}{3}$ で $y = \dfrac{4}{3}$（$x = \log_2 \dfrac{2}{3}$）<br>
-        ・端点確認：$t=\dfrac{1}{2}$：$y = -\dfrac{3}{4}+2 = \dfrac{5}{4}$　$t=1$：$y = -3+4 = 1$<br>
-        → 最小は $t = 1$（$x = 0$）で $y = 1$
-      </div>
-      <div id="se4-s3" style="display:none" class="step-ex-body ans">
-        <span class="step-label amber">答え</span>
-        最大値 $\dfrac{4}{3}$（$t = \dfrac{2}{3}$ のとき）、最小値 $1$（$x = 0$ のとき）
-      </div>
-    </div>
-
-    <div class="point-box">
-      <strong>🔑 定義域制限パターンの手順</strong>
-      ① $a^x = t$ と置き、$x$ の範囲から $t$ の変域を求める<br>
-      ② 式を $t$ の2次関数に変換し、平方完成する<br>
-      ③ 頂点が変域内か外かを確認し、端点の値も比較して最大・最小を決める
-    </div>
-
-    <div class="mini-fold" id="mfold-ex7m2">
+            <div class="mini-fold" id="mfold-ex7m2">
       <button class="mini-fold-btn" onclick="mToggle('ex7m2')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex7m2">
-        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説② 変域の確認</p>
         <div id="mq-ex7m2-1">
-          <div class="mini-q-text"><strong>$2^x = t$ で $-1 \leqq x \leqq 2$ のとき、$t$ の変域は？</strong></div>
+          <div class="mini-q-text"><strong>$t=2^x$，$-1\leqq x\leqq2$ のとき$t$の変域は？</strong></div>
           <div class="choices" id="mch-ex7m2-1">
-            <button class="ch" onclick="mAns('ex7m2-1',0,1)"><span class="cnum">①</span>$\dfrac{1}{2} \leqq t \leqq 4$</button>
-            <button class="ch" onclick="mAns('ex7m2-1',1,1)"><span class="cnum">②</span>$-1 \leqq t \leqq 2$</button>
-            <button class="ch" onclick="mAns('ex7m2-1',2,1)"><span class="cnum">③</span>$1 \leqq t \leqq 4$</button>
-            <button class="ch" onclick="mAns('ex7m2-1',3,1)"><span class="cnum">④</span>$0 < t \leqq 4$</button>
+            <button class="ch" onclick="mAns('ex7m2-1',0,0)"><span class="cnum">①</span>$\dfrac{1}{2}\leqq t\leqq4$</button>
+            <button class="ch" onclick="mAns('ex7m2-1',1,0)"><span class="cnum">②</span>$-1\leqq t\leqq2$</button>
+            <button class="ch" onclick="mAns('ex7m2-1',2,0)"><span class="cnum">③</span>$1\leqq t\leqq4$</button>
+            <button class="ch" onclick="mAns('ex7m2-1',3,0)"><span class="cnum">④</span>$0<t\leqq4$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex7m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底 $2 > 1$（増加）なので：<br>$x=-1$ のとき $t = 2^{-1} = \dfrac{1}{2}$<br>$x=2$ のとき $t = 2^2 = 4$</div><div class="fb-step fb-ans">$\dfrac{1}{2} \leqq t \leqq 4$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex7m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底 $2>1$ → $x$ が増えると $t$ も増える<br>$x=-1$：$t=2^{-1}=\frac{1}{2}$、$x=2$：$t=4$</div><div class="fb-step fb-ans">$\frac{1}{2} \leqq t \leqq 4$</div></div></div><button class="reset-btn" onclick="mReset('ex7m2-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex7m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底$2>1$：$2^{-1}=\frac{1}{2}$，$2^2=4$ → $\frac{1}{2}\leqq t\leqq4$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex7m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2^{-1}=\frac{1}{2}$，$2^2=4$</div></div></div></div><button class="reset-btn" onclick="mReset('ex7m2-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex7m2-2" style="display:none">
-          <div class="mini-q-text"><strong>$\left(\dfrac{1}{3}\right)^x = t$ で $-1 \leqq x \leqq 2$ のとき、$t$ の変域は？</strong></div>
+          <div class="mini-q-text"><strong>$t=\left(\dfrac{1}{3}\right)^x$，$-1\leqq x\leqq2$ のとき$t$の変域は？</strong></div>
           <div class="choices" id="mch-ex7m2-2">
-            <button class="ch" onclick="mAns('ex7m2-2',0,1)"><span class="cnum">①</span>$\dfrac{1}{9} \leqq t \leqq 3$</button>
-            <button class="ch" onclick="mAns('ex7m2-2',1,1)"><span class="cnum">②</span>$3 \leqq t \leqq \dfrac{1}{9}$（逆順）</button>
-            <button class="ch" onclick="mAns('ex7m2-2',2,1)"><span class="cnum">③</span>$\dfrac{1}{3} \leqq t \leqq 9$</button>
-            <button class="ch" onclick="mAns('ex7m2-2',3,1)"><span class="cnum">④</span>$\dfrac{1}{9} \leqq t \leqq 9$</button>
+            <button class="ch" onclick="mAns('ex7m2-2',0,0)"><span class="cnum">①</span>$\dfrac{1}{9}\leqq t\leqq3$</button>
+            <button class="ch" onclick="mAns('ex7m2-2',1,0)"><span class="cnum">②</span>$3\leqq t\leqq9$</button>
+            <button class="ch" onclick="mAns('ex7m2-2',2,0)"><span class="cnum">③</span>$\dfrac{1}{3}\leqq t\leqq9$</button>
+            <button class="ch" onclick="mAns('ex7m2-2',3,0)"><span class="cnum">④</span>$\dfrac{1}{9}\leqq t\leqq9$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex7m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底 $\dfrac{1}{3} < 1$（減少）なので $x$ が増えると $t$ が<strong>減る</strong>：<br>$x=-1$：$t = \left(\frac{1}{3}\right)^{-1} = 3$<br>$x=2$：$t = \left(\frac{1}{3}\right)^2 = \frac{1}{9}$</div><div class="fb-step fb-ans">小さい順に $\dfrac{1}{9} \leqq t \leqq 3$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex7m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底 $< 1$ → 減少関数 → $x$ が小さいほど $t$ が大きい<br>$x=-1$：$t=3$、$x=2$：$t=\frac{1}{9}$ → $\frac{1}{9} \leqq t \leqq 3$</div></div></div><button class="reset-btn" onclick="mReset('ex7m2-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex7m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底$\frac{1}{3}<1$（減少）→$\frac{1}{9}\leqq t\leqq3$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex7m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底$<1$→逆転</div></div></div></div><button class="reset-btn" onclick="mReset('ex7m2-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex7m2">
           <div class="mini-complete-emoji">🎉</div>
-          <div class="mini-complete-text">クリア！変域の求め方、完璧です。</div>
+          <div class="mini-complete-text">定義域制限もマスター！</div>
           <div class="mini-nav">
-            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
             <button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- ===== 練習② ===== -->
-<div class="page" id="page-pr2">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-pr">演</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">練習問題② — 定義域制限の最大・最小</div>
-      <div class="page-hdr-desc">$t$ の変域を求めてから最大・最小を判断</div>
-    </div>
-  </div>
-  <div class="prog-wrap">
-    <div class="pb-w"><div class="pb pb-pr" id="pb-pr2" style="width:0%"></div></div>
-    <span class="pb-txt" id="pb-pr2-txt">0 / 3 完了</span>
-  </div>
-  <div class="card">
-    <div class="clabel pr">問 1</div>
-    <p class="q-text">$y = 9^x - 6 \cdot 3^x + 5$（$0 \leqq x \leqq 2$）の最小値を求めよ。</p>
-    <div class="choices" id="ch-p2q1">
-      <button class="ch" onclick="ans2('p2q1','pr2',0,0)"><span class="cnum">①</span>最小値 $-4$（$x = 1$）</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',0,1)"><span class="cnum">②</span>最小値 $5$（$x = 0$）</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',0,2)"><span class="cnum">③</span>最小値 $0$（$x = 2$）</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',0,3)"><span class="cnum">④</span>最小値 $-9$（$x = 1$）</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p2q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^x = t$、$0 \leqq x \leqq 2$ → $1 \leqq t \leqq 9$</div><div class="fb-step">$y = t^2 - 6t + 5 = (t-3)^2 - 4$、頂点 $t=3$（変域内）</div><div class="fb-step fb-ans">最小値 $-4$（$t=3$、$x=1$）</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$1 \leqq t \leqq 9$、$(t-3)^2 - 4$<br>頂点 $t=3$ が変域内 → 最小値 $-4$（$x=1$）</div></div></div><button class="reset-btn" onclick="resetQ2('p2q1','pr2')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 2</div>
-    <p class="q-text">$y = 9^x - 6 \cdot 3^x + 5$（$0 \leqq x \leqq 2$）の最大値を求めよ。</p>
-    <div class="choices" id="ch-p2q2">
-      <button class="ch" onclick="ans2('p2q2','pr2',3,0)"><span class="cnum">①</span>最大値 $5$（$x = 0$）</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',3,1)"><span class="cnum">②</span>最大値 $-4$（$x = 1$）</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',3,2)"><span class="cnum">③</span>最大値 $50$（$x = 2$）</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',3,3)"><span class="cnum">④</span>最大値 $50$（$t = 9$）</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p2q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">変域 $1 \leqq t \leqq 9$、頂点 $t=3$ で最小。最大は端点で比較：</div><div class="fb-step">$t=1$：$y = 1-6+5 = 0$　$t=9$：$y = 81-54+5 = 32$</div><div class="fb-step fb-ans">最大値 $32$（$t=9$、$x=2$）— ④の「50」は誤り。正しくは $32$<br>（正解：$t=9$ のとき $y=81-54+5=32$）</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">端点 $t=1$：$y=0$、$t=9$：$y=81-54+5=32$</div><div class="fb-step fb-ans">最大値 $32$（$x=2$）</div></div></div><button class="reset-btn" onclick="resetQ2('p2q2','pr2')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel pr">問 3</div>
-    <p class="q-text">$y = 3^{2x-1} - 2 \cdot 3^{x+1} + 4$（$0 \leqq x \leqq 3$）の最大値は？</p>
-    <div class="choices" id="ch-p2q3">
-      <button class="ch" onclick="ans2('p2q3','pr2',3,0)"><span class="cnum">①</span>最大値 $-23$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',3,1)"><span class="cnum">②</span>最大値 $4$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',3,2)"><span class="cnum">③</span>最大値 $50$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',3,3)"><span class="cnum">④</span>最大値 $85$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-p2q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^x=t$、$0\leqq x\leqq 3$ → $1\leqq t\leqq 27$</div><div class="fb-step">$y = \frac{1}{3}(t-9)^2 - 23$（頂点 $t=9$ で最小 $-23$）</div><div class="fb-step fb-ans">端点：$t=1$：$y=\frac{1}{3}-6+4=-\frac{5}{3}$　$t=27$：$y=\frac{729}{3}-162+4=85$<br>最大値 $85$（$x=3$）</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\frac{1}{3}(t-9)^2-23$、端点 $t=1$ と $t=27$ を比較<br>$t=27$：$y = \frac{1}{3}(18)^2 - 23 = 108 - 23 = 85$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q3','pr2')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row">
-    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
-    <button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button>
-  </div>
-</div>
-
-<!-- ===== 確認② ===== -->
-<div class="page" id="page-cf2">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-cf">確</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">確認問題② — 変域制限の応用</div>
-      <div class="page-hdr-desc">端点と頂点の両方を比較して答える</div>
-    </div>
-  </div>
-  <div class="prog-wrap">
-    <div class="pb-w"><div class="pb pb-cf" id="pb-cf2" style="width:0%"></div></div>
-    <span class="pb-txt" id="pb-cf2-txt">0 / 2 完了</span>
-  </div>
-  <div class="card">
-    <div class="clabel cf">確認 1</div>
-    <p class="q-text">$y = 2^{x+2} - 3 \cdot 4^x$（$-1 \leqq x \leqq 0$）の最大値は？〈富山大〉</p>
-    <div class="choices" id="ch-c2a">
-      <button class="ch" onclick="ans2('c2a','cf2',0,0)"><span class="cnum">①</span>最大値 $\dfrac{4}{3}$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',0,1)"><span class="cnum">②</span>最大値 $1$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',0,2)"><span class="cnum">③</span>最大値 $\dfrac{5}{4}$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',0,3)"><span class="cnum">④</span>最大値 $2$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c2a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x=t$、$-1\leqq x\leqq 0$ → $\frac{1}{2}\leqq t\leqq 1$</div><div class="fb-step">$y = 4t - 3t^2 = -3(t-\frac{2}{3})^2 + \frac{4}{3}$、頂点 $t=\frac{2}{3}$（変域内）</div><div class="fb-step fb-ans">最大値 $\dfrac{4}{3}$（頂点）</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c2a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$y = 4t - 3t^2$、$-3(t-\frac{2}{3})^2 + \frac{4}{3}$<br>$t=\frac{2}{3}$ は $[\frac{1}{2}, 1]$ 内 → 最大値 $\frac{4}{3}$</div></div></div><button class="reset-btn" onclick="resetQ2('c2a','cf2')">🔄 もう一度</button></div>
-    <hr class="prob-divider">
-    <div class="clabel cf">確認 2</div>
-    <p class="q-text">$y = 4^x - 2 \cdot 2^x + 3$（$-1 \leqq x \leqq 2$）の最大値と最小値の組み合わせは？</p>
-    <div class="choices" id="ch-c2b">
-      <button class="ch" onclick="ans2('c2b','cf2',2,0)"><span class="cnum">①</span>最大値 $15$、最小値 $1$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',2,1)"><span class="cnum">②</span>最大値 $11$、最小値 $2$（$x=1$）</button>
-      <button class="ch" onclick="ans2('c2b','cf2',2,2)"><span class="cnum">③</span>最大値 $11$（$x=2$）、最小値 $2$（$x=0$）</button>
-      <button class="ch" onclick="ans2('c2b','cf2',2,3)"><span class="cnum">④</span>最大値 $3$、最小値 $0$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c2b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$、$-1 \leqq x \leqq 2$ → $\frac{1}{2} \leqq t \leqq 4$</div><div class="fb-step">$y = t^2 - 2t + 3 = (t-1)^2 + 2$、頂点 $t=1$（変域内）で最小値 $2$（$x=0$）</div><div class="fb-step fb-ans">最大は端点：$t=\frac{1}{2}$：$y=\frac{1}{4}-1+3=\frac{9}{4}$　$t=4$：$y=16-8+3=11$<br>最大値 $11$（$x=2$）、最小値 $2$（$x=0$）</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c2b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-1)^2 + 2$、$\frac{1}{2} \leqq t \leqq 4$<br>最小：$t=1$ で $2$　最大：$t=4$ で $11$</div></div></div><button class="reset-btn" onclick="resetQ2('c2b','cf2')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row">
-    <a href="index_math2.html" class="mini-nav-btn index">📋 単元表に戻る</a>
-    <button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button>
-  </div>
-</div>
-
-<!-- ===== 解説③ t = aˣ + a⁻ˣ 型（相加・相乗平均） ===== -->
-<div class="page" id="page-ex3">
-  <div class="page-hdr">
-    <div class="page-hdr-icon icon-ex">例</div>
-    <div class="page-hdr-body">
-      <div class="page-hdr-title">解説③ — $t = a^x + a^{-x}$ 型（相加・相乗平均の利用）</div>
-      <div class="page-hdr-desc">$t = 2^x + 2^{-x}$ と置くと変域は $t \geqq 2$</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="clabel ex">解説③ — $t = a^x + a^{-x}$ とおきかえるパターン</div>
-
-    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
-      入試頻出パターン！相加・相乗平均で「$t \geqq 2$」の変域が確定する。
-    </div>
-
-    <p class="q-text">
-      $y = 2^{2x} + 2^{-2x} - 5(2^x + 2^{-x}) + 3$ のような式では、<br>
-      $2^x + 2^{-x} = t$ と置くのが有効です。
-    </p>
-
-    <div class="formula-box">
-      <div class="formula-big">
-        相加・相乗平均の不等式：$a > 0,\ b > 0$ のとき $\dfrac{a+b}{2} \geqq \sqrt{ab}$
-      </div>
-      <div class="formula-note">
-        $2^x > 0,\ 2^{-x} > 0$ なので $\dfrac{2^x + 2^{-x}}{2} \geqq \sqrt{2^x \cdot 2^{-x}} = 1$<br>
-        よって $2^x + 2^{-x} \geqq 2$、すなわち $t \geqq 2$（等号は $x = 0$ のとき）
-      </div>
-    </div>
-
-    <div class="exp-box blue">
-      <h4>$t = 2^x + 2^{-x}$ を使った式の変換</h4>
-      <p>
-        $2^{2x} + 2^{-2x} = (2^x + 2^{-x})^2 - 2 = t^2 - 2$<br><br>
-        ← なぜなら $(2^x + 2^{-x})^2 = 2^{2x} + 2 \cdot 2^x \cdot 2^{-x} + 2^{-2x} = 2^{2x} + 2 + 2^{-2x}$
-      </p>
-    </div>
-
-    <!-- 例題 -->
-    <div class="step-ex" id="se5">
-      <div class="step-ex-title">【例題】$y = 2^{2x} + 2^{-2x} - 5(2^x + 2^{-x}) + 3$ の最小値を求めよ。</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se5',1)" id="se5-btn1">STEP 1 $t$ 置換と変域</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se5',2)" id="se5-btn2">STEP 2 式を整理</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se5',3)" id="se5-btn3">STEP 3 最小値</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se5',4)" id="se5-btn4">答え</button>
-      </div>
-      <div id="se5-s1" style="display:none" class="step-ex-body">
-        <span class="step-label teal">STEP 1</span>
-        $t = 2^x + 2^{-x}$（$t \geqq 2$）と置く。<br>
-        $2^{2x} + 2^{-2x} = t^2 - 2$
-      </div>
-      <div id="se5-s2" style="display:none" class="step-ex-body">
-        <span class="step-label blue">STEP 2</span>
-        $y = (t^2 - 2) - 5t + 3 = t^2 - 5t + 1$<br>
-        $= \left(t - \dfrac{5}{2}\right)^2 - \dfrac{21}{4}$
-      </div>
-      <div id="se5-s3" style="display:none" class="step-ex-body">
-        <span class="step-label amber">STEP 3</span>
-        変域 $t \geqq 2$、頂点 $t = \dfrac{5}{2} \geqq 2$ → 変域内<br>
-        $t = \dfrac{5}{2}$ で最小値 $-\dfrac{21}{4}$<br>
-        $t$ の値から $x$ を求める：$2^x + 2^{-x} = \dfrac{5}{2}$<br>
-        $2(2^x)^2 - 5 \cdot 2^x + 2 = 0$、$(2 \cdot 2^x - 1)(2^x - 2) = 0$<br>
-        $2^x = \dfrac{1}{2}$ または $2^x = 2$ → $x = -1$ または $x = 1$
-      </div>
-      <div id="se5-s4" style="display:none" class="step-ex-body ans">
-        <span class="step-label amber">答え</span>
-        $x = \pm 1$ のとき最小値 $-\dfrac{21}{4}$（最大値はない）
-      </div>
-    </div>
-
-    <!-- 例題2：青山学院大型 -->
-    <div class="step-ex" id="se6">
-      <div class="step-ex-title">【例題】$y = -(4^x + 4^{-x}) + 3(2^x + 2^{-x})$ の最大値を求めよ。〈青山学院大〉</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se6',1)" id="se6-btn1">STEP 1 $t$ 置換</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se6',2)" id="se6-btn2">STEP 2 最大値</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se6',3)" id="se6-btn3">答え</button>
-      </div>
-      <div id="se6-s1" style="display:none" class="step-ex-body">
-        <span class="step-label teal">STEP 1</span>
-        $t = 2^x + 2^{-x}$（$t \geqq 2$）と置く。<br>
-        $4^x + 4^{-x} = (2^x + 2^{-x})^2 - 2 = t^2 - 2$<br>
-        $y = -(t^2 - 2) + 3t = -t^2 + 3t + 2 = -\left(t - \dfrac{3}{2}\right)^2 + \dfrac{17}{4}$
-      </div>
-      <div id="se6-s2" style="display:none" class="step-ex-body">
-        <span class="step-label blue">STEP 2</span>
-        頂点 $t = \dfrac{3}{2} < 2$（変域外！）<br>
-        $t \geqq 2$ の範囲では $t = 2$ が頂点に最も近い → 最大は $t = 2$ の端点<br>
-        $t = 2$ のとき $y = -4 + 6 + 2 = 4$
-      </div>
-      <div id="se6-s3" style="display:none" class="step-ex-body ans">
-        <span class="step-label amber">答え</span>
-        $t = 2$（$x = 0$）のとき最大値 $4$
-      </div>
-    </div>
-
-    <div class="point-box">
-      <strong>🔑 $t = a^x + a^{-x}$ 型のポイント</strong>
-      ① 相加・相乗平均より $t \geqq 2$（等号は $x = 0$ のとき）<br>
-      ② $a^{2x} + a^{-2x} = (a^x + a^{-x})^2 - 2 = t^2 - 2$ を使う<br>
-      ③ 頂点が $t \geqq 2$ の変域内か外かで最大・最小の位置が変わる
-    </div>
-
-    <div class="mini-fold" id="mfold-ex7m3">
+            <div class="mini-fold" id="mfold-ex7m3">
       <button class="mini-fold-btn" onclick="mToggle('ex7m3')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex7m3">
-        <p style="font-size:12px;color:var(--text3);margin:.4rem 0 .6rem;">📝 解説③ $t = a^x + a^{-x}$ 型の確認</p>
         <div id="mq-ex7m3-1">
-          <div class="mini-q-text"><strong>$t = 2^x + 2^{-x}$ の変域（最小値）は？</strong></div>
+          <div class="mini-q-text"><strong>$t=2^x+2^{-x}$ の最小値は？</strong></div>
           <div class="choices" id="mch-ex7m3-1">
-            <button class="ch" onclick="mAns('ex7m3-1',0,1)"><span class="cnum">①</span>$t \geqq 2$</button>
-            <button class="ch" onclick="mAns('ex7m3-1',1,1)"><span class="cnum">②</span>$t \geqq 0$</button>
-            <button class="ch" onclick="mAns('ex7m3-1',2,1)"><span class="cnum">③</span>$t \geqq 1$</button>
-            <button class="ch" onclick="mAns('ex7m3-1',3,1)"><span class="cnum">④</span>$t > 0$</button>
+            <button class="ch" onclick="mAns('ex7m3-1',0,0)"><span class="cnum">①</span>$t\geqq2$</button>
+            <button class="ch" onclick="mAns('ex7m3-1',1,0)"><span class="cnum">②</span>$t\geqq0$</button>
+            <button class="ch" onclick="mAns('ex7m3-1',2,0)"><span class="cnum">③</span>$t\geqq1$</button>
+            <button class="ch" onclick="mAns('ex7m3-1',3,0)"><span class="cnum">④</span>$t>0$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex7m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">相加・相乗平均より：$\dfrac{2^x + 2^{-x}}{2} \geqq \sqrt{2^x \cdot 2^{-x}} = 1$<br>よって $2^x + 2^{-x} \geqq 2$（等号は $x=0$）</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex7m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\dfrac{a+b}{2} \geqq \sqrt{ab}$（相加相乗）を使う<br>$2^x > 0$、$2^{-x} > 0$ なので $2^x + 2^{-x} \geqq 2\sqrt{1} = 2$</div></div></div><button class="reset-btn" onclick="mReset('ex7m3-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex7m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">相加相乗平均：$t\geqq2$（等号$x=0$）</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex7m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">相加相乗平均：$t\geqq2$</div></div></div></div><button class="reset-btn" onclick="mReset('ex7m3-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex7m3-2" style="display:none">
-          <div class="mini-q-text"><strong>$4^x + 4^{-x}$ を $t = 2^x + 2^{-x}$ で表すと？</strong></div>
+          <div class="mini-q-text"><strong>$4^x+4^{-x}$ を $t=2^x+2^{-x}$ で表すと？</strong></div>
           <div class="choices" id="mch-ex7m3-2">
-            <button class="ch" onclick="mAns('ex7m3-2',0,1)"><span class="cnum">①</span>$t^2 - 2$</button>
-            <button class="ch" onclick="mAns('ex7m3-2',1,1)"><span class="cnum">②</span>$t^2 + 2$</button>
-            <button class="ch" onclick="mAns('ex7m3-2',2,1)"><span class="cnum">③</span>$t^2$</button>
-            <button class="ch" onclick="mAns('ex7m3-2',3,1)"><span class="cnum">④</span>$t^2 - 4$</button>
+            <button class="ch" onclick="mAns('ex7m3-2',0,0)"><span class="cnum">①</span>$t^2-2$</button>
+            <button class="ch" onclick="mAns('ex7m3-2',1,0)"><span class="cnum">②</span>$t^2+2$</button>
+            <button class="ch" onclick="mAns('ex7m3-2',2,0)"><span class="cnum">③</span>$t^2$</button>
+            <button class="ch" onclick="mAns('ex7m3-2',3,0)"><span class="cnum">④</span>$t^2-4$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex7m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(2^x + 2^{-x})^2 = 4^x + 2 \cdot 2^x \cdot 2^{-x} + 4^{-x} = 4^x + 2 + 4^{-x}$</div><div class="fb-step fb-ans">$\therefore 4^x + 4^{-x} = t^2 - 2$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex7m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(2^x+2^{-x})^2 = 4^x + 2 + 4^{-x}$<br>$\therefore 4^x + 4^{-x} = t^2 - 2$</div></div></div><button class="reset-btn" onclick="mReset('ex7m3-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex7m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(t)^2=4^x+2+4^{-x}$ → $t^2-2$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex7m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$t^2-2$</div></div></div></div><button class="reset-btn" onclick="mReset('ex7m3-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex7m3">
           <div class="mini-complete-emoji">🎉</div>
-          <div class="mini-complete-text">クリア！この章のすべてのパターンをマスターしましたね。</div>
+          <div class="mini-complete-text">aˣ+a⁻ˣ型もマスター！</div>
           <div class="mini-nav">
-            <a class="mini-nav-btn index" href="index_math2.html">📋 単元表に戻る</a>
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
             <button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button>
           </div>
         </div>
@@ -818,6 +412,85 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
   </div>
 </div>
 
+
+<!-- 練習① -->
+<div class="page" id="page-pr1">
+  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題① — $t>0$ での最大・最小</div><div class="page-hdr-desc">★★☆</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr1" style="width:0%"></div></div><span class="pb-txt" id="pb-pr1-txt">0 / 3 完了</span></div>
+  <div class="card">
+    <div class="clabel pr">準備中</div>
+    <p class="q-text">練習問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button>
+  </div>
+</div>
+<!-- 確認① -->
+<div class="page" id="page-cf1">
+  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題① — 最大・最小の読み取り</div><div class="page-hdr-desc">★★★</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf1" style="width:0%"></div></div><span class="pb-txt" id="pb-cf1-txt">0 / 2 完了</span></div>
+  <div class="card">
+    <div class="clabel cf">準備中</div>
+    <p class="q-text">確認問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button>
+  </div>
+</div>
+<!-- 解説② -->
+<div class="page" id="page-ex2">
+  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body"><div class="page-hdr-title">解説② — 定義域に制限がある場合</div><div class="page-hdr-desc">$t$ の変域が具体的な区間になるケース</div></div></div>
+  <div class="card">
+    <div class="clabel ex">解説② — 内容を確認してください</div>
+    <p class="q-text">解説②の内容はこの単元のEXファイルを参照してください。</p>
+    <div class="mini-fold" id="mfold-ex7m2-placeholder" style="display:none"><div class="mini-fold-inner" id="minner-ex7m2-placeholder"><div class="mini-complete" id="mc-ex7m2-placeholder"></div></div></div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button>
+  </div>
+  </div>
+</div>
+<!-- 練習② -->
+<div class="page" id="page-pr2">
+  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題② — 定義域制限の最大・最小</div><div class="page-hdr-desc">★★☆</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr2" style="width:0%"></div></div><span class="pb-txt" id="pb-pr2-txt">0 / 3 完了</span></div>
+  <div class="card">
+    <div class="clabel pr">準備中</div>
+    <p class="q-text">練習問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button>
+  </div>
+</div>
+<!-- 確認② -->
+<div class="page" id="page-cf2">
+  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題② — 変域制限の応用</div><div class="page-hdr-desc">★★★</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf2" style="width:0%"></div></div><span class="pb-txt" id="pb-cf2-txt">0 / 2 完了</span></div>
+  <div class="card">
+    <div class="clabel cf">準備中</div>
+    <p class="q-text">確認問題を準備中です。</p>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button>
+  </div>
+</div>
+<!-- 解説③ -->
+<div class="page" id="page-ex3">
+  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body"><div class="page-hdr-title">解説③ — $t = a^x + a^{-x}$ 型（相加・相乗平均）</div><div class="page-hdr-desc">$t \geqq 2$ の変域で最大・最小を求める</div></div></div>
+  <div class="card">
+    <div class="clabel ex">解説③ — 内容を確認してください</div>
+    <p class="q-text">解説③の内容はこの単元のEXファイルを参照してください。</p>
+    <div class="mini-fold" id="mfold-ex7m3-placeholder" style="display:none"><div class="mini-fold-inner" id="minner-ex7m3-placeholder"><div class="mini-complete" id="mc-ex7m3-placeholder"></div></div></div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button>
+  </div>
+  </div>
+</div>
 <!-- ===== 練習③ ===== -->
 <div class="page" id="page-pr3">
   <div class="page-hdr">
@@ -958,7 +631,7 @@ function resetQ2(qid, section) {
   if(ok) ok.style.display='none'; if(ng) ng.style.display='none';
 }
 function mToggle(id) { var el=document.getElementById('minner-'+id); if(el) el.style.display=el.style.display==='none'?'block':'none'; }
-var mProgress={}; var mMax={ex7m1:2,ex7m2:2,ex7m3:2};
+var mProgress={}; var mMax = {ex7m1: 2, ex7m2: 2, ex7m3: 2};
 function mAns(qid, correct, chosen) {
   var prefix=qid.replace(/-\d+$/,'');
   var btns=document.querySelectorAll('#mch-'+qid+' .ch');

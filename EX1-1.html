@@ -208,68 +208,150 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
   </div>
   <div class="card">
     <div class="clabel ex">解説① — 指数法則の3公式</div>
-    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
-      指数のたし算・かけ算・ひき算を使いこなすのが第一歩です。
+
+    <!-- イントロ -->
+    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1.2rem;font-size:14px;color:var(--teal);font-weight:700;">
+      まずは「指数」の意味を確認してから、3つの法則を学びましょう。
     </div>
-    <p class="q-text">
-      $2^3 \times 2^2 = 2 \times 2 \times 2 \times 2 \times 2 = 2^5$ のように、<strong>底が同じとき指数をたす</strong>ことができます。<br>
-      3つの法則を順番に確認しましょう。
-    </p>
+
+    <!-- 指数とは？ -->
+    <div class="exp-box blue">
+      <h4>そもそも「指数」とは？</h4>
+      <p>
+        $2^3$（2の3乗）とは、<strong>2を3回かけ合わせた数</strong>のことです。<br><br>
+        $2^3 = \underbrace{2 \times 2 \times 2}_{3\text{個}} = 8$<br><br>
+        このとき、$2$ を<strong>底（てい）</strong>、$3$ を<strong>指数（しすう）</strong>といいます。<br>
+        $5^4 = 5 \times 5 \times 5 \times 5 = 625$ のように、底と指数を変えるといろいろな数になります。
+      </p>
+    </div>
+
+    <!-- 法則① -->
+    <div style="margin:1.2rem 0 .4rem;font-size:13px;font-weight:700;color:var(--pink);display:flex;align-items:center;gap:6px;">
+      <span style="background:var(--pink);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;">①</span>
+      掛け算のとき — 指数を<strong>たす</strong>
+    </div>
+    <div class="exp-box" style="border-color:var(--pink);">
+      <h4 style="color:var(--pink);">なぜ指数をたすの？</h4>
+      <p>
+        $2^3 \times 2^2$ を計算してみましょう。<br><br>
+        $2^3 = \underbrace{2\times2\times2}_{3\text{個}}$　，　$2^2 = \underbrace{2\times2}_{2\text{個}}$<br><br>
+        続けてかけると：$\underbrace{2\times2\times2}_{3\text{個}} \times \underbrace{2\times2}_{2\text{個}} = \underbrace{2\times2\times2\times2\times2}_{3+2=5\text{個}} = 2^5$<br><br>
+        つまり、<strong>底が同じ掛け算は指数をたすだけでOK</strong>です。
+      </p>
+    </div>
     <div class="formula-box">
       <div class="formula-big">$a^m \times a^n = a^{m+n}$</div>
-      <div class="formula-note">底が同じ掛け算 → 指数をたす</div>
+      <div class="formula-note">底が同じ掛け算 → 指数をたす　（底が違う場合は使えません！）</div>
+    </div>
+    <div class="exp-box" style="border-color:var(--pink);background:#fff8f9;">
+      <h4 style="color:var(--pink);">例で確認</h4>
+      <p>
+        $3^4 \times 3^5 = 3^{4+5} = 3^9$　← 底が同じ（3）なので指数をたす<br>
+        $2^6 \times 2^3 = 2^{6+3} = 2^9$<br>
+        $a^2 \times a^7 = a^{2+7} = a^9$（文字でも同じ！）
+      </p>
+    </div>
+
+    <!-- 法則② -->
+    <div style="margin:1.4rem 0 .4rem;font-size:13px;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:6px;">
+      <span style="background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;">②</span>
+      べき乗のべき乗 — 指数を<strong>かける</strong>
+    </div>
+    <div class="exp-box blue">
+      <h4>$(a^m)^n$ とは？</h4>
+      <p>
+        $(2^3)^4$ は「$2^3$ を 4回かけ合わせる」という意味です。<br><br>
+        $(2^3)^4 = \underbrace{2^3 \times 2^3 \times 2^3 \times 2^3}_{4\text{個}}$<br><br>
+        法則①を使うと：$= 2^{3+3+3+3} = 2^{3\times4} = 2^{12}$<br><br>
+        つまり、<strong>指数どうしをかける</strong>だけでOKです。
+      </p>
     </div>
     <div class="formula-box">
       <div class="formula-big">$(a^m)^n = a^{m \times n}$</div>
       <div class="formula-note">べき乗のべき乗 → 指数をかける</div>
     </div>
-    <div class="formula-box">
-      <div class="formula-big">$a^m \div a^n = a^{m-n}$</div>
-      <div class="formula-note">底が同じ割り算 → 指数をひく</div>
-    </div>
     <div class="exp-box blue">
-      <h4>確認例題</h4>
+      <h4>例で確認</h4>
       <p>
-        $2^8 \times 2^{11} = 2^{8+11} = 2^{19}$<br>
-        $(3^2)^4 = 3^{2 \times 4} = 3^8$<br>
-        $7^5 \div 7^2 = 7^{5-2} = 7^3$<br>
-        $\{(3^2)^3\}^4 = 3^{2 \times 3 \times 4} = 3^{24}$
+        $(5^2)^3 = 5^{2\times3} = 5^6$<br>
+        $(3^4)^2 = 3^{4\times2} = 3^8$<br>
+        $\{(2^3)^2\}^4$：<br>
+        　まず内側：$(2^3)^2 = 2^{3\times2} = 2^6$<br>
+        　次に外側：$(2^6)^4 = 2^{6\times4} = 2^{24}$<br>
+        　（または $2^{3\times2\times4} = 2^{24}$ と一気に計算してもOK）
       </p>
     </div>
+
+    <!-- 法則③ -->
+    <div style="margin:1.4rem 0 .4rem;font-size:13px;font-weight:700;color:var(--amber);display:flex;align-items:center;gap:6px;">
+      <span style="background:var(--amber);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;">③</span>
+      割り算のとき — 指数を<strong>ひく</strong>
+    </div>
+    <div class="exp-box amber">
+      <h4>なぜ指数をひくの？</h4>
+      <p>
+        $2^5 \div 2^3$ を計算してみましょう。<br><br>
+        $\dfrac{2^5}{2^3} = \dfrac{2\times2\times2\times2\times2}{2\times2\times2} = \dfrac{\cancel{2}\times\cancel{2}\times\cancel{2}\times2\times2}{\cancel{2}\times\cancel{2}\times\cancel{2}} = 2\times2 = 2^2$<br><br>
+        分子・分母で約分すると、指数の差だけ残ります。<br>
+        $2^5 \div 2^3 = 2^{5-3} = 2^2$　← <strong>指数をひく</strong>
+      </p>
+    </div>
+    <div class="formula-box">
+      <div class="formula-big">$a^m \div a^n = a^{m-n}$</div>
+      <div class="formula-note">底が同じ割り算 → 指数をひく　（$a \neq 0$）</div>
+    </div>
+    <div class="exp-box amber">
+      <h4>例で確認</h4>
+      <p>
+        $7^5 \div 7^2 = 7^{5-2} = 7^3$<br>
+        $a^9 \div a^3 = a^{9-3} = a^6$<br>
+        $2^8 \times 2^{11} \div 2^8 = 2^{8+11-8} = 2^{11}$　← 掛け算・割り算は同時にできる！
+      </p>
+    </div>
+
+    <!-- まとめ -->
+    <div class="warn-box" style="background:#fff0f3;border-color:var(--pink);">
+      <strong>⚠️ よくあるまちがい</strong>
+      $2^3 \times 3^2$ → 底が<strong>違う</strong>（2と3）ので指数はたせません！<br>
+      $2^3 \times 2^2 = 2^6$ は<strong>間違い</strong>（$2^3 \times 2^2 = 2^{3+2} = 2^5$ が正しい）
+    </div>
+
     <div class="point-box">
       <strong>🔑 3つの法則まとめ</strong>
-      ① $a^m \times a^n = a^{m+n}$（底が同じ → 指数をたす）<br>
-      ② $(a^m)^n = a^{mn}$（べき乗 → 指数をかける）<br>
-      ③ $a^m \div a^n = a^{m-n}$（底が同じ割り算 → 指数をひく）
+      ① $a^m \times a^n = a^{m+n}$　（底が同じ掛け算 → 指数をたす）<br>
+      ② $(a^m)^n = a^{m \times n}$　（べき乗のべき乗 → 指数をかける）<br>
+      ③ $a^m \div a^n = a^{m-n}$　（底が同じ割り算 → 指数をひく）<br><br>
+      <span style="font-size:11px;opacity:.85;">※ 底が違うときはこれらの法則は使えません。</span>
     </div>
-    <div class="mini-fold" id="mfold-ex1m1">
+
+        <div class="mini-fold" id="mfold-ex1m1">
       <button class="mini-fold-btn" onclick="mToggle('ex1m1')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex1m1">
         <div id="mq-ex1m1-1">
-          <div class="mini-q-text"><strong>$3^7 \times 3^{11} \div 3^8$ を計算すると？</strong></div>
+          <div class="mini-q-text"><strong>$2^3 \times 2^6$ を計算すると？</strong></div>
           <div class="choices" id="mch-ex1m1-1">
-            <button class="ch" onclick="mAns('ex1m1-1',0,1)"><span class="cnum">①</span>$3^{10}$</button>
-            <button class="ch" onclick="mAns('ex1m1-1',1,1)"><span class="cnum">②</span>$3^8$</button>
-            <button class="ch" onclick="mAns('ex1m1-1',2,1)"><span class="cnum">③</span>$3^{18}$</button>
-            <button class="ch" onclick="mAns('ex1m1-1',3,1)"><span class="cnum">④</span>$3^6$</button>
+            <button class="ch" onclick="mAns('ex1m1-1',0,0)"><span class="cnum">①</span>$2^9$</button>
+            <button class="ch" onclick="mAns('ex1m1-1',1,0)"><span class="cnum">②</span>$2^{12}$</button>
+            <button class="ch" onclick="mAns('ex1m1-1',2,0)"><span class="cnum">③</span>$4^9$</button>
+            <button class="ch" onclick="mAns('ex1m1-1',3,0)"><span class="cnum">④</span>$2^{15}$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex1m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^7 \times 3^{11} \div 3^8 = 3^{7+11-8} = 3^{10}$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex1m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">掛け算は指数をたし、割り算は指数をひく：$7+11-8 = 10$</div></div></div><button class="reset-btn" onclick="mReset('ex1m1-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex1m1-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3+6=9$ → $2^9$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex1m1-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底が同じ掛け算：指数をたす $3+6=9$</div></div></div></div><button class="reset-btn" onclick="mReset('ex1m1-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex1m1-2" style="display:none">
-          <div class="mini-q-text"><strong>$\{(3^2)^3\}^4$ を計算すると？</strong></div>
+          <div class="mini-q-text"><strong>$(2^4)^2$ を計算すると？</strong></div>
           <div class="choices" id="mch-ex1m1-2">
-            <button class="ch" onclick="mAns('ex1m1-2',0,1)"><span class="cnum">①</span>$3^9$</button>
-            <button class="ch" onclick="mAns('ex1m1-2',1,1)"><span class="cnum">②</span>$3^{24}$</button>
-            <button class="ch" onclick="mAns('ex1m1-2',2,1)"><span class="cnum">③</span>$3^{18}$</button>
-            <button class="ch" onclick="mAns('ex1m1-2',3,1)"><span class="cnum">④</span>$3^{12}$</button>
+            <button class="ch" onclick="mAns('ex1m1-2',0,2)"><span class="cnum">①</span>$2^{12}$</button>
+            <button class="ch" onclick="mAns('ex1m1-2',1,2)"><span class="cnum">②</span>$2^6$</button>
+            <button class="ch" onclick="mAns('ex1m1-2',2,2)"><span class="cnum">③</span>$2^8$</button>
+            <button class="ch" onclick="mAns('ex1m1-2',3,2)"><span class="cnum">④</span>$2^{16}$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex1m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">べき乗のべき乗は指数をかける：$2 \times 3 \times 4 = 24$<br>$\{(3^2)^3\}^4 = 3^{24}$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex1m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(a^m)^n = a^{mn}$ を繰り返す：$2\times3=6$、$6\times4=24$</div></div></div><button class="reset-btn" onclick="mReset('ex1m1-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex1m1-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">べき乗のべき乗：$4\times2=8$ → $2^8$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex1m1-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(a^m)^n=a^{mn}$：$4\times2=8$</div></div></div></div><button class="reset-btn" onclick="mReset('ex1m1-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex1m1">
           <div class="mini-complete-emoji">🎉</div>
-          <div class="mini-complete-text">クリア！指数法則の3公式、完璧です。</div>
+          <div class="mini-complete-text">指数法則、バッチリ！</div>
           <div class="mini-nav">
             <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
             <button class="mini-nav-btn next" onclick="switchPage('pr1')">練習問題に進む →</button>
@@ -280,356 +362,593 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
   </div>
 </div>
 
-<!-- 練習① -->
+<!-- 練習問題① — 指数法則の計算 -->
 <div class="page" id="page-pr1">
-  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題① — 指数法則の計算</div><div class="page-hdr-desc">3つの法則を使って指数の計算をする</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr1" style="width:0%"></div></div><span class="pb-txt" id="pb-pr1-txt">0 / 3 完了</span></div>
+  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題① — 指数法則の計算</div><div class="page-hdr-desc">★★☆ 3つの法則を使って計算する</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr1" id="pb-pr1" style="width:0%"></div></div><span class="pb-txt" id="pb-pr1-txt">0 / 5 完了</span></div>
   <div class="card">
     <div class="clabel pr">問 1</div>
-    <p class="q-text">$(3^3)^2 \div 3^4$ を計算すると？</p>
+    <p class="q-text">$2^3 \times 2^6$ を計算すると？</p>
     <div class="choices" id="ch-p1q1">
-      <button class="ch" onclick="ans2('p1q1','pr1',1,0)"><span class="cnum">①</span>$3^4$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',1,1)"><span class="cnum">②</span>$3^2$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',1,2)"><span class="cnum">③</span>$3^6$</button>
-      <button class="ch" onclick="ans2('p1q1','pr1',1,3)"><span class="cnum">④</span>$3^8$</button>
+      <button class="ch" onclick="ans2('p1q1','pr1',0,0)"><span class="cnum">①</span>$2^9$</button>
+      <button class="ch" onclick="ans2('p1q1','pr1',0,1)"><span class="cnum">②</span>$2^{12}$</button>
+      <button class="ch" onclick="ans2('p1q1','pr1',0,2)"><span class="cnum">③</span>$4^9$</button>
+      <button class="ch" onclick="ans2('p1q1','pr1',0,3)"><span class="cnum">④</span>$2^{15}$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-p1q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(3^3)^2 = 3^6$</div><div class="fb-step fb-ans">$3^6 \div 3^4 = 3^{6-4} = 3^2$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(3^3)^2 = 3^{3\times2} = 3^6$</div><div class="fb-step fb-ans">$3^6 \div 3^4 = 3^{6-4} = 3^2$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q1','pr1')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-p1q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底が同じ掛け算 → 指数をたす：$3+6=9$</div><div class="fb-step">$2^9$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p1q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2^{3+6}=2^9$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p1q1','pr1')">🔄 もう一度</button>
     <hr class="prob-divider">
+
     <div class="clabel pr">問 2</div>
-    <p class="q-text">$2^8 \times 2^{11} \div 2^{8}$ を計算すると？</p>
+    <p class="q-text">$(5^2)^3$ を計算すると？</p>
     <div class="choices" id="ch-p1q2">
-      <button class="ch" onclick="ans2('p1q2','pr1',1,0)"><span class="cnum">①</span>$2^{21}$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',1,1)"><span class="cnum">②</span>$2^{11}$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',1,2)"><span class="cnum">③</span>$2^{10}$</button>
-      <button class="ch" onclick="ans2('p1q2','pr1',1,3)"><span class="cnum">④</span>$2^{8}$</button>
+      <button class="ch" onclick="ans2('p1q2','pr1',1,0)"><span class="cnum">①</span>$5^2$</button>
+      <button class="ch" onclick="ans2('p1q2','pr1',1,1)"><span class="cnum">②</span>$5^6$</button>
+      <button class="ch" onclick="ans2('p1q2','pr1',1,2)"><span class="cnum">③</span>$5^{18}$</button>
+      <button class="ch" onclick="ans2('p1q2','pr1',1,3)"><span class="cnum">④</span>$5^4$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-p1q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$2^{8+11-8} = 2^{11}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$8 + 11 - 8 = 11$ → $2^{11}$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q2','pr1')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-p1q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">べき乗のべき乗 → 指数をかける：$2\times3=6$</div><div class="fb-step">$5^6$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p1q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(a^m)^n=a^{mn}$：$5^{2\times3}=5^6$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p1q2','pr1')">🔄 もう一度</button>
     <hr class="prob-divider">
+
     <div class="clabel pr">問 3</div>
-    <p class="q-text">$\{(5^2)^3\}^2$ を計算すると？</p>
+    <p class="q-text">$3^5 \div 3^3 \times 3^9$ を計算すると？</p>
     <div class="choices" id="ch-p1q3">
-      <button class="ch" onclick="ans2('p1q3','pr1',2,0)"><span class="cnum">①</span>$5^{14}$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',2,1)"><span class="cnum">②</span>$5^{8}$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',2,2)"><span class="cnum">③</span>$5^{12}$</button>
-      <button class="ch" onclick="ans2('p1q3','pr1',2,3)"><span class="cnum">④</span>$5^{10}$</button>
+      <button class="ch" onclick="ans2('p1q3','pr1',3,0)"><span class="cnum">①</span>$3^{10}$</button>
+      <button class="ch" onclick="ans2('p1q3','pr1',3,1)"><span class="cnum">②</span>$3^3$</button>
+      <button class="ch" onclick="ans2('p1q3','pr1',3,2)"><span class="cnum">③</span>$3^8$</button>
+      <button class="ch" onclick="ans2('p1q3','pr1',3,3)"><span class="cnum">④</span>$3^{11}$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-p1q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$2 \times 3 \times 2 = 12$ → $5^{12}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p1q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(a^m)^n = a^{mn}$ を繰り返す：$2\times3=6$、$6\times2=12$</div></div></div><button class="reset-btn" onclick="resetQ2('p1q3','pr1')">🔄 もう一度</button></div>
-  </div>
-  <div class="page-nav-row"><a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button></div>
-</div>
-
-<!-- 確認① -->
-<div class="page" id="page-cf1">
-  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題① — 指数法則の応用</div><div class="page-hdr-desc">組み合わせた計算で定着を確認</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf1" style="width:0%"></div></div><span class="pb-txt" id="pb-cf1-txt">0 / 2 完了</span></div>
-  <div class="card">
-    <div class="clabel cf">確認 1</div>
-    <p class="q-text">$a^3 \times (a^2)^4 \div a^5$ を簡単にすると？（$a 
-eq 0$）</p>
-    <div class="choices" id="ch-c1a">
-      <button class="ch" onclick="ans2('c1a','cf1',2,0)"><span class="cnum">①</span>$a^4$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',2,1)"><span class="cnum">②</span>$a^8$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',2,2)"><span class="cnum">③</span>$a^6$</button>
-      <button class="ch" onclick="ans2('c1a','cf1',2,3)"><span class="cnum">④</span>$a^{14}$</button>
-    </div>
-    <div class="fb-ok" id="fb-ok-c1a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(a^2)^4 = a^8$</div><div class="fb-step fb-ans">$a^3 \times a^8 \div a^5 = a^{3+8-5} = a^6$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c1a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(a^2)^4 = a^8$、$a^3 \times a^8 \div a^5 = a^{3+8-5} = a^6$</div></div></div><button class="reset-btn" onclick="resetQ2('c1a','cf1')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-p1q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5-3+9=11$</div><div class="fb-step">$3^{11}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p1q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$5-3+9=11$ → $3^{11}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p1q3','pr1')">🔄 もう一度</button>
     <hr class="prob-divider">
-    <div class="clabel cf">確認 2</div>
-    <p class="q-text">$\{(2^3)^2\}^4 \div 2^{14}$ を計算すると？</p>
-    <div class="choices" id="ch-c1b">
-      <button class="ch" onclick="ans2('c1b','cf1',1,0)"><span class="cnum">①</span>$2^{14}$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',1,1)"><span class="cnum">②</span>$2^{10}$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',1,2)"><span class="cnum">③</span>$2^8$</button>
-      <button class="ch" onclick="ans2('c1b','cf1',1,3)"><span class="cnum">④</span>$2^{20}$</button>
+
+    <div class="clabel pr">問 4</div>
+    <p class="q-text">$(a^3)^2$ を簡単にすると？（$a\neq0$）</p>
+    <div class="choices" id="ch-p1q4">
+      <button class="ch" onclick="ans2('p1q4','pr1',1,0)"><span class="cnum">①</span>$a^{12}$</button>
+      <button class="ch" onclick="ans2('p1q4','pr1',1,1)"><span class="cnum">②</span>$a^6$</button>
+      <button class="ch" onclick="ans2('p1q4','pr1',1,2)"><span class="cnum">③</span>$a^4$</button>
+      <button class="ch" onclick="ans2('p1q4','pr1',1,3)"><span class="cnum">④</span>$a^{10}$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-c1b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\{(2^3)^2\}^4 = 2^{3\times2\times4} = 2^{24}$</div><div class="fb-step fb-ans">$2^{24} \div 2^{14} = 2^{10}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c1b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$3\times2\times4=24$ → $2^{24} \div 2^{14} = 2^{10}$</div></div></div><button class="reset-btn" onclick="resetQ2('c1b','cf1')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-p1q4"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(a^3)^2=a^{3\times2}=a^6$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p1q4"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$3\times2=6$ → $a^6$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p1q4','pr1')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel pr">問 5</div>
+    <p class="q-text">$a^3 \times (a^2)^4 \div a^5$ を簡単にすると？（$a\neq0$）</p>
+    <div class="choices" id="ch-p1q5">
+      <button class="ch" onclick="ans2('p1q5','pr1',0,0)"><span class="cnum">①</span>$a^6$</button>
+      <button class="ch" onclick="ans2('p1q5','pr1',0,1)"><span class="cnum">②</span>$a^4$</button>
+      <button class="ch" onclick="ans2('p1q5','pr1',0,2)"><span class="cnum">③</span>$a^{14}$</button>
+      <button class="ch" onclick="ans2('p1q5','pr1',0,3)"><span class="cnum">④</span>$a^2$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p1q5"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(a^2)^4=a^8$</div><div class="fb-step">$a^{3+8-5}=a^6$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p1q5"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(a^2)^4=a^8$ → $a^{3+8-5}=a^6$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p1q5','pr1')">🔄 もう一度</button>
   </div>
-  <div class="page-nav-row"><a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button></div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf1')">確認問題に進む →</button>
+  </div>
 </div>
 
-<!-- 解説② a^0 と a^(-1) -->
+<!-- 確認問題① — 指数法則の応用 -->
+<div class="page" id="page-cf1">
+  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題① — 指数法則の応用</div><div class="page-hdr-desc">★★★ 複合計算・文字式</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf1" id="pb-cf1" style="width:0%"></div></div><span class="pb-txt" id="pb-cf1-txt">0 / 5 完了</span></div>
+  <div class="card">
+    <div class="clabel cf">問 a</div>
+    <p class="q-text">$2^5 \times 2^3$ を計算すると？</p>
+    <div class="choices" id="ch-c1a">
+      <button class="ch" onclick="ans2('c1a','cf1',0,0)"><span class="cnum">①</span>$2^8$</button>
+      <button class="ch" onclick="ans2('c1a','cf1',0,1)"><span class="cnum">②</span>$2^6$</button>
+      <button class="ch" onclick="ans2('c1a','cf1',0,2)"><span class="cnum">③</span>$2^4$</button>
+      <button class="ch" onclick="ans2('c1a','cf1',0,3)"><span class="cnum">④</span>$2^{12}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c1a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5+3=8$ → $2^8$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c1a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2^{5+3}=2^8$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c1a','cf1')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel cf">問 b</div>
+    <p class="q-text">$(3^2)^3$ を計算すると？</p>
+    <div class="choices" id="ch-c1b">
+      <button class="ch" onclick="ans2('c1b','cf1',2,0)"><span class="cnum">①</span>$3^8$</button>
+      <button class="ch" onclick="ans2('c1b','cf1',2,1)"><span class="cnum">②</span>$3^4$</button>
+      <button class="ch" onclick="ans2('c1b','cf1',2,2)"><span class="cnum">③</span>$3^6$</button>
+      <button class="ch" onclick="ans2('c1b','cf1',2,3)"><span class="cnum">④</span>$3^2$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c1b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2\times3=6$ → $3^6$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c1b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(3^2)^3=3^{2\times3}=3^6$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c1b','cf1')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel cf">問 c</div>
+    <p class="q-text">$5^7 \div 5^5$ を計算すると？</p>
+    <div class="choices" id="ch-c1c">
+      <button class="ch" onclick="ans2('c1c','cf1',1,0)"><span class="cnum">①</span>$5^4$</button>
+      <button class="ch" onclick="ans2('c1c','cf1',1,1)"><span class="cnum">②</span>$5^2$</button>
+      <button class="ch" onclick="ans2('c1c','cf1',1,2)"><span class="cnum">③</span>$5^8$</button>
+      <button class="ch" onclick="ans2('c1c','cf1',1,3)"><span class="cnum">④</span>$5^6$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c1c"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$7-5=2$ → $5^2$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c1c"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$5^{7-5}=5^2$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c1c','cf1')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel cf">問 d</div>
+    <p class="q-text">$\{(2^3)^2\}^4 \div 2^{14}$ を計算すると？</p>
+    <div class="choices" id="ch-c1d">
+      <button class="ch" onclick="ans2('c1d','cf1',3,0)"><span class="cnum">①</span>$2^6$</button>
+      <button class="ch" onclick="ans2('c1d','cf1',3,1)"><span class="cnum">②</span>$2^8$</button>
+      <button class="ch" onclick="ans2('c1d','cf1',3,2)"><span class="cnum">③</span>$2^{20}$</button>
+      <button class="ch" onclick="ans2('c1d','cf1',3,3)"><span class="cnum">④</span>$2^{10}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c1d"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3\times2\times4=24$ → $2^{24}$</div><div class="fb-step">$2^{24}\div2^{14}=2^{10}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c1d"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2^{24}\div2^{14}=2^{10}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c1d','cf1')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel cf">問 e</div>
+    <p class="q-text">$a^2 \times (a^2)^2 \times a^{-2}$ を簡単にすると？（$a\neq0$）</p>
+    <div class="choices" id="ch-c1e">
+      <button class="ch" onclick="ans2('c1e','cf1',1,0)"><span class="cnum">①</span>$a^6$</button>
+      <button class="ch" onclick="ans2('c1e','cf1',1,1)"><span class="cnum">②</span>$a^4$</button>
+      <button class="ch" onclick="ans2('c1e','cf1',1,2)"><span class="cnum">③</span>$a^8$</button>
+      <button class="ch" onclick="ans2('c1e','cf1',1,3)"><span class="cnum">④</span>$a^{14}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c1e"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$(a^2)^2=a^4$</div><div class="fb-step">$a^{2+4-2}=a^4$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c1e"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2+4-2=4$ → $a^4$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c1e','cf1')">🔄 もう一度</button>
+  </div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex2')">解説②へ進む →</button>
+  </div>
+</div>
+
+<!-- 解説② -->
 <div class="page" id="page-ex2">
   <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body"><div class="page-hdr-title">解説② — $a^0 = 1$、$a^{-1} = \dfrac{1}{a}$ とは？</div><div class="page-hdr-desc">指数法則からゼロ乗・負の指数を導く</div></div></div>
   <div class="card">
-    <div class="clabel ex">解説② — 0乗と負の指数</div>
-    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
-      指数法則 $a^m \times a^n = a^{m+n}$ を使って自然に導けます！
+    <div class="clabel ex">解説② — $a^0 = 1$、$a^{-1} = \dfrac{1}{a}$ とは？</div>
+    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1.2rem;font-size:14px;color:var(--teal);font-weight:700;">
+      指数法則を $0$ や負の数に拡張します。「マイナス乗は逆数」がキーワードです。
     </div>
     <div class="exp-box blue">
       <h4>$a^0 = 1$ の導き方</h4>
       <p>
-        $a^m \times a^n = a^{m+n}$ で $m=0,\ n=1$ とすると：<br>
-        $a^0 \times a^1 = a^{0+1} = a^1$<br>
-        つまり $a^0 \times a = a$ → $a^0 = a \div a = 1$<br><br>
-        よって <strong>$a^0 = 1$</strong>（$a 
-eq 0$）
+        法則③ $a^m \div a^n = a^{m-n}$ で $m = n$ とすると：<br><br>
+        $a^3 \div a^3 = \dfrac{a^3}{a^3} = 1$　← 同じ数を割ると $1$<br><br>
+        一方、法則③を使うと：$a^3 \div a^3 = a^{3-3} = a^0$<br><br>
+        両方とも $a^3 \div a^3$ なので、$\boldsymbol{a^0 = 1}$（$a \neq 0$）
       </p>
+    </div>
+    <div class="formula-box">
+      <div class="formula-big">$a^0 = 1$　（$a \neq 0$、どんな数の $0$ 乗も $1$）</div>
+      <div class="formula-note">例：$5^0=1$、$100^0=1$、$(-3)^0=1$、$0.5^0=1$</div>
     </div>
     <div class="exp-box blue">
       <h4>$a^{-1} = \dfrac{1}{a}$ の導き方</h4>
       <p>
-        $m=-1,\ n=1$ とすると：<br>
-        $a^{-1} \times a^1 = a^{-1+1} = a^0 = 1$<br>
-        つまり $a^{-1} \times a = 1$ → $a^{-1} = \dfrac{1}{a}$<br><br>
-        よって <strong>$a^{-1} = \dfrac{1}{a}$</strong>
+        $a^1 \div a^2 = \dfrac{a}{a^2} = \dfrac{1}{a}$　← 約分すると $\dfrac{1}{a}$<br><br>
+        法則③を使うと：$a^1 \div a^2 = a^{1-2} = a^{-1}$<br><br>
+        よって $\boldsymbol{a^{-1} = \dfrac{1}{a}}$（逆数）
       </p>
-    </div>
-    <div class="formula-box">
-      <div class="formula-big">$a^0 = 1 \qquad a^{-1} = \dfrac{1}{a}$</div>
     </div>
     <div class="exp-box amber">
       <h4>$a^{-m} = \dfrac{1}{a^m}$ への拡張</h4>
       <p>
-        $a^{-2} = (a^{-1})^2 = \left(\dfrac{1}{a}\right)^2 = \dfrac{1}{a^2}$<br>
-        同様に $a^{-m} = \dfrac{1}{a^m}$<br><br>
-        例：$2^{-3} = \dfrac{1}{2^3} = \dfrac{1}{8}$、$3^{-2} = \dfrac{1}{9}$、$\left(\dfrac{2}{3}\right)^{-2} = \left(\dfrac{3}{2}\right)^2 = \dfrac{9}{4}$
+        同じ考え方で：$a^{-2} = \dfrac{1}{a^2}$、$a^{-3} = \dfrac{1}{a^3}$、…<br><br>
+        一般に $\boldsymbol{a^{-m} = \dfrac{1}{a^m}}$<br><br>
+        <strong>分数の場合：</strong>$\left(\dfrac{a}{b}\right)^{-m} = \left(\dfrac{b}{a}\right)^m$（ひっくり返してプラス乗）<br><br>
+        例：$\left(\dfrac{2}{3}\right)^{-2} = \left(\dfrac{3}{2}\right)^2 = \dfrac{9}{4}$
       </p>
+    </div>
+    <div class="warn-box">
+      <strong>⚠️ よくある間違い</strong>
+      $2^{-3} = -8$ は間違い！マイナスは符号ではなく「逆数」です。<br>
+      正しくは $2^{-3} = \dfrac{1}{2^3} = \dfrac{1}{8}$
     </div>
     <div class="point-box">
       <strong>🔑 まとめ</strong>
-      $a^0 = 1$（何乗でも0乗は1）<br>
+      $a^0 = 1$（0乗は必ず $1$）<br>
       $a^{-1} = \dfrac{1}{a}$（マイナス1乗は逆数）<br>
       $a^{-m} = \dfrac{1}{a^m}$（マイナス乗は分母に移す）<br>
       $\left(\dfrac{a}{b}\right)^{-m} = \left(\dfrac{b}{a}\right)^m$（分数はひっくり返す）
     </div>
-    <div class="mini-fold" id="mfold-ex1m2">
+    
+
+    
+        <div class="mini-fold" id="mfold-ex1m2">
       <button class="mini-fold-btn" onclick="mToggle('ex1m2')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex1m2">
         <div id="mq-ex1m2-1">
-          <div class="mini-q-text"><strong>$7^0 \times 3^0 \times (-5)^0$ の値は？</strong></div>
+          <div class="mini-q-text"><strong>$7^0$ の値は？</strong></div>
           <div class="choices" id="mch-ex1m2-1">
-            <button class="ch" onclick="mAns('ex1m2-1',0,1)"><span class="cnum">①</span>$0$</button>
-            <button class="ch" onclick="mAns('ex1m2-1',1,1)"><span class="cnum">②</span>$1$</button>
-            <button class="ch" onclick="mAns('ex1m2-1',2,1)"><span class="cnum">③</span>$-105$</button>
-            <button class="ch" onclick="mAns('ex1m2-1',3,1)"><span class="cnum">④</span>$3$</button>
+            <button class="ch" onclick="mAns('ex1m2-1',0,0)"><span class="cnum">①</span>$1$</button>
+            <button class="ch" onclick="mAns('ex1m2-1',1,0)"><span class="cnum">②</span>$7$</button>
+            <button class="ch" onclick="mAns('ex1m2-1',2,0)"><span class="cnum">③</span>$0$</button>
+            <button class="ch" onclick="mAns('ex1m2-1',3,0)"><span class="cnum">④</span>$-7$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex1m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">どんな数の0乗も $1$<br>$1 \times 1 \times 1 = 1$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex1m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a^0 = 1$ はすべての $a 
-eq 0$ で成立<br>$7^0=1,\ 3^0=1,\ (-5)^0=1$ → $1\times1\times1=1$</div></div></div><button class="reset-btn" onclick="mReset('ex1m2-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex1m2-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^0=1$：$7^0=1$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex1m2-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">どんな数の0乗も1</div></div></div></div><button class="reset-btn" onclick="mReset('ex1m2-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex1m2-2" style="display:none">
-          <div class="mini-q-text"><strong>$\left(\dfrac{2}{3}\right)^{-2}$ の値は？</strong></div>
+          <div class="mini-q-text"><strong>$3^{-1}$ の値は？</strong></div>
           <div class="choices" id="mch-ex1m2-2">
-            <button class="ch" onclick="mAns('ex1m2-2',0,1)"><span class="cnum">①</span>$\dfrac{4}{9}$</button>
-            <button class="ch" onclick="mAns('ex1m2-2',1,1)"><span class="cnum">②</span>$\dfrac{9}{4}$</button>
-            <button class="ch" onclick="mAns('ex1m2-2',2,1)"><span class="cnum">③</span>$-\dfrac{4}{9}$</button>
-            <button class="ch" onclick="mAns('ex1m2-2',3,1)"><span class="cnum">④</span>$\dfrac{2}{3}$</button>
+            <button class="ch" onclick="mAns('ex1m2-2',0,1)"><span class="cnum">①</span>$-3$</button>
+            <button class="ch" onclick="mAns('ex1m2-2',1,1)"><span class="cnum">②</span>$\dfrac{1}{3}$</button>
+            <button class="ch" onclick="mAns('ex1m2-2',2,1)"><span class="cnum">③</span>$3$</button>
+            <button class="ch" onclick="mAns('ex1m2-2',3,1)"><span class="cnum">④</span>$\dfrac{1}{9}$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex1m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">分数のマイナス乗はひっくり返す：$\left(\dfrac{2}{3}\right)^{-2} = \left(\dfrac{3}{2}\right)^2 = \dfrac{9}{4}$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex1m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\left(rac{a}{b}\right)^{-m} = \left(rac{b}{a}\right)^m$<br>$\left(rac{2}{3}\right)^{-2} = \left(rac{3}{2}\right)^2 = rac{9}{4}$</div></div></div><button class="reset-btn" onclick="mReset('ex1m2-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex1m2-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^{-1}=\dfrac{1}{a}$：$3^{-1}=\dfrac{1}{3}$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex1m2-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">マイナス1乗は逆数</div></div></div></div><button class="reset-btn" onclick="mReset('ex1m2-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex1m2">
-          <div class="mini-complete-emoji">🎉</div><div class="mini-complete-text">クリア！負の指数もマスターできました。</div>
-          <div class="mini-nav"><a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button></div>
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">0乗・負の指数、マスター！</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr2')">練習問題に進む →</button>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
-<!-- 練習② -->
+<!-- 練習問題② — 0乗と負の指数 -->
 <div class="page" id="page-pr2">
-  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題② — $a^0$ と負の指数の計算</div><div class="page-hdr-desc">0乗・マイナス乗の計算練習</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr2" style="width:0%"></div></div><span class="pb-txt" id="pb-pr2-txt">0 / 3 完了</span></div>
+  <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題② — 0乗と負の指数</div><div class="page-hdr-desc">★★☆ マイナス乗・0乗の計算</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr2" id="pb-pr2" style="width:0%"></div></div><span class="pb-txt" id="pb-pr2-txt">0 / 5 完了</span></div>
   <div class="card">
     <div class="clabel pr">問 1</div>
-    <p class="q-text">$5^{-1}$ の値は？</p>
+    <p class="q-text">$10^0$ の値は？</p>
     <div class="choices" id="ch-p2q1">
-      <button class="ch" onclick="ans2('p2q1','pr2',1,0)"><span class="cnum">①</span>$-5$</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',1,1)"><span class="cnum">②</span>$\dfrac{1}{5}$</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',1,2)"><span class="cnum">③</span>$5$</button>
-      <button class="ch" onclick="ans2('p2q1','pr2',1,3)"><span class="cnum">④</span>$\dfrac{1}{25}$</button>
+      <button class="ch" onclick="ans2('p2q1','pr2',2,0)"><span class="cnum">①</span>$10$</button>
+      <button class="ch" onclick="ans2('p2q1','pr2',2,1)"><span class="cnum">②</span>$-5$</button>
+      <button class="ch" onclick="ans2('p2q1','pr2',2,2)"><span class="cnum">③</span>$1$</button>
+      <button class="ch" onclick="ans2('p2q1','pr2',2,3)"><span class="cnum">④</span>$0$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-p2q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$5^{-1} = \dfrac{1}{5}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a^{-1} = \dfrac{1}{a}$ なので $5^{-1} = \dfrac{1}{5}$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q1','pr2')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-p2q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^0=1$（$a\neq0$）：$10^0=1$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p2q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">どんな数の0乗も $1$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p2q1','pr2')">🔄 もう一度</button>
     <hr class="prob-divider">
+
     <div class="clabel pr">問 2</div>
-    <p class="q-text">$2^{-3}$ の値は？</p>
+    <p class="q-text">$3^{-1}$ の値は？</p>
     <div class="choices" id="ch-p2q2">
-      <button class="ch" onclick="ans2('p2q2','pr2',2,0)"><span class="cnum">①</span>$-8$</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',2,1)"><span class="cnum">②</span>$\dfrac{1}{6}$</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',2,2)"><span class="cnum">③</span>$\dfrac{1}{8}$</button>
-      <button class="ch" onclick="ans2('p2q2','pr2',2,3)"><span class="cnum">④</span>$\dfrac{1}{4}$</button>
+      <button class="ch" onclick="ans2('p2q2','pr2',1,0)"><span class="cnum">①</span>$-3$</button>
+      <button class="ch" onclick="ans2('p2q2','pr2',1,1)"><span class="cnum">②</span>$\dfrac{1}{3}$</button>
+      <button class="ch" onclick="ans2('p2q2','pr2',1,2)"><span class="cnum">③</span>$3$</button>
+      <button class="ch" onclick="ans2('p2q2','pr2',1,3)"><span class="cnum">④</span>$\dfrac{1}{9}$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-p2q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$2^{-3} = \dfrac{1}{2^3} = \dfrac{1}{8}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a^{-m} = \dfrac{1}{a^m}$：$2^{-3} = \dfrac{1}{8}$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q2','pr2')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-p2q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^{-1}=\dfrac{1}{a}$：$3^{-1}=\dfrac{1}{3}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p2q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">マイナス1乗は逆数：$3^{-1}=\dfrac{1}{3}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p2q2','pr2')">🔄 もう一度</button>
     <hr class="prob-divider">
+
     <div class="clabel pr">問 3</div>
-    <p class="q-text">$\left(\dfrac{2}{5}\right)^{-3}$ の値は？</p>
+    <p class="q-text">$2^{-3}$ の値は？</p>
     <div class="choices" id="ch-p2q3">
-      <button class="ch" onclick="ans2('p2q3','pr2',3,0)"><span class="cnum">①</span>$\dfrac{8}{125}$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',3,1)"><span class="cnum">②</span>$-\dfrac{8}{125}$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',3,2)"><span class="cnum">③</span>$\dfrac{25}{4}$</button>
-      <button class="ch" onclick="ans2('p2q3','pr2',3,3)"><span class="cnum">④</span>$\dfrac{125}{8}$</button>
+      <button class="ch" onclick="ans2('p2q3','pr2',0,0)"><span class="cnum">①</span>$\dfrac{1}{8}$</button>
+      <button class="ch" onclick="ans2('p2q3','pr2',0,1)"><span class="cnum">②</span>$-8$</button>
+      <button class="ch" onclick="ans2('p2q3','pr2',0,2)"><span class="cnum">③</span>$\dfrac{1}{6}$</button>
+      <button class="ch" onclick="ans2('p2q3','pr2',0,3)"><span class="cnum">④</span>$8$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-p2q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$\left(\dfrac{2}{5}\right)^{-3} = \left(\dfrac{5}{2}\right)^3 = \dfrac{125}{8}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p2q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">分数のマイナス乗はひっくり返す：$\left(rac{5}{2}\right)^3 = rac{125}{8}$</div></div></div><button class="reset-btn" onclick="resetQ2('p2q3','pr2')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-p2q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^{-3}=\dfrac{1}{2^3}=\dfrac{1}{8}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p2q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a^{-m}=\dfrac{1}{a^m}$：$\dfrac{1}{8}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p2q3','pr2')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel pr">問 4</div>
+    <p class="q-text">$\left(\dfrac{2}{3}\right)^{-2}$ の値は？</p>
+    <div class="choices" id="ch-p2q4">
+      <button class="ch" onclick="ans2('p2q4','pr2',3,0)"><span class="cnum">①</span>$\dfrac{4}{9}$</button>
+      <button class="ch" onclick="ans2('p2q4','pr2',3,1)"><span class="cnum">②</span>$-\dfrac{4}{9}$</button>
+      <button class="ch" onclick="ans2('p2q4','pr2',3,2)"><span class="cnum">③</span>$\dfrac{9}{2}$</button>
+      <button class="ch" onclick="ans2('p2q4','pr2',3,3)"><span class="cnum">④</span>$\dfrac{9}{4}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p2q4"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">分数のマイナス乗はひっくり返す：$\left(\dfrac{3}{2}\right)^2=\dfrac{9}{4}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p2q4"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\left(\frac{a}{b}\right)^{-m}=\left(\frac{b}{a}\right)^m$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p2q4','pr2')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel pr">問 5</div>
+    <p class="q-text">$\left(\dfrac{2}{5}\right)^{-3}$ の値は？</p>
+    <div class="choices" id="ch-p2q5">
+      <button class="ch" onclick="ans2('p2q5','pr2',2,0)"><span class="cnum">①</span>$\dfrac{8}{125}$</button>
+      <button class="ch" onclick="ans2('p2q5','pr2',2,1)"><span class="cnum">②</span>$-\dfrac{125}{8}$</button>
+      <button class="ch" onclick="ans2('p2q5','pr2',2,2)"><span class="cnum">③</span>$\dfrac{125}{8}$</button>
+      <button class="ch" onclick="ans2('p2q5','pr2',2,3)"><span class="cnum">④</span>$\dfrac{25}{4}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p2q5"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\left(\dfrac{5}{2}\right)^3=\dfrac{125}{8}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p2q5"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">分数をひっくり返してプラス乗</div></div></div></div><button class="reset-btn" onclick="resetQ2('p2q5','pr2')">🔄 もう一度</button>
   </div>
-  <div class="page-nav-row"><a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button></div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('cf2')">確認問題に進む →</button>
+  </div>
 </div>
 
-<!-- 確認② -->
+<!-- 確認問題② — 負の指数の応用 -->
 <div class="page" id="page-cf2">
-  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題② — 負の指数の応用</div><div class="page-hdr-desc">組み合わせた計算で総仕上げ</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf2" style="width:0%"></div></div><span class="pb-txt" id="pb-cf2-txt">0 / 2 完了</span></div>
+  <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題② — 負の指数の応用</div><div class="page-hdr-desc">★★★ 複合計算・フラクション</div></div></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf2" id="pb-cf2" style="width:0%"></div></div><span class="pb-txt" id="pb-cf2-txt">0 / 5 完了</span></div>
   <div class="card">
-    <div class="clabel cf">確認 1</div>
+    <div class="clabel cf">問 a</div>
     <p class="q-text">$3^{-2}$ の値は？</p>
     <div class="choices" id="ch-c2a">
-      <button class="ch" onclick="ans2('c2a','cf2',1,0)"><span class="cnum">①</span>$-9$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',1,1)"><span class="cnum">②</span>$\dfrac{1}{9}$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',1,2)"><span class="cnum">③</span>$9$</button>
-      <button class="ch" onclick="ans2('c2a','cf2',1,3)"><span class="cnum">④</span>$\dfrac{1}{6}$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',2,0)"><span class="cnum">①</span>$-9$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',2,1)"><span class="cnum">②</span>$9$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',2,2)"><span class="cnum">③</span>$\dfrac{1}{9}$</button>
+      <button class="ch" onclick="ans2('c2a','cf2',2,3)"><span class="cnum">④</span>$\dfrac{1}{3}$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-c2a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$3^{-2} = \dfrac{1}{3^2} = \dfrac{1}{9}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c2a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$3^{-2} = rac{1}{9}$</div></div></div><button class="reset-btn" onclick="resetQ2('c2a','cf2')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-c2a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^{-2}=\dfrac{1}{3^2}=\dfrac{1}{9}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c2a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a^{-m}=\dfrac{1}{a^m}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c2a','cf2')">🔄 もう一度</button>
     <hr class="prob-divider">
-    <div class="clabel cf">確認 2</div>
-    <p class="q-text">$5^0 \times 2^{-2} \times \left(\dfrac{1}{3}\right)^{-1}$ の値は？</p>
+
+    <div class="clabel cf">問 b</div>
+    <p class="q-text">$(-5)^0 + 2^0 - 1^0$ の値は？</p>
     <div class="choices" id="ch-c2b">
-      <button class="ch" onclick="ans2('c2b','cf2',3,0)"><span class="cnum">①</span>$\dfrac{1}{12}$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',3,1)"><span class="cnum">②</span>$3$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',3,2)"><span class="cnum">③</span>$\dfrac{4}{3}$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',3,3)"><span class="cnum">④</span>$\dfrac{3}{4}$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',0,0)"><span class="cnum">①</span>$1$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',0,1)"><span class="cnum">②</span>$-2$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',0,2)"><span class="cnum">③</span>$0$</button>
+      <button class="ch" onclick="ans2('c2b','cf2',0,3)"><span class="cnum">④</span>$2$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-c2b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5^0 = 1$、$2^{-2} = \dfrac{1}{4}$、$\left(\dfrac{1}{3}\right)^{-1} = 3$</div><div class="fb-step fb-ans">$1 \times \dfrac{1}{4} \times 3 = \dfrac{3}{4}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c2b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$5^0=1$、$2^{-2}=rac{1}{4}$、$(rac{1}{3})^{-1}=3$<br>$1\timesrac{1}{4}\times3=rac{3}{4}$</div></div></div><button class="reset-btn" onclick="resetQ2('c2b','cf2')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-c2b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">すべての0乗は $1$：$1+1-1=1$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c2b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(-5)^0=2^0=1^0=1$ → $1+1-1=1$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c2b','cf2')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel cf">問 c</div>
+    <p class="q-text">$5^0 \times 2^{-2} \times \left(\dfrac{1}{3}\right)^{-1}$ の値は？</p>
+    <div class="choices" id="ch-c2c">
+      <button class="ch" onclick="ans2('c2c','cf2',1,0)"><span class="cnum">①</span>$\dfrac{1}{12}$</button>
+      <button class="ch" onclick="ans2('c2c','cf2',1,1)"><span class="cnum">②</span>$\dfrac{3}{4}$</button>
+      <button class="ch" onclick="ans2('c2c','cf2',1,2)"><span class="cnum">③</span>$\dfrac{4}{3}$</button>
+      <button class="ch" onclick="ans2('c2c','cf2',1,3)"><span class="cnum">④</span>$3$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c2c"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5^0=1$、$2^{-2}=\dfrac{1}{4}$、$\left(\dfrac{1}{3}\right)^{-1}=3$</div><div class="fb-step">$1\times\dfrac{1}{4}\times3=\dfrac{3}{4}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c2c"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">各数を計算してかけ合わせる</div></div></div></div><button class="reset-btn" onclick="resetQ2('c2c','cf2')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel cf">問 d</div>
+    <p class="q-text">$\left(\dfrac{1}{2}\right)^{-2} \times 2^{-4}$ の値は？</p>
+    <div class="choices" id="ch-c2d">
+      <button class="ch" onclick="ans2('c2d','cf2',1,0)"><span class="cnum">①</span>$4$</button>
+      <button class="ch" onclick="ans2('c2d','cf2',1,1)"><span class="cnum">②</span>$\dfrac{1}{4}$</button>
+      <button class="ch" onclick="ans2('c2d','cf2',1,2)"><span class="cnum">③</span>$-\dfrac{1}{4}$</button>
+      <button class="ch" onclick="ans2('c2d','cf2',1,3)"><span class="cnum">④</span>$\dfrac{1}{16}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c2d"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\left(\frac{1}{2}\right)^{-2}=2^2=4$</div><div class="fb-step">$4\times2^{-4}=2^2\times2^{-4}=2^{-2}=\dfrac{1}{4}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c2d"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$2^2\times2^{-4}=2^{-2}=\frac{1}{4}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c2d','cf2')">🔄 もう一度</button>
+    <hr class="prob-divider">
+
+    <div class="clabel cf">問 e</div>
+    <p class="q-text">$5^{-1} \times 5^{-1}$ の値は？</p>
+    <div class="choices" id="ch-c2e">
+      <button class="ch" onclick="ans2('c2e','cf2',0,0)"><span class="cnum">①</span>$\dfrac{1}{25}$</button>
+      <button class="ch" onclick="ans2('c2e','cf2',0,1)"><span class="cnum">②</span>$25$</button>
+      <button class="ch" onclick="ans2('c2e','cf2',0,2)"><span class="cnum">③</span>$5$</button>
+      <button class="ch" onclick="ans2('c2e','cf2',0,3)"><span class="cnum">④</span>$-5$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c2e"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5^{-1+(-1)}=5^{-2}=\dfrac{1}{25}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c2e"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底が同じ→指数をたす：$5^{-2}=\dfrac{1}{25}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c2e','cf2')">🔄 もう一度</button>
   </div>
-  <div class="page-nav-row"><a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button></div>
+  <div class="page-nav-row">
+    <a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a>
+    <button class="mini-nav-btn next" onclick="switchPage('ex3')">解説③へ進む →</button>
+  </div>
 </div>
 
-<!-- 解説③ 指数法則の総合計算 -->
+<!-- 解説③ -->
 <div class="page" id="page-ex3">
-  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body"><div class="page-hdr-title">解説③ — 指数法則の総合計算</div><div class="page-hdr-desc">全法則を組み合わせた難しい計算に挑戦</div></div></div>
+  <div class="page-hdr"><div class="page-hdr-icon icon-ex">例</div><div class="page-hdr-body"><div class="page-hdr-title">解説③ — 分数指数・累乗根・総合計算</div><div class="page-hdr-desc">すべて $a^{m/n}$ に変換して解く</div></div></div>
   <div class="card">
-    <div class="clabel ex">解説③ — 複合計算のコツ</div>
-    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:14px;color:var(--teal);font-weight:700;">
-      すべて「同じ底のべき乗」に変形してから計算するのがコツです！
+    <div class="clabel ex">解説③ — 分数指数・累乗根・総合計算</div>
+    <div style="background:var(--tl);border-left:4px solid var(--teal);border-radius:8px;padding:.7rem 1rem;margin-bottom:1.2rem;font-size:14px;color:var(--teal);font-weight:700;">
+      すべて $a^{m/n}$ の形に直してから計算するのが最も確実！
     </div>
-    <div class="step-ex" id="se1">
-      <div class="step-ex-title">【例題】$25^{1.5} \times 32^{-0.2}$ を計算せよ。</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se1',1)" id="se1-btn1">STEP 1 底を素因数にする</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se1',2)" id="se1-btn2">STEP 2 指数法則で計算</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se1',3)" id="se1-btn3">答え</button>
-      </div>
-      <div id="se1-s1" style="display:none" class="step-ex-body"><span class="step-label teal">STEP 1</span>$25 = 5^2$、$32 = 2^5$ に変形：<br>$(5^2)^{1.5} \times (2^5)^{-0.2}$</div>
-      <div id="se1-s2" style="display:none" class="step-ex-body"><span class="step-label blue">STEP 2</span>$5^{2 \times 1.5} \times 2^{5 \times (-0.2)} = 5^3 \times 2^{-1}$</div>
-      <div id="se1-s3" style="display:none" class="step-ex-body ans"><span class="step-label amber">答え</span>$5^3 \times 2^{-1} = 125 \times \dfrac{1}{2} = \dfrac{125}{2}$</div>
+    <div class="exp-box blue">
+      <h4>分数指数 $a^{1/n}$ とは？</h4>
+      <p>
+        $(a^{1/2})^2 = a^{1/2 \times 2} = a^1 = a$ なので、<br>
+        $a^{1/2}$ は「2乗すると $a$ になる数」＝ $\sqrt{a}$（平方根）です。<br><br>
+        同様に $a^{1/3}$ は「3乗すると $a$ になる数」＝ $\sqrt[3]{a}$（3乗根）<br><br>
+        <strong>一般に：$a^{1/n} = \sqrt[n]{a}$（$n$ 乗根）</strong>
+      </p>
     </div>
-    <div class="step-ex" id="se2">
-      <div class="step-ex-title">【例題】$9^{rac{1}{3}} \times 9^{rac{1}{4}} \div 9^{rac{1}{12}}$ を計算せよ。</div>
-      <div class="step-ex-btns">
-        <button class="step-ex-btn" onclick="showStep('se2',1)" id="se2-btn1">STEP 1 指数をたし引き</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se2',2)" id="se2-btn2">STEP 2 計算</button>
-        <button class="step-ex-btn" disabled onclick="showStep('se2',3)" id="se2-btn3">答え</button>
-      </div>
-      <div id="se2-s1" style="display:none" class="step-ex-body"><span class="step-label teal">STEP 1</span>底がすべて $9$ なので指数の計算：<br>$\dfrac{1}{3} + \dfrac{1}{4} - \dfrac{1}{12} = \dfrac{4}{12} + \dfrac{3}{12} - \dfrac{1}{12} = \dfrac{6}{12} = \dfrac{1}{2}$</div>
-      <div id="se2-s2" style="display:none" class="step-ex-body"><span class="step-label blue">STEP 2</span>$9^{rac{1}{2}} = \sqrt{9} = 3$</div>
-      <div id="se2-s3" style="display:none" class="step-ex-body ans"><span class="step-label amber">答え</span>$3$</div>
+    <div class="formula-box">
+      <div class="formula-big">$a^{\frac{m}{n}} = \sqrt[n]{a^m} = (\sqrt[n]{a})^m$</div>
+      <div class="formula-note">分母が根号の次数、分子が乗数</div>
+    </div>
+    <div class="exp-box amber">
+      <h4>計算の手順：すべて $a^{m/n}$ に変換する</h4>
+      <p>
+        $\sqrt[3]{4} = 4^{1/3}$、$\sqrt{8} = 8^{1/2} = (2^3)^{1/2} = 2^{3/2}$<br><br>
+        $9^{1/4} \times \sqrt[3]{9} \div 9^{1/12}$<br>
+        $= 9^{1/4} \times 9^{1/3} \div 9^{1/12}$<br>
+        $= 9^{1/4 + 1/3 - 1/12}$　← 指数をたし引き<br>
+        $= 9^{3/12 + 4/12 - 1/12} = 9^{6/12} = 9^{1/2} = 3$
+      </p>
+    </div>
+    <div class="exp-box purple">
+      <h4>底が違う場合：まず底をそろえる</h4>
+      <p>
+        $25^{1.5} \times 32^{-0.2}$<br>
+        $25 = 5^2$、$32 = 2^5$ に変換：<br>
+        $(5^2)^{1.5} \times (2^5)^{-0.2}$<br>
+        $= 5^{2 \times 1.5} \times 2^{5 \times (-0.2)}$<br>
+        $= 5^3 \times 2^{-1}$<br>
+        $= 125 \times \dfrac{1}{2} = \dfrac{125}{2}$
+      </p>
     </div>
     <div class="point-box">
-      <strong>🔑 複合計算の手順</strong>
-      ① 底を同じに揃える（素因数分解を使う）<br>
-      ② 掛け算・割り算を指数のたし引きに変換<br>
-      ③ 最終的な指数を計算して答えを出す
+      <strong>🔑 総合計算の手順</strong>
+      ① 底を同じにそろえる（素因数分解を活用）<br>
+      ② $\sqrt[n]{a} = a^{1/n}$ に変換して指数に統一<br>
+      ③ 指数のたし引き・かけ算で計算
     </div>
-    <div class="mini-fold" id="mfold-ex1m3">
+    
+
+
+        <div class="mini-fold" id="mfold-ex1m3">
       <button class="mini-fold-btn" onclick="mToggle('ex1m3')">✏️ ミニテストに挑戦！　▼</button>
       <div class="mini-fold-inner" id="minner-ex1m3">
         <div id="mq-ex1m3-1">
-          <div class="mini-q-text"><strong>$4^{rac{3}{2}}$ の値は？</strong></div>
+          <div class="mini-q-text"><strong>$9^{\frac{1}{2}}$ の値は？</strong></div>
           <div class="choices" id="mch-ex1m3-1">
-            <button class="ch" onclick="mAns('ex1m3-1',0,1)"><span class="cnum">①</span>$6$</button>
-            <button class="ch" onclick="mAns('ex1m3-1',1,1)"><span class="cnum">②</span>$8$</button>
-            <button class="ch" onclick="mAns('ex1m3-1',2,1)"><span class="cnum">③</span>$4$</button>
-            <button class="ch" onclick="mAns('ex1m3-1',3,1)"><span class="cnum">④</span>$16$</button>
+            <button class="ch" onclick="mAns('ex1m3-1',0,1)"><span class="cnum">①</span>$3$</button>
+            <button class="ch" onclick="mAns('ex1m3-1',1,1)"><span class="cnum">②</span>$9$</button>
+            <button class="ch" onclick="mAns('ex1m3-1',2,1)"><span class="cnum">③</span>$27$</button>
+            <button class="ch" onclick="mAns('ex1m3-1',3,1)"><span class="cnum">④</span>$\sqrt{3}$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex1m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$4 = 2^2$ なので $4^{rac{3}{2}} = (2^2)^{rac{3}{2}} = 2^3 = 8$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex1m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$4 = 2^2$ → $(2^2)^{rac{3}{2}} = 2^{2 \times rac{3}{2}} = 2^3 = 8$</div></div></div><button class="reset-btn" onclick="mReset('ex1m3-1',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex1m3-1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^{1/2}=\sqrt{a}$：$9^{1/2}=\sqrt{9}=3$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex1m3-1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$9^{1/2}=\sqrt{9}=3$</div></div></div></div><button class="reset-btn" onclick="mReset('ex1m3-1')">🔄 もう一度</button>
         </div>
         <div id="mq-ex1m3-2" style="display:none">
-          <div class="mini-q-text"><strong>$2^{rac{3}{2}} \times 4^{-1} \times \sqrt{8}$ の値は？</strong></div>
+          <div class="mini-q-text"><strong>$4^{\frac{3}{2}}$ の値は？</strong></div>
           <div class="choices" id="mch-ex1m3-2">
-            <button class="ch" onclick="mAns('ex1m3-2',0,1)"><span class="cnum">①</span>$4$</button>
-            <button class="ch" onclick="mAns('ex1m3-2',1,1)"><span class="cnum">②</span>$2$</button>
-            <button class="ch" onclick="mAns('ex1m3-2',2,1)"><span class="cnum">③</span>$1$</button>
-            <button class="ch" onclick="mAns('ex1m3-2',3,1)"><span class="cnum">④</span>$\dfrac{1}{2}$</button>
+            <button class="ch" onclick="mAns('ex1m3-2',0,0)"><span class="cnum">①</span>$8$</button>
+            <button class="ch" onclick="mAns('ex1m3-2',1,0)"><span class="cnum">②</span>$4$</button>
+            <button class="ch" onclick="mAns('ex1m3-2',2,0)"><span class="cnum">③</span>$16$</button>
+            <button class="ch" onclick="mAns('ex1m3-2',3,0)"><span class="cnum">④</span>$6$</button>
           </div>
-          <div class="fb-ok" id="mfb-ok-ex1m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$4^{-1} = 2^{-2}$、$\sqrt{8} = (2^3)^{rac{1}{2}} = 2^{rac{3}{2}}$</div><div class="fb-step fb-ans">$2^{rac{3}{2}} \times 2^{-2} \times 2^{rac{3}{2}} = 2^{rac{3}{2}-2+rac{3}{2}} = 2^1 = 2$</div></div></div></div>
-          <div class="fb-ng" id="mfb-ng-ex1m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">すべて底 $2$ に：$2^{rac{3}{2}+(-2)+rac{3}{2}} = 2^1 = 2$</div></div></div><button class="reset-btn" onclick="mReset('ex1m3-2',1)">🔄 もう一度</button></div>
+          <div class="fb-ok" id="mfb-ok-ex1m3-2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$4=2^2$：$(2^2)^{3/2}=2^3=8$</div></div></div></div>
+          <div class="fb-ng" id="mfb-ng-ex1m3-2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$4=2^2$ → $2^3=8$</div></div></div></div><button class="reset-btn" onclick="mReset('ex1m3-2')">🔄 もう一度</button>
         </div>
         <div class="mini-complete" id="mc-ex1m3">
-          <div class="mini-complete-emoji">🎉</div><div class="mini-complete-text">クリア！総合計算もマスターできました。</div>
-          <div class="mini-nav"><a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button></div>
+          <div class="mini-complete-emoji">🎉</div>
+          <div class="mini-complete-text">分数指数、マスター！</div>
+          <div class="mini-nav">
+            <a class="mini-nav-btn index" href="index_math2_ex.html">📋 単元表に戻る</a>
+            <button class="mini-nav-btn next" onclick="switchPage('pr3')">練習問題に進む →</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- 練習③ -->
 <div class="page" id="page-pr3">
   <div class="page-hdr"><div class="page-hdr-icon icon-pr">演</div><div class="page-hdr-body"><div class="page-hdr-title">練習問題③ — 総合計算</div><div class="page-hdr-desc">底を揃えて指数の総合計算をする</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr3" style="width:0%"></div></div><span class="pb-txt" id="pb-pr3-txt">0 / 2 完了</span></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-pr" id="pb-pr3" style="width:0%"></div></div><span class="pb-txt" id="pb-pr3-txt">0 / 5 完了</span></div>
   <div class="card">
     <div class="clabel pr">問 1</div>
-    <p class="q-text">$9^{rac{1}{4}} \times \sqrt[3]{9} \div 9^{rac{1}{12}}$ を計算すると？</p>
+    <p class="q-text">$4^{\frac{3}{2}}$ の値は？</p>
     <div class="choices" id="ch-p3q1">
-      <button class="ch" onclick="ans2('p3q1','pr3',3,0)"><span class="cnum">①</span>$9$</button>
-      <button class="ch" onclick="ans2('p3q1','pr3',3,1)"><span class="cnum">②</span>$81$</button>
-      <button class="ch" onclick="ans2('p3q1','pr3',3,2)"><span class="cnum">③</span>$9^{rac{1}{2}} = 3$</button>
-      <button class="ch" onclick="ans2('p3q1','pr3',3,3)"><span class="cnum">④</span>$3$</button>
+      <button class="ch" onclick="ans2('p3q1','pr3',1,0)"><span class="cnum">①</span>$4^3=64$</button>
+      <button class="ch" onclick="ans2('p3q1','pr3',1,1)"><span class="cnum">②</span>$2^3=8$</button>
+      <button class="ch" onclick="ans2('p3q1','pr3',1,2)"><span class="cnum">③</span>$2^4=16$</button>
+      <button class="ch" onclick="ans2('p3q1','pr3',1,3)"><span class="cnum">④</span>$4^2=16$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-p3q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\dfrac{1}{4} + \dfrac{1}{3} - \dfrac{1}{12} = \dfrac{3+4-1}{12} = \dfrac{6}{12} = \dfrac{1}{2}$</div><div class="fb-step fb-ans">$9^{rac{1}{2}} = 3$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p3q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$rac{1}{4}+rac{1}{3}-rac{1}{12} = rac{3+4-1}{12} = rac{1}{2}$ → $9^{1/2}=3$</div></div></div><button class="reset-btn" onclick="resetQ2('p3q1','pr3')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-p3q1"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$4=2^2$ → $(2^2)^{\frac{3}{2}}=2^3=8$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p3q1"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$4=2^2$ → $(2^2)^{3/2}=2^3=8$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p3q1','pr3')">🔄 もう一度</button>
     <hr class="prob-divider">
     <div class="clabel pr">問 2</div>
-    <p class="q-text">$25^{1.5} \times 32^{-0.2}$ の値は？</p>
+    <p class="q-text">$9^{\frac{1}{4}} \times \sqrt[3]{9} \div 9^{\frac{1}{12}}$ を計算すると？</p>
     <div class="choices" id="ch-p3q2">
-      <button class="ch" onclick="ans2('p3q2','pr3',3,0)"><span class="cnum">①</span>$250$</button>
-      <button class="ch" onclick="ans2('p3q2','pr3',3,1)"><span class="cnum">②</span>$\dfrac{125}{4}$</button>
-      <button class="ch" onclick="ans2('p3q2','pr3',3,2)"><span class="cnum">③</span>$62.5$</button>
-      <button class="ch" onclick="ans2('p3q2','pr3',3,3)"><span class="cnum">④</span>$\dfrac{125}{2}$</button>
+      <button class="ch" onclick="ans2('p3q2','pr3',2,0)"><span class="cnum">①</span>$27$</button>
+      <button class="ch" onclick="ans2('p3q2','pr3',2,1)"><span class="cnum">②</span>$9$</button>
+      <button class="ch" onclick="ans2('p3q2','pr3',2,2)"><span class="cnum">③</span>$3$</button>
+      <button class="ch" onclick="ans2('p3q2','pr3',2,3)"><span class="cnum">④</span>$\sqrt{3}$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-p3q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$25=5^2$、$32=2^5$：$(5^2)^{1.5} \times (2^5)^{-0.2} = 5^3 \times 2^{-1}$</div><div class="fb-step fb-ans">$125 \times \dfrac{1}{2} = \dfrac{125}{2}$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-p3q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$5^{2\times1.5}\times2^{5\times(-0.2)}=5^3\times2^{-1}=rac{125}{2}$</div></div></div><button class="reset-btn" onclick="resetQ2('p3q2','pr3')">🔄 もう一度</button></div>
-  </div>
+    <div class="fb-ok" id="fb-ok-p3q2"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">指数の和：$\dfrac{1}{4}+\dfrac{1}{3}-\dfrac{1}{12}=\dfrac{3+4-1}{12}=\dfrac{1}{2}$</div><div class="fb-step">$9^{\frac{1}{2}}=3$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p3q2"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\frac{1}{4}+\frac{1}{3}-\frac{1}{12}=\frac{1}{2}$ → $9^{1/2}=3$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p3q2','pr3')">🔄 もう一度</button>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 3</div>
+    <p class="q-text">$25^{1.5} \times 32^{-0.2}$ の値は？</p>
+    <div class="choices" id="ch-p3q3">
+      <button class="ch" onclick="ans2('p3q3','pr3',3,0)"><span class="cnum">①</span>$16$</button>
+      <button class="ch" onclick="ans2('p3q3','pr3',3,1)"><span class="cnum">②</span>$8$</button>
+      <button class="ch" onclick="ans2('p3q3','pr3',3,2)"><span class="cnum">③</span>$4$</button>
+      <button class="ch" onclick="ans2('p3q3','pr3',3,3)"><span class="cnum">④</span>$\dfrac{125}{2}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p3q3"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$25=5^2$，$32=2^5$：$5^3\times2^{-1}$</div><div class="fb-step">$125\times\dfrac{1}{2}=\dfrac{125}{2}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p3q3"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$5^3\times2^{-1}=\dfrac{125}{2}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p3q3','pr3')">🔄 もう一度</button>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 4</div>
+    <p class="q-text">$a^{\frac{1}{2}} \times a^{\frac{2}{3}} \div a^{\frac{1}{6}}$ を簡単にすると？（$a>0$）</p>
+    <div class="choices" id="ch-p3q4">
+      <button class="ch" onclick="ans2('p3q4','pr3',0,0)"><span class="cnum">①</span>$a$</button>
+      <button class="ch" onclick="ans2('p3q4','pr3',0,1)"><span class="cnum">②</span>$a^2$</button>
+      <button class="ch" onclick="ans2('p3q4','pr3',0,2)"><span class="cnum">③</span>$a^{\frac{1}{2}}$</button>
+      <button class="ch" onclick="ans2('p3q4','pr3',0,3)"><span class="cnum">④</span>$a^{\frac{5}{6}}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p3q4"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\dfrac{1}{2}+\dfrac{2}{3}-\dfrac{1}{6}=\dfrac{3+4-1}{6}=1$</div><div class="fb-step">$a^1=a$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p3q4"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\frac{1}{2}+\frac{2}{3}-\frac{1}{6}=1$ → $a$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p3q4','pr3')">🔄 もう一度</button>
+    <hr class="prob-divider">
+    <div class="clabel pr">問 5</div>
+    <p class="q-text">$2^{\frac{3}{2}} \times 4^{-1} \times \sqrt{8}$ の値は？</p>
+    <div class="choices" id="ch-p3q5">
+      <button class="ch" onclick="ans2('p3q5','pr3',1,0)"><span class="cnum">①</span>$4$</button>
+      <button class="ch" onclick="ans2('p3q5','pr3',1,1)"><span class="cnum">②</span>$2$</button>
+      <button class="ch" onclick="ans2('p3q5','pr3',1,2)"><span class="cnum">③</span>$1$</button>
+      <button class="ch" onclick="ans2('p3q5','pr3',1,3)"><span class="cnum">④</span>$8$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-p3q5"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$4^{-1}=2^{-2}$，$\sqrt{8}=2^{\frac{3}{2}}$</div><div class="fb-step">$2^{\frac{3}{2}-2+\frac{3}{2}}=2^1=2$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-p3q5"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">底を$2$に統一：$2^{1}=2$</div></div></div></div><button class="reset-btn" onclick="resetQ2('p3q5','pr3')">🔄 もう一度</button>
+</div>
+
   <div class="page-nav-row"><a href="index_math2_ex.html" class="mini-nav-btn index">📋 単元表に戻る</a><button class="mini-nav-btn next" onclick="switchPage('cf3')">確認問題に進む →</button></div>
 </div>
 
 <!-- 確認③ -->
 <div class="page" id="page-cf3">
   <div class="page-hdr"><div class="page-hdr-icon icon-cf">確</div><div class="page-hdr-body"><div class="page-hdr-title">確認問題③ — 総合問題</div><div class="page-hdr-desc">指数計算の総まとめ</div></div></div>
-  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf3" style="width:0%"></div></div><span class="pb-txt" id="pb-cf3-txt">0 / 2 完了</span></div>
+  <div class="prog-wrap"><div class="pb-w"><div class="pb pb-cf" id="pb-cf3" style="width:0%"></div></div><span class="pb-txt" id="pb-cf3-txt">0 / 5 完了</span></div>
   <div class="card">
-    <div class="clabel cf">確認 1</div>
-    <p class="q-text">$a^{rac{1}{2}} \times a^{rac{2}{3}} \div a^{rac{1}{6}}$ を簡単にすると？（$a > 0$）</p>
+    <div class="clabel cf">問 a</div>
+    <p class="q-text">$\sqrt[3]{8}$ の値は？</p>
     <div class="choices" id="ch-c3a">
-      <button class="ch" onclick="ans2('c3a','cf3',2,0)"><span class="cnum">①</span>$a^{rac{1}{2}}$</button>
-      <button class="ch" onclick="ans2('c3a','cf3',2,1)"><span class="cnum">②</span>$a^{rac{2}{3}}$</button>
-      <button class="ch" onclick="ans2('c3a','cf3',2,2)"><span class="cnum">③</span>$a$</button>
-      <button class="ch" onclick="ans2('c3a','cf3',2,3)"><span class="cnum">④</span>$a^2$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',3,0)"><span class="cnum">①</span>$8$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',3,1)"><span class="cnum">②</span>$4$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',3,2)"><span class="cnum">③</span>$\sqrt{2}$</button>
+      <button class="ch" onclick="ans2('c3a','cf3',3,3)"><span class="cnum">④</span>$2$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-c3a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step fb-ans">$\dfrac{1}{2} + \dfrac{2}{3} - \dfrac{1}{6} = \dfrac{3+4-1}{6} = 1$ → $a^1 = a$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c3a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$rac{1}{2}+rac{2}{3}-rac{1}{6} = rac{3+4-1}{6} = 1$ → $a$</div></div></div><button class="reset-btn" onclick="resetQ2('c3a','cf3')">🔄 もう一度</button></div>
+    <div class="fb-ok" id="fb-ok-c3a"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$8=2^3$ → $\sqrt[3]{2^3}=2$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c3a"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$8=2^3$ → $(2^3)^{1/3}=2$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c3a','cf3')">🔄 もう一度</button>
     <hr class="prob-divider">
-    <div class="clabel cf">確認 2</div>
-    <p class="q-text">$2^{rac{3}{2}} \times 4^{-1} \times \sqrt{8}$ の値は？</p>
+    <div class="clabel cf">問 b</div>
+    <p class="q-text">$\sqrt[6]{a^3} \times \sqrt[4]{a^6}$ を簡単にすると？（$a>0$）</p>
     <div class="choices" id="ch-c3b">
-      <button class="ch" onclick="ans2('c3b','cf3',1,0)"><span class="cnum">①</span>$4$</button>
-      <button class="ch" onclick="ans2('c3b','cf3',1,1)"><span class="cnum">②</span>$2$</button>
-      <button class="ch" onclick="ans2('c3b','cf3',1,2)"><span class="cnum">③</span>$1$</button>
-      <button class="ch" onclick="ans2('c3b','cf3',1,3)"><span class="cnum">④</span>$8$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',0,0)"><span class="cnum">①</span>$a^2$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',0,1)"><span class="cnum">②</span>$a$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',0,2)"><span class="cnum">③</span>$a^{\frac{1}{2}}$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',0,3)"><span class="cnum">④</span>$a^{\frac{3}{2}}$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-c3b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">底をすべて $2$ に：$2^{rac{3}{2}} \times 2^{-2} \times 2^{rac{3}{2}}$</div><div class="fb-step fb-ans">$2^{rac{3}{2}-2+rac{3}{2}} = 2^1 = 2$</div></div></div></div>
-    <div class="fb-ng" id="fb-ng-c3b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$4^{-1}=2^{-2}$、$\sqrt{8}=2^{3/2}$：$2^{3/2-2+3/2}=2^1=2$</div></div></div><button class="reset-btn" onclick="resetQ2('c3b','cf3')">🔄 もう一度</button></div>
-  </div>
+    <div class="fb-ok" id="fb-ok-c3b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a^{3/6}\times a^{6/4}=a^{1/2}\times a^{3/2}$</div><div class="fb-step">$a^{1/2+3/2}=a^2$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c3b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$a^{1/2}\times a^{3/2}=a^2$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c3b','cf3')">🔄 もう一度</button>
+    <hr class="prob-divider">
+    <div class="clabel cf">問 c</div>
+    <p class="q-text">$\sqrt[4]{3} \times \sqrt[4]{27}$ の値は？</p>
+    <div class="choices" id="ch-c3c">
+      <button class="ch" onclick="ans2('c3c','cf3',2,0)"><span class="cnum">①</span>$27$</button>
+      <button class="ch" onclick="ans2('c3c','cf3',2,1)"><span class="cnum">②</span>$9$</button>
+      <button class="ch" onclick="ans2('c3c','cf3',2,2)"><span class="cnum">③</span>$3$</button>
+      <button class="ch" onclick="ans2('c3c','cf3',2,3)"><span class="cnum">④</span>$\sqrt{3}$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c3c"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$\sqrt[4]{3\times27}=\sqrt[4]{81}=\sqrt[4]{3^4}=3$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c3c"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$\sqrt[4]{81}=3$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c3c','cf3')">🔄 もう一度</button>
+    <hr class="prob-divider">
+    <div class="clabel cf">問 d</div>
+    <p class="q-text">$\sqrt{a\sqrt{a}}$ を $a^n$ の形で表すと？（$a>0$）</p>
+    <div class="choices" id="ch-c3d">
+      <button class="ch" onclick="ans2('c3d','cf3',1,0)"><span class="cnum">①</span>$a^{\frac{2}{3}}$</button>
+      <button class="ch" onclick="ans2('c3d','cf3',1,1)"><span class="cnum">②</span>$a^{\frac{3}{4}}$</button>
+      <button class="ch" onclick="ans2('c3d','cf3',1,2)"><span class="cnum">③</span>$a^{\frac{1}{2}}$</button>
+      <button class="ch" onclick="ans2('c3d','cf3',1,3)"><span class="cnum">④</span>$a$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c3d"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$a\cdot a^{1/2}=a^{3/2}$</div><div class="fb-step">$(a^{3/2})^{1/2}=a^{3/4}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c3d"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">内から展開：$a^{3/4}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c3d','cf3')">🔄 もう一度</button>
+    <hr class="prob-divider">
+    <div class="clabel cf">問 e</div>
+    <p class="q-text">$25^{1.5} \times 32^{-0.2}$ を指数で計算すると？</p>
+    <div class="choices" id="ch-c3e">
+      <button class="ch" onclick="ans2('c3e','cf3',0,0)"><span class="cnum">①</span>$\dfrac{125}{2}$</button>
+      <button class="ch" onclick="ans2('c3e','cf3',0,1)"><span class="cnum">②</span>$\dfrac{2}{125}$</button>
+      <button class="ch" onclick="ans2('c3e','cf3',0,2)"><span class="cnum">③</span>$250$</button>
+      <button class="ch" onclick="ans2('c3e','cf3',0,3)"><span class="cnum">④</span>$62.5$</button>
+    </div>
+    <div class="fb-ok" id="fb-ok-c3e"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$5^3\times2^{-1}=125\times\dfrac{1}{2}=\dfrac{125}{2}$</div></div></div></div>
+    <div class="fb-ng" id="fb-ng-c3e"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(5^2)^{1.5}=5^3$，$(2^5)^{-0.2}=2^{-1}$ → $\dfrac{125}{2}$</div></div></div></div><button class="reset-btn" onclick="resetQ2('c3e','cf3')">🔄 もう一度</button>
+</div>
+
   <div class="unit-nav">
     <div class="unit-nav-row"><a href="index_math2_ex.html" class="unav-btn unav-index">📋 単元表</a></div>
     <div class="unit-nav-row">
@@ -678,7 +997,7 @@ function showStep(sid, n) {
 // ===== 進捗バー =====
 var progress = {};
 function updatePb(section) {
-  var max = {pr1:3, cf1:2, pr2:3, cf2:2, pr3:2, cf3:2};
+  var max = {pr1:5,cf1:5,pr2:5,cf2:5,pr3:5,cf3:5};;
   var m = max[section] || 2;
   var cur = progress[section] || 0;
   var pb = document.getElementById('pb-' + section);
@@ -723,7 +1042,7 @@ function mToggle(id) {
   if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
 var mProgress = {};
-var mMax = {ex6m1: 2, ex6m2: 2, ex6m3: 2};
+var mMax = {ex1m1: 2, ex1m2: 2, ex1m3: 2};
 
 function mAns(qid, correct, chosen) {
   var prefix = qid.replace(/-\d+$/, '');
