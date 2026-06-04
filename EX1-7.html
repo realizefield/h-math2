@@ -661,8 +661,8 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
     <p class="q-text">$y = 4^x - 2 \cdot 2^x + 3$（$-1 \leqq x \leqq 2$）の最大値と最小値の組み合わせは？</p>
     <div class="choices" id="ch-c2b">
       <button class="ch" onclick="ans2('c2b','cf2',2,0)"><span class="cnum">①</span>最大値 $15$、最小値 $1$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',2,1)"><span class="cnum">②</span>最大値 $11$、最小値 $2$</button>
-      <button class="ch" onclick="ans2('c2b','cf2',2,2)"><span class="cnum">③</span>最大値 $11$、最小値 $2$（$x=1$）</button>
+      <button class="ch" onclick="ans2('c2b','cf2',2,1)"><span class="cnum">②</span>最大値 $11$、最小値 $2$（$x=1$）</button>
+      <button class="ch" onclick="ans2('c2b','cf2',2,2)"><span class="cnum">③</span>最大値 $11$（$x=2$）、最小値 $2$（$x=0$）</button>
       <button class="ch" onclick="ans2('c2b','cf2',2,3)"><span class="cnum">④</span>最大値 $3$、最小値 $0$</button>
     </div>
     <div class="fb-ok" id="fb-ok-c2b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$2^x = t$、$-1 \leqq x \leqq 2$ → $\frac{1}{2} \leqq t \leqq 4$</div><div class="fb-step">$y = t^2 - 2t + 3 = (t-1)^2 + 2$、頂点 $t=1$（変域内）で最小値 $2$（$x=0$）</div><div class="fb-step fb-ans">最大は端点：$t=\frac{1}{2}$：$y=\frac{1}{4}-1+3=\frac{9}{4}$　$t=4$：$y=16-8+3=11$<br>最大値 $11$（$x=2$）、最小値 $2$（$x=0$）</div></div></div></div>
@@ -890,10 +890,10 @@ main{max-width:720px;margin:0 auto;padding:1.5rem 1rem 6rem;}
     <div class="choices" id="ch-c3b">
       <button class="ch" onclick="ans2('c3b','cf3',2,0)"><span class="cnum">①</span>最大値 $85$、最小値 $-23$</button>
       <button class="ch" onclick="ans2('c3b','cf3',2,1)"><span class="cnum">②</span>最大値 $4$、最小値 $-5$</button>
-      <button class="ch" onclick="ans2('c3b','cf3',2,2)"><span class="cnum">③</span>最大値 $49$、最小値 $-5$</button>
-      <button class="ch" onclick="ans2('c3b','cf3',2,3)"><span class="cnum">④</span>最大値 $49$、最小値 $-14$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',2,2)"><span class="cnum">③</span>最大値 $31$、最小値 $-5$</button>
+      <button class="ch" onclick="ans2('c3b','cf3',2,3)"><span class="cnum">④</span>最大値 $31$、最小値 $-14$</button>
     </div>
-    <div class="fb-ok" id="fb-ok-c3b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^x=t$、$0\leqq x\leqq 2$ → $1\leqq t\leqq 9$</div><div class="fb-step">$y = t^2 - 6t + 4 = (t-3)^2 - 5$、頂点 $t=3$（変域内）</div><div class="fb-step">最小：$t=3$（$x=1$）で $y=-5$</div><div class="fb-step fb-ans">端点：$t=1$：$y=1-6+4=-1$　$t=9$：$y=81-54+4=31$...<br>（正答は③。$t=9$：$y=81-54+4=31$ではなく $9^2=81$、$-2\cdot3\cdot 9=-54$、$+4$→ $31$。最大値は $31$ でなく $49$。$9^2-2\cdot3^1\cdot9+4=81-54+4=31$... 再計算：$-2\cdot3^{x+1}$を $-2\cdot3\cdot3^x=-6t$ なので $(t-3)^2-5$、$t=9$：$81-54+4=31$）<br>→ 実際の最大は $t=9$：$y = 81-54+4 = 31$、最小は $t=3$：$y=-5$</div></div></div></div>
+    <div class="fb-ok" id="fb-ok-c3b"><span class="fb-icon">🎉</span><div class="fb-text">正解！<div class="fb-steps"><div class="fb-step">$3^x=t$、$0\leqq x\leqq 2$ → $1\leqq t\leqq 9$</div><div class="fb-step">$y = t^2 - 6t + 4 = (t-3)^2 - 5$、頂点 $t=3$（変域内）</div><div class="fb-step">最小：$t=3$（$x=1$）で $y=-5$</div><div class="fb-step fb-ans">端点：$t=1$：$y=-1$　$t=9$：$y=81-54+4=31$<br>最大値 $31$（$x=2$）、最小値 $-5$（$x=1$）</div></div></div></div>
     <div class="fb-ng" id="fb-ng-c3b"><span class="fb-icon">💡</span><div class="fb-text">不正解<div class="fb-steps"><div class="fb-step">$(t-3)^2-5$、変域 $1\leqq t\leqq 9$<br>最小 $t=3$：$y=-5$、端点比較：$t=9$が大 → $y=31$</div><div class="fb-step fb-ans">最大値 $31$（$x=2$）、最小値 $-5$（$x=1$）→ ③が最も近い</div></div></div><button class="reset-btn" onclick="resetQ2('c3b','cf3')">🔄 もう一度</button></div>
   </div>
 
