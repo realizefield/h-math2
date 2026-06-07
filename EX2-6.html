@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EX2-6 常用対数｜GAMBA数学II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  renderMathInElement(document.body, {
+    delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],
+    throwOnError:false
+  });
+});
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;font-size:15px;line-height:1.7}
+.top-header{background:#1a237e;color:#fff;padding:10px 16px}
+.top-header .brand{font-size:18px;font-weight:700;letter-spacing:2px}
+.top-header .unit-title{font-size:13px;opacity:.85}
+.tab-nav{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;overflow-x:auto}
+.tab-btn{flex:1;min-width:80px;padding:10px 4px;font-size:12px;font-weight:700;border:none;background:transparent;cursor:pointer;color:#888;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.tab-btn.active-ex{color:#e91e63;border-bottom-color:#e91e63}
+.tab-btn.active-pr{color:#1976d2;border-bottom-color:#1976d2}
+.tab-btn.active-cf{color:#f57c00;border-bottom-color:#f57c00}
+.page{display:none;padding:16px;max-width:680px;margin:0 auto}
+.page.active{display:block}
+.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card-title{font-size:13px;font-weight:700;color:#1a237e;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #e8eaf6}
+.point-box{background:#fff8e1;border-left:4px solid #ffc107;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.point-box .pt-title{font-weight:700;color:#e65100;margin-bottom:6px;font-size:13px}
+.def-box{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;margin:12px 0}
+.def-box .def-title{font-weight:700;color:#1b5e20;margin-bottom:8px;font-size:13px}
+.formula-box{background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px;margin:12px 0;text-align:center}
+.formula-box .f-label{font-size:12px;color:#1565c0;font-weight:700;margin-bottom:6px}
+.step-wrap{margin:10px 0}
+.step-btn{background:#7e57c2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s}
+.step-btn:hover{background:#5e35b1}
+.step-body{display:none;margin-top:8px;background:#f3e5f5;border-radius:8px;padding:12px;font-size:14px}
+.step-body.open{display:block}
+.ex-box{background:#fce4ec;border-radius:8px;padding:12px;margin:10px 0}
+.ex-box .ex-label{font-size:12px;font-weight:700;color:#880e4f;margin-bottom:4px}
+.mini-q{margin:12px 0}
+.mini-q .q-text{font-size:14px;margin-bottom:8px;font-weight:500}
+.choice-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.choice-list li button{width:100%;text-align:left;padding:9px 12px;border:2px solid #e0e0e0;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-list li button:hover{border-color:#7e57c2;background:#f3e5f5}
+.choice-list li button.correct{background:#e8f5e9;border-color:#43a047;color:#1b5e20;font-weight:700}
+.choice-list li button.wrong{background:#ffebee;border-color:#e53935;color:#b71c1c}
+.mini-fb{font-size:13px;margin-top:6px;border-radius:6px;display:none}
+.mini-fb.show{display:block}
+.mini-fb.ok{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;line-height:1.8;padding:12px 14px}
+.mini-fb.ng-with-ans{background:#fff8e1;border-left:4px solid #ff9800;border-radius:8px;line-height:1.8;padding:12px 14px}
+.fb-top{margin-bottom:8px;font-size:13px}
+.fb-badge{font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px;font-size:12px}
+.fb-badge.fb-ok{background:#c8e6c9;color:#1b5e20}
+.fb-badge.fb-ng{background:#ffcdd2;color:#b71c1c}
+.fb-exp{background:rgba(255,255,255,0.7);border-radius:6px;padding:8px 10px;margin-top:6px;font-size:13px}
+.fb-exp-label{font-weight:700;color:#e65100;margin-right:6px;font-size:12px}
+.reset-btn{margin-top:8px;background:#eeeeee;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit}
+.pr-q{background:#e3f2fd;border-radius:8px;padding:12px;margin-bottom:10px}
+.pr-q .pr-label{font-size:12px;font-weight:700;color:#0d47a1;margin-bottom:6px}
+.toggle-ans-btn{background:#1976d2;color:#fff;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit;margin-top:8px;transition:.2s}
+.toggle-ans-btn:hover{background:#1565c0}
+.ans-body{display:none;margin-top:8px;background:rgba(255,255,255,.7);border-radius:6px;padding:10px;font-size:13px;line-height:1.9}
+.ans-body.open{display:block}
+.calc-step{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:12px;margin:8px 0;font-size:14px}
+.calc-step .cs-label{font-size:11px;font-weight:700;color:#7b1fa2;margin-bottom:4px}
+.note-box{background:#fff3e0;border-left:4px solid #ff9800;border-radius:8px;padding:10px 12px;margin:10px 0;font-size:13px}
+/* 桁数イメージ */
+.digit-row{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap}
+.digit-card{flex:1;min-width:120px;background:#e8eaf6;border:2px solid #3f51b5;border-radius:8px;padding:8px;text-align:center;font-size:13px}
+.digit-card .dc-title{font-size:11px;font-weight:700;color:#1a237e;margin-bottom:4px}
+.digit-card .dc-range{font-size:12px;color:#555;margin-bottom:2px}
+/* 小数位イメージ */
+.decimal-row{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap}
+.decimal-card{flex:1;min-width:120px;background:#fce4ec;border:2px solid #e91e63;border-radius:8px;padding:8px;text-align:center;font-size:13px}
+.decimal-card .dmc-title{font-size:11px;font-weight:700;color:#880e4f;margin-bottom:4px}
+/* 計算の流れ */
+.flow-box{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.flow-box .flow-title{font-weight:700;color:#1b5e20;margin-bottom:8px;font-size:13px}
+.flow-step{margin-bottom:4px;padding-left:8px}
+</style>
+</head>
+<body>
+
+<div class="top-header">
+  <div>
+    <div class="brand">GAMBA</div>
+    <div class="unit-title">数学II ▶ 第8章 対数関数 ▶ EX2-6 常用対数</div>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active-ex" onclick="showTab('ex1')">解説①<br>桁数を求める</button>
+  <button class="tab-btn" onclick="showTab('pr1')">練習①<br>桁数問題</button>
+  <button class="tab-btn" onclick="showTab('cf1')">確認①<br>テスト</button>
+  <button class="tab-btn" onclick="showTab('ex2')">解説②<br>小数の位</button>
+  <button class="tab-btn" onclick="showTab('pr2')">練習②<br>応用問題</button>
+  <button class="tab-btn" onclick="showTab('cf2')">確認②<br>テスト</button>
+</div>
+
+<!-- ===================== 解説① ===================== -->
+<div id="ex1" class="page active">
+
+  <div class="card">
+    <div class="card-title">📘 常用対数とは</div>
+
+    <p style="font-size:14px;margin-bottom:10px">
+      底を <strong>10</strong> とする対数 $\log_{10} M$ を <strong>常用対数</strong> といいます。<br>
+      日常でよく使う「10の何乗か」を表す対数で、桁数や小数の位の計算に役立ちます。
+    </p>
+
+    <div class="def-box">
+      <div class="def-title">📌 常用対数の基本</div>
+      <p style="margin-bottom:6px">$\log_{10} M$：10を底とする $M$ の対数</p>
+      <p style="margin-bottom:6px">よく使う値：$\log_{10} 2 \approx 0.3010$、$\log_{10} 3 \approx 0.4771$</p>
+      <p>注意：$\log_{10} 10 = 1$、$\log_{10} 1 = 0$（EX2-2の性質①②）</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📘 正の整数の桁数を求める</div>
+
+    <p style="font-size:14px;margin-bottom:10px">
+      「$2^{30}$ は何桁の数か」のような問題を解けるようにしましょう。<br>
+      まず、桁数と $10^n$ の関係を整理します。
+    </p>
+
+    <div class="digit-row">
+      <div class="digit-card">
+        <div class="dc-title">2桁の整数</div>
+        <div class="dc-range">$10 \leqq M < 100$</div>
+        <div style="font-size:12px;color:#1a237e">$10^1 \leqq M < 10^2$</div>
+      </div>
+      <div class="digit-card">
+        <div class="dc-title">3桁の整数</div>
+        <div class="dc-range">$100 \leqq M < 1000$</div>
+        <div style="font-size:12px;color:#1a237e">$10^2 \leqq M < 10^3$</div>
+      </div>
+      <div class="digit-card">
+        <div class="dc-title">$n+1$桁の整数</div>
+        <div class="dc-range">$10^n \leqq M < 10^{n+1}$</div>
+        <div style="font-size:12px;color:#1a237e">⬆ これが一般公式</div>
+      </div>
+    </div>
+
+    <div class="point-box">
+      <div class="pt-title">⭐ 桁数の公式</div>
+      <p style="margin-bottom:6px">整数 $M$ が <strong>$n+1$ 桁</strong> $\Leftrightarrow$ $10^n \leqq M < 10^{n+1}$</p>
+      <p style="margin-bottom:6px">両辺に $\log_{10}$ をとると</p>
+      <p style="margin-bottom:6px">$n \leqq \log_{10} M < n+1$</p>
+      <p style="font-size:13px;color:#555">つまり $\log_{10} M$ の整数部分が $n$ ならば $M$ は $n+1$ 桁</p>
+      <p style="margin-top:8px;font-size:13px;color:#e65100">
+        <strong>注：</strong>「100 は $10^2$ で 3 桁」→ 指数 $2$ に $1$ を足すと桁数 $3$
+      </p>
+    </div>
+
+    <div class="flow-box">
+      <div class="flow-title">📋 桁数を求める手順</div>
+      <div class="flow-step">① $\log_{10}(\text{求めたい数})$ を計算する</div>
+      <div class="flow-step">② 結果を $n \leqq (\text{値}) < n+1$ の形にはさむ</div>
+      <div class="flow-step">③ 桁数は $n+1$</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題１</div>
+      <p style="font-size:14px">$\log_{10} 2 = 0.3010$ を用いて、$2^{30}$ の桁数を求めよ。</p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol1')">解答を見る</button>
+        <div class="step-body" id="sol1">
+          <div class="calc-step">
+            <div class="cs-label">① 常用対数をとる</div>
+            <p>$\log_{10} 2^{30} = 30\log_{10} 2 = 30 \times 0.3010 = 9.03$</p>
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">② はさんで桁数を決める</div>
+            <p style="margin-bottom:4px">$9 \leqq 9.03 < 10$ なので</p>
+            <p style="margin-bottom:4px">$9 \leqq \log_{10} 2^{30} < 10$</p>
+            <p style="margin-bottom:4px">$10^9 \leqq 2^{30} < 10^{10}$</p>
+            <p style="margin-top:8px;font-weight:700;color:#1b5e20">$\therefore\ 2^{30}$ は <strong>10桁</strong> の数</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題２（やや複雑）</div>
+      <p style="font-size:14px">$\log_{10} 2 = 0.3010$、$\log_{10} 3 = 0.4771$ として、$18^{50}$ の桁数を求めよ。　〈群馬大〉</p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol2')">解答を見る</button>
+        <div class="step-body" id="sol2">
+          <div class="calc-step">
+            <div class="cs-label">① $18 = 2 \times 3^2$ に分解して常用対数をとる</div>
+            <p style="margin-bottom:4px">$\log_{10} 18^{50} = 50\log_{10} 18$</p>
+            <p style="margin-bottom:4px">$= 50\log_{10}(2 \times 3^2)$</p>
+            <p style="margin-bottom:4px">$= 50(\log_{10} 2 + 2\log_{10} 3)$</p>
+            <p style="margin-bottom:4px">$= 50(0.3010 + 2 \times 0.4771)$</p>
+            <p>$= 50 \times 1.2552 = 62.76$</p>
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">② はさんで桁数を決める</div>
+            <p style="margin-bottom:4px">$62 \leqq 62.76 < 63$ なので</p>
+            <p style="margin-bottom:4px">$10^{62} \leqq 18^{50} < 10^{63}$</p>
+            <p style="margin-top:8px;font-weight:700;color:#1b5e20">$\therefore\ 18^{50}$ は <strong>63桁</strong> の数</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ミニテスト① -->
+    <div class="mini-q" style="margin-top:4px">
+      <div class="q-text">Q1. $\log_{10} 3 = 0.4771$ のとき、$\log_{10} 3^{20}$ の値はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m1',0,false,'m1-fb')">① $0.4771$</button></li>
+        <li><button onclick="mAns('m1',1,false,'m1-fb')">② $4.771$</button></li>
+        <li><button onclick="mAns('m1',2,true,'m1-fb')">③ $8.542$</button></li>
+        <li><button onclick="mAns('m1',3,false,'m1-fb')">④ $9.542$</button></li>
+      </ul>
+      <div class="mini-fb" id="m1-fb"
+        data-correct="2"
+        data-ok="$\log_{10} 3^{20} = 20\log_{10} 3 = 20 \times 0.4771 = 8.542$"
+        data-ng0="$\log_{10} 3^{20} = 20\log_{10} 3 = 20 \times 0.4771 = 8.542$ です。20倍するのを忘れずに。"
+        data-ng1="$20 \times 0.4771 = 8.542$ です。$10 \times 0.4771 = 4.771$ と混同しないように。"
+        data-ng3="$20 \times 0.4771 = 8.542$ です。$9.542$ ではありません。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m1')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $\log_{10} 3^{20} = 8.542$ のとき、$3^{20}$ は何桁の数ですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m2',0,false,'m2-fb')">① 8桁</button></li>
+        <li><button onclick="mAns('m2',1,true,'m2-fb')">② 9桁</button></li>
+        <li><button onclick="mAns('m2',2,false,'m2-fb')">③ 10桁</button></li>
+        <li><button onclick="mAns('m2',3,false,'m2-fb')">④ 542桁</button></li>
+      </ul>
+      <div class="mini-fb" id="m2-fb"
+        data-correct="1"
+        data-ok="$8 \leqq 8.542 < 9$ なので $10^8 \leqq 3^{20} < 10^9$<br>よって $3^{20}$ は <strong>9桁</strong> の数です。<br>（$10^8 = $ 1億 は9桁、$10^9 = $ 10億 は10桁）"
+        data-ng0="$8.542$ の整数部分は8ですが、桁数は $8+1 = 9$ 桁です。"
+        data-ng2="$8.542$ の整数部分は $8$ なので $10^8 \leqq 3^{20} < 10^9$、桁数は $9$ です。"
+        data-ng3="$\log_{10} M$ の小数部分は桁数に関係しません。整数部分 $8$ に着目して、$8+1 = 9$ 桁です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m2')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /ex1 -->
+
+<!-- ===================== 練習① ===================== -->
+<div id="pr1" class="page">
+
+  <div class="card">
+    <div class="card-title">✏️ 練習問題① 桁数を求める</div>
+
+    <div class="pr-q">
+      <div class="pr-label">問1　次の数の桁数を求めなさい。ただし $\log_{10} 2 = 0.301$、$\log_{10} 3 = 0.4771$ とする。</div>
+      <p style="font-size:14px;margin-top:8px">(1) $2^{30}$</p>
+      <p style="font-size:14px;margin-top:6px">(2) $3^{20}$　〈類題〉</p>
+      <p style="font-size:14px;margin-top:6px">(3) $5^{30}$</p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pa1')">答えを見る</button>
+      <div class="ans-body" id="pa1">
+        (1) $\log_{10} 2^{30} = 30 \times 0.301 = 9.03$<br>
+        $9 \leqq 9.03 < 10$ → $10^9 \leqq 2^{30} < 10^{10}$　→　<strong>10桁</strong><br><br>
+        (2) $\log_{10} 3^{20} = 20 \times 0.4771 = 8.542$<br>
+        $8 \leqq 8.542 < 9$ → $10^8 \leqq 3^{20} < 10^9$　→　<strong>9桁</strong><br><br>
+        (3) $\log_{10} 5 = \log_{10} \dfrac{10}{2} = 1 - \log_{10} 2 = 1 - 0.301 = 0.699$<br>
+        $\log_{10} 5^{30} = 30 \times 0.699 = 20.97$<br>
+        $20 \leqq 20.97 < 21$ → $10^{20} \leqq 5^{30} < 10^{21}$　→　<strong>21桁</strong>
+      </div>
+    </div>
+
+    <div class="pr-q">
+      <div class="pr-label">問2　$\log_{10} 2 = 0.3010$、$\log_{10} 3 = 0.4771$ として $18^{50}$ の桁数を求めよ。　〈群馬大〉</div>
+      <button class="toggle-ans-btn" onclick="toggleAns('pa2')">答えを見る</button>
+      <div class="ans-body" id="pa2">
+        $\log_{10} 18^{50} = 50\log_{10}(2 \times 3^2)$<br>
+        $= 50(\log_{10} 2 + 2\log_{10} 3)$<br>
+        $= 50(0.3010 + 0.9542) = 50 \times 1.2552 = 62.76$<br>
+        $62 \leqq 62.76 < 63$ → <strong>63桁</strong>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pr1 -->
+
+<!-- ===================== 確認テスト① ===================== -->
+<div id="cf1" class="page">
+
+  <div class="card">
+    <div class="card-title">🔶 確認テスト① 桁数</div>
+
+    <div class="mini-q">
+      <div class="q-text">Q1. $\log_{10} 2 = 0.301$ のとき、$5^{30}$ は何桁の数ですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('c1',0,false,'c1-fb')">① 20桁</button></li>
+        <li><button onclick="mAns('c1',1,true,'c1-fb')">② 21桁</button></li>
+        <li><button onclick="mAns('c1',2,false,'c1-fb')">③ 22桁</button></li>
+        <li><button onclick="mAns('c1',3,false,'c1-fb')">④ 30桁</button></li>
+      </ul>
+      <div class="mini-fb" id="c1-fb"
+        data-correct="1"
+        data-ok="$\log_{10} 5 = 1 - \log_{10} 2 = 0.699$<br>$\log_{10} 5^{30} = 30 \times 0.699 = 20.97$<br>$20 \leqq 20.97 < 21$ → $10^{20} \leqq 5^{30} < 10^{21}$<br>よって <strong>21桁</strong>"
+        data-ng0="整数部分は20ですが、桁数は $20+1 = 21$ 桁です。"
+        data-ng2="$20.97$ の整数部分は20なので $10^{20} \leqq 5^{30} < 10^{21}$、桁数は21です。"
+        data-ng3="$5^{30}$ の常用対数は約$20.97$です。桁数は $20+1=21$ 桁です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('c1')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $\log_{10} 2 = 0.3010$、$\log_{10} 3 = 0.4771$ のとき、$18^{50}$ は何桁の数ですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('c2',0,false,'c2-fb')">① 62桁</button></li>
+        <li><button onclick="mAns('c2',1,true,'c2-fb')">② 63桁</button></li>
+        <li><button onclick="mAns('c2',2,false,'c2-fb')">③ 64桁</button></li>
+        <li><button onclick="mAns('c2',3,false,'c2-fb')">④ 50桁</button></li>
+      </ul>
+      <div class="mini-fb" id="c2-fb"
+        data-correct="1"
+        data-ok="$\log_{10} 18^{50} = 50(\log_{10} 2 + 2\log_{10} 3) = 50 \times 1.2552 = 62.76$<br>整数部分 $62$ → 桁数 $62+1 = 63$ 桁"
+        data-ng0="$62.76$ の整数部分は62ですが、桁数は $62+1 = 63$ 桁です。"
+        data-ng2="$62.76$ の整数部分は62なので桁数は $63$ です。"
+        data-ng3="桁数は底の指数50ではなく、$\log_{10}$ の整数部分で決まります。63桁です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('c2')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /cf1 -->
+
+<!-- ===================== 解説② ===================== -->
+<div id="ex2" class="page">
+
+  <div class="card">
+    <div class="card-title">📘 小数の位を求める</div>
+
+    <p style="font-size:14px;margin-bottom:10px">
+      今度は $\left(\dfrac{1}{3}\right)^{100}$ のような小さな数が「小数第何位に最初の0でない数字が現れるか」を求めます。
+    </p>
+
+    <div class="decimal-row">
+      <div class="decimal-card">
+        <div class="dmc-title">小数第1位に最初の数字</div>
+        <p style="font-size:12px">$0.1 \leqq A < 1$</p>
+        <p style="font-size:12px;color:#880e4f">$10^{-1} \leqq A < 10^0$</p>
+      </div>
+      <div class="decimal-card">
+        <div class="dmc-title">小数第2位に最初の数字</div>
+        <p style="font-size:12px">$0.01 \leqq A < 0.1$</p>
+        <p style="font-size:12px;color:#880e4f">$10^{-2} \leqq A < 10^{-1}$</p>
+      </div>
+      <div class="decimal-card">
+        <div class="dmc-title">小数第$n$位に最初の数字</div>
+        <p style="font-size:12px">$10^{-n} \leqq A < 10^{-n+1}$</p>
+        <p style="font-size:12px;color:#880e4f">⬆ 一般公式</p>
+      </div>
+    </div>
+
+    <div class="point-box">
+      <div class="pt-title">⭐ 小数の位の公式</div>
+      <p style="margin-bottom:6px">$10^{-n} \leqq A < 10^{-n+1}$ のとき</p>
+      <p style="margin-bottom:6px">$\Leftrightarrow$ $-n \leqq \log_{10} A < -n+1$</p>
+      <p><strong>→ $A$ は小数第 $n$ 位に初めて0でない数字が現れる</strong></p>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題３</div>
+      <p style="font-size:14px">$\left(\dfrac{1}{3}\right)^{100}$ を小数で表すと、小数第何位に初めて0でない数字が現れるか。<br>ただし $\log_{10} 3 = 0.4771$ とする。</p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol3')">解答を見る</button>
+        <div class="step-body" id="sol3">
+          <div class="calc-step">
+            <div class="cs-label">① 常用対数をとる</div>
+            <p style="margin-bottom:4px">$\log_{10}\!\left(\frac{1}{3}\right)^{100} = 100\log_{10} \frac{1}{3}$</p>
+            <p style="margin-bottom:4px">$= 100(\log_{10} 1 - \log_{10} 3) = 100(0 - 0.4771)$</p>
+            <p>$= -47.71$</p>
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">② はさんで位を決める</div>
+            <p style="margin-bottom:4px">$-48 \leqq -47.71 < -47$ なので</p>
+            <p style="margin-bottom:4px">$10^{-48} \leqq \left(\dfrac{1}{3}\right)^{100} < 10^{-47}$</p>
+            <p style="margin-top:8px;font-weight:700;color:#1b5e20">$\therefore$ 小数第 <strong>48位</strong> に初めて0でない数字が現れる</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>🔖 桁数と小数の位の比較</strong><br>
+      桁数：$\log_{10} M$ の整数部分を $n$ とすると → $n+1$ 桁<br>
+      小数の位：$\log_{10} A = -47.71$ → $-48 \leqq -47.71 < -47$ → 小数第 <strong>48</strong> 位<br>
+      <span style="font-size:12px;color:#888">（$-47.71$ の「整数部分」は切り捨てで $-48$、つまり $|-48|=48$ 位）</span>
+    </div>
+
+    <!-- ミニテスト② -->
+    <div class="mini-q" style="margin-top:16px">
+      <div class="q-text">Q1. $\log_{10} 2 = 0.301$ のとき、$\log_{10}\!\left(\dfrac{1}{2}\right)^{10}$ の値はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m3',0,false,'m3-fb')">① $3.01$</button></li>
+        <li><button onclick="mAns('m3',1,true,'m3-fb')">② $-3.01$</button></li>
+        <li><button onclick="mAns('m3',2,false,'m3-fb')">③ $-0.301$</button></li>
+        <li><button onclick="mAns('m3',3,false,'m3-fb')">④ $0.301$</button></li>
+      </ul>
+      <div class="mini-fb" id="m3-fb"
+        data-correct="1"
+        data-ok="$\log_{10}\!\left(\frac{1}{2}\right)^{10} = 10\log_{10} \frac{1}{2} = 10(0 - \log_{10} 2) = 10 \times (-0.301) = -3.01$"
+        data-ng0="$\frac{1}{2}$ の対数はマイナスになります。$\log_{10}\frac{1}{2} = -\log_{10}2 = -0.301$ なので $10 \times (-0.301) = -3.01$"
+        data-ng2="10倍するのを忘れています。$10 \times (-0.301) = -3.01$ です。"
+        data-ng3="$\frac{1}{2}$ の対数はマイナスになります。$-3.01$ が正解です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m3')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $\log_{10}\!\left(\dfrac{1}{2}\right)^{10} = -3.01$ のとき、$\left(\dfrac{1}{2}\right)^{10}$ は小数第何位に初めて0でない数字が現れますか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m4',0,false,'m4-fb')">① 第3位</button></li>
+        <li><button onclick="mAns('m4',1,true,'m4-fb')">② 第4位</button></li>
+        <li><button onclick="mAns('m4',2,false,'m4-fb')">③ 第10位</button></li>
+        <li><button onclick="mAns('m4',3,false,'m4-fb')">④ 第301位</button></li>
+      </ul>
+      <div class="mini-fb" id="m4-fb"
+        data-correct="1"
+        data-ok="$-4 \leqq -3.01 < -3$ なので $10^{-4} \leqq \left(\frac{1}{2}\right)^{10} < 10^{-3}$<br>よって小数第 <strong>4位</strong> に初めて0でない数字が現れます。<br>（例：$0.000\triangle$  のような形）"
+        data-ng0="$-3.01$ は $-4 \leqq -3.01 < -3$ にあります。小数第4位です（第3位ではありません）。"
+        data-ng2="10倍した指数は桁数に関係しません。$-3.01$ が $-4 \leqq \cdot < -3$ にあるので第4位です。"
+        data-ng3="小数の位は $\log_{10}$ の値から決まります。$-3.01$ の絶対値の切り上げ $4$ が答えです。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m4')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /ex2 -->
+
+<!-- ===================== 練習② ===================== -->
+<div id="pr2" class="page">
+
+  <div class="card">
+    <div class="card-title">✏️ 練習問題② 小数の位・応用</div>
+
+    <div class="pr-q">
+      <div class="pr-label">問1　次の数は小数第何位に初めて0でない数字が現れるか求めなさい。</div>
+      <p style="font-size:14px;margin-top:8px">(1) $\left(\dfrac{1}{2}\right)^{10}$　　ただし $\log_{10} 2 = 0.3010$　〈西南学院大〉</p>
+      <p style="font-size:14px;margin-top:6px">(2) $\left(\dfrac{1}{5}\right)^{30}$　　ただし $\log_{10} 2 = 0.301$</p>
+      <p style="font-size:14px;margin-top:6px">(3) $\left(\dfrac{2}{3}\right)^{100}$　ただし $\log_{10} 2 = 0.3010$、$\log_{10} 3 = 0.4771$　〈京都教育大〉</p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pb1')">答えを見る</button>
+      <div class="ans-body" id="pb1">
+        (1) $\log_{10}\!\left(\frac{1}{2}\right)^{10} = -10\log_{10} 2 = -10 \times 0.3010 = -3.010$<br>
+        $-4 \leqq -3.010 < -3$ より　小数第 <strong>4位</strong><br><br>
+        (2) $\log_{10} 5 = 1 - 0.301 = 0.699$<br>
+        $\log_{10}\!\left(\frac{1}{5}\right)^{30} = -30\log_{10} 5 = -30 \times 0.699 = -20.97$<br>
+        $-21 \leqq -20.97 < -20$ より　小数第 <strong>21位</strong><br><br>
+        (3) $\log_{10}\!\left(\frac{2}{3}\right)^{100} = 100(\log_{10} 2 - \log_{10} 3)$<br>
+        $= 100(0.3010 - 0.4771) = 100 \times (-0.1761) = -17.61$<br>
+        $-18 \leqq -17.61 < -17$ より　小数第 <strong>18位</strong>
+      </div>
+    </div>
+
+    <div class="pr-q">
+      <div class="pr-label">問2（入試）　$\log_{10} 2 = 0.3010$、$\log_{10} 3 = 0.4771$ として次の問いに答えよ。　〈京都教育大〉</div>
+      <p style="font-size:14px;margin-top:8px">(1) $\log_{10} 4$ の値を求めよ。</p>
+      <p style="font-size:14px;margin-top:6px">(2) $\log_{10} 5$ の値を求めよ。</p>
+      <p style="font-size:14px;margin-top:6px">(3) $\left(\dfrac{2}{3}\right)^{100}$ を小数で表したとき、小数第何位に初めて0でない数字が現れるか。</p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pb2')">答えを見る</button>
+      <div class="ans-body" id="pb2">
+        (1) $\log_{10} 4 = \log_{10} 2^2 = 2\log_{10} 2 = 2 \times 0.3010 = 0.6020$<br><br>
+        (2) $\log_{10} 5 = \log_{10} \dfrac{10}{2} = \log_{10} 10 - \log_{10} 2 = 1 - 0.3010 = 0.6990$<br><br>
+        (3) 問1(3)と同様：$-17.61$ → 小数第 <strong>18位</strong>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pr2 -->
+
+<!-- ===================== 確認テスト② ===================== -->
+<div id="cf2" class="page">
+
+  <div class="card">
+    <div class="card-title">🔶 確認テスト② 小数の位</div>
+
+    <div class="mini-q">
+      <div class="q-text">Q1. $\log_{10} 3 = 0.4771$ のとき、$\left(\dfrac{1}{3}\right)^{100}$ は小数第何位に初めて0でない数字が現れますか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('d1',0,false,'d1-fb')">① 第47位</button></li>
+        <li><button onclick="mAns('d1',1,true,'d1-fb')">② 第48位</button></li>
+        <li><button onclick="mAns('d1',2,false,'d1-fb')">③ 第100位</button></li>
+        <li><button onclick="mAns('d1',3,false,'d1-fb')">④ 第4771位</button></li>
+      </ul>
+      <div class="mini-fb" id="d1-fb"
+        data-correct="1"
+        data-ok="$\log_{10}\!\left(\frac{1}{3}\right)^{100} = -100\log_{10} 3 = -47.71$<br>$-48 \leqq -47.71 < -47$ より<br>$10^{-48} \leqq \left(\frac{1}{3}\right)^{100} < 10^{-47}$<br>よって小数第 <strong>48位</strong>"
+        data-ng0="$-47.71$ は $-48 \leqq -47.71 < -47$ にあります。小数第48位です（47位ではありません）。"
+        data-ng2="小数の位は常用対数の値で決まります。$-47.71$ の絶対値を切り上げた $48$ が答えです。"
+        data-ng3="$\log_{10}$ の値 $-47.71$ から位が決まります。100はべき指数であり位ではありません。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('d1')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $\log_{10} 2 = 0.301$ のとき、$\left(\dfrac{1}{5}\right)^{30}$ は小数第何位に初めて0でない数字が現れますか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('d2',0,false,'d2-fb')">① 第20位</button></li>
+        <li><button onclick="mAns('d2',1,true,'d2-fb')">② 第21位</button></li>
+        <li><button onclick="mAns('d2',2,false,'d2-fb')">③ 第30位</button></li>
+        <li><button onclick="mAns('d2',3,false,'d2-fb')">④ 第699位</button></li>
+      </ul>
+      <div class="mini-fb" id="d2-fb"
+        data-correct="1"
+        data-ok="$\log_{10} 5 = 1 - 0.301 = 0.699$<br>$\log_{10}\!\left(\frac{1}{5}\right)^{30} = -30 \times 0.699 = -20.97$<br>$-21 \leqq -20.97 < -20$ より　小数第 <strong>21位</strong>"
+        data-ng0="$-20.97$ は $-21 \leqq -20.97 < -20$ にあります。小数第21位です（20位ではありません）。"
+        data-ng2="位は指数30ではなく $\log_{10}$ の値から決まります。$-20.97$ の絶対値を切り上げた $21$ が答えです。"
+        data-ng3="$0.699$ の小数部分は位に直結しません。$-20.97$ → 小数第21位です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('d2')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /cf2 -->
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active-ex','active-pr','active-cf'));
+  document.getElementById(id).classList.add('active');
+  const tabs = ['ex1','pr1','cf1','ex2','pr2','cf2'];
+  const clss = ['active-ex','active-pr','active-cf','active-ex','active-pr','active-cf'];
+  document.querySelectorAll('.tab-btn')[tabs.indexOf(id)].classList.add(clss[tabs.indexOf(id)]);
+  if(typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(document.getElementById(id), {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+  window.scrollTo(0,0);
+}
+
+function toggleStep(id) {
+  const body = document.getElementById(id);
+  const btn = body.previousElementSibling;
+  body.classList.toggle('open');
+  btn.textContent = body.classList.contains('open') ? '閉じる' : '解答を見る';
+  if(body.classList.contains('open') && typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(body, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+}
+
+function toggleAns(id) {
+  const body = document.getElementById(id);
+  const btn = body.previousElementSibling;
+  body.classList.toggle('open');
+  btn.textContent = body.classList.contains('open') ? '閉じる' : '答えを見る';
+  if(body.classList.contains('open') && typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(body, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+}
+
+function mAns(mid, idx, correct, fbId) {
+  const fb = document.getElementById(fbId || mid+'-fb');
+  const btns = fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(b => b.disabled = true);
+  btns[idx].classList.add(correct ? 'correct' : 'wrong');
+  const correctIdx = fb.dataset.correct;
+  if(!correct && correctIdx !== undefined) btns[correctIdx].classList.add('correct');
+  let topMsg = correct
+    ? '<span class="fb-badge fb-ok">✅ 正解！</span>'
+    : '<span class="fb-badge fb-ng">❌ 不正解</span> ' + (fb.dataset['ng'+idx] || 'もう一度確認しましょう。');
+  const okMsg = fb.dataset.ok || '';
+  fb.classList.add('show', correct ? 'ok' : 'ng-with-ans');
+  fb.innerHTML = '<div class="fb-top">'+topMsg+'</div><div class="fb-exp"><span class="fb-exp-label">📝 解説</span>'+okMsg+'</div>';
+  if(typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(fb, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+  if(correct) launchConfetti();
+}
+
+function mReset(mid) {
+  const fb = document.getElementById(mid+'-fb');
+  const btns = fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(b => { b.disabled = false; b.classList.remove('correct','wrong'); });
+  fb.className = 'mini-fb';
+  fb.innerHTML = '';
+}
+
+function launchConfetti(){
+  const colors=['#e91e63','#1976d2','#f57c00','#7b5ea7','#43a047','#ffc107','#00bcd4'];
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const particles = Array.from({length:120},()=>({
+    x:Math.random()*canvas.width,y:-20,r:Math.random()*6+3,
+    color:colors[Math.floor(Math.random()*colors.length)],
+    speed:Math.random()*4+2,angle:Math.random()*360,
+    spin:(Math.random()-0.5)*6,wobble:Math.random()*3
+  }));
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle*Math.PI/180);
+      ctx.fillStyle=p.color;ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6);ctx.restore();
+      p.y+=p.speed;p.x+=Math.sin(frame*0.05+p.wobble)*1.5;p.angle+=p.spin;
+    });
+    frame++;
+    if(frame<120) requestAnimationFrame(draw); else canvas.remove();
+  }
+  draw();
+}
+</script>
+
+<script>
+window.NEKO_CONFIG = {
+  subject: '数学II',
+  chapter: 'EX2-6',
+  title: '常用対数',
+  catSrc: 'https://api.dicebear.com/7.x/fun-emoji/svg?seed=neko',
+  greeting: '常用対数で桁数や小数の位がわかるよ🐱 $\log_{10}$ をとってはさむだけ！',
+  quickBtns: [
+    '桁数の求め方を教えて',
+    'なぜ整数部分+1が桁数なの？',
+    '小数の位の求め方は？',
+    '$\log_{10}5$ はどう計算するの？'
+  ],
+  pageMap: {
+    'ex1': '解説①「常用対数と桁数の求め方」を学習中',
+    'pr1': '練習問題①「桁数を求める問題」に取り組み中',
+    'cf1': '確認テスト①「桁数のテスト」に取り組み中',
+    'ex2': '解説②「小数の位を求める方法」を学習中',
+    'pr2': '練習問題②「小数の位・入試問題」に取り組み中',
+    'cf2': '確認テスト②「小数の位のテスト」に取り組み中'
+  }
+};
+</script>
+<script src="neko.js"></script>
+</body>
+</html>

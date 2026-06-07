@@ -373,10 +373,10 @@ canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:
     <div class="unit-hd" style="background:linear-gradient(90deg,#7c3aed,#a78bfa)">
       <span class="unit-num">第2章</span>
       <span class="unit-title">対数関数</span>
-      <span class="unit-badge">EX2-1 〜</span>
+      <span class="unit-badge">EX2-1 〜 EX2-6</span>
     </div>
     <div class="unit-body">
-      <div class="group-label">🔢 対数の基礎</div>
+      <div class="group-label">🔢 対数の基礎・計算</div>
       <div class="sec-grid">
 
         <!-- EX2-1 -->
@@ -398,6 +398,121 @@ canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:
             <button class="abc-btn abc-a" onclick="setABC('EX2-1','a',this)">A OK</button>
             <button class="abc-btn abc-b" onclick="setABC('EX2-1','b',this)">B 復習</button>
             <button class="abc-btn abc-c" onclick="setABC('EX2-1','c',this)">C もう一度</button>
+          </div>
+        </div>
+
+        <!-- EX2-2 -->
+        <div class="sec-card" data-id="EX2-2" style="border-color:#7c3aed">
+          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
+            <span class="sc-num" style="background:#7c3aed">EX2-2</span>
+            <span class="sc-title">対数の性質と計算</span>
+            <span class="sc-stars">★★☆</span>
+          </div>
+          <div class="sc-body"><ul class="sc-topics">
+            <li>log_a MN = log_a M + log_a N（積の法則）</li>
+            <li>log_a M/N = log_a M − log_a N（商の法則）</li>
+            <li>log_a M^k = k log_a M（累乗の法則）</li>
+          </ul></div>
+          <div class="sc-btn-row">
+            <a class="sc-btn" href="EX2-2.html" style="background:#7c3aed">📖 解説・練習</a>
+          </div>
+          <div class="abc-row">
+            <button class="abc-btn abc-a" onclick="setABC('EX2-2','a',this)">A OK</button>
+            <button class="abc-btn abc-b" onclick="setABC('EX2-2','b',this)">B 復習</button>
+            <button class="abc-btn abc-c" onclick="setABC('EX2-2','c',this)">C もう一度</button>
+          </div>
+        </div>
+
+        <!-- EX2-3 -->
+        <div class="sec-card" data-id="EX2-3" style="border-color:#7c3aed">
+          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
+            <span class="sc-num" style="background:#7c3aed">EX2-3</span>
+            <span class="sc-title">底の変換公式</span>
+            <span class="sc-stars">★★☆</span>
+          </div>
+          <div class="sc-body"><ul class="sc-topics">
+            <li>log_a b = log_c b ÷ log_c a（底の変換）</li>
+            <li>「大きいのが上、小さいのは下」の暗記法</li>
+            <li>掛け算で底が消える連鎖計算（入試頻出）</li>
+          </ul></div>
+          <div class="sc-btn-row">
+            <a class="sc-btn" href="EX2-3.html" style="background:#7c3aed">📖 解説・練習</a>
+          </div>
+          <div class="abc-row">
+            <button class="abc-btn abc-a" onclick="setABC('EX2-3','a',this)">A OK</button>
+            <button class="abc-btn abc-b" onclick="setABC('EX2-3','b',this)">B 復習</button>
+            <button class="abc-btn abc-c" onclick="setABC('EX2-3','c',this)">C もう一度</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="group-label">📐 対数方程式・不等式</div>
+      <div class="sec-grid">
+
+        <!-- EX2-4 -->
+        <div class="sec-card" data-id="EX2-4" style="border-color:#7c3aed">
+          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
+            <span class="sc-num" style="background:#7c3aed">EX2-4</span>
+            <span class="sc-title">対数方程式</span>
+            <span class="sc-stars">★★☆</span>
+          </div>
+          <div class="sc-body"><ul class="sc-topics">
+            <li>真数条件（真数 &gt; 0）を必ず確認</li>
+            <li>両辺を同じ底の log にして真数を比較</li>
+            <li>log x = t とおく置き換え型（入試頻出）</li>
+          </ul></div>
+          <div class="sc-btn-row">
+            <a class="sc-btn" href="EX2-4.html" style="background:#7c3aed">📖 解説・練習</a>
+          </div>
+          <div class="abc-row">
+            <button class="abc-btn abc-a" onclick="setABC('EX2-4','a',this)">A OK</button>
+            <button class="abc-btn abc-b" onclick="setABC('EX2-4','b',this)">B 復習</button>
+            <button class="abc-btn abc-c" onclick="setABC('EX2-4','c',this)">C もう一度</button>
+          </div>
+        </div>
+
+        <!-- EX2-5 -->
+        <div class="sec-card" data-id="EX2-5" style="border-color:#7c3aed">
+          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
+            <span class="sc-num" style="background:#7c3aed">EX2-5</span>
+            <span class="sc-title">対数不等式</span>
+            <span class="sc-stars">★★★</span>
+          </div>
+          <div class="sc-body"><ul class="sc-topics">
+            <li>a &gt; 1 なら増加関数 → 不等号そのまま</li>
+            <li>0 &lt; a &lt; 1 なら減少関数 → 不等号逆転！</li>
+            <li>真数条件との共通範囲をとる</li>
+          </ul></div>
+          <div class="sc-btn-row">
+            <a class="sc-btn" href="EX2-5.html" style="background:#7c3aed">📖 解説・練習</a>
+          </div>
+          <div class="abc-row">
+            <button class="abc-btn abc-a" onclick="setABC('EX2-5','a',this)">A OK</button>
+            <button class="abc-btn abc-b" onclick="setABC('EX2-5','b',this)">B 復習</button>
+            <button class="abc-btn abc-c" onclick="setABC('EX2-5','c',this)">C もう一度</button>
+          </div>
+        </div>
+
+        <!-- EX2-6 -->
+        <div class="sec-card" data-id="EX2-6" style="border-color:#7c3aed">
+          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
+            <span class="sc-num" style="background:#7c3aed">EX2-6</span>
+            <span class="sc-title">常用対数</span>
+            <span class="sc-stars">★★☆</span>
+          </div>
+          <div class="sc-body"><ul class="sc-topics">
+            <li>log₁₀ M：10を底とする対数</li>
+            <li>桁数：log の整数部分 + 1 が桁数</li>
+            <li>小数の位：log の値の絶対値を切り上げ</li>
+          </ul></div>
+          <div class="sc-btn-row">
+            <a class="sc-btn" href="EX2-6.html" style="background:#7c3aed">📖 解説・練習</a>
+          </div>
+          <div class="abc-row">
+            <button class="abc-btn abc-a" onclick="setABC('EX2-6','a',this)">A OK</button>
+            <button class="abc-btn abc-b" onclick="setABC('EX2-6','b',this)">B 復習</button>
+            <button class="abc-btn abc-c" onclick="setABC('EX2-6','c',this)">C もう一度</button>
           </div>
         </div>
 
@@ -432,7 +547,7 @@ canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:
 
 <script>
 const STORAGE_KEY = 'gamba_ex_status_v1';
-const ALL_IDS = ['EX1-1','EX1-2','EX1-3','EX1-4','EX1-5','EX1-6','EX1-7','EX2-1'];
+const ALL_IDS = ['EX1-1','EX1-2','EX1-3','EX1-4','EX1-5','EX1-6','EX1-7','EX2-1','EX2-2','EX2-3','EX2-4','EX2-5','EX2-6'];
 let status = {};
 try { const s = localStorage.getItem(STORAGE_KEY); if(s) status = JSON.parse(s); } catch(e){}
 

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EX2-2 対数の性質と計算｜GAMBA数学II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left:"$$", right:"$$", display:true},
+      {left:"$",  right:"$",  display:false}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;font-size:15px;line-height:1.7}
+
+/* ヘッダー */
+.top-header{background:#1a237e;color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.top-header .brand{font-size:18px;font-weight:700;letter-spacing:2px}
+.top-header .unit-title{font-size:13px;opacity:.85}
+
+/* タブナビ */
+.tab-nav{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;overflow-x:auto}
+.tab-btn{flex:1;min-width:80px;padding:10px 4px;font-size:12px;font-weight:700;border:none;background:transparent;cursor:pointer;color:#888;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.tab-btn.active-ex{color:#e91e63;border-bottom-color:#e91e63}
+.tab-btn.active-pr{color:#1976d2;border-bottom-color:#1976d2}
+.tab-btn.active-cf{color:#f57c00;border-bottom-color:#f57c00}
+
+/* ページ */
+.page{display:none;padding:16px;max-width:680px;margin:0 auto}
+.page.active{display:block}
+
+/* カード */
+.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card-title{font-size:13px;font-weight:700;color:#1a237e;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #e8eaf6}
+
+/* 重要ボックス */
+.point-box{background:#fff8e1;border-left:4px solid #ffc107;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.point-box .pt-title{font-weight:700;color:#e65100;margin-bottom:6px;font-size:13px}
+
+/* 定義ボックス */
+.def-box{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;margin:12px 0}
+.def-box .def-title{font-weight:700;color:#1b5e20;margin-bottom:8px;font-size:13px}
+
+/* 重要公式 */
+.formula-box{background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px;margin:12px 0;text-align:center}
+.formula-box .f-label{font-size:12px;color:#1565c0;font-weight:700;margin-bottom:6px}
+
+/* 分数 */
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;line-height:1.2}
+.frac .num{border-bottom:1.5px solid currentColor;padding:0 3px;font-size:.92em}
+.frac .den{padding:0 3px;font-size:.92em}
+
+/* ステップ */
+.step-wrap{margin:10px 0}
+.step-btn{background:#7e57c2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s}
+.step-btn:hover{background:#5e35b1}
+.step-body{display:none;margin-top:8px;background:#f3e5f5;border-radius:8px;padding:12px;font-size:14px}
+.step-body.open{display:block}
+
+/* 例題 */
+.ex-box{background:#fce4ec;border-radius:8px;padding:12px;margin:10px 0}
+.ex-box .ex-label{font-size:12px;font-weight:700;color:#880e4f;margin-bottom:4px}
+
+/* ミニテスト */
+.mini-q{margin:12px 0}
+.mini-q .q-text{font-size:14px;margin-bottom:8px;font-weight:500}
+.choice-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.choice-list li button{width:100%;text-align:left;padding:9px 12px;border:2px solid #e0e0e0;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-list li button:hover{border-color:#7e57c2;background:#f3e5f5}
+.choice-list li button.correct{background:#e8f5e9;border-color:#43a047;color:#1b5e20;font-weight:700}
+.choice-list li button.wrong{background:#ffebee;border-color:#e53935;color:#b71c1c}
+.mini-fb{font-size:13px;margin-top:6px;padding:8px 10px;border-radius:6px;display:none}
+.mini-fb.show{display:block}
+.mini-fb.ok{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;font-size:13px;line-height:1.8;padding:12px 14px}
+.mini-fb.ng-with-ans{background:#fff8e1;border-left:4px solid #ff9800;border-radius:8px;font-size:13px;line-height:1.8;padding:12px 14px}
+.fb-top{margin-bottom:8px;font-size:13px}
+.fb-badge{font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px;font-size:12px}
+.fb-badge.fb-ok{background:#c8e6c9;color:#1b5e20}
+.fb-badge.fb-ng{background:#ffcdd2;color:#b71c1c}
+.fb-exp{background:rgba(255,255,255,0.7);border-radius:6px;padding:8px 10px;margin-top:6px;font-size:13px}
+.fb-exp-label{font-weight:700;color:#e65100;margin-right:6px;font-size:12px}
+.mini-fb.ng{background:#ffebee;color:#b71c1c;font-size:13px;line-height:1.8;padding:10px 12px}
+.reset-btn{margin-top:8px;background:#eeeeee;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit}
+
+/* 練習問題 */
+.pr-q{background:#e3f2fd;border-radius:8px;padding:12px;margin-bottom:10px}
+.pr-q .pr-label{font-size:12px;font-weight:700;color:#0d47a1;margin-bottom:6px}
+.toggle-ans-btn{background:#1976d2;color:#fff;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit;margin-top:8px;transition:.2s}
+.toggle-ans-btn:hover{background:#1565c0}
+.ans-body{display:none;margin-top:8px;background:rgba(255,255,255,.7);border-radius:6px;padding:10px;font-size:13px;line-height:1.9}
+.ans-body.open{display:block}
+
+/* 公式カード（紫テーマ） */
+.prop-card{background:#f3e5f5;border-left:4px solid #7b1fa2;border-radius:8px;padding:14px;margin:10px 0}
+.prop-card .prop-num{font-size:12px;font-weight:700;color:#6a1b9a;margin-bottom:6px}
+
+/* 計算ステップ */
+.calc-step{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:12px;margin:8px 0;font-size:14px}
+.calc-step .cs-label{font-size:11px;font-weight:700;color:#7b1fa2;margin-bottom:4px}
+
+/* 注意 */
+.note-box{background:#fff3e0;border-left:4px solid #ff9800;border-radius:8px;padding:10px 12px;margin:10px 0;font-size:13px}
+
+/* タグ */
+.tag{display:inline-block;background:#7b1fa2;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div class="top-header">
+  <div>
+    <div class="brand">GAMBA</div>
+    <div class="unit-title">数学II ▶ 第8章 対数関数 ▶ EX2-2 対数の性質と計算</div>
+  </div>
+</div>
+
+<!-- タブナビ -->
+<div class="tab-nav">
+  <button class="tab-btn active-ex" onclick="showTab('ex1')">解説①<br>基本性質</button>
+  <button class="tab-btn" onclick="showTab('pr1')">練習①<br>性質の確認</button>
+  <button class="tab-btn" onclick="showTab('cf1')">確認①<br>テスト</button>
+  <button class="tab-btn" onclick="showTab('ex2')">解説②<br>計算の実践</button>
+  <button class="tab-btn" onclick="showTab('pr2')">練習②<br>計算問題</button>
+  <button class="tab-btn" onclick="showTab('cf2')">確認②<br>テスト</button>
+</div>
+
+<!-- ===================== 解説① ===================== -->
+<div id="ex1" class="page active">
+
+  <div class="card">
+    <div class="card-title">📘 対数の基本性質①（特別な値）</div>
+
+    <p style="font-size:14px;margin-bottom:10px">
+      前回（EX2-1）で $\log_a b$ の意味を学びました。<br>
+      今回は「対数を使った計算」のための性質を身につけましょう。
+    </p>
+
+    <div class="point-box">
+      <div class="pt-title">⭐ まずこれを覚えよう</div>
+      <p style="margin-bottom:8px">$a > 0,\quad a \neq 1$ のとき</p>
+      <p style="margin-bottom:6px">
+        ① $\log_a a = 1$　（底と真数が同じなら1）
+      </p>
+      <p>
+        ② $\log_a 1 = 0$　（真数が1なら0）
+      </p>
+    </div>
+
+    <div class="step-wrap">
+      <button class="step-btn" onclick="toggleStep('why1')">なぜそうなるの？</button>
+      <div class="step-body" id="why1">
+        <p style="margin-bottom:6px"><strong>① $\log_a a = 1$ の理由</strong></p>
+        <p style="margin-bottom:10px">
+          $a^1 = a$ です。これを対数で表すと $\log_a a = 1$ です。<br>
+          「$a$ を何乗したら $a$ になるか」→ 答えは当然 <strong>1</strong> です。
+        </p>
+        <p style="margin-bottom:6px"><strong>② $\log_a 1 = 0$ の理由</strong></p>
+        <p>
+          $a^0 = 1$ です。これを対数で表すと $\log_a 1 = 0$ です。<br>
+          「$a$ を何乗したら $1$ になるか」→ 答えは <strong>0</strong>（何乗してもa⁰＝1）です。
+        </p>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題</div>
+      <p style="font-size:14px">次の値を求めなさい。</p>
+      <p style="font-size:14px;margin:6px 0">
+        (1) $\log_3 3$　　(2) $\log_5 1$　　(3) $\log_{10} 10$
+      </p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol1')">解答を見る</button>
+        <div class="step-body" id="sol1">
+          <p style="margin-bottom:4px">(1) $\log_3 3 = 1$　← 底と真数が同じ</p>
+          <p style="margin-bottom:4px">(2) $\log_5 1 = 0$　← 真数が1</p>
+          <p>(3) $\log_{10} 10 = 1$　← 底と真数が同じ（常用対数の基本）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📘 対数の基本性質②（3つの計算法則）</div>
+
+    <p style="font-size:14px;margin-bottom:10px">
+      $a > 0,\ a \neq 1,\ M > 0,\ N > 0$ のとき、次の3つの法則が成り立ちます。
+    </p>
+
+    <div class="prop-card">
+      <div class="prop-num">法則１：積の対数</div>
+      $$\log_a MN = \log_a M + \log_a N$$
+      <p style="font-size:13px;color:#555;margin-top:4px">「掛け算の対数」→「対数の足し算」に分解できます</p>
+    </div>
+
+    <div class="prop-card">
+      <div class="prop-num">法則２：商の対数</div>
+      $$\log_a \frac{M}{N} = \log_a M - \log_a N$$
+      <p style="font-size:13px;color:#555;margin-top:4px">「割り算の対数」→「対数の引き算」に分解できます</p>
+    </div>
+
+    <div class="prop-card">
+      <div class="prop-num">法則３：累乗の対数</div>
+      $$\log_a M^k = k \log_a M$$
+      <p style="font-size:13px;color:#555;margin-top:4px">指数（$k$）を対数の前に出せます</p>
+    </div>
+
+    <div class="step-wrap">
+      <button class="step-btn" onclick="toggleStep('proof1')">法則１の証明を見る</button>
+      <div class="step-body" id="proof1">
+        <p style="margin-bottom:6px">$\log_a M = p$, $\log_a N = q$ とおくと</p>
+        <p style="margin-bottom:6px">$a^p = M$, $a^q = N$ です。</p>
+        <p style="margin-bottom:6px">両辺を掛けると $M \times N = a^p \times a^q = a^{p+q}$</p>
+        <p style="margin-bottom:6px">これを対数で表すと $\log_a MN = p + q$</p>
+        <p>$p = \log_a M$, $q = \log_a N$ を代入して</p>
+        <p style="margin-top:6px;font-weight:700">$\log_a MN = \log_a M + \log_a N$　✓</p>
+      </div>
+    </div>
+
+    <div class="step-wrap">
+      <button class="step-btn" onclick="toggleStep('proof3')">法則３の証明を見る</button>
+      <div class="step-body" id="proof3">
+        <p style="margin-bottom:6px">$\log_a M = p$ とおくと $a^p = M$</p>
+        <p style="margin-bottom:6px">両辺を $k$ 乗すると $(a^p)^k = M^k$</p>
+        <p style="margin-bottom:6px">$a^{pk} = M^k$ を対数で表すと $\log_a M^k = pk$</p>
+        <p>$p = \log_a M$ を代入して</p>
+        <p style="margin-top:6px;font-weight:700">$\log_a M^k = k \log_a M$　✓</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ミニテスト① -->
+  <div class="card">
+    <div class="card-title">🧪 確認しよう①</div>
+
+    <div class="mini-q">
+      <div class="q-text">Q1. $\log_2 8$ の値はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m1',0,false,'m1-fb')">① 2</button></li>
+        <li><button onclick="mAns('m1',1,true,'m1-fb')">② 3</button></li>
+        <li><button onclick="mAns('m1',2,false,'m1-fb')">③ 4</button></li>
+        <li><button onclick="mAns('m1',3,false,'m1-fb')">④ 8</button></li>
+      </ul>
+      <div class="mini-fb" id="m1-fb"
+        data-correct="1"
+        data-ok="$8 = 2^3$ なので $\log_2 8 = \log_2 2^3 = 3\log_2 2 = 3 \times 1 = 3$ です。<br>法則３「$\log_a M^k = k\log_a M$」を使いました。"
+        data-ng0="$8 = 2^3$ です。$\log_2 2^3 = 3\log_2 2 = 3$ になります。"
+        data-ng2="$8 = 2^3$ なので指数は3です。$2^4 = 16$ であることと混同しないようにしましょう。"
+        data-ng3="$\log_2 8$ は「2を何乗すれば8になるか」という数です。$2^3=8$ なので3が答えです。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m1')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $\log_3 6 + \log_3 \frac{3}{2}$ の値はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m2',0,false,'m2-fb')">① 0</button></li>
+        <li><button onclick="mAns('m2',1,false,'m2-fb')">② $\log_3 \frac{18}{2}$</button></li>
+        <li><button onclick="mAns('m2',2,true,'m2-fb')">③ 2</button></li>
+        <li><button onclick="mAns('m2',3,false,'m2-fb')">④ 3</button></li>
+      </ul>
+      <div class="mini-fb" id="m2-fb"
+        data-correct="2"
+        data-ok="法則１を使います。<br>$\log_3 6 + \log_3 \frac{3}{2} = \log_3 \!\left(6 \times \frac{3}{2}\right) = \log_3 9 = \log_3 3^2 = 2$"
+        data-ng0="足し算は真数の掛け算になります。$6 \times \frac{3}{2} = 9 = 3^2$ です。"
+        data-ng1="$6 \times \frac{3}{2} = 9$ なので $\log_3 9$ になります。さらに $9 = 3^2$ と計算できます。"
+        data-ng3="$\log_3 9 = \log_3 3^2 = 2\log_3 3 = 2$ です。$\log_3 3^3 = 3$ ではありません。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m2')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /ex1 -->
+
+<!-- ===================== 練習① ===================== -->
+<div id="pr1" class="page">
+
+  <div class="card">
+    <div class="card-title">✏️ 練習問題① 性質の確認</div>
+
+    <div class="pr-q">
+      <div class="pr-label">問1</div>
+      <p style="font-size:14px">次の□に当てはまる式を答えなさい。</p>
+      <p style="font-size:14px;margin-top:8px">
+        (1) $\log_a MN = \log_a\ $□$\ +\ $□
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (2) $\log_a \frac{M}{N} = $□$\ -\ $□
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (3) $\log_a M^k = $□$\times \log_a M$
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (4) $\log_a a = $□　　(5) $\log_a 1 = $□
+      </p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pa1')">答えを見る</button>
+      <div class="ans-body" id="pa1">
+        (1) $\log_a M + \log_a N$<br>
+        (2) $\log_a M - \log_a N$<br>
+        (3) $k$<br>
+        (4) $1$　　(5) $0$
+      </div>
+    </div>
+
+    <div class="pr-q">
+      <div class="pr-label">問2</div>
+      <p style="font-size:14px">次の式の値を求めなさい。</p>
+      <p style="font-size:14px;margin-top:8px">
+        (1) $\log_3 7 + \log_3 2$
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (2) $\log_6 3 + \log_6 12$
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (3) $\log_5 15 - \log_5 3$
+      </p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pa2')">答えを見る</button>
+      <div class="ans-body" id="pa2">
+        (1) $\log_3 7 + \log_3 2 = \log_3(7 \times 2) = \log_3 14$<br><br>
+        (2) $\log_6 3 + \log_6 12 = \log_6(3 \times 12) = \log_6 36 = \log_6 6^2 = 2$<br><br>
+        (3) $\log_5 15 - \log_5 3 = \log_5 \frac{15}{3} = \log_5 5 = 1$
+      </div>
+    </div>
+
+    <div class="pr-q">
+      <div class="pr-label">問3</div>
+      <p style="font-size:14px">次の計算をしなさい。</p>
+      <p style="font-size:14px;margin-top:8px">
+        (1) $\log_2 8$
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (2) $\log_3 \sqrt[4]{27}$
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (3) $2\log_{10} 5 + \log_{10} 20$
+      </p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pa3')">答えを見る</button>
+      <div class="ans-body" id="pa3">
+        (1) $\log_2 8 = \log_2 2^3 = 3\log_2 2 = 3$<br><br>
+        (2) $\log_3 \sqrt[4]{27} = \log_3 (3^3)^{\frac{1}{4}} = \log_3 3^{\frac{3}{4}} = \dfrac{3}{4}\log_3 3 = \dfrac{3}{4}$<br><br>
+        (3) $2\log_{10} 5 + \log_{10} 20$<br>
+        $= \log_{10} 5^2 + \log_{10} 20$<br>
+        $= \log_{10}(25 \times 20) = \log_{10} 500$<br>
+        ※ さらに $\log_{10} 500 = \log_{10}\dfrac{1000}{2} = 3 - \log_{10} 2$（値は定まらない）<br>
+        <span style="font-size:12px;color:#888">（別解）$2\log_{10}5 = \log_{10}25$ として $\log_{10}25\times20 = \log_{10}500$ でもよい</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pr1 -->
+
+<!-- ===================== 確認テスト① ===================== -->
+<div id="cf1" class="page">
+
+  <div class="card">
+    <div class="card-title">🔶 確認テスト① 基本性質</div>
+
+    <div class="mini-q">
+      <div class="q-text">Q1. $\log_4 64$ の値はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('c1',0,false,'c1-fb')">① 2</button></li>
+        <li><button onclick="mAns('c1',1,true,'c1-fb')">② 3</button></li>
+        <li><button onclick="mAns('c1',2,false,'c1-fb')">③ 4</button></li>
+        <li><button onclick="mAns('c1',3,false,'c1-fb')">④ 16</button></li>
+      </ul>
+      <div class="mini-fb" id="c1-fb"
+        data-correct="1"
+        data-ok="$64 = 4^3$ なので $\log_4 64 = \log_4 4^3 = 3\log_4 4 = 3 \times 1 = 3$ です。<br>（確認：$4^3 = 64$✓）"
+        data-ng0="$4^2 = 16$、$4^3 = 64$ です。$64$ は $4$ の3乗です。"
+        data-ng2="$4^4 = 256$ です。$64 = 4^3$ なので答えは3です。"
+        data-ng3="$\log_4 64$ は「4を何乗すれば64か」という数です。$4^3=64$ なので3が答えです。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('c1')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $\log_{10} 8 + \log_{10} 9 - 2\log_{10} 6$ の値はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('c2',0,true,'c2-fb')">① $\log_{10} 2$</button></li>
+        <li><button onclick="mAns('c2',1,false,'c2-fb')">② $\log_{10} 3$</button></li>
+        <li><button onclick="mAns('c2',2,false,'c2-fb')">③ $2\log_{10} 3$</button></li>
+        <li><button onclick="mAns('c2',3,false,'c2-fb')">④ $1$</button></li>
+      </ul>
+      <div class="mini-fb" id="c2-fb"
+        data-correct="0"
+        data-ok="まず $2\log_{10} 6 = \log_{10} 6^2 = \log_{10} 36$ にします。<br>$\log_{10} 8 + \log_{10} 9 - \log_{10} 36 = \log_{10} \frac{8 \times 9}{36} = \log_{10} 2$"
+        data-ng1="$\frac{8 \times 9}{36} = \frac{72}{36} = 2$ です。$\log_{10} 2$ が正解です。"
+        data-ng2="$\frac{72}{36} = 2$ ですので $2\log_{10}3$ にはなりません。"
+        data-ng3="$\log_{10}2 \neq 1$ です。$\log_{10}10 = 1$ ですが $\log_{10}2$ は約0.3010です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('c2')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /cf1 -->
+
+<!-- ===================== 解説② ===================== -->
+<div id="ex2" class="page">
+
+  <div class="card">
+    <div class="card-title">📘 計算の実践①（公式の使い方）</div>
+
+    <p style="font-size:14px;margin-bottom:10px">
+      3つの法則を使って実際に計算してみましょう。<br>
+      <strong>ポイント：真数を $a$ の累乗の形に変形すること</strong>
+    </p>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題１</div>
+      <p style="font-size:14px">次の計算をしなさい。</p>
+      <p style="font-size:14px;margin:6px 0">
+        (1) $\log_2 4 + \log_2 \frac{1}{2}$　　
+        (2) $\log_2 14 - \log_2 7$　　
+        (3) $\log_2 8$
+      </p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol2')">解答を見る</button>
+        <div class="step-body" id="sol2">
+          <div class="calc-step">
+            <div class="cs-label">(1) 法則１を使う</div>
+            $\log_2 4 + \log_2 \frac{1}{2} = \log_2 \!\left(4 \times \frac{1}{2}\right) = \log_2 2 = 1$
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">(2) 法則２を使う</div>
+            $\log_2 14 - \log_2 7 = \log_2 \frac{14}{7} = \log_2 2 = 1$
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">(3) 法則３を使う</div>
+            $\log_2 8 = \log_2 2^3 = 3\log_2 2 = 3 \times 1 = 3$
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題２（複合計算）</div>
+      <p style="font-size:14px">次の空欄に当てはまる値を求めなさい。</p>
+      <p style="font-size:14px;margin:6px 0">
+        (1) $\log_2 10 = \log_2 5 + $□　　
+        (2) $\log_2 \dfrac{7}{2} = \log_2 7 - $□　　
+        (3) $\log_3 27 = $□$ \times 1$
+      </p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol3')">解答を見る</button>
+        <div class="step-body" id="sol3">
+          <div class="calc-step">
+            <div class="cs-label">(1)</div>
+            $\log_2 10 = \log_2(5 \times 2) = \log_2 5 + \log_2 2 = \log_2 5 + 1$<br>
+            → 答え：$\boxed{1}$
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">(2)</div>
+            $\log_2 \frac{7}{2} = \log_2 7 - \log_2 2 = \log_2 7 - 1$<br>
+            → 答え：$\boxed{1}$
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">(3)</div>
+            $\log_3 27 = \log_3 3^3 = 3\log_3 3 = 3 \times 1 = 3$<br>
+            → 答え：$\boxed{3}$
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📘 計算の実践②（まとめて計算）</div>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題３（たし引き混合）</div>
+      <p style="font-size:14px">次の式の値を求めなさい。</p>
+      <p style="font-size:14px;margin:6px 0">
+        (1) $\log_2 5 + \log_2 18 - \log_2 15$
+      </p>
+      <p style="font-size:14px;margin:6px 0">
+        (2) $\log_{10} 8 + \log_{10} 9 - 2\log_{10} 6$
+      </p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol4')">解答を見る</button>
+        <div class="step-body" id="sol4">
+          <div class="calc-step">
+            <div class="cs-label">(1) ひとまず合体させる</div>
+            $\log_2 5 + \log_2 18 - \log_2 15$<br>
+            $= \log_2 \frac{5 \times 18}{15} = \log_2 6$<br>
+            <span style="font-size:12px;color:#555">（$\frac{5 \times 18}{15} = \frac{90}{15} = 6$）</span>
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">(2) まず $2\log_{10}6$ を変形する</div>
+            $2\log_{10} 6 = \log_{10} 6^2 = \log_{10} 36$<br>
+            $\log_{10} 8 + \log_{10} 9 - \log_{10} 36$<br>
+            $= \log_{10} \frac{8 \times 9}{36} = \log_{10} 2$
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>🔖 計算のコツ</strong><br>
+      ① $k\log_a M$ が出てきたら、まず $\log_a M^k$ に変形する<br>
+      ② その後、足し算・引き算で真数を掛け算・割り算にまとめる<br>
+      ③ 最後に真数が $a^n$ の形になれば $n$ が答え
+    </div>
+
+    <!-- ミニテスト② -->
+    <div class="mini-q" style="margin-top:16px">
+      <div class="q-text">Q. $\log_2 18 = $□$ + 2\log_2 3$ の□に入る数はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m3',0,false,'m3-fb')">① 2</button></li>
+        <li><button onclick="mAns('m3',1,true,'m3-fb')">② 1</button></li>
+        <li><button onclick="mAns('m3',2,false,'m3-fb')">③ 0</button></li>
+        <li><button onclick="mAns('m3',3,false,'m3-fb')">④ $\log_2 2$（同じ意味）</button></li>
+      </ul>
+      <div class="mini-fb" id="m3-fb"
+        data-correct="1"
+        data-ok="$\log_2 18 = \log_2(2 \cdot 3^2) = \log_2 2 + \log_2 3^2 = 1 + 2\log_2 3$<br>よって□＝$1$ です。"
+        data-ng0="$18 = 2^2 \times 3^2$ ではありません。$18 = 2 \times 9 = 2 \times 3^2$ です。"
+        data-ng2="$18 = 2 \times 3^2$ なので $\log_2 18 = \log_2 2 + 2\log_2 3 = 1 + 2\log_2 3$ です。0ではありません。"
+        data-ng3="④の意味は①と同じですが、より簡単な数字で表せます。$\log_2 2 = 1$ なので答えは $1$ です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m3')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q. $\log_{10} 5 = $□$ - \log_{10} 2$ の□に入る数はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m4',0,false,'m4-fb')">① 0</button></li>
+        <li><button onclick="mAns('m4',1,false,'m4-fb')">② $\log_{10} 5$</button></li>
+        <li><button onclick="mAns('m4',2,true,'m4-fb')">③ 1</button></li>
+        <li><button onclick="mAns('m4',3,false,'m4-fb')">④ 2</button></li>
+      </ul>
+      <div class="mini-fb" id="m4-fb"
+        data-correct="2"
+        data-ok="$\log_{10} 5 = \log_{10} \frac{10}{2} = \log_{10} 10 - \log_{10} 2 = 1 - \log_{10} 2$<br>よって□＝$1$ です。<br>$10 = 2 \times 5$ という関係を使うのがポイントです。"
+        data-ng0="$\log_{10} 5 > 0$ なので0ではありません。$5 = \frac{10}{2}$ として変形します。"
+        data-ng1="$\log_{10} 5 = \log_{10} 5 - \log_{10} 2$ では $\log_{10} 2 = 0$ となってしまい矛盾します。"
+        data-ng3="$\log_{10}5 = 2 - \log_{10}2$ とすると $\log_{10}5 + \log_{10}2 = 2$ つまり $\log_{10}10 = 2$ になり矛盾します。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m4')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /ex2 -->
+
+<!-- ===================== 練習② ===================== -->
+<div id="pr2" class="page">
+
+  <div class="card">
+    <div class="card-title">✏️ 練習問題② 計算問題</div>
+
+    <div class="pr-q">
+      <div class="pr-label">問1</div>
+      <p style="font-size:14px">次の式の値を求めなさい。</p>
+      <p style="font-size:14px;margin-top:8px">
+        (1) $\log_3 7 + \log_3 2$
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (2) $\log_5 15 - \log_5 3$
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (3) $\log_3 \sqrt[4]{27}$
+      </p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pb1')">答えを見る</button>
+      <div class="ans-body" id="pb1">
+        (1) $\log_3 7 + \log_3 2 = \log_3(7 \times 2) = \log_3 14$<br><br>
+        (2) $\log_5 15 - \log_5 3 = \log_5 \frac{15}{3} = \log_5 5 = 1$<br><br>
+        (3) $\log_3 \sqrt[4]{27} = \log_3 3^{\frac{3}{4}} = \dfrac{3}{4}\log_3 3 = \dfrac{3}{4}$
+      </div>
+    </div>
+
+    <div class="pr-q">
+      <div class="pr-label">問2</div>
+      <p style="font-size:14px">次の計算をしなさい。</p>
+      <p style="font-size:14px;margin-top:8px">
+        (1) $\log_2 5 + \log_2 18 - \log_2 15$
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (2) $\log_{10} 8 + \log_{10} 9 - 2\log_{10} 6$
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (3) $\log_{10} 18 = $□$ + 2\log_{10} 3$ の□
+      </p>
+      <p style="font-size:14px;margin-top:6px">
+        (4) $\log_{10} 5 = $□$ - \log_{10} 2$ の□
+      </p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pb2')">答えを見る</button>
+      <div class="ans-body" id="pb2">
+        (1) $\log_2 \frac{5 \times 18}{15} = \log_2 6$<br><br>
+        (2) $\log_{10} \frac{8 \times 9}{6^2} = \log_{10} \frac{72}{36} = \log_{10} 2$<br><br>
+        (3) $\log_{10} 18 = \log_{10}(2 \times 3^2) = \log_{10} 2 + 2\log_{10} 3$<br>
+        &nbsp;&nbsp;→ □ $= 1$（$\log_{10} 2$ に $\log_{10}2 = 1-\log_{10}5$ を用いる方法もあるが、一般には $\log_{10}2$ のまま）<br>
+        &nbsp;&nbsp;正確には □ $= \log_{10} 2 = 1 - \log_{10}5$<br><br>
+        (4) $\log_{10} 5 = \log_{10} \frac{10}{2} = \log_{10} 10 - \log_{10} 2 = 1 - \log_{10} 2$<br>
+        &nbsp;&nbsp;→ □ $= 1$
+      </div>
+    </div>
+
+    <div class="pr-q">
+      <div class="pr-label">問3（やや難）</div>
+      <p style="font-size:14px">次の計算をしなさい。</p>
+      <p style="font-size:14px;margin-top:8px">
+        (1) $6\log_2 \sqrt[3]{3} - \log_2 18$
+      </p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pb3')">答えを見る</button>
+      <div class="ans-body" id="pb3">
+        $6\log_2 \sqrt[3]{3} - \log_2 18$<br>
+        $= 6\log_2 3^{\frac{1}{3}} - \log_2 18$<br>
+        $= 6 \cdot \frac{1}{3}\log_2 3 - \log_2 18$<br>
+        $= 2\log_2 3 - \log_2 18$<br>
+        $= \log_2 3^2 - \log_2 18$<br>
+        $= \log_2 \frac{9}{18} = \log_2 \frac{1}{2} = \log_2 2^{-1} = -1$
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pr2 -->
+
+<!-- ===================== 確認テスト② ===================== -->
+<div id="cf2" class="page">
+
+  <div class="card">
+    <div class="card-title">🔶 確認テスト② 計算の実践</div>
+
+    <div class="mini-q">
+      <div class="q-text">Q1. $\log_3 5 + \log_3 18 - \log_3 10$ の値はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('d1',0,false,'d1-fb')">① $\log_3 9$（これ以上簡単にならない）</button></li>
+        <li><button onclick="mAns('d1',1,false,'d1-fb')">② 3</button></li>
+        <li><button onclick="mAns('d1',2,true,'d1-fb')">③ 2</button></li>
+        <li><button onclick="mAns('d1',3,false,'d1-fb')">④ 1</button></li>
+      </ul>
+      <div class="mini-fb" id="d1-fb"
+        data-correct="2"
+        data-ok="$\log_3 \frac{5 \times 18}{10} = \log_3 9 = \log_3 3^2 = 2\log_3 3 = 2$"
+        data-ng0="$9 = 3^2$ なので $\log_3 9 = 2$ と計算できます。"
+        data-ng1="$\log_3 27 = 3$ です。$\log_3 9 = \log_3 3^2 = 2$ です。"
+        data-ng3="$\log_3 3 = 1$ です。$\frac{5 \times 18}{10} = 9 = 3^2$ なので答えは2です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('d1')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $6\log_2 \sqrt[3]{3} - \log_2 18$ の値はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('d2',0,false,'d2-fb')">① $\log_2 2$（＝1）</button></li>
+        <li><button onclick="mAns('d2',1,true,'d2-fb')">② $-1$</button></li>
+        <li><button onclick="mAns('d2',2,false,'d2-fb')">③ 0</button></li>
+        <li><button onclick="mAns('d2',3,false,'d2-fb')">④ 2</button></li>
+      </ul>
+      <div class="mini-fb" id="d2-fb"
+        data-correct="1"
+        data-ok="$6\log_2 3^{\frac{1}{3}} = 6 \cdot \frac{1}{3}\log_2 3 = 2\log_2 3 = \log_2 9$<br>$\log_2 9 - \log_2 18 = \log_2 \frac{9}{18} = \log_2 \frac{1}{2} = \log_2 2^{-1} = -1$"
+        data-ng0="$\frac{9}{18} = \frac{1}{2} = 2^{-1}$ なので $\log_2 2^{-1} = -1$ です。"
+        data-ng2="$\log_2 \frac{1}{2} = \log_2 2^{-1} = -1$ です。0ではありません。"
+        data-ng3="$2\log_2 3 = \log_2 9$ で、$\log_2 9 - \log_2 18 = \log_2 \frac{9}{18} = \log_2 \frac{1}{2} = -1$ です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('d2')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /cf2 -->
+
+<script>
+// タブ切り替え
+function showTab(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('active-ex','active-pr','active-cf');
+  });
+  document.getElementById(id).classList.add('active');
+  const idx = ['ex1','pr1','cf1','ex2','pr2','cf2'].indexOf(id);
+  const btns = document.querySelectorAll('.tab-btn');
+  const cls = ['active-ex','active-pr','active-cf','active-ex','active-pr','active-cf'][idx];
+  btns[idx].classList.add(cls);
+
+  if(typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(document.getElementById(id), {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+  window.scrollTo(0,0);
+}
+
+// ステップ開閉
+function toggleStep(id) {
+  const body = document.getElementById(id);
+  const btn = body.previousElementSibling;
+  body.classList.toggle('open');
+  btn.textContent = body.classList.contains('open') ? '閉じる' : (id.startsWith('why')||id.startsWith('proof') ? 'なぜそうなるの？' : '解答を見る');
+  if(body.classList.contains('open') && typeof renderMathInElement !== 'undefined') {
+    renderMathInElement(body, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+}
+
+// 練習解答開閉
+function toggleAns(id) {
+  const body = document.getElementById(id);
+  const btn = body.previousElementSibling;
+  body.classList.toggle('open');
+  btn.textContent = body.classList.contains('open') ? '閉じる' : '答えを見る';
+  if(body.classList.contains('open') && typeof renderMathInElement !== 'undefined') {
+    renderMathInElement(body, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+}
+
+// ===== ミニテスト =====
+function mAns(mid, idx, correct, fbId) {
+  const fb = document.getElementById(fbId || mid+'-fb');
+  const btns = fb.closest('.mini-q').querySelectorAll('.choice-list button');
+
+  btns.forEach(b => b.disabled = true);
+  btns[idx].classList.add(correct ? 'correct' : 'wrong');
+
+  const correctIdx = fb.dataset.correct;
+  if(!correct && correctIdx !== undefined){
+    btns[correctIdx].classList.add('correct');
+  }
+
+  let topMsg = '';
+  if(correct){
+    topMsg = '<span class="fb-badge fb-ok">✅ 正解！</span>';
+  } else {
+    const ngMsg = fb.dataset['ng'+idx] || '❌ もう一度確認しましょう。';
+    topMsg = '<span class="fb-badge fb-ng">❌ 不正解</span> ' + ngMsg;
+  }
+
+  const okMsg = fb.dataset.ok || '';
+
+  fb.classList.add('show', correct ? 'ok' : 'ng-with-ans');
+  fb.innerHTML =
+    '<div class="fb-top">' + topMsg + '</div>' +
+    '<div class="fb-exp"><span class="fb-exp-label">📝 解説</span>' + okMsg + '</div>';
+
+  if(typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(fb, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+
+  if(correct) launchConfetti();
+}
+
+function mReset(mid) {
+  const fbId = mid+'-fb';
+  const fb = document.getElementById(fbId);
+  const btns = fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(b => { b.disabled = false; b.classList.remove('correct','wrong'); });
+  fb.className = 'mini-fb';
+  fb.innerHTML = '';
+}
+
+// 花吹雪
+function launchConfetti(){
+  const colors=['#e91e63','#1976d2','#f57c00','#7b5ea7','#43a047','#ffc107','#00bcd4'];
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const particles = Array.from({length:120}, ()=>({
+    x: Math.random()*canvas.width,
+    y: -20,
+    r: Math.random()*6+3,
+    color: colors[Math.floor(Math.random()*colors.length)],
+    speed: Math.random()*4+2,
+    angle: Math.random()*360,
+    spin: (Math.random()-0.5)*6,
+    wobble: Math.random()*3
+  }));
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle*Math.PI/180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r*1.6);
+      ctx.restore();
+      p.y += p.speed;
+      p.x += Math.sin(frame*0.05+p.wobble)*1.5;
+      p.angle += p.spin;
+    });
+    frame++;
+    if(frame < 120) requestAnimationFrame(draw);
+    else canvas.remove();
+  }
+  draw();
+}
+</script>
+
+<script>
+window.NEKO_CONFIG = {
+  subject: '数学II',
+  chapter: 'EX2-2',
+  title: '対数の性質と計算',
+  catSrc: 'https://api.dicebear.com/7.x/fun-emoji/svg?seed=neko',
+  greeting: '対数の計算法則を一緒に練習しよう🐱 積・商・累乗の3つが使えれば大丈夫！',
+  quickBtns: [
+    '3つの法則を教えて',
+    '$\\log_a MN$ の法則は？',
+    'なぜ $\\log_a 1 = 0$ なの？',
+    '法則の使い方がわからない'
+  ],
+  pageMap: {
+    'ex1': '解説①「対数の基本性質（特別な値と3法則）」を学習中',
+    'pr1': '練習問題①「性質の確認・基本計算」に取り組み中',
+    'cf1': '確認テスト①「基本性質の確認テスト」に取り組み中',
+    'ex2': '解説②「計算の実践（積・商・累乗の混合）」を学習中',
+    'pr2': '練習問題②「計算問題」に取り組み中',
+    'cf2': '確認テスト②「計算実践の確認テスト」に取り組み中'
+  }
+};
+</script>
+<script src="neko.js"></script>
+</body>
+</html>

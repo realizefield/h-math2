@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EX2-4 対数方程式｜GAMBA数学II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  renderMathInElement(document.body, {
+    delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],
+    throwOnError:false
+  });
+});
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;font-size:15px;line-height:1.7}
+.top-header{background:#1a237e;color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.top-header .brand{font-size:18px;font-weight:700;letter-spacing:2px}
+.top-header .unit-title{font-size:13px;opacity:.85}
+.tab-nav{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;overflow-x:auto}
+.tab-btn{flex:1;min-width:80px;padding:10px 4px;font-size:12px;font-weight:700;border:none;background:transparent;cursor:pointer;color:#888;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.tab-btn.active-ex{color:#e91e63;border-bottom-color:#e91e63}
+.tab-btn.active-pr{color:#1976d2;border-bottom-color:#1976d2}
+.tab-btn.active-cf{color:#f57c00;border-bottom-color:#f57c00}
+.page{display:none;padding:16px;max-width:680px;margin:0 auto}
+.page.active{display:block}
+.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card-title{font-size:13px;font-weight:700;color:#1a237e;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #e8eaf6}
+.point-box{background:#fff8e1;border-left:4px solid #ffc107;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.point-box .pt-title{font-weight:700;color:#e65100;margin-bottom:6px;font-size:13px}
+.warn-box{background:#ffebee;border-left:4px solid #e53935;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.warn-box .w-title{font-weight:700;color:#b71c1c;margin-bottom:6px;font-size:13px}
+.formula-box{background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px;margin:12px 0;text-align:center}
+.formula-box .f-label{font-size:12px;color:#1565c0;font-weight:700;margin-bottom:6px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;line-height:1.2}
+.frac .num{border-bottom:1.5px solid currentColor;padding:0 3px;font-size:.92em}
+.frac .den{padding:0 3px;font-size:.92em}
+.step-wrap{margin:10px 0}
+.step-btn{background:#7e57c2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s}
+.step-btn:hover{background:#5e35b1}
+.step-body{display:none;margin-top:8px;background:#f3e5f5;border-radius:8px;padding:12px;font-size:14px}
+.step-body.open{display:block}
+.ex-box{background:#fce4ec;border-radius:8px;padding:12px;margin:10px 0}
+.ex-box .ex-label{font-size:12px;font-weight:700;color:#880e4f;margin-bottom:4px}
+.mini-q{margin:12px 0}
+.mini-q .q-text{font-size:14px;margin-bottom:8px;font-weight:500}
+.choice-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.choice-list li button{width:100%;text-align:left;padding:9px 12px;border:2px solid #e0e0e0;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-list li button:hover{border-color:#7e57c2;background:#f3e5f5}
+.choice-list li button.correct{background:#e8f5e9;border-color:#43a047;color:#1b5e20;font-weight:700}
+.choice-list li button.wrong{background:#ffebee;border-color:#e53935;color:#b71c1c}
+.mini-fb{font-size:13px;margin-top:6px;padding:8px 10px;border-radius:6px;display:none}
+.mini-fb.show{display:block}
+.mini-fb.ok{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;font-size:13px;line-height:1.8;padding:12px 14px}
+.mini-fb.ng-with-ans{background:#fff8e1;border-left:4px solid #ff9800;border-radius:8px;font-size:13px;line-height:1.8;padding:12px 14px}
+.fb-top{margin-bottom:8px;font-size:13px}
+.fb-badge{font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px;font-size:12px}
+.fb-badge.fb-ok{background:#c8e6c9;color:#1b5e20}
+.fb-badge.fb-ng{background:#ffcdd2;color:#b71c1c}
+.fb-exp{background:rgba(255,255,255,0.7);border-radius:6px;padding:8px 10px;margin-top:6px;font-size:13px}
+.fb-exp-label{font-weight:700;color:#e65100;margin-right:6px;font-size:12px}
+.reset-btn{margin-top:8px;background:#eeeeee;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit}
+.pr-q{background:#e3f2fd;border-radius:8px;padding:12px;margin-bottom:10px}
+.pr-q .pr-label{font-size:12px;font-weight:700;color:#0d47a1;margin-bottom:6px}
+.toggle-ans-btn{background:#1976d2;color:#fff;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit;margin-top:8px;transition:.2s}
+.toggle-ans-btn:hover{background:#1565c0}
+.ans-body{display:none;margin-top:8px;background:rgba(255,255,255,.7);border-radius:6px;padding:10px;font-size:13px;line-height:1.9}
+.ans-body.open{display:block}
+.calc-step{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:12px;margin:8px 0;font-size:14px}
+.calc-step .cs-label{font-size:11px;font-weight:700;color:#7b1fa2;margin-bottom:4px}
+.note-box{background:#fff3e0;border-left:4px solid #ff9800;border-radius:8px;padding:10px 12px;margin:10px 0;font-size:13px}
+/* 手順ボックス */
+.flow-box{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.flow-box .flow-title{font-weight:700;color:#1b5e20;margin-bottom:8px;font-size:13px}
+.flow-step{margin-bottom:4px;padding-left:8px}
+/* 真数条件強調 */
+.shinsu-badge{display:inline-block;background:#e53935;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;margin-right:4px}
+</style>
+</head>
+<body>
+
+<div class="top-header">
+  <div>
+    <div class="brand">GAMBA</div>
+    <div class="unit-title">数学II ▶ 第8章 対数関数 ▶ EX2-4 対数方程式</div>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active-ex" onclick="showTab('ex1')">解説①<br>真数条件</button>
+  <button class="tab-btn" onclick="showTab('pr1')">練習①<br>基本型</button>
+  <button class="tab-btn" onclick="showTab('cf1')">確認①<br>テスト</button>
+  <button class="tab-btn" onclick="showTab('ex2')">解説②<br>応用型</button>
+  <button class="tab-btn" onclick="showTab('pr2')">練習②<br>応用問題</button>
+  <button class="tab-btn" onclick="showTab('cf2')">確認②<br>テスト</button>
+</div>
+
+<!-- ===================== 解説① ===================== -->
+<div id="ex1" class="page active">
+
+  <div class="card">
+    <div class="card-title">📘 対数方程式とは・真数条件</div>
+
+    <p style="font-size:14px;margin-bottom:10px">
+      対数を含む方程式を <strong>対数方程式</strong> といいます。<br>
+      解く前に必ず確認しなければならないことがあります。
+    </p>
+
+    <div class="warn-box">
+      <div class="w-title">⚠️ 真数条件を忘れずに！</div>
+      <p style="margin-bottom:6px">
+        $\log_a M$ が成立するには <strong>真数 $M > 0$</strong> でなければなりません。
+      </p>
+      <p>
+        対数方程式・対数不等式では、<strong>必ず最初に真数条件を確認</strong>し、<br>
+        求めた解が真数条件を満たすか最後に確認します。
+      </p>
+    </div>
+
+    <div class="flow-box">
+      <div class="flow-title">📋 対数方程式を解く手順</div>
+      <div class="flow-step">① <strong>真数条件</strong>を求める（真数 $> 0$）</div>
+      <div class="flow-step">② 対数の性質・公式を使って整理する</div>
+      <div class="flow-step">③ 両辺の対数の底をそろえて <strong>真数を比較</strong>する</div>
+      <div class="flow-step">④ 求めた解が①の真数条件を <strong>満たすか確認</strong>する</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📘 基本型①：右辺が数のとき</div>
+
+    <p style="font-size:14px;margin-bottom:8px">
+      右辺の数を「$\log_a(\text{何か})$」の形に直して、真数を比較します。
+    </p>
+
+    <div class="point-box">
+      <div class="pt-title">⭐ ポイント</div>
+      右辺の数 $n$ に $\log_a a = 1$ をかけて $n\log_a a = \log_a a^n$ に変形する<br>
+      例：$3 = 3 \times \log_2 2 = 3\log_2 2 = \log_2 2^3 = \log_2 8$<br>
+      例：$2 = 2\log_3 3 = \log_3 3^2 = \log_3 9$
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題１</div>
+      <p style="font-size:14px">次の方程式を解きなさい。</p>
+      <p style="font-size:14px;margin:6px 0">
+        (1) $\log_3(x-1) = 2$　　(2) $\log_5 x + \log_5(x-4) = 1$
+      </p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol1')">解答を見る</button>
+        <div class="step-body" id="sol1">
+          <div class="calc-step">
+            <div class="cs-label">(1) 手順にそって解く</div>
+            <p style="margin-bottom:4px"><span class="shinsu-badge">真数条件</span>$x - 1 > 0$ より $x > 1$ … ①</p>
+            <p style="margin-bottom:4px">$2 = 2 \times \log_3 3 = 2\log_3 3 = \log_3 3^2 = \log_3 9$ と変形すると</p>
+            <p style="margin-bottom:4px">$\log_3(x-1) = \log_3 9$</p>
+            <p style="margin-bottom:4px">真数を比較して $x - 1 = 9$、よって $x = 10$</p>
+            <p>①より $x = 10 > 1$ ✅　　答え：$x = 10$</p>
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">(2) 積の法則で左辺をまとめる</div>
+            <p style="margin-bottom:4px"><span class="shinsu-badge">真数条件</span>$x > 0$ かつ $x - 4 > 0$ より $x > 4$ … ①</p>
+            <p style="margin-bottom:4px">$1 = \log_5 5$ と変形して左辺を積にまとめると</p>
+            <p style="margin-bottom:4px">$\log_5 x(x-4) = \log_5 5$</p>
+            <p style="margin-bottom:4px">$x(x-4) = 5$　→　$x^2 - 4x - 5 = 0$　→　$(x-5)(x+1) = 0$</p>
+            <p style="margin-bottom:4px">$x = 5$ または $x = -1$</p>
+            <p>①より $x = -1$ は不適。　答え：$x = 5$</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>🔖 右辺を log に変える方法</strong><br>
+      右辺が $n$（整数）のとき → $\log_a a^n$ に変える<br>
+      例：底が 3 のとき $2 = \log_3 9$、$3 = \log_3 27$、$-1 = \log_3 \frac{1}{3}$
+    </div>
+  </div>
+
+  <!-- ミニテスト① -->
+  <div class="card">
+    <div class="card-title">🧪 確認しよう①</div>
+
+    <div class="mini-q">
+      <div class="q-text">Q1. $\log_3(x-1) = 2$ を解くとき、真数条件は何ですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m1',0,false,'m1-fb')">① $x > 0$</button></li>
+        <li><button onclick="mAns('m1',1,false,'m1-fb')">② $x > -1$</button></li>
+        <li><button onclick="mAns('m1',2,true,'m1-fb')">③ $x > 1$</button></li>
+        <li><button onclick="mAns('m1',3,false,'m1-fb')">④ $x \geq 1$</button></li>
+      </ul>
+      <div class="mini-fb" id="m1-fb"
+        data-correct="2"
+        data-ok="真数は $x - 1$ です。真数条件は $x - 1 > 0$、つまり $x > 1$ です。<br>（$x - 1 = 0$ のとき $\log_3 0$ は定義されないので、等号はつきません）"
+        data-ng0="真数は $x$ ではなく $x-1$ です。$x - 1 > 0$ より $x > 1$ です。"
+        data-ng1="$x - 1 > 0$ を解くと $x > 1$ です。$x > -1$ にはなりません。"
+        data-ng3="真数条件は真数 $> 0$（不等号は厳密）なので等号はつきません。$x > 1$ が正しいです。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m1')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $\log_3(x-1) = 2$ の解はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m2',0,false,'m2-fb')">① $x = 3$</button></li>
+        <li><button onclick="mAns('m2',1,false,'m2-fb')">② $x = 8$</button></li>
+        <li><button onclick="mAns('m2',2,true,'m2-fb')">③ $x = 10$</button></li>
+        <li><button onclick="mAns('m2',3,false,'m2-fb')">④ $x = 7$</button></li>
+      </ul>
+      <div class="mini-fb" id="m2-fb"
+        data-correct="2"
+        data-ok="$2 = \log_3 9$ と変形して $\log_3(x-1) = \log_3 9$<br>真数を比較して $x - 1 = 9$、よって $x = 10$<br>真数条件 $x > 1$ も満たしています。"
+        data-ng0="$\log_3(x-1) = \log_3 9$ なので $x - 1 = 9$、$x = 10$ です。$x = 3$ は $2 = \log_3 9$ を使っていません。"
+        data-ng1="$x - 1 = 9$ なので $x = 10$ です。$x = 8$ は $x - 1 = 7$ のときです。"
+        data-ng3="$2 = \log_3 9$ より $x - 1 = 9$、$x = 10$ です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m2')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /ex1 -->
+
+<!-- ===================== 練習① ===================== -->
+<div id="pr1" class="page">
+
+  <div class="card">
+    <div class="card-title">✏️ 練習問題① 基本型</div>
+
+    <div class="pr-q">
+      <div class="pr-label">問1　次の方程式を解きなさい。</div>
+      <p style="font-size:14px;margin-top:8px">(1) $\log_2(x+3) = 3$</p>
+      <p style="font-size:14px;margin-top:6px">(2) $\log_{\frac{1}{2}}(x-2) = 2$　〈久留米工業大〉</p>
+      <p style="font-size:14px;margin-top:6px">(3) $\log_2 x + \log_2(x-2) = 3$　〈福井工業大〉</p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pa1')">答えを見る</button>
+      <div class="ans-body" id="pa1">
+        (1) 真数条件：$x + 3 > 0$ より $x > -3$<br>
+        $3 = \log_2 8$ と変形 → $\log_2(x+3) = \log_2 8$ → $x + 3 = 8$<br>
+        $x = 5$（真数条件を満たす ✅）<br><br>
+        (2) 真数条件：$x - 2 > 0$ より $x > 2$<br>
+        $2 = 2\log_{\frac{1}{2}} \frac{1}{2} = \log_{\frac{1}{2}} \left(\frac{1}{2}\right)^2 = \log_{\frac{1}{2}} \frac{1}{4}$<br>
+        $\log_{\frac{1}{2}}(x-2) = \log_{\frac{1}{2}} \frac{1}{4}$ → $x - 2 = \frac{1}{4}$<br>
+        $x = \frac{9}{4}$（真数条件を満たす ✅）<br><br>
+        (3) 真数条件：$x > 0$ かつ $x - 2 > 0$ より $x > 2$<br>
+        $\log_2 x(x-2) = \log_2 8$ → $x(x-2) = 8$ → $x^2 - 2x - 8 = 0$<br>
+        $(x-4)(x+2) = 0$ → $x = 4$ または $x = -2$<br>
+        $x > 2$ より $x = 4$ ✅
+      </div>
+    </div>
+
+    <div class="pr-q">
+      <div class="pr-label">問2　次の方程式を解きなさい。</div>
+      <p style="font-size:14px;margin-top:8px">$\log_3 x - \log_9(x+6) = 0$　〈城西大〉</p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pa2')">答えを見る</button>
+      <div class="ans-body" id="pa2">
+        真数条件：$x > 0$ かつ $x + 6 > 0$ より $x > 0$<br><br>
+        $\log_9(x+6) = \dfrac{\log_3(x+6)}{\log_3 9} = \dfrac{\log_3(x+6)}{2}$<br><br>
+        方程式は $\log_3 x - \dfrac{\log_3(x+6)}{2} = 0$<br>
+        両辺 $\times 2$：$2\log_3 x = \log_3(x+6)$<br>
+        $\log_3 x^2 = \log_3(x+6)$<br>
+        $x^2 = x + 6$ → $x^2 - x - 6 = 0$ → $(x-3)(x+2) = 0$<br>
+        $x = 3$ または $x = -2$<br>
+        $x > 0$ より $x = 3$ ✅
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pr1 -->
+
+<!-- ===================== 確認テスト① ===================== -->
+<div id="cf1" class="page">
+
+  <div class="card">
+    <div class="card-title">🔶 確認テスト① 真数条件・基本型</div>
+
+    <div class="mini-q">
+      <div class="q-text">Q1. $\log_2 x + \log_2(x-2) = 3$ を解くとき、真数条件として正しいものはどれですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('c1',0,false,'c1-fb')">① $x > 0$</button></li>
+        <li><button onclick="mAns('c1',1,false,'c1-fb')">② $x > -2$</button></li>
+        <li><button onclick="mAns('c1',2,true,'c1-fb')">③ $x > 2$</button></li>
+        <li><button onclick="mAns('c1',3,false,'c1-fb')">④ $x > 0$ かつ $x > 2$（同じなので $x > 0$）</button></li>
+      </ul>
+      <div class="mini-fb" id="c1-fb"
+        data-correct="2"
+        data-ok="$\log_2 x$ の真数条件は $x > 0$、$\log_2(x-2)$ の真数条件は $x - 2 > 0$ つまり $x > 2$。<br>両方を同時に満たす範囲は <strong>$x > 2$</strong> です（$x > 2$ の方が厳しい条件）。"
+        data-ng0="$\log_2(x-2)$ の条件 $x > 2$ も必要です。$x > 0$ だけでは不十分です。"
+        data-ng1="$x - 2 > 0$ を解くと $x > 2$ です。$x > -2$ にはなりません。"
+        data-ng3="$x > 0$ と $x > 2$ の両方を満たすのは $x > 2$ です。$x > 0$ ではありません。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('c1')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $\log_2 x + \log_2(x-2) = 3$ の解はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('c2',0,false,'c2-fb')">① $x = -2$</button></li>
+        <li><button onclick="mAns('c2',1,false,'c2-fb')">② $x = 2$</button></li>
+        <li><button onclick="mAns('c2',2,false,'c2-fb')">③ $x = -2$ と $x = 4$（両方）</button></li>
+        <li><button onclick="mAns('c2',3,true,'c2-fb')">④ $x = 4$</button></li>
+      </ul>
+      <div class="mini-fb" id="c2-fb"
+        data-correct="3"
+        data-ok="$\log_2 x(x-2) = \log_2 8$ → $x(x-2) = 8$ → $x^2 - 2x - 8 = 0$<br>$(x-4)(x+2) = 0$ → $x = 4$ または $x = -2$<br>真数条件 $x > 2$ より $x = -2$ は不適。答え $x = 4$"
+        data-ng0="真数条件 $x > 2$ を満たしません。$x = 4$ が正解です。"
+        data-ng1="$x = 2$ は真数条件 $x > 2$ を満たさず（等号なし）、また方程式も成り立ちません。"
+        data-ng2="$x = -2$ は真数条件 $x > 2$ を満たさないため不適です。$x = 4$ のみが答えです。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('c2')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /cf1 -->
+
+<!-- ===================== 解説② ===================== -->
+<div id="ex2" class="page">
+
+  <div class="card">
+    <div class="card-title">📘 応用型：$\log$ を文字でおく</div>
+
+    <p style="font-size:14px;margin-bottom:10px">
+      $(\log x)^2$ や $\log x \cdot \log_x(\text{何か})$ のような式が出てきたとき、<br>
+      <strong>$\log x = t$ とおく</strong>と2次方程式に変わります。
+    </p>
+
+    <div class="point-box">
+      <div class="pt-title">⭐ t 置き換えのポイント</div>
+      <p style="margin-bottom:4px">$\log_a x = t$ とおいたとき：</p>
+      <p style="margin-bottom:4px">・$x \neq 1$ のとき $t \neq 0$ になる（重要！）</p>
+      <p>・$t$ の範囲が限定される場合は範囲も確認する</p>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題２</div>
+      <p style="font-size:14px">方程式 $\log_2 x - \log_x 4 = 1$ を解きなさい。</p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol2')">解答を見る</button>
+        <div class="step-body" id="sol2">
+          <div class="calc-step">
+            <div class="cs-label">底の変換で底を 2 に統一する</div>
+            <p style="margin-bottom:4px">$\log_x 4 = \dfrac{\log_2 4}{\log_2 x} = \dfrac{2}{\log_2 x}$</p>
+            <p>方程式は $\log_2 x - \dfrac{2}{\log_2 x} = 1$</p>
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">$\log_2 x = t$ とおく</div>
+            <p style="margin-bottom:4px">真数条件：$x > 0$、$x \neq 1$ より $t \neq 0$</p>
+            <p style="margin-bottom:4px">$t - \dfrac{2}{t} = 1$　両辺に $t$ をかけて</p>
+            <p style="margin-bottom:4px">$t^2 - t - 2 = 0$ → $(t-2)(t+1) = 0$</p>
+            <p>$t = 2$ または $t = -1$</p>
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">$t$ を $x$ に戻す</div>
+            <p style="margin-bottom:4px">$t = 2$ のとき $\log_2 x = 2$ → $x = 4$</p>
+            <p>$t = -1$ のとき $\log_2 x = -1$ → $x = \dfrac{1}{2}$</p>
+            <p style="margin-top:6px">答え：$x = 4,\ x = \dfrac{1}{2}$</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">📝 例題３</div>
+      <p style="font-size:14px">方程式 $\log_2 x + 2 - \dfrac{3}{\log_2 x} = 0$ を解きなさい。　〈流通科学大〉</p>
+      <div class="step-wrap">
+        <button class="step-btn" onclick="toggleStep('sol3')">解答を見る</button>
+        <div class="step-body" id="sol3">
+          <div class="calc-step">
+            <div class="cs-label">$\log_2 x = t$ とおく（$x > 0$、$x \neq 1$ より $t \neq 0$）</div>
+            <p style="margin-bottom:4px">$t + 2 - \dfrac{3}{t} = 0$　両辺に $t$ をかけて</p>
+            <p style="margin-bottom:4px">$t^2 + 2t - 3 = 0$ → $(t+3)(t-1) = 0$</p>
+            <p>$t = -3$ または $t = 1$</p>
+          </div>
+          <div class="calc-step">
+            <div class="cs-label">$t$ を $x$ に戻す</div>
+            <p style="margin-bottom:4px">$t = -3$ のとき $\log_2 x = -3$ → $x = 2^{-3} = \dfrac{1}{8}$</p>
+            <p>$t = 1$ のとき $\log_2 x = 1$ → $x = 2$</p>
+            <p style="margin-top:6px">答え：$x = \dfrac{1}{8},\ x = 2$</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ミニテスト② -->
+    <div class="mini-q" style="margin-top:16px">
+      <div class="q-text">Q1. $\log_2 x - \log_x 4 = 1$ で $\log_2 x = t$ とおくと、$\log_x 4$ はどう変わりますか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m3',0,false,'m3-fb')">① $4t$</button></li>
+        <li><button onclick="mAns('m3',1,false,'m3-fb')">② $t - 4$</button></li>
+        <li><button onclick="mAns('m3',2,true,'m3-fb')">③ $\dfrac{2}{t}$</button></li>
+        <li><button onclick="mAns('m3',3,false,'m3-fb')">④ $\dfrac{t}{2}$</button></li>
+      </ul>
+      <div class="mini-fb" id="m3-fb"
+        data-correct="2"
+        data-ok="底の変換公式で $\log_x 4 = \dfrac{\log_2 4}{\log_2 x} = \dfrac{2}{t}$<br>（$\log_2 4 = 2$、$\log_2 x = t$ を使います）"
+        data-ng0="底の変換公式を使います。$\log_x 4 = \dfrac{\log_2 4}{\log_2 x} = \dfrac{2}{t}$ です。"
+        data-ng1="底の変換公式を使います。$\log_x 4 = \dfrac{2}{\log_2 x} = \dfrac{2}{t}$ です。"
+        data-ng3="分子が $\log_2 4 = 2$、分母が $\log_2 x = t$ なので $\dfrac{2}{t}$ です（逆にしないよう注意）。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m3')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $t - \dfrac{2}{t} = 1$ を解くと（$t \neq 0$）？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('m4',0,false,'m4-fb')">① $t = 1$ または $t = 2$</button></li>
+        <li><button onclick="mAns('m4',1,true,'m4-fb')">② $t = 2$ または $t = -1$</button></li>
+        <li><button onclick="mAns('m4',2,false,'m4-fb')">③ $t = -2$ または $t = 1$</button></li>
+        <li><button onclick="mAns('m4',3,false,'m4-fb')">④ $t = 2$ のみ</button></li>
+      </ul>
+      <div class="mini-fb" id="m4-fb"
+        data-correct="1"
+        data-ok="両辺に $t$ をかけると $t^2 - 2 = t$ → $t^2 - t - 2 = 0$<br>$(t-2)(t+1) = 0$ → $t = 2$ または $t = -1$"
+        data-ng0="$t^2 - t - 2 = (t-2)(t+1) = 0$ なので $t = 2$ または $t = -1$ です。"
+        data-ng2="$t^2 - t - 2 = 0$ の解は $(t-2)(t+1) = 0$ より $t = 2, -1$ です。符号に注意。"
+        data-ng3="$(t+1) = 0$ のとき $t = -1$ も解になります。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('m4')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /ex2 -->
+
+<!-- ===================== 練習② ===================== -->
+<div id="pr2" class="page">
+
+  <div class="card">
+    <div class="card-title">✏️ 練習問題② 応用問題</div>
+
+    <div class="pr-q">
+      <div class="pr-label">問1　次の方程式を解きなさい。</div>
+      <p style="font-size:14px;margin-top:8px">(1) $\log_2 x + 2 - \dfrac{3}{\log_2 x} = 0$　〈流通科学大〉</p>
+      <p style="font-size:14px;margin-top:6px">(2) $\log_x 4 - \log_4 x^2 - 1 = 0$　〈岐阜薬科大〉</p>
+      <button class="toggle-ans-btn" onclick="toggleAns('pb1')">答えを見る</button>
+      <div class="ans-body" id="pb1">
+        (1) $\log_2 x = t$（$x > 0$、$x \neq 1$ より $t \neq 0$）とおく<br>
+        $t + 2 - \dfrac{3}{t} = 0$ → $t^2 + 2t - 3 = 0$ → $(t+3)(t-1) = 0$<br>
+        $t = -3$ → $x = 2^{-3} = \dfrac{1}{8}$<br>
+        $t = 1$ → $x = 2$<br>
+        答え：$x = \dfrac{1}{8},\ x = 2$<br><br>
+        (2) 真数条件：$x > 0$、$x \neq 1$<br>
+        底の変換：$\log_x 4 = \dfrac{\log_2 4}{\log_2 x} = \dfrac{2}{\log_2 x}$、$\log_4 x^2 = \dfrac{2\log_2 x}{\log_2 4} = \dfrac{2\log_2 x}{2} = \log_2 x$<br>
+        $\log_2 x = t$（$t \neq 0$）とおくと<br>
+        $\dfrac{2}{t} - t - 1 = 0$ → $2 - t^2 - t = 0$ → $t^2 + t - 2 = 0$ → $(t+2)(t-1) = 0$<br>
+        $t = -2$ → $x = 2^{-2} = \dfrac{1}{4}$<br>
+        $t = 1$ → $x = 2$<br>
+        答え：$x = \dfrac{1}{4},\ x = 2$
+      </div>
+    </div>
+
+    <div class="pr-q">
+      <div class="pr-label">問2（入試）　$\log_2(x^2 - 10x + 17) = 3$ の解を $\alpha,\ \beta$ とするとき、$\alpha\beta$ の値を求めよ。　〈自治医科大〉</div>
+      <button class="toggle-ans-btn" onclick="toggleAns('pb2')">答えを見る</button>
+      <div class="ans-body" id="pb2">
+        真数条件：$x^2 - 10x + 17 > 0$ … ①<br><br>
+        $3 = \log_2 8$ と変形 → $\log_2(x^2 - 10x + 17) = \log_2 8$<br>
+        $x^2 - 10x + 17 = 8$<br>
+        $x^2 - 10x + 9 = 0$ → $(x-1)(x-9) = 0$<br>
+        $x = 1$ または $x = 9$<br><br>
+        $x = 1$ のとき：$1 - 10 + 17 = 8 > 0$ ✅<br>
+        $x = 9$ のとき：$81 - 90 + 17 = 8 > 0$ ✅<br><br>
+        両方が真数条件を満たすので $\alpha\beta = 1 \times 9 = 9$
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pr2 -->
+
+<!-- ===================== 確認テスト② ===================== -->
+<div id="cf2" class="page">
+
+  <div class="card">
+    <div class="card-title">🔶 確認テスト② 応用型</div>
+
+    <div class="mini-q">
+      <div class="q-text">Q1. $\log_2 x + 2 - \dfrac{3}{\log_2 x} = 0$ で $\log_2 x = t$ とおくと、$t$ の方程式はどれですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('d1',0,false,'d1-fb')">① $t^2 - 2t + 3 = 0$</button></li>
+        <li><button onclick="mAns('d1',1,false,'d1-fb')">② $t^2 - 2t - 3 = 0$</button></li>
+        <li><button onclick="mAns('d1',2,true,'d1-fb')">③ $t^2 + 2t - 3 = 0$</button></li>
+        <li><button onclick="mAns('d1',3,false,'d1-fb')">④ $t^2 + 2t + 3 = 0$</button></li>
+      </ul>
+      <div class="mini-fb" id="d1-fb"
+        data-correct="2"
+        data-ok="$t + 2 - \dfrac{3}{t} = 0$ の両辺に $t$ をかけると<br>$t^2 + 2t - 3 = 0$"
+        data-ng0="$t$ をかけると $t^2 + 2t - 3 = 0$ です。符号を確認しましょう。"
+        data-ng1="$-\dfrac{3}{t} \times t = -3$ なので $t^2 + 2t - 3 = 0$ です。$-3$ の符号に注意。"
+        data-ng3="$-\dfrac{3}{t} \times t = -3$（マイナス）なので $+3$ にはなりません。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('d1')">もう一度</button>
+    </div>
+
+    <div class="mini-q">
+      <div class="q-text">Q2. $\log_2(x^2 - 10x + 17) = 3$ の解 $\alpha,\ \beta$ に対して、$\alpha\beta$ はいくつですか？</div>
+      <ul class="choice-list">
+        <li><button onclick="mAns('d2',0,false,'d2-fb')">① 1</button></li>
+        <li><button onclick="mAns('d2',1,false,'d2-fb')">② 10</button></li>
+        <li><button onclick="mAns('d2',2,true,'d2-fb')">③ 9</button></li>
+        <li><button onclick="mAns('d2',3,false,'d2-fb')">④ 17</button></li>
+      </ul>
+      <div class="mini-fb" id="d2-fb"
+        data-correct="2"
+        data-ok="$3 = \log_2 8$ より $x^2 - 10x + 17 = 8$<br>$x^2 - 10x + 9 = 0$ → $(x-1)(x-9) = 0$<br>$x = 1,\ 9$（両方真数条件を満たす）<br>$\alpha\beta = 1 \times 9 = 9$"
+        data-ng0="$x = 1$ と $x = 9$ の積なので $1 \times 9 = 9$ です。"
+        data-ng1="解の和は $1 + 9 = 10$ ですが、積は $1 \times 9 = 9$ です。"
+        data-ng3="17 は元の方程式の定数項です。解の積は $1 \times 9 = 9$ です。"
+      ></div>
+      <button class="reset-btn" onclick="mReset('d2')">もう一度</button>
+    </div>
+  </div>
+
+</div><!-- /cf2 -->
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active-ex','active-pr','active-cf'));
+  document.getElementById(id).classList.add('active');
+  const tabs = ['ex1','pr1','cf1','ex2','pr2','cf2'];
+  const clss = ['active-ex','active-pr','active-cf','active-ex','active-pr','active-cf'];
+  document.querySelectorAll('.tab-btn')[tabs.indexOf(id)].classList.add(clss[tabs.indexOf(id)]);
+  if(typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(document.getElementById(id), {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+  window.scrollTo(0,0);
+}
+
+function toggleStep(id) {
+  const body = document.getElementById(id);
+  const btn = body.previousElementSibling;
+  body.classList.toggle('open');
+  btn.textContent = body.classList.contains('open') ? '閉じる' : '解答を見る';
+  if(body.classList.contains('open') && typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(body, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+}
+
+function toggleAns(id) {
+  const body = document.getElementById(id);
+  const btn = body.previousElementSibling;
+  body.classList.toggle('open');
+  btn.textContent = body.classList.contains('open') ? '閉じる' : '答えを見る';
+  if(body.classList.contains('open') && typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(body, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+}
+
+function mAns(mid, idx, correct, fbId) {
+  const fb = document.getElementById(fbId || mid+'-fb');
+  const btns = fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(b => b.disabled = true);
+  btns[idx].classList.add(correct ? 'correct' : 'wrong');
+  const correctIdx = fb.dataset.correct;
+  if(!correct && correctIdx !== undefined) btns[correctIdx].classList.add('correct');
+  let topMsg = correct
+    ? '<span class="fb-badge fb-ok">✅ 正解！</span>'
+    : '<span class="fb-badge fb-ng">❌ 不正解</span> ' + (fb.dataset['ng'+idx] || 'もう一度確認しましょう。');
+  const okMsg = fb.dataset.ok || '';
+  fb.classList.add('show', correct ? 'ok' : 'ng-with-ans');
+  fb.innerHTML = '<div class="fb-top">'+topMsg+'</div><div class="fb-exp"><span class="fb-exp-label">📝 解説</span>'+okMsg+'</div>';
+  if(typeof renderMathInElement !== 'undefined'){
+    renderMathInElement(fb, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError:false
+    });
+  }
+  if(correct) launchConfetti();
+}
+
+function mReset(mid) {
+  const fb = document.getElementById(mid+'-fb');
+  const btns = fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(b => { b.disabled = false; b.classList.remove('correct','wrong'); });
+  fb.className = 'mini-fb';
+  fb.innerHTML = '';
+}
+
+function launchConfetti(){
+  const colors=['#e91e63','#1976d2','#f57c00','#7b5ea7','#43a047','#ffc107','#00bcd4'];
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const particles = Array.from({length:120},()=>({
+    x:Math.random()*canvas.width,y:-20,r:Math.random()*6+3,
+    color:colors[Math.floor(Math.random()*colors.length)],
+    speed:Math.random()*4+2,angle:Math.random()*360,
+    spin:(Math.random()-0.5)*6,wobble:Math.random()*3
+  }));
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle*Math.PI/180);
+      ctx.fillStyle=p.color;ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6);ctx.restore();
+      p.y+=p.speed;p.x+=Math.sin(frame*0.05+p.wobble)*1.5;p.angle+=p.spin;
+    });
+    frame++;
+    if(frame<120) requestAnimationFrame(draw); else canvas.remove();
+  }
+  draw();
+}
+</script>
+
+<script>
+window.NEKO_CONFIG = {
+  subject: '数学II',
+  chapter: 'EX2-4',
+  title: '対数方程式',
+  catSrc: 'https://api.dicebear.com/7.x/fun-emoji/svg?seed=neko',
+  greeting: '対数方程式は真数条件が命🐱 最初と最後の確認を忘れずに！',
+  quickBtns: [
+    '真数条件って何？',
+    '右辺の数を log に変えるには？',
+    'tに置き換える方法は？',
+    '解が不適になるのはなぜ？'
+  ],
+  pageMap: {
+    'ex1': '解説①「真数条件と基本型の解き方」を学習中',
+    'pr1': '練習問題①「基本型の対数方程式」に取り組み中',
+    'cf1': '確認テスト①「真数条件・基本型のテスト」に取り組み中',
+    'ex2': '解説②「t置き換えによる応用型」を学習中',
+    'pr2': '練習問題②「応用問題・入試問題」に取り組み中',
+    'cf2': '確認テスト②「応用型のテスト」に取り組み中'
+  }
+};
+</script>
+<script src="neko.js"></script>
+</body>
+</html>
