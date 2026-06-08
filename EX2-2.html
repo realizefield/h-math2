@@ -114,6 +114,10 @@ body{font-family:'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;font-si
 
 /* タグ */
 .tag{display:inline-block;background:#7b1fa2;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;margin-bottom:6px}
+
+.back-btn-wrap{background:#1a237e;padding:4px 12px 10px;text-align:left}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.4);border-radius:20px;padding:5px 16px;font-size:12px;font-weight:700;text-decoration:none;font-family:inherit;cursor:pointer;transition:.2s}
+.back-btn:hover{background:rgba(255,255,255,.28)}
 </style>
 </head>
 <body>
@@ -126,7 +130,11 @@ body{font-family:'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;font-si
   </div>
 </div>
 
-<!-- タブナビ -->
+<div class="back-btn-wrap">
+  <a class="back-btn" href="index_math2_shisuu.html">&#x2190; 単元表に戻る</a>
+</div>
+
+!-- タブナビ -->
 <div class="tab-nav">
   <button class="tab-btn active-ex" onclick="showTab('ex1')">解説①<br>基本性質</button>
   <button class="tab-btn" onclick="showTab('pr1')">練習①<br>性質の確認</button>
