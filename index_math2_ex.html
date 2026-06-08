@@ -2,14 +2,12 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>GAMBA 数学II 指数・対数関数 単元表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GAMBA 数学B 数列 単元表</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','BIZ UDGothic','Yu Gothic UI',Meiryo,sans-serif;background:#eff6ff;color:#0f1e3c;min-height:100vh;font-size:15px}
-
-/* ヘッダー */
-.top-header{background:linear-gradient(135deg,#2055b0 0%,#1741a0 100%);color:#fff;padding:16px 16px 0;text-align:center}
+body{font-family:'BIZ UDPGothic','Hiragino Kaku Gothic ProN','Yu Gothic UI',Meiryo,sans-serif;background:#eff6ff;color:#1e293b;min-height:100vh;font-size:15px}
+.top-header{background:linear-gradient(135deg,#1e40af 0%,#2055b0 60%,#1565c0 100%);color:#fff;padding:16px 16px 0;text-align:center}
 .top-header h1{font-size:1.15rem;font-weight:800;letter-spacing:.04em}
 .top-header p{font-size:.78rem;margin-top:3px;opacity:.85}
 .summary-bar{background:rgba(0,0,0,.22);margin-top:12px;padding:9px 14px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:.78rem;color:#fff}
@@ -17,19 +15,20 @@ body{font-family:'Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','BIZ UD
 .sum-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .sum-dot-a{background:#4ade80}.sum-dot-b{background:#fbbf24}.sum-dot-c{background:#f87171}.sum-dot-n{background:#94a3b8}
 .sum-count{font-weight:800;font-size:1rem;min-width:18px;text-align:center}
-
-.wrap{max-width:920px;margin:0 auto;padding:14px 12px 56px}
-
-/* 学習フロー */
-.flow{background:#fff;border-radius:14px;border:1px solid #bfdbfe;padding:13px 16px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.flow-title{font-size:.88rem;font-weight:800;color:#2055b0;margin-bottom:9px;padding-bottom:6px;border-bottom:2px solid #dbeafe}
-.flow-steps{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
-.flow-step{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:6px 11px;font-size:.78rem;color:#1d4ed8;font-weight:700;white-space:nowrap}
-.flow-arrow{color:#2055b0;font-size:1rem;font-weight:700}
-
-/* ユニット */
+.tab-nav{background:rgba(255,255,255,.97);border-bottom:2px solid #bfdbfe;padding:8px 12px;display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;z-index:300;backdrop-filter:blur(8px);box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.tnav{font-family:inherit;font-size:.8em;font-weight:700;padding:7px 18px;border:2px solid #bfdbfe;border-radius:50px;background:#fff;color:#6b7a99;cursor:pointer;transition:.14s}
+.tnav:hover{border-color:#2055b0;color:#2055b0}
+.tnav.on{background:#2055b0;color:#fff;border-color:#2055b0}
+.tab-sec{display:none}.tab-sec.on{display:block}
+.wrap{max-width:960px;margin:0 auto;padding:14px 12px 70px}
+.progress-wrap{background:#fff;border-radius:14px;border:1px solid #bfdbfe;padding:13px 16px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.progress-lbl{font-size:.8rem;font-weight:800;color:#2055b0;margin-bottom:8px}
+.progress-bar-bg{background:#dbeafe;border-radius:20px;height:12px;overflow:hidden}
+.progress-bar-fill{background:linear-gradient(90deg,#2055b0,#42a5f5);height:100%;border-radius:20px;transition:.6s}
+.progress-pct{font-size:.8rem;font-weight:700;color:#2055b0;margin-top:5px;text-align:right}
 .unit{background:#fff;border-radius:14px;border:1px solid #bfdbfe;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);overflow:hidden}
-.unit-hd{padding:11px 16px;display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,#2055b0,#3b82f6);color:#fff}
+.unit-hd{padding:11px 16px;display:flex;align-items:center;gap:10px;color:#fff}
+.unit-hd.ch1{background:linear-gradient(90deg,#1e40af,#2055b0)}
 .unit-num{background:rgba(255,255,255,.2);border-radius:7px;padding:3px 10px;font-size:.78rem;font-weight:800;white-space:nowrap}
 .unit-title{font-size:1rem;font-weight:800;flex:1}
 .unit-badge{font-size:.72rem;background:rgba(255,255,255,.25);border-radius:999px;padding:2px 9px;font-weight:700;white-space:nowrap}
@@ -37,592 +36,317 @@ body{font-family:'Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','BIZ UD
 .group-label{font-size:.75rem;font-weight:800;color:#64748b;margin:12px 0 8px;letter-spacing:.05em;padding-bottom:4px;border-bottom:1.5px dashed #bfdbfe;display:flex;align-items:center;gap:7px}
 .group-label:first-child{margin-top:0}
 .sec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:4px}
-
-/* カード */
 .sec-card{border-radius:10px;border:1.5px solid #bfdbfe;overflow:hidden;transition:.18s;background:#fff;display:flex;flex-direction:column}
 .sec-card:hover{box-shadow:0 3px 14px rgba(32,85,176,.15);transform:translateY(-1px)}
 .sc-hd{background:#eff6ff;border-bottom:2px solid #2055b0;padding:9px 12px;display:flex;align-items:center;gap:8px}
 .sc-num{background:#2055b0;color:#fff;border-radius:7px;padding:3px 9px;font-size:.75rem;font-weight:800;flex-shrink:0}
-.sc-title{font-size:.88rem;font-weight:800;flex:1;color:#1d3a7a;line-height:1.3}
-.sc-stars{font-size:.75rem;color:#fbbf24;letter-spacing:-1px;flex-shrink:0}
+.sc-title{font-size:.88rem;font-weight:800;flex:1;color:#1e40af;line-height:1.3}
+.sc-status{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:50px;white-space:nowrap;flex-shrink:0;background:#e2e8f0;color:#64748b;border:1px solid #cbd5e1}
+.sc-status.done{background:#dcfce7;color:#16a34a;border-color:#16a34a}
+.sc-status.partial{background:#fef3c7;color:#92400e;border-color:#fbbf24}
+.sc-status.studying{background:#dbeafe;color:#1d4ed8;border-color:#3b82f6}
+.sc-status.pending{background:#f1f5f9;color:#94a3b8;border-color:#cbd5e1}
 .sc-body{padding:8px 12px;background:#fff;flex:1}
 .sc-topics{list-style:none;margin:0;padding:0}
 .sc-topics li{font-size:.78rem;color:#475569;padding:2px 0;border-bottom:1px solid #eff6ff;line-height:1.5}
 .sc-topics li:last-child{border-bottom:none}
-.sc-topics li::before{content:"・";color:#2055b0}
-
-/* ボタン行 */
+.sc-topics li::before{content:"\30FB";color:#2055b0}
+.sc-meta{display:flex;align-items:center;gap:12px;padding:4px 12px 6px;font-size:.72rem;color:#64748b;background:#f8faff;border-top:1px dashed #bfdbfe}
+.sc-meta-item{display:flex;align-items:center;gap:3px}
+.sc-meta-val{font-weight:700;color:#1e40af}
 .sc-btn-row{display:flex;gap:5px;padding:8px 12px 0;flex-wrap:wrap}
-.sc-btn{flex:1;min-width:60px;text-align:center;padding:7px 4px;border-radius:8px;font-size:.75rem;font-weight:800;text-decoration:none;transition:.13s;border:none;cursor:pointer;display:block;color:#fff;font-family:inherit;background:#2055b0}
-.sc-btn:hover{background:#1741a0}
-
-/* A/B/C自己評価 */
+.sc-btn{flex:1;min-width:60px;text-align:center;padding:8px 4px;border-radius:8px;font-size:.78rem;font-weight:800;text-decoration:none;transition:.13s;border:none;cursor:pointer;display:block;color:#fff;font-family:inherit;background:#2055b0}
+.sc-btn:hover{background:#1e40af}
+.sc-btn-pending{background:#94a3b8 !important;cursor:not-allowed;pointer-events:none}
 .abc-row{display:flex;gap:5px;padding:8px 12px 10px}
-.abc-btn{flex:1;padding:6px 2px;border-radius:20px;font-size:.75rem;font-weight:800;font-family:inherit;cursor:pointer;transition:.13s;border:2px solid;text-align:center;background:#fff}
+.abc-lbl{font-size:.68rem;color:#64748b;font-weight:700;align-self:center;margin-right:2px;white-space:nowrap}
+.abc-btn{flex:1;padding:7px 2px;border-radius:20px;font-size:.75rem;font-weight:800;font-family:inherit;cursor:pointer;transition:.13s;border:2px solid;text-align:center;background:#fff}
 .abc-a{border-color:#16a34a;color:#16a34a}.abc-a.sel{background:#16a34a;color:#fff}
 .abc-b{border-color:#d97706;color:#d97706}.abc-b.sel{background:#d97706;color:#fff}
 .abc-c{border-color:#dc2626;color:#dc2626}.abc-c.sel{background:#dc2626;color:#fff}
 .abc-btn:hover{opacity:.8}
-
-/* カードのステータス色 */
-.sec-card.s-a{border-color:#16a34a}.sec-card.s-a .sc-hd{background:#dcfce7 !important;border-bottom-color:#16a34a !important}
-.sec-card.s-b{border-color:#d97706}.sec-card.s-b .sc-hd{background:#fef3c7 !important;border-bottom-color:#d97706 !important}
-.sec-card.s-c{border-color:#dc2626}.sec-card.s-c .sc-hd{background:#fee2e2 !important;border-bottom-color:#dc2626 !important}
-
-/* 早見表 */
-.ref-table{background:#fff;border-radius:14px;border:1px solid #bfdbfe;padding:14px 16px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.ref-title{font-size:.88rem;font-weight:800;color:#2055b0;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #dbeafe}
-.ref-table table{width:100%;border-collapse:collapse;font-size:.8rem}
-.ref-table th,.ref-table td{border:1px solid #bfdbfe;padding:7px 9px;text-align:center}
-.ref-table thead th{background:#eff6ff;color:#1d4ed8;font-weight:800}
-.ref-table tbody th{background:#f8fafc;text-align:left;font-weight:700}
-.ref-table td.hi{color:#2055b0;font-weight:800}
-
-/* 戻るリンク */
-.back-link{display:flex;gap:10px;justify-content:center;margin:22px 0 6px;flex-wrap:wrap}
-.back-btn{padding:9px 18px;border-radius:10px;border:1.5px solid #bfdbfe;background:#fff;color:#2055b0;font-size:.84rem;font-weight:700;text-decoration:none;transition:.13s}
-.back-btn:hover{border-color:#2055b0;color:#fff;background:#2055b0}
-
+.abc-btn:disabled{opacity:.35;cursor:not-allowed}
+.sec-card.s-a{border-color:#16a34a}.sec-card.s-a .sc-hd{background:#dcfce7!important;border-bottom-color:#16a34a!important}
+.sec-card.s-b{border-color:#d97706}.sec-card.s-b .sc-hd{background:#fef3c7!important;border-bottom-color:#d97706!important}
+.sec-card.s-c{border-color:#dc2626}.sec-card.s-c .sc-hd{background:#fee2e2!important;border-bottom-color:#dc2626!important}
+.record-wrap{background:#fff;border-radius:14px;border:1px solid #bfdbfe;padding:14px 16px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.record-title{font-size:.88rem;font-weight:800;color:#2055b0;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #dbeafe}
+.prog-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #eff6ff}
+.prog-row:last-child{border-bottom:none}
+.prog-num{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#2055b0,#42a5f5);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700}
+.prog-title{flex:1;font-size:.85rem;font-weight:700}
+.prog-grade{font-size:.73em;font-weight:700;padding:3px 10px;border-radius:50px;background:#eff6ff;color:#64748b;border:1px solid #bfdbfe}
+.prog-grade.a{background:#16a34a;color:#fff;border-color:#16a34a}
+.prog-grade.b{background:#d97706;color:#fff;border-color:#d97706}
+.prog-grade.c{background:#dc2626;color:#fff;border-color:#dc2626}
+.prog-meta{font-size:.68em;color:#64748b;white-space:nowrap}
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;align-items:center;justify-content:center}
+.modal-ov.open{display:flex}
+.modal-box{background:#fff;border-radius:18px;padding:34px 38px;text-align:center;max-width:340px;width:90%;box-shadow:0 16px 56px rgba(0,0,0,.22);position:relative;overflow:hidden}
+.modal-box::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#2055b0,#42a5f5)}
+.modal-emoji{font-size:3em;margin-bottom:12px}
+.modal-title{font-size:1.2em;font-weight:900;margin-bottom:8px}
+.modal-sub{font-size:.87em;color:#64748b;margin-bottom:22px;line-height:1.6}
+.modal-close{font-family:inherit;font-size:.9em;font-weight:700;background:linear-gradient(135deg,#2055b0,#42a5f5);color:#fff;border:none;border-radius:50px;padding:11px 32px;cursor:pointer}
 canvas#cnf{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:none}
-
-/* 縦分数 */
-.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;font-size:.85em;line-height:1.1}
-.frac .num{border-bottom:1.5px solid currentColor;padding:0 3px 1px;text-align:center}
-.frac .den{padding:1px 3px 0;text-align:center}
-
-@media(max-width:480px){
-  .unit-title{font-size:.9rem}
-  .sc-btn-row{gap:4px}
-  .sc-btn{font-size:.72rem;padding:6px 2px}
-}
+@media(max-width:480px){.unit-title{font-size:.9rem}.sec-grid{grid-template-columns:1fr}.sc-btn{font-size:.73rem;padding:7px 2px}}
 </style>
 </head>
 <body>
 <canvas id="cnf"></canvas>
-
 <div class="top-header">
-  <h1>📐 GAMBA 数学II 指数・対数関数 単元表</h1>
-  <p>数学II 第1章・第2章 — 指数の計算からグラフ・方程式・不等式・対数まで</p>
+  <h1>&#x1F4D0; GAMBA &#x6570;&#x5B66;B &#x6570;&#x5217; &#x5358;&#x5143;&#x8868;</h1>
+  <p>&#x5927;&#x5B66;&#x53D7;&#x9A13; &#x6570;&#x5B66;B &mdash; &#x7B49;&#x5DEE;&#x30FB;&#x7B49;&#x6BD4;&#x30FB;&#x03A3;&#x8A08;&#x7B97;&#x30FB;&#x968E;&#x5DEE;&#x30FB;&#x7FA4;&#x6570;&#x5217;&#x30FB;&#x6F38;&#x5316;&#x5F0F;&#x30FB;&#x6570;&#x5B66;&#x7684;&#x5E30;&#x7D0D;&#x6CD5;</p>
   <div class="summary-bar">
-    <div class="sum-item"><span class="sum-dot sum-dot-a"></span>A わかった <span class="sum-count" id="cnt-a">0</span></div>
-    <div class="sum-item"><span class="sum-dot sum-dot-b"></span>B 要復習 <span class="sum-count" id="cnt-b">0</span></div>
-    <div class="sum-item"><span class="sum-dot sum-dot-c"></span>C 何度も <span class="sum-count" id="cnt-c">0</span></div>
-    <div class="sum-item"><span class="sum-dot sum-dot-n"></span>未実施 <span class="sum-count" id="cnt-n">8</span></div>
+    <div class="sum-item"><span class="sum-dot sum-dot-a"></span>A &#x5B8C;&#x74A7; <span class="sum-count" id="cnt-a">0</span></div>
+    <div class="sum-item"><span class="sum-dot sum-dot-b"></span>B &#x826F;&#x597D; <span class="sum-count" id="cnt-b">0</span></div>
+    <div class="sum-item"><span class="sum-dot sum-dot-c"></span>C &#x8981;&#x5FA9;&#x7FD2; <span class="sum-count" id="cnt-c">0</span></div>
+    <div class="sum-item"><span class="sum-dot sum-dot-n"></span>&#x672A;&#x5B66;&#x7FD2; <span class="sum-count" id="cnt-n">0</span></div>
+  </div>
+</div>
+<div class="tab-nav">
+  <button class="tnav on" onclick="switchTab('tab-units',this)">&#x1F4CB; &#x5358;&#x5143;&#x8868;</button>
+  <button class="tnav"    onclick="switchTab('tab-record',this)">&#x1F4CA; &#x5B66;&#x7FD2;&#x8A18;&#x9332;</button>
+</div>
+<div class="wrap">
+<div class="tab-sec on" id="tab-units">
+  <div class="progress-wrap">
+    <div class="progress-lbl">&#x1F4CA; &#x7FD2;&#x719F;&#x5EA6;&#xFF08;&#x516C;&#x958B;&#x6E08;&#x5358;&#x5143;&#xFF09;</div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progFill" style="width:0%"></div></div>
+    <div class="progress-pct" id="progPct">0%&#x3000;A&#x8A55;&#x4FA1; <span id="progNote">0 / 7</span> &#x5358;&#x5143;</div>
+  </div>
+
+  <div class="unit">
+    <div class="unit-hd ch1">
+      <span class="unit-num">&#x7B2C;1&#x7AE0;</span>
+      <span class="unit-title">&#x6570;&#x5217;</span>
+      <span class="unit-badge">8&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;&#xFF0B;&#x6E96;&#x5099;&#x4E2D;1&#xFF09;</span>
+    </div>
+    <div class="unit-body">
+      <div class="group-label">&#x1F4D0; &#x57FA;&#x672C;&#x6570;&#x5217;&#x30FB;&Sigma;&#x8A08;&#x7B97;&#x30FB;&#x968E;&#x5DEE;&#x30FB;&#x7FA4;&#x6570;&#x5217;</div>
+      <div class="sec-grid" id="grid-basic"></div>
+      <div class="group-label">&#x1F501; &#x6F38;&#x5316;&#x5F0F;</div>
+      <div class="sec-grid" id="grid-zanka"></div>
+      <div class="group-label">&#x2705; &#x6570;&#x5B66;&#x7684;&#x5E30;&#x7D0D;&#x6CD5;</div>
+      <div class="sec-grid" id="grid-kinou"></div>
+    </div>
   </div>
 </div>
 
-<div class="wrap">
-
-  <!-- 学習の流れ -->
-  <div class="flow">
-    <div class="flow-title">📖 学習の流れ（各単元共通）</div>
-    <div class="flow-steps">
-      <div class="flow-step">① 解説①を読む</div>
-      <span class="flow-arrow">→</span>
-      <div class="flow-step">② ミニテストで確認</div>
-      <span class="flow-arrow">→</span>
-      <div class="flow-step">③ 練習問題を解く</div>
-      <span class="flow-arrow">→</span>
-      <div class="flow-step">④ 確認問題で定着</div>
-      <span class="flow-arrow">→</span>
-      <div class="flow-step">⑤ 解説②③へ進む</div>
-      <span class="flow-arrow">→</span>
-      <div class="flow-step">⑥ A/B/C 自己評価</div>
-    </div>
+<div class="tab-sec" id="tab-record">
+  <div class="record-wrap">
+    <div class="record-title">&#x1F4CA; &#x5358;&#x5143;&#x5225;&#x3000;&#x7406;&#x89E3;&#x5EA6;&#x4E00;&#x89A7;</div>
+    <div id="record-list"></div>
   </div>
+</div>
+</div>
 
-  <!-- ══ 第1章前半 指数の計算 ══ -->
-  <div class="unit">
-    <div class="unit-hd">
-      <span class="unit-num">第1章 前半</span>
-      <span class="unit-title">指数の計算</span>
-      <span class="unit-badge">EX1-1 〜 EX1-3</span>
-    </div>
-    <div class="unit-body">
-      <div class="group-label">🔢 指数の基礎・累乗根・大小比較</div>
-      <div class="sec-grid">
-
-        <!-- EX1-1 -->
-        <div class="sec-card" data-id="EX1-1">
-          <div class="sc-hd">
-            <span class="sc-num">EX1-1</span>
-            <span class="sc-title">累乗の計算・負の指数</span>
-            <span class="sc-stars">★☆☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>指数法則（たす・かける・ひく）</li>
-            <li>ゼロ乗は 1、マイナス乗は分数</li>
-            <li>a⁻ᵐ = <span class="frac"><span class="num">1</span><span class="den">aᵐ</span></span></li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX1-1.html">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX1-1','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX1-1','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX1-1','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-        <!-- EX1-2 -->
-        <div class="sec-card" data-id="EX1-2">
-          <div class="sc-hd">
-            <span class="sc-num">EX1-2</span>
-            <span class="sc-title">分数指数・累乗根</span>
-            <span class="sc-stars">★★☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>a<sup><span class="frac"><span class="num">1</span><span class="den">n</span></span></sup> は n 乗根（ルートの仲間）</li>
-            <li>a<sup><span class="frac"><span class="num">m</span><span class="den">n</span></span></sup> = ⁿ√aᵐ（分母が根号の次数）</li>
-            <li>累乗根の性質・複合計算</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX1-2.html">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX1-2','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX1-2','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX1-2','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-        <!-- EX1-3 -->
-        <div class="sec-card" data-id="EX1-3">
-          <div class="sc-hd">
-            <span class="sc-num">EX1-3</span>
-            <span class="sc-title">指数の大小比較</span>
-            <span class="sc-stars">★★☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>底が同じ場合：指数の大小を比べる</li>
-            <li>底が異なる場合：同じ乗数で比較</li>
-            <li>2³⁰⁰ vs 3²⁰⁰ vs 10¹⁰⁰ 型の応用</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX1-3.html">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX1-3','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX1-3','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX1-3','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
+<div class="modal-ov" id="modal" onclick="closeModal()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-emoji" id="modal-emoji"></div>
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-sub"   id="modal-sub"></div>
+    <button class="modal-close" onclick="closeModal()">&#x9589;&#x3058;&#x308B;</button>
   </div>
-
-  <!-- ══ 第1章後半 指数関数 ══ -->
-  <div class="unit">
-    <div class="unit-hd">
-      <span class="unit-num">第1章 後半</span>
-      <span class="unit-title">指数関数とその応用</span>
-      <span class="unit-badge">EX1-4 〜 EX1-7</span>
-    </div>
-    <div class="unit-body">
-
-      <div class="group-label">📈 グラフの性質</div>
-      <div class="sec-grid">
-
-        <!-- EX1-4 -->
-        <div class="sec-card" data-id="EX1-4">
-          <div class="sc-hd">
-            <span class="sc-num">EX1-4</span>
-            <span class="sc-title">指数関数のグラフと性質</span>
-            <span class="sc-stars">★★☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>a &gt; 1 は右上がり（増加関数）</li>
-            <li>0 &lt; a &lt; 1 は右下がり（減少関数）</li>
-            <li>平行移動・y 軸対称・x 軸対称</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX1-4.html">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX1-4','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX1-4','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX1-4','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="group-label" style="margin-top:14px;">📝 方程式・不等式・最大最小</div>
-      <div class="sec-grid">
-
-        <!-- EX1-5 -->
-        <div class="sec-card" data-id="EX1-5">
-          <div class="sc-hd">
-            <span class="sc-num">EX1-5</span>
-            <span class="sc-title">指数方程式</span>
-            <span class="sc-stars">★★☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>基本：底をそろえて指数を比較</li>
-            <li>t 置換で 2 次方程式に変形（t &gt; 0 に注意）</li>
-            <li>逆数型・3 次方程式型（発展）</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX1-5.html">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX1-5','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX1-5','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX1-5','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-        <!-- EX1-6 -->
-        <div class="sec-card" data-id="EX1-6">
-          <div class="sc-hd">
-            <span class="sc-num">EX1-6</span>
-            <span class="sc-title">指数不等式</span>
-            <span class="sc-stars">★★★</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>a &gt; 1 → 不等号そのまま</li>
-            <li>0 &lt; a &lt; 1 → 不等号が逆転！</li>
-            <li>t 置換で 2 次不等式・(t−c)² 型（発展）</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX1-6.html">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX1-6','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX1-6','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX1-6','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-        <!-- EX1-7 -->
-        <div class="sec-card" data-id="EX1-7">
-          <div class="sc-hd">
-            <span class="sc-num">EX1-7</span>
-            <span class="sc-title">指数関数の最大・最小</span>
-            <span class="sc-stars">★★★</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>t 置換で 2 次関数の最大・最小（t &gt; 0）</li>
-            <li>定義域に制限あり → t の変域を確認</li>
-            <li>aˣ + a⁻ˣ 型・相加相乗平均（発展）</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX1-7.html">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX1-7','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX1-7','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX1-7','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- 公式早見表 -->
-  <div class="ref-table">
-    <div class="ref-title">📋 指数法則・重要公式 早見表</div>
-    <div style="overflow-x:auto">
-      <table>
-        <thead>
-          <tr><th>公式名</th><th>内容</th><th>ポイント</th></tr>
-        </thead>
-        <tbody>
-          <tr><th>指数法則①</th><td class="hi">aᵐ × aⁿ = aᵐ⁺ⁿ</td><td>底が同じ → 指数を足す</td></tr>
-          <tr><th>指数法則②</th><td class="hi">(aᵐ)ⁿ = aᵐⁿ</td><td>べき乗のべき乗 → 指数をかける</td></tr>
-          <tr><th>指数法則③</th><td class="hi">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</td><td>底が同じ → 指数を引く</td></tr>
-          <tr><th>ゼロ乗・負の指数</th><td class="hi">a⁰ = 1、a⁻ᵐ = <span class="frac"><span class="num">1</span><span class="den">aᵐ</span></span></td><td>マイナスは分母に移す</td></tr>
-          <tr><th>分数指数</th><td class="hi">a<sup><span class="frac"><span class="num">m</span><span class="den">n</span></span></sup> = ⁿ√aᵐ</td><td>分母が根号の次数</td></tr>
-          <tr><th>不等式（増加）</th><td class="hi">a &gt; 1 のとき：aᶠ ≧ aᵍ → f ≧ g</td><td>不等号そのまま</td></tr>
-          <tr><th>不等式（減少）</th><td class="hi">0 &lt; a &lt; 1 のとき：aᶠ ≧ aᵍ → f ≦ g</td><td>不等号が逆転！</td></tr>
-          <tr><th>相加相乗平均</th><td class="hi">aˣ + a⁻ˣ ≧ 2（等号は x = 0）</td><td>最小値は 2</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- 解法パターン早見表 -->
-  <div class="ref-table">
-    <div class="ref-title">🗺️ 解法パターン 選択チャート</div>
-    <div style="overflow-x:auto">
-      <table>
-        <thead>
-          <tr><th>問題の形</th><th>解法パターン</th><th>単元</th></tr>
-        </thead>
-        <tbody>
-          <tr><th>aˣ = 定数</th><td>底をそろえて指数を比較</td><td class="hi">EX1-5①</td></tr>
-          <tr><th>a²ˣ − k·aˣ + c = 0</th><td>t = aˣ と置いて 2 次方程式（t &gt; 0）</td><td class="hi">EX1-5②</td></tr>
-          <tr><th>aˣ⁺¹ + aᶜ⁻ˣ = k（逆数型）</th><td>t = aˣ、両辺に t をかけて分数を消去</td><td class="hi">EX1-5③</td></tr>
-          <tr><th>aˣ ≧ k（不等式）</th><td>底をそろえ、底の大小で不等号の向きを決定</td><td class="hi">EX1-6①</td></tr>
-          <tr><th>a²ˣ − k·aˣ + c ≦ 0</th><td>t = aˣ（2 次不等式）→ t の範囲 → x の範囲</td><td class="hi">EX1-6②</td></tr>
-          <tr><th>y = a²ˣ + b·aˣ + c（最大最小）</th><td>t = aˣ（t &gt; 0 または変域あり）、2 次関数の頂点・端点</td><td class="hi">EX1-7①②</td></tr>
-          <tr><th>y = a²ˣ + a⁻²ˣ + …</th><td>t = aˣ + a⁻ˣ（t ≧ 2）、a²ˣ + a⁻²ˣ = t² − 2 を使う</td><td class="hi">EX1-7③</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="back-link">
-    <a href="index_math2.html" class="back-btn">← 数学IIメニューに戻る</a>
-  </div>
-
-  <!-- ══ 第2章 対数関数 ══ -->
-  <div class="unit" style="border-color:#7c3aed">
-    <div class="unit-hd" style="background:linear-gradient(90deg,#7c3aed,#a78bfa)">
-      <span class="unit-num">第2章</span>
-      <span class="unit-title">対数関数</span>
-      <span class="unit-badge">EX2-1 〜 EX2-6</span>
-    </div>
-    <div class="unit-body">
-      <div class="group-label">🔢 対数の基礎・計算</div>
-      <div class="sec-grid">
-
-        <!-- EX2-1 -->
-        <div class="sec-card" data-id="EX2-1" style="border-color:#7c3aed">
-          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
-            <span class="sc-num" style="background:#7c3aed">EX2-1</span>
-            <span class="sc-title">対数の定義</span>
-            <span class="sc-stars">★☆☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>log とは「何乗したら？」という問い</li>
-            <li>a^p = M ⟺ log_a M = p</li>
-            <li>真数条件・底の条件（M &gt; 0、a &gt; 0、a ≠ 1）</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX2-1.html" style="background:#7c3aed">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX2-1','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX2-1','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX2-1','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-        <!-- EX2-2 -->
-        <div class="sec-card" data-id="EX2-2" style="border-color:#7c3aed">
-          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
-            <span class="sc-num" style="background:#7c3aed">EX2-2</span>
-            <span class="sc-title">対数の性質と計算</span>
-            <span class="sc-stars">★★☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>log_a MN = log_a M + log_a N（積の法則）</li>
-            <li>log_a M/N = log_a M − log_a N（商の法則）</li>
-            <li>log_a M^k = k log_a M（累乗の法則）</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX2-2.html" style="background:#7c3aed">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX2-2','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX2-2','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX2-2','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-        <!-- EX2-3 -->
-        <div class="sec-card" data-id="EX2-3" style="border-color:#7c3aed">
-          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
-            <span class="sc-num" style="background:#7c3aed">EX2-3</span>
-            <span class="sc-title">底の変換公式</span>
-            <span class="sc-stars">★★☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>log_a b = log_c b ÷ log_c a（底の変換）</li>
-            <li>「大きいのが上、小さいのは下」の暗記法</li>
-            <li>掛け算で底が消える連鎖計算（入試頻出）</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX2-3.html" style="background:#7c3aed">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX2-3','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX2-3','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX2-3','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="group-label">📐 対数方程式・不等式</div>
-      <div class="sec-grid">
-
-        <!-- EX2-4 -->
-        <div class="sec-card" data-id="EX2-4" style="border-color:#7c3aed">
-          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
-            <span class="sc-num" style="background:#7c3aed">EX2-4</span>
-            <span class="sc-title">対数方程式</span>
-            <span class="sc-stars">★★☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>真数条件（真数 &gt; 0）を必ず確認</li>
-            <li>両辺を同じ底の log にして真数を比較</li>
-            <li>log x = t とおく置き換え型（入試頻出）</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX2-4.html" style="background:#7c3aed">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX2-4','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX2-4','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX2-4','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-        <!-- EX2-5 -->
-        <div class="sec-card" data-id="EX2-5" style="border-color:#7c3aed">
-          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
-            <span class="sc-num" style="background:#7c3aed">EX2-5</span>
-            <span class="sc-title">対数不等式</span>
-            <span class="sc-stars">★★★</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>a &gt; 1 なら増加関数 → 不等号そのまま</li>
-            <li>0 &lt; a &lt; 1 なら減少関数 → 不等号逆転！</li>
-            <li>真数条件との共通範囲をとる</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX2-5.html" style="background:#7c3aed">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX2-5','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX2-5','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX2-5','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-        <!-- EX2-6 -->
-        <div class="sec-card" data-id="EX2-6" style="border-color:#7c3aed">
-          <div class="sc-hd" style="background:#f5f3ff !important;border-bottom:2px solid #7c3aed !important">
-            <span class="sc-num" style="background:#7c3aed">EX2-6</span>
-            <span class="sc-title">常用対数</span>
-            <span class="sc-stars">★★☆</span>
-          </div>
-          <div class="sc-body"><ul class="sc-topics">
-            <li>log₁₀ M：10を底とする対数</li>
-            <li>桁数：log の整数部分 + 1 が桁数</li>
-            <li>小数の位：log の値の絶対値を切り上げ</li>
-          </ul></div>
-          <div class="sc-btn-row">
-            <a class="sc-btn" href="EX2-6.html" style="background:#7c3aed">📖 解説・練習</a>
-          </div>
-          <div class="abc-row">
-            <button class="abc-btn abc-a" onclick="setABC('EX2-6','a',this)">A OK</button>
-            <button class="abc-btn abc-b" onclick="setABC('EX2-6','b',this)">B 復習</button>
-            <button class="abc-btn abc-c" onclick="setABC('EX2-6','c',this)">C もう一度</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- 対数 公式早見表 -->
-  <div class="ref-table" style="border-color:#ede9fe">
-    <div class="ref-title" style="color:#7c3aed;border-bottom-color:#ede9fe">📋 対数 基本公式 早見表</div>
-    <div style="overflow-x:auto">
-      <table>
-        <thead>
-          <tr><th>公式名</th><th>内容</th><th>ポイント</th></tr>
-        </thead>
-        <tbody>
-          <tr><th>対数の定義</th><td class="hi" style="color:#7c3aed">a^p = M ⟺ log_a M = p</td><td>「何乗？」を log で表す</td></tr>
-          <tr><th>真数条件</th><td class="hi" style="color:#7c3aed">log_a M → M &gt; 0 が必須</td><td>真数は必ず正！</td></tr>
-          <tr><th>底の条件</th><td class="hi" style="color:#7c3aed">a &gt; 0、a ≠ 1</td><td>底は正・かつ 1 以外</td></tr>
-          <tr><th>特別な値①</th><td class="hi" style="color:#7c3aed">log_a 1 = 0</td><td>何乗しても 1 → 0 乗</td></tr>
-          <tr><th>特別な値②</th><td class="hi" style="color:#7c3aed">log_a a = 1</td><td>a の 1 乗は a</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="back-link">
-    <a href="index_math2.html" class="back-btn">← 数学IIメニューに戻る</a>
-  </div>
-
 </div>
 
 <script>
-const STORAGE_KEY = 'gamba_ex_status_v1';
-const ALL_IDS = ['EX1-1','EX1-2','EX1-3','EX1-4','EX1-5','EX1-6','EX1-7','EX2-1','EX2-2','EX2-3','EX2-4','EX2-5','EX2-6'];
-let status = {};
-try { const s = localStorage.getItem(STORAGE_KEY); if(s) status = JSON.parse(s); } catch(e){}
+'use strict';
+var UNITS=[
+  {
+    id:'ex31',num:'\u2463-1',title:'\u7b49\u5dee\u6570\u5217',
+    sub:['\u4e00\u822c\u9805\u306e\u516c\u5f0f\u30fb\u548c\u306e\u516c\u5f0f','\u30ac\u30a6\u30b9\u306e\u65b9\u6cd5\u30fb\u6728\u3068\u533a\u9593\u56f3\u89e3','\u7b49\u5dee\u4e2d\u9805\u30fb\u7b49\u5dee\u6570\u5217\u306e\u5fdc\u7528'],
+    group:'basic',pending:false,
+    btns:[{label:'\u1f4d6 \u5b66\u7fd2\u3059\u308b',href:'EX3-1.html',cls:''}]
+  },
+  {
+    id:'ex32',num:'\u2463-2',title:'\u7b49\u6bd4\u6570\u5217',
+    sub:['\u4e00\u822c\u9805\u30fb\u548c\u306e\u516c\u5f0f\uff08r\u22601\u30fbr=1\uff09','\u7b49\u6bd4\u4e2d\u9805\u30fb\u7d04\u6570\u306e\u7dcf\u548c','3\u6570\u3092a/r, a, ar\u3068\u304a\u304f'],
+    group:'basic',pending:false,
+    btns:[{label:'\u1f4d6 \u5b66\u7fd2\u3059\u308b',href:'EX3-2.html',cls:''}]
+  },
+  {
+    id:'ex33',num:'\u2463-3',title:'\u6570\u5217\u306e\u03a3\u8a08\u7b97',
+    sub:['\u03a3\u8a18\u6cd5\u30fb3\u5927\u516c\u5f0f\uff08\u8a3c\u660e\u30dc\u30bf\u30f3\u4ed8\uff09','\u7b49\u6bd4\u578b\u03a3\u30fb9+99+999\u2026\u578b','2\u91cd\u548c\u30fb\u4e0a\u9650\u304cn-1\u306e\u03a3'],
+    group:'basic',pending:false,
+    btns:[{label:'\u1f4d6 \u5b66\u7fd2\u3059\u308b',href:'EX3-3.html',cls:''}]
+  },
+  {
+    id:'ex34',num:'\u2463-4',title:'\u968e\u5dee\u6570\u5217\u30fb\u7fa4\u6570\u5217\u30fb\u5206\u6570\u548c',
+    sub:['\u968e\u5dee\u6570\u5217\u30fb\u6728\u3068\u533a\u9593\u56f3\u89e3\u30bbn=1\u78ba\u8a8d','\u7fa4\u6570\u5217\u30fb\u672b\u9805\u30fb\u4f55\u756a\u76ee\u304b\uff08\u5f15\u3044\u30661\u8db3\u3059\u8aac\u660e\uff09','\u90e8\u5206\u5206\u6570\u5206\u89e3\u30fb\u6709\u7406\u5316\u30fbk\xd7r^k\u578b'],
+    group:'basic',pending:false,
+    btns:[{label:'\u1f4d6 \u5b66\u7fd2\u3059\u308b',href:'EX3-4.html',cls:''}]
+  },
+  {
+    id:'ex35',num:'\u2463-5',title:'\u6f38\u5316\u5f0f \u57fa\u672c',
+    sub:['\u7b49\u5dee\u578b\u30fb\u7b49\u6bd4\u578b\u30fb\u968e\u5dee\u578b','a_{n+1}=pa_n+q\uff08\u7279\u6027\u65b9\u7a0b\u5f0f\u306e\u3057\u304f\u307f\u8a73\u8aac\uff09','S_n\u3068a_n\u306e\u95a2\u4fc2'],
+    group:'zanka',pending:false,
+    btns:[{label:'\u1f4d6 \u5b66\u7fd2\u3059\u308b',href:'EX3-5.html',cls:''}]
+  },
+  {
+    id:'ex35b',num:'\u2463-5b',title:'\u6f38\u5316\u5f0f \u767a\u5c55',
+    sub:['\u7b49\u5dee\xd7\u7b49\u6bd4\u578b\u30fb\u53f3\u8fba\u304c2\u6b21\u5f0f\u578b','\u5206\u6570\u578b\u30fb\u9006\u6570\u578b\uff08\u306a\u305c\u305d\u306e\u5909\u63db\u304b\u8a73\u8aac\uff09','\u9023\u7acb\u6f38\u5316\u5f0f\uff08a_n+kb_n\u306e\u4f5c\u6226\uff09'],
+    group:'zanka',pending:false,
+    btns:[{label:'\u1f4d6 \u5b66\u7fd2\u3059\u308b',href:'EX3-5b.html',cls:''}]
+  },
+  {
+    id:'ex36',num:'\u2463-6',title:'\u6f38\u5316\u5f0f \u5fdc\u7528\uff08\u96a3\u63a53\u9805\u9593\uff09',
+    sub:['\u7279\u6027\u65b9\u7a0b\u5f0f\u304c\u306a\u305c\u6709\u52b9\u304b\uff08r^n\u4eee\u5b9a\u304b\u3089\u5c0e\u51fa\uff09','\u7570\u306a\u308b2\u89e3\u30fb\u91cd\u89e3\u306e\u4e00\u822c\u89e3\u516c\u5f0f','A\u30fbB\u306e\u6c7a\u3081\u65b9\u3068\u521d\u671f\u6761\u4ef6'],
+    group:'zanka',pending:false,
+    btns:[{label:'\u1f4d6 \u5b66\u7fd2\u3059\u308b',href:'EX3-6.html',cls:''}]
+  },
+  {
+    id:'ex37',num:'\u2463-7',title:'\u6570\u5b66\u7684\u5e30\u7d0d\u6cd5',
+    sub:['\u5e30\u7d0d\u6cd5\u306e2\u30b9\u30c6\u30c3\u30d7\u69cb\u9020','\u7b49\u5f0f\u30fb\u4e0d\u7b49\u5f0f\u30fb\u6574\u9664\u306e\u8a3c\u660e','\u6f38\u5316\u5f0f\u3068\u5e30\u7d0d\u6cd5\u306e\u7d44\u307f\u5408\u308f\u305b'],
+    group:'kinou',pending:true,
+    btns:[{label:'\U0001f512 \u6e96\u5099\u4e2d',href:'#',cls:'sc-btn-pending'}]
+  },
+];
 
-function saveStatus(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(status)); }catch(e){} }
+var KEY_GRADE=function(id){return 'mathb_grade_'+id;};
+var KEY_CNT  =function(id){return 'mathb_cnt_'+id;};
+var KEY_LAST =function(id){return 'mathb_last_'+id;};
+var getGrade=function(id){return localStorage.getItem(KEY_GRADE(id))||'';};
+var getCount=function(id){return parseInt(localStorage.getItem(KEY_CNT(id))||'0');};
+var getLast =function(id){return localStorage.getItem(KEY_LAST(id))||'';};
 
-function applyAll(){
-  ALL_IDS.forEach(id=>{
-    const g = status[id];
-    if(!g) return;
-    const card = document.querySelector('[data-id="'+id+'"]');
-    if(!card) return;
-    card.classList.remove('s-a','s-b','s-c');
-    card.classList.add('s-'+g);
-    card.querySelectorAll('.abc-btn').forEach(b=>b.classList.remove('sel'));
-    const btn = card.querySelector('.abc-'+g);
-    if(btn) btn.classList.add('sel');
-  });
-  updateSummary();
+function setGrade(id,g){
+  localStorage.setItem(KEY_GRADE(id),g);
+  var d=new Date().toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'});
+  localStorage.setItem(KEY_CNT(id), getCount(id)+1);
+  localStorage.setItem(KEY_LAST(id),d);
 }
 
-function setABC(id, grade, btn){
-  const card = document.querySelector('[data-id="'+id+'"]');
-  if(!card) return;
-  if(status[id]===grade){
-    delete status[id];
-    card.classList.remove('s-a','s-b','s-c');
-    card.querySelectorAll('.abc-btn').forEach(b=>b.classList.remove('sel'));
-    saveStatus(); updateSummary(); return;
-  }
-  status[id]=grade;
-  card.classList.remove('s-a','s-b','s-c');
-  card.classList.add('s-'+grade);
-  card.querySelectorAll('.abc-btn').forEach(b=>b.classList.remove('sel'));
-  btn.classList.add('sel');
-  saveStatus();
-  if(grade==='a') confetti();
-  updateSummary();
+function buildCards(){
+  var grids={basic:'grid-basic',zanka:'grid-zanka',kinou:'grid-kinou'};
+  UNITS.forEach(function(u){
+    var el=document.createElement('div');
+    el.className='sec-card'; el.dataset.id=u.id;
+    var btnHtml=u.btns.map(function(b){return '<a href="'+b.href+'" class="sc-btn '+(b.cls||'")>'+b.label+'</a>';}).join('');
+    var isPending=!!u.pending;
+    var abcDis=isPending?'disabled':'';
+    var statusCls=isPending?' pending':'';
+    var statusTxt=isPending?'\uD83D\uDD12 \u6E96\u5099\u4E2D':'\u672A\u5B66\u7FD2';
+    el.innerHTML='<div class="sc-hd">'
+      +'<span class="sc-num">'+u.num+'</span>'
+      +'<span class="sc-title">'+u.title+'</span>'
+      +'<span class="sc-status'+statusCls+'" id="st-'+u.id+'">'+statusTxt+'</span>'
+      +'</div>'
+      +'<div class="sc-body"><ul class="sc-topics">'+u.sub.map(function(s){return '<li>'+s+'</li>';}).join('')+'</ul></div>'
+      +'<div class="sc-meta">'
+      +'<div class="sc-meta-item">\uD83D\uDCD6 \u5B66\u7FD2\u56DE\u6570 <span class="sc-meta-val" id="cnt-'+u.id+'">0</span></div>'
+      +'<div class="sc-meta-item">\uD83D\uDCC5 \u6700\u7D42\u65E5 <span class="sc-meta-val" id="last-'+u.id+'">\u2015</span></div>'
+      +'</div>'
+      +'<div class="sc-btn-row">'+btnHtml+'</div>'
+      +'<div class="abc-row">'
+      +'<span class="abc-lbl">\u7406\u89E3\u5EA6\uFF1A</span>'
+      +'<button class="abc-btn abc-a" '+abcDis+' onclick="rate(\''+u.id+'\',\'a\',this)">A \u5B8C\u74A7</button>'
+      +'<button class="abc-btn abc-b" '+abcDis+' onclick="rate(\''+u.id+'\',\'b\',this)">B \u826F\u597D</button>'
+      +'<button class="abc-btn abc-c" '+abcDis+' onclick="rate(\''+u.id+'\',\'c\',this)">C \u8981\u5FA9\u7FD2</button>'
+      +'</div>';
+    document.getElementById(grids[u.group]).appendChild(el);
+  });
 }
 
-function updateSummary(){
-  let ca=0,cb=0,cc=0,cn=0;
-  ALL_IDS.forEach(id=>{
-    const s=status[id];
-    if(s==='a')ca++; else if(s==='b')cb++; else if(s==='c')cc++; else cn++;
+function rate(id,g,btn){
+  var u=UNITS.filter(function(u){return u.id===id;})[0];
+  if(u&&u.pending) return;
+  setGrade(id,g); render();
+  var msgs={
+    a:['\uD83C\uDF1F','\u5B8C\u74A7\uFF01','\u3053\u306E\u8ABF\u5B50\u3067\u3069\u3093\u3069\u3093\u9032\u3082\u3046\uFF01'],
+    b:['\uD83D\uDCD8','\u826F\u597D\uFF01','\u3082\u3046\u4E00\u5EA6\u5FA9\u7FD2\u3059\u308B\u3068\u3055\u3089\u306B\u5B9A\u7740\u3059\u308B\u3088\u3002'],
+    c:['\uD83D\uDCCC','\u8981\u5FA9\u7FD2','\u82E6\u624B\u90E8\u5206\u3092\u3082\u3046\u4E00\u5EA6\u78BA\u8A8D\u3057\u3066\u307F\u3088\u3046\u3002']
+  };
+  var m=msgs[g];
+  document.getElementById('modal-emoji').textContent=m[0];
+  document.getElementById('modal-title').textContent=m[1];
+  document.getElementById('modal-sub').textContent=m[2];
+  document.getElementById('modal').classList.add('open');
+  if(g==='a') launchConfetti();
+}
+
+function render(){
+  var ca=0,cb=0,cc=0,cn=0;
+  var active=UNITS.filter(function(u){return !u.pending;});
+  UNITS.forEach(function(u){
+    if(u.pending) return;
+    var g=getGrade(u.id); var cnt=getCount(u.id); var last=getLast(u.id);
+    var card=document.querySelector('[data-id="'+u.id+'"]');
+    if(card){
+      card.classList.remove('s-a','s-b','s-c');
+      if(g) card.classList.add('s-'+g);
+      card.querySelectorAll('.abc-btn').forEach(function(b){b.classList.remove('sel');if(b.classList.contains('abc-'+g))b.classList.add('sel');});
+    }
+    var ce=document.getElementById('cnt-'+u.id);  if(ce)ce.textContent=cnt;
+    var le=document.getElementById('last-'+u.id); if(le)le.textContent=last||'\u2015';
+    var st=document.getElementById('st-'+u.id);
+    if(st){
+      if(g==='a'){st.className='sc-status done';st.textContent='\u2705 \u5B8C\u74A7';}
+      else if(g==='b'){st.className='sc-status partial';st.textContent='\uD83D\uDCD8 \u826F\u597D';}
+      else if(g==='c'){st.className='sc-status partial';st.textContent='\uD83D\uDCCC \u8981\u5FA9\u7FD2';}
+      else if(cnt>0){st.className='sc-status studying';st.textContent='\u5B66\u7FD2\u4E2D';}
+      else{st.className='sc-status';st.textContent='\u672A\u5B66\u7FD2';}
+    }
+    if(g==='a')ca++; else if(g==='b')cb++; else if(g==='c')cc++; else cn++;
   });
+  var total=active.length;
   document.getElementById('cnt-a').textContent=ca;
   document.getElementById('cnt-b').textContent=cb;
   document.getElementById('cnt-c').textContent=cc;
   document.getElementById('cnt-n').textContent=cn;
+  var pct=total?Math.round(ca/total*100):0;
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').innerHTML=pct+'%\u3000A\u8A55\u4FA1 <span id="progNote">'+ca+' / '+total+'</span> \u5358\u5143';
+  buildRecord();
 }
 
-function confetti(){
-  const cv=document.getElementById('cnf');
-  cv.width=innerWidth;cv.height=innerHeight;cv.style.display='block';
-  const ctx=cv.getContext('2d');
-  const cols=['#3b82f6','#2dd4bf','#60a5fa','#fbbf24','#f87171','#a78bfa','#f472b6'];
-  let ps=[];
-  function petal(x,y,vx,vy){return{x,y,vx,vy,s:Math.random()*8+5,c:cols[Math.floor(Math.random()*cols.length)],rot:Math.random()*6,vr:(Math.random()-.5)*.3,sw:Math.random()*6,shape:Math.random()<.5?'p':'s'};}
-  for(let i=0;i<90;i++){ps.push(petal(0,cv.height,4+Math.random()*8,-(10+Math.random()*10)));ps.push(petal(cv.width,cv.height,-(4+Math.random()*8),-(10+Math.random()*10)));}
-  for(let i=0;i<120;i++){ps.push(petal(Math.random()*cv.width,-Math.random()*cv.height*.4,(Math.random()-.5)*2,1.5+Math.random()*2));}
-  let f=0;
-  (function loop(){
-    ctx.clearRect(0,0,cv.width,cv.height);
-    ps.forEach(p=>{p.vy+=.18;p.sw+=.06;p.x+=p.vx+Math.sin(p.sw)*1.5;p.y+=p.vy;p.rot+=p.vr;
-      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillStyle=p.c;
-      if(p.shape==='p'){ctx.beginPath();ctx.ellipse(0,0,p.s,p.s*.55,0,0,7);ctx.fill();}
-      else ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s);
-      ctx.restore();});
-    f++;
-    if(f<380)requestAnimationFrame(loop);
-    else{ctx.clearRect(0,0,cv.width,cv.height);cv.style.display='none';}
-  })();
+function buildRecord(){
+  var el=document.getElementById('record-list'); el.innerHTML='';
+  UNITS.forEach(function(u){
+    var g=u.pending?'':getGrade(u.id);
+    var cnt=u.pending?0:getCount(u.id);
+    var last=u.pending?'':getLast(u.id);
+    var gradeLabel=u.pending?'\u6E96\u5099\u4E2D':(g?{a:'A \u5B8C\u74A7',b:'B \u826F\u597D',c:'C \u8981\u5FA9\u7FD2'}[g]:'\u672A\u5B66\u7FD2');
+    var gradeClass=u.pending?'':( g?' '+g:'');
+    var row=document.createElement('div'); row.className='prog-row';
+    row.innerHTML='<div class="prog-num">'+u.num+'</div><div class="prog-title">'+u.title+'</div><div class="prog-grade'+gradeClass+'">'+gradeLabel+'</div><div class="prog-meta">'+cnt+'\u56DE / '+(last||'\u2015')+'</div>';
+    el.appendChild(row);
+  });
 }
 
-applyAll();
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-sec').forEach(function(s){s.classList.remove('on');});
+  document.querySelectorAll('.tnav').forEach(function(b){b.classList.remove('on');});
+  document.getElementById(id).classList.add('on'); btn.classList.add('on');
+}
+
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+
+function launchConfetti(){
+  var cvs=document.getElementById('cnf');
+  cvs.width=innerWidth; cvs.height=innerHeight; cvs.style.display='block';
+  var ctx=cvs.getContext('2d');
+  var parts=[];
+  var cols=['#f472b6','#facc15','#34d399','#60a5fa','#f87171','#a78bfa'];
+  for(var i=0;i<120;i++){
+    parts.push({x:Math.random()*innerWidth,y:-10,vx:(Math.random()-.5)*4,vy:Math.random()*4+2,r:Math.random()*6+3,color:cols[Math.floor(Math.random()*6)],rot:Math.random()*360,rv:(Math.random()-.5)*8});
+  }
+  var frame;
+  function draw(){
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    parts.forEach(function(p){
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle=p.color;ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r);ctx.restore();
+      p.x+=p.vx;p.y+=p.vy;p.rot+=p.rv;
+    });
+    if(parts.some(function(p){return p.y<innerHeight;})){frame=requestAnimationFrame(draw);}
+    else{cvs.style.display='none';cancelAnimationFrame(frame);}
+  }
+  draw();
+  setTimeout(function(){cvs.style.display='none';cancelAnimationFrame(frame);},3500);
+}
+
+document.addEventListener('DOMContentLoaded',function(){buildCards();render();});
 </script>
 </body>
 </html>

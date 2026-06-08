@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EX3-1 等差数列｜GAMBA数学B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  renderMathInElement(document.body,{
+    delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],
+    throwOnError:false
+  });
+});
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;font-size:15px;line-height:1.7}
+.top-header{background:#2055b0;color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.top-header .brand{font-size:18px;font-weight:700;letter-spacing:2px}
+.top-header .unit-title{font-size:13px;opacity:.85}
+.tab-nav{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;overflow-x:auto}
+.tab-btn{flex:1;min-width:80px;padding:10px 4px;font-size:12px;font-weight:700;border:none;background:transparent;cursor:pointer;color:#888;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.tab-btn.active-ex{color:#e91e63;border-bottom-color:#e91e63}
+.tab-btn.active-pr{color:#1976d2;border-bottom-color:#1976d2}
+.tab-btn.active-cf{color:#f57c00;border-bottom-color:#f57c00}
+.page{display:none;padding:16px;max-width:680px;margin:0 auto}
+.page.active{display:block}
+.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card-title{font-size:13px;font-weight:700;color:#2055b0;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #e8eaf6}
+.point-box{background:#fff8e1;border-left:4px solid #ffc107;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.point-box .pt-title{font-weight:700;color:#e65100;margin-bottom:6px;font-size:13px}
+.def-box{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;margin:12px 0}
+.def-box .def-title{font-weight:700;color:#1b5e20;margin-bottom:8px;font-size:13px}
+.formula-box{background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px;margin:12px 0;text-align:center}
+.formula-box .f-label{font-size:12px;color:#1565c0;font-weight:700;margin-bottom:6px}
+.story-box{background:#f3e5f5;border-left:4px solid #7b5ea7;border-radius:8px;padding:14px;margin:12px 0}
+.story-box .story-title{font-weight:700;color:#4a148c;margin-bottom:8px;font-size:13px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;line-height:1.2}
+.frac .num{border-bottom:1.5px solid currentColor;padding:0 3px;font-size:.92em}
+.frac .den{padding:0 3px;font-size:.92em}
+/* 例題解説ステップ */
+.ex-step-btn{background:#7e57c2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s;margin:8px 0}
+.ex-step-btn:hover{background:#5e35b1}
+.ex-step-body{display:none;margin-top:8px;background:#f3e5f5;border-radius:8px;padding:12px;font-size:14px}
+.ex-step-body.open{display:block}
+.ex-box{background:#fce4ec;border-radius:8px;padding:12px;margin:10px 0}
+.ex-box .ex-label{font-size:12px;font-weight:700;color:#880e4f;margin-bottom:4px}
+/* 練習セット折りたたみ */
+.ptoggle-btn{display:block;width:100%;margin:12px 0 0;background:linear-gradient(90deg,#1976d2,#42a5f5);color:#fff;border:none;border-radius:24px;padding:9px 0;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;letter-spacing:.5px}
+.ptoggle-btn:hover{opacity:.88}
+.practice-set{display:none;margin-top:10px;background:#f0f4ff;border:2px solid #90caf9;border-radius:12px;padding:14px}
+.practice-set.open{display:block}
+.pq-label{font-size:11px;font-weight:700;color:#1565c0;background:#bbdefb;display:inline-block;padding:2px 10px;border-radius:10px;margin-bottom:8px}
+.pq-text{font-size:14px;font-weight:500;margin-bottom:10px;line-height:1.7}
+/* ヒント */
+.hint-main-btn{background:#ff8f00;color:#fff;border:none;border-radius:16px;padding:5px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.hint-main-btn:hover{background:#e65100}
+.hint-steps{margin-top:8px;display:none}
+.hint-steps.open{display:block}
+.hint-step{display:none;background:#fff8e1;border-left:3px solid #ffc107;border-radius:6px;padding:9px 12px;margin-bottom:6px;font-size:13px}
+.hint-step.show{display:block}
+.hint-step-label{font-size:11px;font-weight:700;color:#e65100;margin-bottom:4px}
+.hint-next-btn{background:#ffc107;color:#5d4037;border:none;border-radius:14px;padding:4px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px;transition:.2s}
+.hint-next-btn:hover{background:#ffb300}
+/* 4択 */
+.choices{display:flex;flex-direction:column;gap:7px;margin:10px 0}
+.choice-btn{width:100%;text-align:left;padding:9px 14px;border:2px solid #bbdefb;border-radius:9px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-btn:hover:not(:disabled){border-color:#1976d2;background:#e3f2fd}
+.choice-btn.correct{background:#e8f5e9!important;border-color:#43a047!important;color:#1b5e20;font-weight:700}
+.choice-btn.wrong{background:#ffebee!important;border-color:#e53935!important;color:#b71c1c}
+/* 判定ボタン */
+.judge-btn{background:#e91e63;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px;transition:.2s}
+.judge-btn:hover:not(:disabled){background:#c2185b}
+.judge-btn:disabled{background:#bdbdbd;cursor:default}
+/* やり直しボタン */
+.retry-btn{background:#e0e0e0;color:#333;border:none;border-radius:16px;padding:5px 18px;font-size:12px;cursor:pointer;font-family:inherit;margin-top:8px;display:block;transition:.2s}
+.retry-btn:hover{background:#bdbdbd}
+/* 判定結果 */
+.judge-result{display:none;margin-top:10px;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.8}
+.judge-result.show{display:block}
+.judge-result.ok{background:#e8f5e9;border-left:4px solid #43a047}
+.judge-result.ng{background:#fff8e1;border-left:4px solid #ff9800}
+.result-badge{font-weight:700;padding:2px 10px;border-radius:10px;margin-right:6px;font-size:12px}
+.badge-ok{background:#c8e6c9;color:#1b5e20}
+.badge-ng{background:#ffcdd2;color:#b71c1c}
+.result-exp{background:rgba(255,255,255,.7);border-radius:6px;padding:8px 10px;margin-top:8px;font-size:13px}
+/* 確認タブ用 */
+.mini-q{margin:12px 0}
+.mini-q .q-text{font-size:14px;margin-bottom:8px;font-weight:500}
+.choice-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.choice-list li button{width:100%;text-align:left;padding:9px 12px;border:2px solid #e0e0e0;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-list li button:hover{border-color:#7e57c2;background:#f3e5f5}
+.choice-list li button.correct{background:#e8f5e9;border-color:#43a047;color:#1b5e20;font-weight:700}
+.choice-list li button.wrong{background:#ffebee;border-color:#e53935;color:#b71c1c}
+.mini-fb{font-size:13px;margin-top:6px;padding:8px 10px;border-radius:6px;display:none}
+.mini-fb.show{display:block}
+.mini-fb.ok{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;line-height:1.8}
+.mini-fb.ng-with-ans{background:#fff8e1;border-left:4px solid #ff9800;border-radius:8px;padding:12px 14px;line-height:1.8}
+.fb-top{margin-bottom:8px;font-size:13px}
+.fb-badge{font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px;font-size:12px}
+.fb-badge.fb-ok{background:#c8e6c9;color:#1b5e20}
+.fb-badge.fb-ng{background:#ffcdd2;color:#b71c1c}
+.fb-exp{background:rgba(255,255,255,0.7);border-radius:6px;padding:8px 10px;margin-top:6px;font-size:13px}
+.fb-exp-label{font-weight:700;color:#e65100;margin-right:6px;font-size:12px}
+.reset-btn{margin-top:8px;background:#eeeeee;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit}
+/* 練習タブ */
+.prob-box{background:#fff;border:2px solid #e0e0e0;border-radius:10px;padding:14px;margin:12px 0}
+.prob-box .prob-num{font-size:12px;font-weight:700;color:#1976d2;margin-bottom:6px}
+.ans-btn{background:#1976d2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;margin-top:8px;transition:.2s}
+.ans-btn:hover{background:#1565c0}
+.ans-body{display:none;margin-top:10px;background:#e3f2fd;border-radius:8px;padding:12px;font-size:14px}
+.ans-body.open{display:block}
+.ans-body .ans-label{font-weight:700;color:#0d47a1;margin-bottom:4px;font-size:13px}
+/* その他 */
+.progress-bar{height:4px;background:#e0e0e0;border-radius:2px;margin-bottom:16px}
+.progress-fill{height:100%;border-radius:2px;transition:width .4s}
+.fill-ex{background:#e91e63}.fill-pr{background:#1976d2}.fill-cf{background:#f57c00}
+.step-list{list-style:none;padding:0;margin:8px 0}
+.step-list li{padding:5px 0 5px 20px;position:relative;font-size:14px;border-bottom:1px dashed #e0e0e0}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:"▶";position:absolute;left:0;color:#2055b0;font-size:11px;top:7px}
+.check-box{background:#e8f0fe;border-left:4px solid #2055b0;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.gauss-table{border-collapse:collapse;margin:10px auto;font-size:14px}
+.gauss-table td{border:2px solid #1976d2;padding:6px 10px;text-align:center;min-width:32px}
+.gauss-table .top-row td{background:#e3f2fd;font-weight:700}
+.gauss-table .bot-row td{background:#fff8e1;font-weight:700}
+.pq-div{margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="top-header">
+  <div class="brand">GAMBA</div>
+  <div class="unit-title">数学B ｜ 第1章① 等差数列</div>
+</div>
+<div class="tab-nav">
+  <button class="tab-btn active-ex" onclick="switchPage('ex1')">解説①</button>
+  <button class="tab-btn" onclick="switchPage('pr1')">練習①</button>
+  <button class="tab-btn" onclick="switchPage('cf1')">確認①</button>
+  <button class="tab-btn" onclick="switchPage('ex2')">解説②</button>
+  <button class="tab-btn" onclick="switchPage('pr2')">練習②</button>
+  <button class="tab-btn" onclick="switchPage('cf2')">確認②</button>
+</div>
+
+<!-- ===== 解説① ===== -->
+<div class="page active" id="page-ex1">
+<div class="progress-bar"><div class="progress-fill fill-ex" style="width:25%"></div></div>
+
+<div class="card">
+  <div class="card-title">① 数列とは何か</div>
+  <p style="font-size:14px;margin-bottom:10px">「<strong>数列</strong>」とは、ある決まりにしたがって並んだ数の列のことです。</p>
+  <div class="def-box">
+    <div class="def-title">📖 数列の用語</div>
+    <ul class="step-list">
+      <li><strong>初項</strong>（$a$ または $a_1$）：数列の最初の項</li>
+      <li><strong>末項</strong>（$\ell$）：数列の最後の項</li>
+      <li><strong>一般項</strong>（$a_n$）：$n$ 番目の項を表す式</li>
+    </ul>
+  </div>
+  <p style="font-size:14px;margin-top:8px">たとえば $2,\ 5,\ 8,\ 11,\ \ldots$ という数列では<br>初項 $a=2$、第3項 $a_3=8$ のように表します。</p>
+</div>
+
+<div class="card">
+  <div class="card-title">② 等差数列とは</div>
+  <div class="def-box">
+    <div class="def-title">📖 等差数列の定義</div>
+    <p style="font-size:14px">前の項に一定の数を<strong>たし続ける</strong>数列を<strong>等差数列</strong>といいます。この「一定の数」を<strong>公差 $d$</strong> といいます。</p>
+  </div>
+  <div style="text-align:center;font-size:15px;margin:10px 0;letter-spacing:1px">$2 \quad 5 \quad 8 \quad 11 \quad 14 \quad \cdots$</div>
+  <div style="text-align:center;font-size:13px;color:#1976d2;margin-bottom:10px">$+3 \quad\quad +3 \quad\quad +3 \quad\quad +3$</div>
+  <p style="font-size:14px">公差 $d=3$ の等差数列です。前後の差がいつも3になっています。</p>
+  <div class="point-box" style="margin-top:10px">
+    <div class="pt-title">⚠️ 公差は「後ろ − 前」で求める</div>
+    <p style="font-size:14px">$5-2=3,\quad 8-5=3,\quad 11-8=3$<br>後ろの項から前の項を引くと公差になります。</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">③ 木の間隔で一般項を理解する</div>
+  <p style="font-size:14px;margin-bottom:12px">一般項の公式がなぜ成り立つのか、<strong>木と区間</strong>のたとえで考えましょう。</p>
+  <div style="margin:14px 0;text-align:center">
+    <svg viewBox="0 0 340 120" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#e91e63"/></marker></defs>
+      <line x1="20" y1="88" x2="320" y2="88" stroke="#8d6e63" stroke-width="2"/>
+      <polygon points="40,50 50,88 30,88" fill="#43a047"/><rect x="43" y="74" width="6" height="14" fill="#795548"/>
+      <polygon points="100,50 110,88 90,88" fill="#43a047"/><rect x="103" y="74" width="6" height="14" fill="#795548"/>
+      <polygon points="160,50 170,88 150,88" fill="#43a047"/><rect x="163" y="74" width="6" height="14" fill="#795548"/>
+      <polygon points="220,50 230,88 210,88" fill="#43a047"/><rect x="223" y="74" width="6" height="14" fill="#795548"/>
+      <polygon points="280,50 290,88 270,88" fill="#43a047"/><rect x="283" y="74" width="6" height="14" fill="#795548"/>
+      <text x="40" y="106" text-anchor="middle" font-size="11" fill="#333" font-family="sans-serif">a1</text>
+      <text x="100" y="106" text-anchor="middle" font-size="11" fill="#333" font-family="sans-serif">a2</text>
+      <text x="160" y="106" text-anchor="middle" font-size="11" fill="#333" font-family="sans-serif">a3</text>
+      <text x="220" y="106" text-anchor="middle" font-size="11" fill="#333" font-family="sans-serif">a4</text>
+      <text x="280" y="106" text-anchor="middle" font-size="11" fill="#333" font-family="sans-serif">a5</text>
+      <text x="70" y="74" text-anchor="middle" font-size="10" fill="#1976d2" font-family="sans-serif">間隔①</text>
+      <text x="130" y="74" text-anchor="middle" font-size="10" fill="#1976d2" font-family="sans-serif">間隔②</text>
+      <text x="190" y="74" text-anchor="middle" font-size="10" fill="#1976d2" font-family="sans-serif">間隔③</text>
+      <text x="250" y="74" text-anchor="middle" font-size="10" fill="#1976d2" font-family="sans-serif">間隔④</text>
+      <line x1="40" y1="30" x2="276" y2="30" stroke="#e91e63" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="160" y="22" text-anchor="middle" font-size="11" fill="#e91e63" font-family="sans-serif">5本の木 → 間隔は 5-1 = 4個</text>
+    </svg>
+  </div>
+  <div class="check-box">
+    <p style="font-size:14px"><strong>木が5本</strong>あるとき、最初と最後の間には <strong>4つの区間</strong>があります。</p>
+    <p style="font-size:14px;margin-top:6px"><strong>第 $n$ 項</strong> まであるとき、$a_1$ から $a_n$ の間の区間は <strong>$n-1$ 個</strong>です。</p>
+  </div>
+  <p style="font-size:14px;margin:10px 0">$a_1$ から出発して、公差 $d$ を <strong>$(n-1)$ 回たす</strong>と $a_n$ に着きます。</p>
+  <div style="text-align:center;margin:10px 0">$$a_n = a_1 + d \times (n-1)$$</div>
+  <div class="formula-box">
+    <div class="f-label">【重要公式】等差数列の一般項</div>
+    $$a_n = a + (n-1)d$$
+    <p style="font-size:12px;color:#555;margin-top:6px">$a$：初項　$d$：公差　$n$：第何項か</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">④ 例題①　一般項の基本</div>
+  <div class="ex-box">
+    <div class="ex-label">例題①</div>
+    <p style="font-size:14px">等差数列 $2,\ 5,\ 8,\ 11,\ 14,\ \ldots$ の一般項を求めなさい。また、第10項を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>【手順①】</strong>初項・公差を読み取る：$a=2$、$d=3$</p>
+    <p style="font-size:14px;margin-top:6px"><strong>【手順②】</strong>公式に代入：$a_n=2+(n-1)\times3=3n-1$</p>
+    <p style="font-size:14px;margin-top:6px"><strong>【手順③】</strong>$n=10$ を代入：$a_{10}=3\times10-1=29$</p>
+    <div class="def-box" style="margin-top:8px"><div class="def-title">✅ 答え</div><p style="font-size:14px">$a_n=3n-1$、$a_{10}=29$</p></div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex1')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex1">
+    <!-- 練習1-A -->
+    <div class="pq-div">
+      <div class="pq-label">練習 1-A</div>
+      <div class="pq-text">等差数列 $1,\ 4,\ 7,\ 10,\ \ldots$ の一般項 $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_1a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_1a">
+        <div class="hint-step" id="ht_1a_1">
+          <div class="hint-step-label">Step 1　初項と公差を確認</div>
+          <p style="font-size:13px">数列の最初の数（初項）は何ですか？<br>隣の差（公差）はいくつですか？</p>
+          <button class="hint-next-btn" onclick="nextHint('ht_1a',2)">Step 2 へ ▶</button>
+        </div>
+        <div class="hint-step" id="ht_1a_2">
+          <div class="hint-step-label">Step 2　公式に当てはめる</div>
+          <p style="font-size:13px">初項 $a=1$、公差 $d=3$ です。<br>$a_n=a+(n-1)d$ に代入してみましょう。</p>
+          <button class="hint-next-btn" onclick="nextHint('ht_1a',3)">Step 3 へ ▶</button>
+        </div>
+        <div class="hint-step" id="ht_1a_3">
+          <div class="hint-step-label">Step 3　展開して整理</div>
+          <p style="font-size:13px">$a_n=1+(n-1)\times3=1+3n-3=3n-2$<br>$n=1$ で $a_1=1$ になるか確認しましょう。</p>
+        </div>
+      </div>
+      <div class="choices" id="ch_1a">
+        <button class="choice-btn" onclick="pickChoice('1a',this,0)">① $a_n=3n$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,1)">② $a_n=3n-2$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,2)">③ $a_n=3n+1$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,3)">④ $a_n=4n-3$</button>
+      </div>
+      <button class="judge-btn" id="jb_1a" onclick="judgeQ('1a',1,'初項 $a=1$、公差 $d=3$ より<br>$a_n=1+(n-1)\\times3=3n-2$ ✅<br>確認：$n=1$ で $3-2=1$ ✅　$n=2$ で $6-2=4$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_1a"></div>
+      <button class="retry-btn" onclick="retryQ('1a','ht_1a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <!-- 練習1-B -->
+    <div class="pq-div">
+      <div class="pq-label">練習 1-B</div>
+      <div class="pq-text">等差数列 $20,\ 17,\ 14,\ 11,\ \ldots$ の第8項はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_1b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_1b">
+        <div class="hint-step" id="ht_1b_1">
+          <div class="hint-step-label">Step 1　公差に注目</div>
+          <p style="font-size:13px">$17-20$ を計算してみましょう。公差はマイナスになります。</p>
+          <button class="hint-next-btn" onclick="nextHint('ht_1b',2)">Step 2 へ ▶</button>
+        </div>
+        <div class="hint-step" id="ht_1b_2">
+          <div class="hint-step-label">Step 2　一般項を求める</div>
+          <p style="font-size:13px">初項 $a=20$、公差 $d=-3$<br>$a_n=20+(n-1)\times(-3)$ を整理しましょう。</p>
+          <button class="hint-next-btn" onclick="nextHint('ht_1b',3)">Step 3 へ ▶</button>
+        </div>
+        <div class="hint-step" id="ht_1b_3">
+          <div class="hint-step-label">Step 3　$n=8$ を代入</div>
+          <p style="font-size:13px">$a_n=-3n+23$ に $n=8$ を代入して計算しましょう。</p>
+        </div>
+      </div>
+      <div class="choices" id="ch_1b">
+        <button class="choice-btn" onclick="pickChoice('1b',this,0)">① $a_8=-4$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,1)">② $a_8=-1$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,2)">③ $a_8=2$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,3)">④ $a_8=5$</button>
+      </div>
+      <button class="judge-btn" id="jb_1b" onclick="judgeQ('1b',1,'$a_n=20+(n-1)\\times(-3)=-3n+23$<br>$n=8$：$a_8=-3\\times8+23=-24+23=-1$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_1b"></div>
+      <button class="retry-btn" onclick="retryQ('1b','ht_1b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⑤ 例題②　公差が負の数列</div>
+  <div class="ex-box">
+    <div class="ex-label">例題②</div>
+    <p style="font-size:14px">等差数列 $23,\ 17,\ 11,\ 5,\ \ldots$ の一般項を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px">初項 $a=23$、公差 $d=17-23=-6$（公差が<strong>負</strong>なので数列は減っていきます）</p>
+    <div style="text-align:center;margin:8px 0">$$a_n=23+(n-1)\times(-6)=-6n+29$$</div>
+    <div class="def-box" style="margin-top:8px"><div class="def-title">✅ 答え</div><p style="font-size:14px">$a_n=-6n+29$</p></div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex2')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex2">
+    <div class="pq-div">
+      <div class="pq-label">練習 2-A</div>
+      <div class="pq-text">等差数列 $30,\ 25,\ 20,\ 15,\ \ldots$ の一般項 $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_2a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_2a">
+        <div class="hint-step" id="ht_2a_1"><div class="hint-step-label">Step 1　公差を求める</div><p style="font-size:13px">$25-30$ を計算しましょう。公差はマイナスです。</p><button class="hint-next-btn" onclick="nextHint('ht_2a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_2a_2"><div class="hint-step-label">Step 2　一般項を立てる</div><p style="font-size:13px">初項 $a=30$、公差 $d=-5$ を $a_n=a+(n-1)d$ に代入します。</p><button class="hint-next-btn" onclick="nextHint('ht_2a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_2a_3"><div class="hint-step-label">Step 3　展開して整理</div><p style="font-size:13px">$a_n=30+(n-1)\times(-5)=30-5n+5=35-5n$</p></div>
+      </div>
+      <div class="choices" id="ch_2a">
+        <button class="choice-btn" onclick="pickChoice('2a',this,0)">① $a_n=-5n+30$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,1)">② $a_n=-5n+35$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,2)">③ $a_n=5n-35$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,3)">④ $a_n=-5n+25$</button>
+      </div>
+      <button class="judge-btn" id="jb_2a" onclick="judgeQ('2a',1,'$a_n=30+(n-1)\\times(-5)=-5n+35$ ✅<br>確認：$n=1$ で $-5+35=30$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_2a"></div>
+      <button class="retry-btn" onclick="retryQ('2a','ht_2a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 2-B</div>
+      <div class="pq-text">等差数列 $46,\ 43,\ 40,\ 37,\ \ldots$ ではじめて負になるのは第何項ですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_2b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_2b">
+        <div class="hint-step" id="ht_2b_1"><div class="hint-step-label">Step 1　一般項を求める</div><p style="font-size:13px">初項 $a=46$、公差 $d=-3$ より $a_n$ を求めましょう。</p><button class="hint-next-btn" onclick="nextHint('ht_2b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_2b_2"><div class="hint-step-label">Step 2　不等式を立てる</div><p style="font-size:13px">$a_n=-3n+49$ です。「負になる」とは $a_n&lt;0$ ということです。<br>$-3n+49&lt;0$ を解きましょう。</p><button class="hint-next-btn" onclick="nextHint('ht_2b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_2b_3"><div class="hint-step-label">Step 3　自然数で考える</div><p style="font-size:13px">$n&gt;\dfrac{49}{3}=16.33\ldots$　$n$ は自然数なので最小は $n=17$ です。</p></div>
+      </div>
+      <div class="choices" id="ch_2b">
+        <button class="choice-btn" onclick="pickChoice('2b',this,0)">① 第15項</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,1)">② 第16項</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,2)">③ 第17項</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,3)">④ 第18項</button>
+      </div>
+      <button class="judge-btn" id="jb_2b" onclick="judgeQ('2b',2,'$-3n+49&lt;0 \\Rightarrow n&gt;16.33\\ldots$<br>$n$ は自然数なので最小は $n=17$ ✅<br>確認：$a_{16}=1&gt;0$、$a_{17}=-2&lt;0$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_2b"></div>
+      <button class="retry-btn" onclick="retryQ('2b','ht_2b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⑥ 例題③　2項から連立方程式</div>
+  <div class="ex-box">
+    <div class="ex-label">例題③</div>
+    <p style="font-size:14px">第5項が17、第12項が52の等差数列の一般項を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>【手順①】</strong>式を立てる</p>
+    <div style="font-size:14px;margin:6px 0">$$a_5=a+4d=17\cdots\text{①}\quad a_{12}=a+11d=52\cdots\text{②}$$</div>
+    <p style="font-size:14px"><strong>【手順②】</strong>②－① ：$7d=35 \Rightarrow d=5$</p>
+    <p style="font-size:14px"><strong>【手順③】</strong>①に代入：$a+20=17 \Rightarrow a=-3$</p>
+    <div style="text-align:center;margin:6px 0">$$a_n=-3+(n-1)\times5=5n-8$$</div>
+    <div class="def-box" style="margin-top:8px"><div class="def-title">✅ 答え</div><p style="font-size:14px">$a_n=5n-8$</p></div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex3')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex3">
+    <div class="pq-div">
+      <div class="pq-label">練習 3-A</div>
+      <div class="pq-text">第4項が10、第10項が28の等差数列の公差 $d$ はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_3a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_3a">
+        <div class="hint-step" id="ht_3a_1"><div class="hint-step-label">Step 1　2つの式を立てる</div><p style="font-size:13px">$a+3d=10\cdots\text{①}$、$a+9d=28\cdots\text{②}$</p><button class="hint-next-btn" onclick="nextHint('ht_3a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_3a_2"><div class="hint-step-label">Step 2　②－①を計算</div><p style="font-size:13px">②－①を計算すると $6d=?$ になります。</p><button class="hint-next-btn" onclick="nextHint('ht_3a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_3a_3"><div class="hint-step-label">Step 3　dの値を求める</div><p style="font-size:13px">$6d=18$ なので $d=?$</p></div>
+      </div>
+      <div class="choices" id="ch_3a">
+        <button class="choice-btn" onclick="pickChoice('3a',this,0)">① $d=2$</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,1)">② $d=3$</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,2)">③ $d=4$</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,3)">④ $d=6$</button>
+      </div>
+      <button class="judge-btn" id="jb_3a" onclick="judgeQ('3a',1,'②－①：$6d=18 \\Rightarrow d=3$ ✅<br>確認：①より $a+9=10$ → $a=1$。$a_4=1+3\\times3=10$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_3a"></div>
+      <button class="retry-btn" onclick="retryQ('3a','ht_3a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 3-B</div>
+      <div class="pq-text">第3項が9、第7項が21の等差数列の初項 $a$ はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_3b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_3b">
+        <div class="hint-step" id="ht_3b_1"><div class="hint-step-label">Step 1　2つの式を立てる</div><p style="font-size:13px">$a+2d=9\cdots\text{①}$、$a+6d=21\cdots\text{②}$</p><button class="hint-next-btn" onclick="nextHint('ht_3b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_3b_2"><div class="hint-step-label">Step 2　dを求める</div><p style="font-size:13px">②－①：$4d=12 \Rightarrow d=3$</p><button class="hint-next-btn" onclick="nextHint('ht_3b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_3b_3"><div class="hint-step-label">Step 3　①にd=3を代入</div><p style="font-size:13px">$a+2\times3=9$ を解いて $a$ を求めましょう。</p></div>
+      </div>
+      <div class="choices" id="ch_3b">
+        <button class="choice-btn" onclick="pickChoice('3b',this,0)">① $a=1$</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,1)">② $a=2$</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,2)">③ $a=3$</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,3)">④ $a=6$</button>
+      </div>
+      <button class="judge-btn" id="jb_3b" onclick="judgeQ('3b',2,'$d=3$ を①に代入：$a+6=9 \\Rightarrow a=3$ ✅<br>一般項は $a_n=3+(n-1)\\times3=3n$ となります。')" disabled>判定する</button>
+      <div class="judge-result" id="jr_3b"></div>
+      <button class="retry-btn" onclick="retryQ('3b','ht_3b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+</div><!-- /page-ex1 -->
+
+<!-- ===== 練習① ===== -->
+<div class="page" id="page-pr1">
+<div class="progress-bar"><div class="progress-fill fill-pr" style="width:40%"></div></div>
+<div class="card">
+  <div class="card-title">練習問題① 一般項を求める</div>
+  <div class="prob-box"><div class="prob-num">問題 1</div>
+    <p style="font-size:14px">等差数列 $1,\ 5,\ 9,\ 13,\ \ldots$ の一般項と第20項を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$a_n=4n-3$、$a_{20}=77$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 2</div>
+    <p style="font-size:14px">等差数列 $-4,\ -1,\ 2,\ 5,\ \ldots$ ではじめて3桁になるのは第何項ですか。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$a_n=3n-7 \geqq 100 \Rightarrow n \geqq 35.6\ldots$ → <strong>第36項</strong></p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 3</div>
+    <p style="font-size:14px">等差数列 $-50,\ -46,\ -42,\ \ldots$ の①第50項　②はじめて正になる項を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$a_n=4n-54$　① $a_{50}=146$　② 第14項</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 4</div>
+    <p style="font-size:14px">第10項が8、第25項が38の等差数列の初項と公差を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$d=2$、$a=-10$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 5</div>
+    <p style="font-size:14px">第7項が49、第40項が $-50$ の等差数列の一般項を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$d=-3$、$a=67$、$a_n=-3n+70$</p></div>
+  </div>
+</div>
+</div><!-- /page-pr1 -->
+
+<!-- ===== 確認① ===== -->
+<div class="page" id="page-cf1">
+<div class="progress-bar"><div class="progress-fill fill-cf" style="width:50%"></div></div>
+<div class="card">
+  <div class="card-title">確認テスト① 一般項</div>
+  <p style="font-size:13px;color:#555;margin-bottom:12px">2問に挑戦しましょう。</p>
+  <div class="mini-q">
+    <div class="q-text">【Q1】等差数列 $3,\ 7,\ 11,\ 15,\ \ldots$ の一般項 $a_n$ はどれですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q1cf1',0,false,'q1cf1-fb')">① $a_n=3n$</button></li>
+      <li><button onclick="mAns('q1cf1',1,false,'q1cf1-fb')">② $a_n=4n-2$</button></li>
+      <li><button onclick="mAns('q1cf1',2,true,'q1cf1-fb')">③ $a_n=4n-1$</button></li>
+      <li><button onclick="mAns('q1cf1',3,false,'q1cf1-fb')">④ $a_n=3n+1$</button></li>
+    </ul>
+    <div id="q1cf1-fb" class="mini-fb" data-correct="2"
+      data-ok="初項 $a=3$、公差 $d=4$ より $a_n=3+(n-1)\times4=4n-1$ ✅"
+      data-ng0="公差は $7-3=4$ です。$a_n=3+(n-1)\times4$ を展開しましょう。"
+      data-ng1="$3+(n-1)\times4=3+4n-4=4n-1$ です。符号に注意しましょう。"
+      data-ng3="初項 $a=3$、公差 $d=4$ です。公式に代入してみましょう。"></div>
+    <button class="reset-btn" onclick="mReset('q1cf1')">もう一度</button>
+  </div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <div class="mini-q">
+    <div class="q-text">【Q2】等差数列の第3項が9、第7項が21のとき、初項はいくつですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q2cf1',0,false,'q2cf1-fb')">① $a=1$</button></li>
+      <li><button onclick="mAns('q2cf1',1,false,'q2cf1-fb')">② $a=2$</button></li>
+      <li><button onclick="mAns('q2cf1',2,true,'q2cf1-fb')">③ $a=3$</button></li>
+      <li><button onclick="mAns('q2cf1',3,false,'q2cf1-fb')">④ $a=6$</button></li>
+    </ul>
+    <div id="q2cf1-fb" class="mini-fb" data-correct="2"
+      data-ok="$a+2d=9$、$a+6d=21$　②－①：$4d=12 \Rightarrow d=3$<br>①に代入：$a+6=9 \Rightarrow a=3$ ✅"
+      data-ng0="連立方程式で $d=3$ を求めてから①に代入します。"
+      data-ng1="$d=3$ は正しいです。$a+6=9$ より $a=?$"
+      data-ng3="それは $a_3=9$ の値です。初項に戻すには公差を引く必要があります。"></div>
+    <button class="reset-btn" onclick="mReset('q2cf1')">もう一度</button>
+  </div>
+</div>
+</div><!-- /page-cf1 -->
+
+<!-- ===== 解説② ===== -->
+<div class="page" id="page-ex2">
+<div class="progress-bar"><div class="progress-fill fill-ex" style="width:65%"></div></div>
+
+<div class="card">
+  <div class="card-title">① ガウス少年の話</div>
+  <div class="story-box">
+    <div class="story-title">📖 天才数学者ガウスの逸話</div>
+    <p style="font-size:14px">18世紀ドイツの数学者、ガウスが小学生だった頃の話です。<br>
+    算数の先生が「1から100までの数を全部たしなさい」と問題を出しました。<br><br>
+    先生は生徒たちが時間がかかると思っていました。<br>
+    ところがガウスはほとんど間を置かずに「<strong>5050です</strong>」と答えました。<br><br>
+    どうやって一瞬で計算したのでしょうか？</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">② ガウスの考え方を図で見る</div>
+  <p style="font-size:14px;margin-bottom:12px">正順と逆順を2行に並べます。</p>
+  <div style="overflow-x:auto">
+    <table class="gauss-table">
+      <tr class="top-row"><td>1</td><td>2</td><td>3</td><td>…</td><td>98</td><td>99</td><td>100</td></tr>
+      <tr class="bot-row"><td>100</td><td>99</td><td>98</td><td>…</td><td>3</td><td>2</td><td>1</td></tr>
+    </table>
+  </div>
+  <div style="text-align:center;background:#e3f2fd;border-radius:8px;padding:10px;font-size:15px;margin:10px 0">
+    どの列も <strong>1 + 100 = 101</strong>　（全部で 100 列）
+  </div>
+  <div style="text-align:center;font-size:15px;margin:8px 0">$$2S=101\times100=10100$$$$S=\frac{10100}{2}=5050$$</div>
+  <div class="point-box">
+    <div class="pt-title">💡 ガウスの発想のポイント</div>
+    <p style="font-size:14px">$(\text{初項}+\text{末項})\times\text{項数}\div2$<br>$(1+100)\times100\div2=5050$</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">③ 等差数列の和の公式</div>
+  <p style="font-size:14px;margin-bottom:10px">ガウスの考え方を一般化します。</p>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 公式の導き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>【手順①】</strong>正順と逆順で2行に書く</p>
+    <div style="font-size:13px;margin:8px 0;background:#fff;border-radius:6px;padding:8px;line-height:2.2">
+      $S_n=a+(a+d)+(a+2d)+\cdots+\ell\quad\cdots\text{①}$<br>
+      $S_n=\ell+(\ell-d)+(\ell-2d)+\cdots+a\quad\cdots\text{②}$
+    </div>
+    <p style="font-size:14px"><strong>【手順②】</strong>①＋②</p>
+    <div style="text-align:center;margin:8px 0">$$2S_n=n(a+\ell)$$</div>
+    <p style="font-size:14px"><strong>【手順③】</strong>両辺を2で割る → $S_n=\dfrac{n(a+\ell)}{2}$</p>
+    <p style="font-size:14px;margin-top:6px">$\ell=a+(n-1)d$ を代入すると、</p>
+    <div style="text-align:center;margin:8px 0">$$S_n=\frac{n\{2a+(n-1)d\}}{2}$$</div>
+  </div>
+  <div class="formula-box" style="margin-top:12px">
+    <div class="f-label">【重要公式】等差数列の和</div>
+    $$S_n=\frac{n(a+\ell)}{2}=\frac{n\{2a+(n-1)d\}}{2}$$
+    <p style="font-size:12px;color:#555;margin-top:6px">$a$：初項　$\ell$：末項　$d$：公差　$n$：項数</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">④ 例題④　和の基本</div>
+  <div class="ex-box">
+    <div class="ex-label">例題④</div>
+    <p style="font-size:14px">等差数列 $-3,\ 1,\ 5,\ 9,\ 13,\ \ldots$ の初項から第10項までの和を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px">初項 $a=-3$、公差 $d=4$、$n=10$</p>
+    <div style="text-align:center;margin:8px 0">$$S_{10}=\frac{10\times\{2\times(-3)+9\times4\}}{2}=5\times(-6+36)=5\times30=150$$</div>
+    <div class="def-box" style="margin-top:8px"><div class="def-title">✅ 答え</div><p style="font-size:14px">$S_{10}=150$</p></div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex4')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex4">
+    <div class="pq-div">
+      <div class="pq-label">練習 4-A</div>
+      <div class="pq-text">等差数列 $-5,\ -2,\ 1,\ 4,\ \ldots$ の初項から第10項までの和はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_4a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_4a">
+        <div class="hint-step" id="ht_4a_1"><div class="hint-step-label">Step 1　数値を確認</div><p style="font-size:13px">初項 $a=-5$、公差 $d=3$、$n=10$ です。</p><button class="hint-next-btn" onclick="nextHint('ht_4a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_4a_2"><div class="hint-step-label">Step 2　{}内を計算</div><p style="font-size:13px">$2\times(-5)+9\times3=-10+27=?$</p><button class="hint-next-btn" onclick="nextHint('ht_4a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_4a_3"><div class="hint-step-label">Step 3　全体を計算</div><p style="font-size:13px">$S_{10}=\dfrac{10\times17}{2}=5\times17=?$</p></div>
+      </div>
+      <div class="choices" id="ch_4a">
+        <button class="choice-btn" onclick="pickChoice('4a',this,0)">① 70</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,1)">② 80</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,2)">③ 85</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,3)">④ 90</button>
+      </div>
+      <button class="judge-btn" id="jb_4a" onclick="judgeQ('4a',2,'$S_{10}=\\dfrac{10\\times(-10+27)}{2}=5\\times17=85$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_4a"></div>
+      <button class="retry-btn" onclick="retryQ('4a','ht_4a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 4-B</div>
+      <div class="pq-text">初項4、公差3の等差数列の初項から第10項までの和はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_4b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_4b">
+        <div class="hint-step" id="ht_4b_1"><div class="hint-step-label">Step 1　数値を確認</div><p style="font-size:13px">$a=4,\ d=3,\ n=10$ を公式に代入します。</p><button class="hint-next-btn" onclick="nextHint('ht_4b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_4b_2"><div class="hint-step-label">Step 2　{}内を計算</div><p style="font-size:13px">$2\times4+9\times3=8+27=35$</p><button class="hint-next-btn" onclick="nextHint('ht_4b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_4b_3"><div class="hint-step-label">Step 3　全体を計算</div><p style="font-size:13px">$S_{10}=\dfrac{10\times35}{2}=5\times35=?$</p></div>
+      </div>
+      <div class="choices" id="ch_4b">
+        <button class="choice-btn" onclick="pickChoice('4b',this,0)">① 155</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,1)">② 165</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,2)">③ 175</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,3)">④ 185</button>
+      </div>
+      <button class="judge-btn" id="jb_4b" onclick="judgeQ('4b',2,'$S_{10}=\\dfrac{10\\times(8+27)}{2}=5\\times35=175$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_4b"></div>
+      <button class="retry-btn" onclick="retryQ('4b','ht_4b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⑤ 例題⑤　倍数の和</div>
+  <div class="ex-box">
+    <div class="ex-label">例題⑤</div>
+    <p style="font-size:14px">1から100までの自然数のうち、3の倍数の和を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px">$3,\ 6,\ 9,\ \ldots,\ 99$（初項3、公差3の等差数列）</p>
+    <p style="font-size:14px">項数：$100\div3=33$ 余り1 → 33個</p>
+    <div style="text-align:center;margin:8px 0">$$S=\frac{33\times(3+99)}{2}=\frac{33\times102}{2}=1683$$</div>
+    <div class="def-box" style="margin-top:8px"><div class="def-title">✅ 答え</div><p style="font-size:14px">$1683$</p></div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex5')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex5">
+    <div class="pq-div">
+      <div class="pq-label">練習 5-A</div>
+      <div class="pq-text">1から100までの自然数のうち、4の倍数の和はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_5a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_5a">
+        <div class="hint-step" id="ht_5a_1"><div class="hint-step-label">Step 1　4の倍数を列挙</div><p style="font-size:13px">$4,\ 8,\ 12,\ \ldots,\ 100$（初項4、公差4の等差数列）</p><button class="hint-next-btn" onclick="nextHint('ht_5a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_5a_2"><div class="hint-step-label">Step 2　項数を求める</div><p style="font-size:13px">$100\div4=25$ → 項数は25個、末項は100です。</p><button class="hint-next-btn" onclick="nextHint('ht_5a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_5a_3"><div class="hint-step-label">Step 3　和を計算</div><p style="font-size:13px">$S=\dfrac{25\times(4+100)}{2}=\dfrac{25\times104}{2}=?$</p></div>
+      </div>
+      <div class="choices" id="ch_5a">
+        <button class="choice-btn" onclick="pickChoice('5a',this,0)">① 1200</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,1)">② 1250</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,2)">③ 1300</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,3)">④ 1350</button>
+      </div>
+      <button class="judge-btn" id="jb_5a" onclick="judgeQ('5a',2,'項数25個。$S=\\dfrac{25\\times104}{2}=25\\times52=1300$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_5a"></div>
+      <button class="retry-btn" onclick="retryQ('5a','ht_5a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 5-B</div>
+      <div class="pq-text">100から200までの自然数のうち、4の倍数の和はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_5b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_5b">
+        <div class="hint-step" id="ht_5b_1"><div class="hint-step-label">Step 1　項数の求め方</div><p style="font-size:13px">1〜200の4の倍数：50個<br>1〜99の4の倍数：24個<br>100〜200：$50-24=26$ 個</p><button class="hint-next-btn" onclick="nextHint('ht_5b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_5b_2"><div class="hint-step-label">Step 2　初項と末項を確認</div><p style="font-size:13px">項数26個、初項100、末項200です。</p><button class="hint-next-btn" onclick="nextHint('ht_5b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_5b_3"><div class="hint-step-label">Step 3　和を計算</div><p style="font-size:13px">$S=\dfrac{26\times(100+200)}{2}=13\times300=?$</p></div>
+      </div>
+      <div class="choices" id="ch_5b">
+        <button class="choice-btn" onclick="pickChoice('5b',this,0)">① 3600</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,1)">② 3800</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,2)">③ 3900</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,3)">④ 4000</button>
+      </div>
+      <button class="judge-btn" id="jb_5b" onclick="judgeQ('5b',2,'項数26個、初項100、末項200<br>$S=\\dfrac{26\\times300}{2}=13\\times300=3900$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_5b"></div>
+      <button class="retry-btn" onclick="retryQ('5b','ht_5b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⑥ 例題⑥　和の最大値</div>
+  <div class="ex-box">
+    <div class="ex-label">例題⑥</div>
+    <p style="font-size:14px">等差数列 $51,\ 47,\ 43,\ \ldots$ の和 $S_n$ の最大値を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px">初項 $a=51$、公差 $d=-4$</p>
+    <div style="text-align:center;margin:8px 0">$$S_n=-2n^2+53n=-2\left(n-\frac{53}{4}\right)^2+\cdots$$</div>
+    <p style="font-size:14px">$\dfrac{53}{4}=13.25$ に最も近い自然数は $n=13$</p>
+    <div style="text-align:center;margin:8px 0">$$S_{13}=-2\times169+53\times13=351$$</div>
+    <div class="def-box" style="margin-top:8px"><div class="def-title">✅ 答え</div><p style="font-size:14px">$n=13$ のとき最大値 $351$</p></div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex6')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex6">
+    <div class="pq-div">
+      <div class="pq-label">練習 6-A</div>
+      <div class="pq-text">初項13、公差 $-3$ の等差数列の和 $S_n$ の最大値はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_6a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_6a">
+        <div class="hint-step" id="ht_6a_1"><div class="hint-step-label">Step 1　$S_n$ を式で表す</div><p style="font-size:13px">$S_n=\dfrac{n\{26+(n-1)\times(-3)\}}{2}$ を展開して整理しましょう。</p><button class="hint-next-btn" onclick="nextHint('ht_6a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_6a_2"><div class="hint-step-label">Step 2　軸を求める</div><p style="font-size:13px">$S_n=-\dfrac{3}{2}n^2+\dfrac{29}{2}n$ → 軸 $n=\dfrac{29}{6}\approx4.83$<br>最も近い自然数は？</p><button class="hint-next-btn" onclick="nextHint('ht_6a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_6a_3"><div class="hint-step-label">Step 3　$n=5$ を代入</div><p style="font-size:13px">$S_5=\dfrac{5\times(26-12)}{2}=\dfrac{70}{2}=35$</p></div>
+      </div>
+      <div class="choices" id="ch_6a">
+        <button class="choice-btn" onclick="pickChoice('6a',this,0)">① 32</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,1)">② 33</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,2)">③ 34</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,3)">④ 35</button>
+      </div>
+      <button class="judge-btn" id="jb_6a" onclick="judgeQ('6a',3,'軸 $n=\\dfrac{29}{6}\\approx4.83$、最も近い自然数は $n=5$<br>$S_5=\\dfrac{5\\times14}{2}=35$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_6a"></div>
+      <button class="retry-btn" onclick="retryQ('6a','ht_6a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 6-B</div>
+      <div class="pq-text">初項196、公差 $-8$ の等差数列の和 $S_n$ が最大になるのは $n=$ 何のときですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_6b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_6b">
+        <div class="hint-step" id="ht_6b_1"><div class="hint-step-label">Step 1　$S_n$ を求める</div><p style="font-size:13px">$S_n=\dfrac{n\{392+(n-1)\times(-8)\}}{2}$ を整理すると $S_n=-4n^2+200n$</p><button class="hint-next-btn" onclick="nextHint('ht_6b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_6b_2"><div class="hint-step-label">Step 2　平方完成</div><p style="font-size:13px">$S_n=-4(n-25)^2+2500$　軸は $n=25$</p><button class="hint-next-btn" onclick="nextHint('ht_6b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_6b_3"><div class="hint-step-label">Step 3　結論</div><p style="font-size:13px">軸 $n=25$ はちょうど自然数なので $n=25$ のとき $S_n$ は最大です。</p></div>
+      </div>
+      <div class="choices" id="ch_6b">
+        <button class="choice-btn" onclick="pickChoice('6b',this,0)">① $n=20$</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,1)">② $n=22$</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,2)">③ $n=24$</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,3)">④ $n=25$</button>
+      </div>
+      <button class="judge-btn" id="jb_6b" onclick="judgeQ('6b',3,'$S_n=-4(n-25)^2+2500$　軸 $n=25$ はちょうど自然数<br>$n=25$ のとき最大値 $2500$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_6b"></div>
+      <button class="retry-btn" onclick="retryQ('6b','ht_6b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+</div><!-- /page-ex2 -->
+
+<!-- ===== 練習② ===== -->
+<div class="page" id="page-pr2">
+<div class="progress-bar"><div class="progress-fill fill-pr" style="width:80%"></div></div>
+<div class="card">
+  <div class="card-title">練習問題② 等差数列の和</div>
+  <div class="prob-box"><div class="prob-num">問題 1</div>
+    <p style="font-size:14px">初項2、公差3の等差数列の一般項と $S_n$ を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$a_n=3n-1$、$S_n=\dfrac{n(3n+1)}{2}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 2</div>
+    <p style="font-size:14px">1から100の自然数のうち、7の倍数の和を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$7,14,\ldots,98$　項数14個、$S=7\times105=735$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 3</div>
+    <p style="font-size:14px">100から200の自然数のうち、7の倍数の和を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">項数14個、初項105、末項196<br>$S=\dfrac{14\times(105+196)}{2}=7\times301=2107$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 4</div>
+    <p style="font-size:14px">初項196、公差 $-8$ の等差数列の和 $S_n$ の最大値を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$S_n=-4(n-25)^2+2500$　$n=25$ のとき最大値 $\mathbf{2500}$</p></div>
+  </div>
+</div>
+</div><!-- /page-pr2 -->
+
+<!-- ===== 確認② ===== -->
+<div class="page" id="page-cf2">
+<div class="progress-bar"><div class="progress-fill fill-cf" style="width:100%"></div></div>
+<div class="card">
+  <div class="card-title">確認テスト② 等差数列の和</div>
+  <p style="font-size:13px;color:#555;margin-bottom:12px">2問に挑戦しましょう。</p>
+  <div class="mini-q">
+    <div class="q-text">【Q1】等差数列 $2,\ 5,\ 8,\ \ldots$ の初項から第10項までの和はいくつですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q1cf2',0,false,'q1cf2-fb')">① 130</button></li>
+      <li><button onclick="mAns('q1cf2',1,false,'q1cf2-fb')">② 145</button></li>
+      <li><button onclick="mAns('q1cf2',2,true,'q1cf2-fb')">③ 155</button></li>
+      <li><button onclick="mAns('q1cf2',3,false,'q1cf2-fb')">④ 165</button></li>
+    </ul>
+    <div id="q1cf2-fb" class="mini-fb" data-correct="2"
+      data-ok="$S_{10}=\dfrac{10\times(4+27)}{2}=5\times31=155$ ✅"
+      data-ng0="$2a+(n-1)d=4+27=31$、$5\times31=155$ です。"
+      data-ng1="{}の中は $4+27=31$ です。$5\times31$ を計算しましょう。"
+      data-ng3="$\dfrac{10\times31}{2}=155$ です。"></div>
+    <button class="reset-btn" onclick="mReset('q1cf2')">もう一度</button>
+  </div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <div class="mini-q">
+    <div class="q-text">【Q2】1から100までの自然数の和（ガウスの公式）はいくつですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q2cf2',0,false,'q2cf2-fb')">① 4950</button></li>
+      <li><button onclick="mAns('q2cf2',1,true,'q2cf2-fb')">② 5050</button></li>
+      <li><button onclick="mAns('q2cf2',2,false,'q2cf2-fb')">③ 5100</button></li>
+      <li><button onclick="mAns('q2cf2',3,false,'q2cf2-fb')">④ 5150</button></li>
+    </ul>
+    <div id="q2cf2-fb" class="mini-fb" data-correct="1"
+      data-ok="$S=\dfrac{100\times(1+100)}{2}=50\times101=5050$ ✅<br>ガウスが小学生のときに一瞬で答えた値です！"
+      data-ng0="項数は100個です。$\dfrac{100\times101}{2}=5050$ です。"
+      data-ng2="$(1+100)\times100\div2=101\times50=5050$ です。"
+      data-ng3="$101\times100\div2=5050$ です。"></div>
+    <button class="reset-btn" onclick="mReset('q2cf2')">もう一度</button>
+  </div>
+</div>
+<div class="card" style="background:#e8f5e9;border:1.5px solid #43a047">
+  <p style="font-size:14px;font-weight:700;color:#1b5e20;margin-bottom:4px">🎉 EX3-1 完了！</p>
+  <p style="font-size:13px;color:#2e7d32">等差数列の一般項・和の公式をマスターしました。次は EX3-2「Σの計算」に進みましょう。</p>
+</div>
+</div><!-- /page-cf2 -->
+
+<script>
+// ===== ページ切替 =====
+function switchPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active-ex','active-pr','active-cf');});
+  document.getElementById('page-'+id).classList.add('active');
+  var tabs=['ex1','pr1','cf1','ex2','pr2','cf2'];
+  var idx=tabs.indexOf(id);
+  var cls=id.indexOf('ex')===0?'active-ex':id.indexOf('pr')===0?'active-pr':'active-cf';
+  document.querySelectorAll('.tab-btn')[idx].classList.add(cls);
+  window.scrollTo(0,0);
+  if(typeof nekoUpdatePage==='function') nekoUpdatePage(id);
+}
+
+// ===== 例題解説ステップ =====
+function toggleExStep(btn){
+  var body=btn.nextElementSibling;
+  var isOpen=body.classList.toggle('open');
+  btn.textContent=isOpen?'▼ 閉じる':'▶ 解き方を見る';
+  if(isOpen && typeof renderMathInElement!=='undefined') renderMathInElement(body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+
+// ===== 練習セット折りたたみ =====
+function togglePS(btn,id){
+  var el=document.getElementById(id);
+  var isOpen=el.classList.toggle('open');
+  btn.textContent=isOpen?'📝 練習を閉じる ▲':'📝 練習してみよう（2問）';
+  if(isOpen && typeof renderMathInElement!=='undefined') renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+
+// ===== ヒントstep =====
+function openHints(hid){
+  var container=document.getElementById(hid);
+  container.classList.add('open');
+  var btn=container.previousElementSibling;
+  btn.style.display='none';
+  var step1=document.getElementById(hid+'_1');
+  if(step1){
+    step1.classList.add('show');
+    if(typeof renderMathInElement!=='undefined') renderMathInElement(step1,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
+}
+function nextHint(hid,num){
+  var el=document.getElementById(hid+'_'+num);
+  if(el){
+    el.classList.add('show');
+    if(typeof renderMathInElement!=='undefined') renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
+}
+
+// ===== 選択肢クリック =====
+var selectedChoice={};
+function pickChoice(qid,btn,idx){
+  selectedChoice[qid]=idx;
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b,i){
+    b.style.borderColor=i===idx?'#1976d2':'';
+    b.style.background=i===idx?'#e3f2fd':'#fff';
+    b.style.fontWeight=i===idx?'700':'';
+  });
+  document.getElementById('jb_'+qid).disabled=false;
+}
+
+// ===== 判定 =====
+function judgeQ(qid,correctIdx,explanation){
+  var chosen=selectedChoice[qid];
+  if(chosen===undefined) return;
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b){
+    b.disabled=true;
+    b.style.borderColor='';b.style.background='';b.style.fontWeight='';
+  });
+  btns[correctIdx].classList.add('correct');
+  var isOK=(chosen===correctIdx);
+  if(!isOK) btns[chosen].classList.add('wrong');
+  document.getElementById('jb_'+qid).disabled=true;
+  var jr=document.getElementById('jr_'+qid);
+  jr.classList.add('show');
+  if(isOK){
+    jr.className='judge-result show ok';
+    jr.innerHTML='<span class="result-badge badge-ok">✅ 正解！</span><div class="result-exp">'+explanation+'</div>';
+    launchConfetti();
+  } else {
+    jr.className='judge-result show ng';
+    jr.innerHTML='<span class="result-badge badge-ng">❌ 不正解</span><div class="result-exp">'+explanation+'</div>';
+  }
+  if(typeof renderMathInElement!=='undefined') renderMathInElement(jr,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+
+// ===== やり直し =====
+function retryQ(qid,hid){
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b){
+    b.disabled=false;b.classList.remove('correct','wrong');
+    b.style.borderColor='';b.style.background='';b.style.fontWeight='';
+  });
+  delete selectedChoice[qid];
+  document.getElementById('jb_'+qid).disabled=true;
+  var jr=document.getElementById('jr_'+qid);
+  jr.className='judge-result';jr.innerHTML='';
+  if(hid){
+    var container=document.getElementById(hid);
+    container.classList.remove('open');
+    var steps=container.querySelectorAll('.hint-step');
+    steps.forEach(function(s){s.classList.remove('show');});
+    var btn=container.previousElementSibling;
+    if(btn && btn.classList.contains('hint-main-btn')) btn.style.display='';
+  }
+}
+
+// ===== 練習タブ用 =====
+function toggleAns(btn){
+  var body=btn.nextElementSibling;
+  var isOpen=body.classList.toggle('open');
+  btn.textContent=isOpen?'閉じる':'答えを見る';
+  if(isOpen && typeof renderMathInElement!=='undefined') renderMathInElement(body);
+}
+
+// ===== 確認タブ用 =====
+function mAns(mid,idx,correct,fbId){
+  var fb=document.getElementById(fbId||mid+'-fb');
+  var btns=fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(function(b){b.disabled=true;});
+  btns[idx].classList.add(correct?'correct':'wrong');
+  var correctIdx=fb.dataset.correct;
+  if(!correct && correctIdx!==undefined) btns[correctIdx].classList.add('correct');
+  var topMsg=correct?'<span class="fb-badge fb-ok">✅ 正解！</span>':'<span class="fb-badge fb-ng">❌ 不正解</span> '+(fb.dataset['ng'+idx]||'もう一度確認しましょう。');
+  fb.classList.add('show',correct?'ok':'ng-with-ans');
+  fb.innerHTML='<div class="fb-top">'+topMsg+'</div><div class="fb-exp"><span class="fb-exp-label">📝 解説</span>'+(fb.dataset.ok||'')+'</div>';
+  if(typeof renderMathInElement!=='undefined') renderMathInElement(fb,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  if(correct) launchConfetti();
+}
+function mReset(mid){
+  var fb=document.getElementById(mid+'-fb');
+  var btns=fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');});
+  fb.className='mini-fb';fb.innerHTML='';
+}
+
+// ===== 花吹雪 =====
+function launchConfetti(){
+  var colors=['#e91e63','#1976d2','#f57c00','#7b5ea7','#43a047','#ffc107','#00bcd4'];
+  var canvas=document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+  document.body.appendChild(canvas);
+  var ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  var particles=[];
+  for(var i=0;i<120;i++){
+    particles.push({x:Math.random()*canvas.width,y:-20,r:Math.random()*6+3,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      speed:Math.random()*4+2,angle:Math.random()*360,
+      spin:(Math.random()-.5)*6,wobble:Math.random()*3});
+  }
+  var frame=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(function(p){
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle*Math.PI/180);
+      ctx.fillStyle=p.color;ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6);ctx.restore();
+      p.y+=p.speed;p.x+=Math.sin(frame*.05+p.wobble)*1.5;p.angle+=p.spin;
+    });
+    frame++;
+    if(frame<120) requestAnimationFrame(draw); else canvas.remove();
+  }
+  draw();
+}
+</script>
+
+<script>
+window.NEKO_CONFIG={
+  subject:'数学B',chapter:'EX3-1',title:'等差数列',
+  catSrc:'https://api.dicebear.com/7.x/fun-emoji/svg?seed=neko',
+  greeting:'等差数列について何でも聞いてね🐱 木と区間のイメージで一般項を覚えよう！',
+  quickBtns:['一般項の公式を教えて','公差ってなに？','和の公式を教えて','ガウスの話をもっと聞かせて'],
+  pageMap:{
+    'ex1':'解説①「等差数列の定義と一般項」を学習中',
+    'pr1':'練習問題①「一般項の計算」に取り組み中',
+    'cf1':'確認テスト①「一般項」に取り組み中',
+    'ex2':'解説②「等差数列の和の公式」を学習中',
+    'pr2':'練習問題②「和の計算」に取り組み中',
+    'cf2':'確認テスト②「和の計算」に取り組み中'
+  }
+};
+</script>
+<script src="neko.js"></script>
+</body>
+</html>

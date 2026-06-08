@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EX3-3 数列のΣ計算｜GAMBA数学B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  renderMathInElement(document.body,{
+    delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],
+    throwOnError:false
+  });
+});
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;font-size:15px;line-height:1.7}
+.top-header{background:#2055b0;color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.top-header .brand{font-size:18px;font-weight:700;letter-spacing:2px}
+.top-header .unit-title{font-size:13px;opacity:.85}
+.tab-nav{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;overflow-x:auto}
+.tab-btn{flex:1;min-width:80px;padding:10px 4px;font-size:12px;font-weight:700;border:none;background:transparent;cursor:pointer;color:#888;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.tab-btn.active-ex{color:#e91e63;border-bottom-color:#e91e63}
+.tab-btn.active-pr{color:#1976d2;border-bottom-color:#1976d2}
+.tab-btn.active-cf{color:#f57c00;border-bottom-color:#f57c00}
+.page{display:none;padding:16px;max-width:680px;margin:0 auto}
+.page.active{display:block}
+.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card-title{font-size:13px;font-weight:700;color:#2055b0;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #e8eaf6}
+.point-box{background:#fff8e1;border-left:4px solid #ffc107;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.point-box .pt-title{font-weight:700;color:#e65100;margin-bottom:6px;font-size:13px}
+.def-box{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;margin:12px 0}
+.def-box .def-title{font-weight:700;color:#1b5e20;margin-bottom:8px;font-size:13px}
+.formula-box{background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px;margin:12px 0;text-align:center}
+.formula-box .f-label{font-size:12px;color:#1565c0;font-weight:700;margin-bottom:6px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;line-height:1.2}
+.frac .num{border-bottom:1.5px solid currentColor;padding:0 3px;font-size:.92em}
+.frac .den{padding:0 3px;font-size:.92em}
+.ex-step-btn{background:#7e57c2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s;margin:8px 0}
+.ex-step-btn:hover{background:#5e35b1}
+.ex-step-body{display:none;margin-top:8px;background:#f3e5f5;border-radius:8px;padding:12px;font-size:14px}
+.ex-step-body.open{display:block}
+.ex-box{background:#fce4ec;border-radius:8px;padding:12px;margin:10px 0}
+.ex-box .ex-label{font-size:12px;font-weight:700;color:#880e4f;margin-bottom:4px}
+.ptoggle-btn{display:block;width:100%;margin:12px 0 0;background:linear-gradient(90deg,#1976d2,#42a5f5);color:#fff;border:none;border-radius:24px;padding:9px 0;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;letter-spacing:.5px}
+.ptoggle-btn:hover{opacity:.88}
+.practice-set{display:none;margin-top:10px;background:#f0f4ff;border:2px solid #90caf9;border-radius:12px;padding:14px}
+.practice-set.open{display:block}
+.pq-label{font-size:11px;font-weight:700;color:#1565c0;background:#bbdefb;display:inline-block;padding:2px 10px;border-radius:10px;margin-bottom:8px}
+.pq-text{font-size:14px;font-weight:500;margin-bottom:10px;line-height:1.7}
+.hint-main-btn{background:#ff8f00;color:#fff;border:none;border-radius:16px;padding:5px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.hint-main-btn:hover{background:#e65100}
+.hint-steps{margin-top:8px;display:none}
+.hint-steps.open{display:block}
+.hint-step{display:none;background:#fff8e1;border-left:3px solid #ffc107;border-radius:6px;padding:9px 12px;margin-bottom:6px;font-size:13px}
+.hint-step.show{display:block}
+.hint-step-label{font-size:11px;font-weight:700;color:#e65100;margin-bottom:4px}
+.hint-next-btn{background:#ffc107;color:#5d4037;border:none;border-radius:14px;padding:4px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px;transition:.2s}
+.hint-next-btn:hover{background:#ffb300}
+.choices{display:flex;flex-direction:column;gap:7px;margin:10px 0}
+.choice-btn{width:100%;text-align:left;padding:9px 14px;border:2px solid #bbdefb;border-radius:9px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-btn:hover:not(:disabled){border-color:#1976d2;background:#e3f2fd}
+.choice-btn.correct{background:#e8f5e9!important;border-color:#43a047!important;color:#1b5e20;font-weight:700}
+.choice-btn.wrong{background:#ffebee!important;border-color:#e53935!important;color:#b71c1c}
+.judge-btn{background:#e91e63;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px;transition:.2s}
+.judge-btn:hover:not(:disabled){background:#c2185b}
+.judge-btn:disabled{background:#bdbdbd;cursor:default}
+.retry-btn{background:#e0e0e0;color:#333;border:none;border-radius:16px;padding:5px 18px;font-size:12px;cursor:pointer;font-family:inherit;margin-top:8px;display:block;transition:.2s}
+.retry-btn:hover{background:#bdbdbd}
+.judge-result{display:none;margin-top:10px;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.8}
+.judge-result.show{display:block}
+.judge-result.ok{background:#e8f5e9;border-left:4px solid #43a047}
+.judge-result.ng{background:#fff8e1;border-left:4px solid #ff9800}
+.result-badge{font-weight:700;padding:2px 10px;border-radius:10px;margin-right:6px;font-size:12px}
+.badge-ok{background:#c8e6c9;color:#1b5e20}
+.badge-ng{background:#ffcdd2;color:#b71c1c}
+.result-exp{background:rgba(255,255,255,.7);border-radius:6px;padding:8px 10px;margin-top:8px;font-size:13px}
+.mini-q{margin:12px 0}
+.mini-q .q-text{font-size:14px;margin-bottom:8px;font-weight:500}
+.choice-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.choice-list li button{width:100%;text-align:left;padding:9px 12px;border:2px solid #e0e0e0;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-list li button:hover{border-color:#7e57c2;background:#f3e5f5}
+.choice-list li button.correct{background:#e8f5e9;border-color:#43a047;color:#1b5e20;font-weight:700}
+.choice-list li button.wrong{background:#ffebee;border-color:#e53935;color:#b71c1c}
+.mini-fb{font-size:13px;margin-top:6px;padding:8px 10px;border-radius:6px;display:none}
+.mini-fb.show{display:block}
+.mini-fb.ok{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;line-height:1.8}
+.mini-fb.ng-with-ans{background:#fff8e1;border-left:4px solid #ff9800;border-radius:8px;padding:12px 14px;line-height:1.8}
+.fb-top{margin-bottom:8px;font-size:13px}
+.fb-badge{font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px;font-size:12px}
+.fb-badge.fb-ok{background:#c8e6c9;color:#1b5e20}
+.fb-badge.fb-ng{background:#ffcdd2;color:#b71c1c}
+.fb-exp{background:rgba(255,255,255,0.7);border-radius:6px;padding:8px 10px;margin-top:6px;font-size:13px}
+.fb-exp-label{font-weight:700;color:#e65100;margin-right:6px;font-size:12px}
+.reset-btn{margin-top:8px;background:#eeeeee;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit}
+.prob-box{background:#fff;border:2px solid #e0e0e0;border-radius:10px;padding:14px;margin:12px 0}
+.prob-box .prob-num{font-size:12px;font-weight:700;color:#1976d2;margin-bottom:6px}
+.ans-btn{background:#1976d2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;margin-top:8px;transition:.2s}
+.ans-btn:hover{background:#1565c0}
+.ans-body{display:none;margin-top:10px;background:#e3f2fd;border-radius:8px;padding:12px;font-size:14px}
+.ans-body.open{display:block}
+.ans-body .ans-label{font-weight:700;color:#0d47a1;margin-bottom:4px;font-size:13px}
+.progress-bar{height:4px;background:#e0e0e0;border-radius:2px;margin-bottom:16px}
+.progress-fill{height:100%;border-radius:2px;transition:width .4s}
+.fill-ex{background:#e91e63}.fill-pr{background:#1976d2}.fill-cf{background:#f57c00}
+.step-list{list-style:none;padding:0;margin:8px 0}
+.step-list li{padding:5px 0 5px 20px;position:relative;font-size:14px;border-bottom:1px dashed #e0e0e0}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:"▶";position:absolute;left:0;color:#2055b0;font-size:11px;top:7px}
+.check-box{background:#e8f0fe;border-left:4px solid #2055b0;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.calc-flow{background:#f3e5f5;border-radius:8px;padding:12px;margin:8px 0;font-size:14px;line-height:2.2}
+.pq-div{margin-bottom:6px}
+.sigma-fig{background:#fff;border:2px solid #1976d2;border-radius:10px;padding:14px;margin:12px 0;font-size:14px;text-align:center}
+/* 証明ボタン */
+.proof-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:2px solid #1976d2;color:#1565c0;border-radius:20px;padding:5px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:8px;transition:.2s}
+.proof-btn:hover{background:#e3f2fd}
+.proof-body{display:none;margin-top:10px;background:#fff;border:1.5px solid #90caf9;border-radius:10px;padding:14px;font-size:13px;line-height:1.9;text-align:left}
+.proof-body.open{display:block}
+.proof-title{font-size:12px;font-weight:700;color:#1565c0;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #e3f2fd}
+.proof-step{background:#f0f4ff;border-radius:6px;padding:8px 12px;margin:6px 0;font-size:13px}
+.proof-step-label{font-size:11px;font-weight:700;color:#1976d2;margin-bottom:3px}
+.sigma-parts{display:flex;justify-content:center;align-items:flex-start;gap:8px;flex-wrap:wrap;margin:10px 0}
+.sigma-part{background:#e3f2fd;border:1.5px solid #90caf9;border-radius:6px;padding:6px 10px;font-size:13px;text-align:center;min-width:80px}
+.sigma-part .sp-label{font-size:10px;color:#1565c0;font-weight:700;margin-bottom:2px}
+</style>
+</head>
+<body>
+<div class="top-header">
+  <div class="brand">GAMBA</div>
+  <div class="unit-title">数学B ｜ 第1章③ 数列のΣ計算</div>
+</div>
+<div class="tab-nav">
+  <button class="tab-btn active-ex" onclick="switchPage('ex1')">解説①</button>
+  <button class="tab-btn" onclick="switchPage('pr1')">練習①</button>
+  <button class="tab-btn" onclick="switchPage('cf1')">確認①</button>
+  <button class="tab-btn" onclick="switchPage('ex2')">解説②</button>
+  <button class="tab-btn" onclick="switchPage('pr2')">練習②</button>
+  <button class="tab-btn" onclick="switchPage('cf2')">確認②</button>
+</div>
+
+<!-- ===== 解説① ===== -->
+<div class="page active" id="page-ex1">
+<div class="progress-bar"><div class="progress-fill fill-ex" style="width:25%"></div></div>
+
+<div class="card">
+  <div class="card-title">① Σ（シグマ）とは何か</div>
+  <p style="font-size:14px;margin-bottom:10px">数列の和を簡潔に表す記号が <strong>Σ（シグマ）</strong> です。</p>
+  <p style="font-size:14px;margin-bottom:10px">たとえば $1+2+3+4+5$ をΣで書くと、</p>
+  <div style="text-align:center;font-size:20px;margin:10px 0">$$1+2+3+4+5 = \sum_{k=1}^{5} k$$</div>
+  <div class="sigma-fig">
+    <div class="sigma-parts">
+      <div class="sigma-part"><div class="sp-label">上限（最後の番号）</div>$5$</div>
+      <div class="sigma-part"><div class="sp-label">Σ記号（合計）</div>$\Sigma$</div>
+      <div class="sigma-part"><div class="sp-label">下限（最初の番号）</div>$k=1$</div>
+      <div class="sigma-part"><div class="sp-label">一般項（$k$ 番目の値）</div>$k$</div>
+    </div>
+  </div>
+  <div class="def-box">
+    <div class="def-title">📖 Σの意味</div>
+    $$\sum_{k=1}^{n} a_k = a_1 + a_2 + a_3 + \cdots + a_n$$
+    <p style="font-size:13px;margin-top:6px">$k=1$ から $k=n$ まで $a_k$ を全部足した和です。</p>
+  </div>
+  <div class="point-box">
+    <div class="pt-title">💡 Σの重要ルール</div>
+    <ul class="step-list">
+      <li>$\displaystyle\sum_{k=1}^{n}c = cn$　（$c$ が定数のとき：$c$ を $n$ 個足す）</li>
+      <li>$\displaystyle\sum_{k=1}^{n}ca_k = c\sum_{k=1}^{n}a_k$　（定数倍は外に出せる）</li>
+      <li>$\displaystyle\sum_{k=1}^{n}(a_k+b_k) = \sum_{k=1}^{n}a_k + \sum_{k=1}^{n}b_k$　（分解できる）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">② Σの3大公式</div>
+  <p style="font-size:14px;margin-bottom:10px">以下の3つを必ず覚えましょう。</p>
+  <!-- 公式① -->
+  <div class="formula-box">
+    <div class="f-label">【重要公式①】自然数の和</div>
+    $$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$$
+    <button class="proof-btn" onclick="toggleProof(this)">🔍 なぜこの公式になるの？</button>
+    <div class="proof-body">
+      <div class="proof-title">📖 公式①の導き方（ガウスの方法）</div>
+      <p style="font-size:13px;margin-bottom:8px">$S=1+2+3+\cdots+n$ を2通りに書いて足します。</p>
+      <div class="proof-step">
+        <div class="proof-step-label">正順と逆順を並べる</div>
+        $S = 1 \quad+\quad 2 \quad+\quad 3 \quad+\cdots+\quad n$<br>
+        $S = n \quad+\;(n-1)+\;(n-2)+\cdots+\quad 1$
+      </div>
+      <div class="proof-step">
+        <div class="proof-step-label">縦に足す（どの列も $n+1$）</div>
+        $2S = \underbrace{(n+1)+(n+1)+(n+1)+\cdots+(n+1)}_{n\text{個}} = n(n+1)$
+      </div>
+      <div class="proof-step">
+        <div class="proof-step-label">両辺を2で割る</div>
+        $$S = \frac{n(n+1)}{2}$$
+      </div>
+      <p style="font-size:12px;color:#555;margin-top:6px">💡 これがガウス少年が一瞬で「1+2+…+100=5050」を計算した方法です！</p>
+    </div>
+  </div>
+
+  <!-- 公式② -->
+  <div class="formula-box">
+    <div class="f-label">【重要公式②】自然数の2乗の和</div>
+    $$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$$
+    <button class="proof-btn" onclick="toggleProof(this)">🔍 なぜこの公式になるの？</button>
+    <div class="proof-body">
+      <div class="proof-title">📖 公式②の導き方（恒等式を使う方法）</div>
+      <p style="font-size:13px;margin-bottom:8px">$(k+1)^3 - k^3 = 3k^2 + 3k + 1$ という恒等式を利用します。</p>
+      <div class="proof-step">
+        <div class="proof-step-label">$k=1,2,\ldots,n$ で書き並べる</div>
+        $2^3-1^3 = 3\cdot1^2+3\cdot1+1$<br>
+        $3^3-2^3 = 3\cdot2^2+3\cdot2+1$<br>
+        $\vdots$<br>
+        $(n+1)^3-n^3 = 3n^2+3n+1$
+      </div>
+      <div class="proof-step">
+        <div class="proof-step-label">すべて足す（左辺は望遠鏡式に消える）</div>
+        $(n+1)^3 - 1 = 3\displaystyle\sum_{k=1}^{n}k^2 + 3\sum_{k=1}^{n}k + n$
+      </div>
+      <div class="proof-step">
+        <div class="proof-step-label">公式①を代入して $\sum k^2$ を求める</div>
+        $3\displaystyle\sum_{k=1}^{n}k^2 = (n+1)^3-1-3\cdot\dfrac{n(n+1)}{2}-n$<br><br>
+        $= n^3+3n^2+3n-\dfrac{3n(n+1)}{2}-n$<br><br>
+        $= \dfrac{n(n+1)(2n+1)}{2} \cdot \dfrac{1}{3}\times3 \;\Rightarrow\; \displaystyle\sum_{k=1}^{n}k^2 = \dfrac{n(n+1)(2n+1)}{6}$
+      </div>
+      <p style="font-size:12px;color:#555;margin-top:6px">💡 「$(k+1)^3-k^3$」という式を道具にして、求めたいΣを引き出すのがポイントです。</p>
+    </div>
+  </div>
+
+  <!-- 公式③ -->
+  <div class="formula-box">
+    <div class="f-label">【重要公式③】自然数の3乗の和</div>
+    $$\sum_{k=1}^{n} k^3 = \left\{\frac{n(n+1)}{2}\right\}^2$$
+    <button class="proof-btn" onclick="toggleProof(this)">🔍 なぜこの公式になるの？</button>
+    <div class="proof-body">
+      <div class="proof-title">📖 公式③の導き方（恒等式を使う方法）</div>
+      <p style="font-size:13px;margin-bottom:8px">$(k+1)^4-k^4 = 4k^3+6k^2+4k+1$ を利用します。<br>公式②と同じ流れです。</p>
+      <div class="proof-step">
+        <div class="proof-step-label">$k=1,2,\ldots,n$ で書き並べて合計する</div>
+        $(n+1)^4-1 = 4\displaystyle\sum_{k=1}^{n}k^3 + 6\sum_{k=1}^{n}k^2 + 4\sum_{k=1}^{n}k + n$
+      </div>
+      <div class="proof-step">
+        <div class="proof-step-label">公式①②を代入して整理</div>
+        $4\displaystyle\sum_{k=1}^{n}k^3 = (n+1)^4-1-6\cdot\dfrac{n(n+1)(2n+1)}{6}-4\cdot\dfrac{n(n+1)}{2}-n$<br><br>
+        整理すると $= n^2(n+1)^2$ となり、<br><br>
+        $$\sum_{k=1}^{n}k^3 = \frac{n^2(n+1)^2}{4} = \left\{\frac{n(n+1)}{2}\right\}^2$$
+      </div>
+      <div class="proof-step" style="background:#e8f5e9;border-left:3px solid #43a047">
+        <div class="proof-step-label" style="color:#1b5e20">✨ 美しい関係</div>
+        $$\sum_{k=1}^{n}k^3 = \left(\sum_{k=1}^{n}k\right)^2$$
+        <p style="font-size:12px;color:#555;margin-top:4px">3乗の和がちょうど「1の和の2乗」になるのは偶然ではなく、数の美しい性質です！</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="check-box">
+    <p style="font-size:14px">公式③は公式①の2乗です。覚え方：「3乗の和は（1の和）の2乗」</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">③ 例題①　Σ記法で表す</div>
+  <div class="ex-box">
+    <div class="ex-label">例題①</div>
+    <p style="font-size:14px">次の和をΣを使って表しなさい。<br>
+    （1）$3+5+7+\cdots+(2n+1)$<br>
+    （2）$1\cdot3+2\cdot4+3\cdot5+\cdots+n(n+2)$</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>（1）</strong>第 $k$ 項は $2k+1$（$k=1$ で3、$k=2$ で5…）</p>
+    <div style="text-align:center;margin:6px 0">$$\sum_{k=1}^{n}(2k+1)$$</div>
+    <p style="font-size:14px;margin-top:8px"><strong>（2）</strong>第 $k$ 項は $k(k+2)$（$k=1$ で $1\cdot3$、$k=n$ で $n(n+2)$）</p>
+    <div style="text-align:center;margin:6px 0">$$\sum_{k=1}^{n}k(k+2)$$</div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ ポイント</div>
+      <p style="font-size:14px">一般項を $k$ で表し、$k=1$（最初）から $k=n$（最後）になるように書きます。</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex1')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex1">
+    <div class="pq-div">
+      <div class="pq-label">練習 1-A</div>
+      <div class="pq-text">$1^2+2^2+3^2+\cdots+15^2$ をΣで正しく表しているものはどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_1a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_1a">
+        <div class="hint-step" id="ht_1a_1"><div class="hint-step-label">Step 1　一般項を見つける</div><p style="font-size:13px">第 $k$ 項は $k^2$ です。最初は $k=1$、最後は $k=$ 何ですか？</p><button class="hint-next-btn" onclick="nextHint('ht_1a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_1a_2"><div class="hint-step-label">Step 2　上限を確認</div><p style="font-size:13px">最後の項が $15^2$ なので $k$ の上限は $15$ です。</p><button class="hint-next-btn" onclick="nextHint('ht_1a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_1a_3"><div class="hint-step-label">Step 3　Σで書く</div><p style="font-size:13px">$k=1$ から $k=15$ まで $k^2$ を足す → $\displaystyle\sum_{k=1}^{15}k^2$</p></div>
+      </div>
+      <div class="choices" id="ch_1a">
+        <button class="choice-btn" onclick="pickChoice('1a',this,0)">① $\displaystyle\sum_{k=1}^{15}k$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,1)">② $\displaystyle\sum_{k=1}^{15}k^2$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,2)">③ $\displaystyle\sum_{k=0}^{15}k^2$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,3)">④ $\displaystyle\sum_{k=1}^{15}2k$</button>
+      </div>
+      <button class="judge-btn" id="jb_1a" onclick="judgeQ('1a',1,'$k=1$ から $k=15$ まで $k^2$ を足す → $\\displaystyle\\sum_{k=1}^{15}k^2$ ✅<br>③は $k=0$ から始まっているので $0^2=0$ が余分に含まれます。')" disabled>判定する</button>
+      <div class="judge-result" id="jr_1a"></div>
+      <button class="retry-btn" onclick="retryQ('1a','ht_1a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 1-B</div>
+      <div class="pq-text">$1\cdot3+2\cdot4+3\cdot5+\cdots+10\cdot12$ をΣで正しく表しているものはどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_1b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_1b">
+        <div class="hint-step" id="ht_1b_1"><div class="hint-step-label">Step 1　一般項のパターンを探す</div><p style="font-size:13px">$1\cdot3,\ 2\cdot4,\ 3\cdot5,\ldots$ の第 $k$ 項を観察しましょう。</p><button class="hint-next-btn" onclick="nextHint('ht_1b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_1b_2"><div class="hint-step-label">Step 2　一般項は $k(k+2)$</div><p style="font-size:13px">前の数が $k$、後ろの数は $k+2$ なので一般項は $k(k+2)$。</p><button class="hint-next-btn" onclick="nextHint('ht_1b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_1b_3"><div class="hint-step-label">Step 3　上限を確認</div><p style="font-size:13px">最後の項 $10\cdot12$ は $k=10$ のとき。上限は $10$ です。</p></div>
+      </div>
+      <div class="choices" id="ch_1b">
+        <button class="choice-btn" onclick="pickChoice('1b',this,0)">① $\displaystyle\sum_{k=1}^{12}k(k+2)$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,1)">② $\displaystyle\sum_{k=1}^{10}k(k+1)$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,2)">③ $\displaystyle\sum_{k=1}^{10}k(k+2)$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,3)">④ $\displaystyle\sum_{k=1}^{10}k^2$</button>
+      </div>
+      <button class="judge-btn" id="jb_1b" onclick="judgeQ('1b',2,'一般項 $k(k+2)$、上限 $k=10$ → $\\displaystyle\\sum_{k=1}^{10}k(k+2)$ ✅<br>①は上限が12なので誤り。②は一般項が $k(k+1)$ なので誤りです。')" disabled>判定する</button>
+      <div class="judge-result" id="jr_1b"></div>
+      <button class="retry-btn" onclick="retryQ('1b','ht_1b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">④ 例題②　Σ公式で計算する</div>
+  <div class="ex-box">
+    <div class="ex-label">例題②</div>
+    <p style="font-size:14px">次の和を計算しなさい。<br>
+    （1）$\displaystyle\sum_{k=1}^{n}(2k-1)$　　（2）$\displaystyle\sum_{k=1}^{n}(k^2-3k+2)$</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>（1）</strong>Σを分解して公式を使います。</p>
+    <div class="calc-flow">
+      $\displaystyle\sum_{k=1}^{n}(2k-1) = 2\sum_{k=1}^{n}k - \sum_{k=1}^{n}1$<br>
+      $= 2\cdot\dfrac{n(n+1)}{2} - n = n(n+1)-n = n^2$
+    </div>
+    <p style="font-size:14px;margin-top:8px"><strong>（2）</strong>3つに分解します。</p>
+    <div class="calc-flow">
+      $\displaystyle\sum_{k=1}^{n}(k^2-3k+2) = \sum_{k=1}^{n}k^2 - 3\sum_{k=1}^{n}k + \sum_{k=1}^{n}2$<br>
+      $= \dfrac{n(n+1)(2n+1)}{6} - 3\cdot\dfrac{n(n+1)}{2} + 2n$<br>
+      $= \dfrac{n}{6}\{(n+1)(2n+1)-9(n+1)+12\}$<br>
+      $= \dfrac{n}{6}(2n^2-6n+4) = \dfrac{n(n-1)(n-2)}{3}$
+    </div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ ポイント</div>
+      <p style="font-size:14px">$n$ でくくり出してから因数分解すると整理しやすくなります。</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex2')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex2">
+    <div class="pq-div">
+      <div class="pq-label">練習 2-A</div>
+      <div class="pq-text">$\displaystyle\sum_{k=1}^{n}(3k-1)$ を計算した結果はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_2a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_2a">
+        <div class="hint-step" id="ht_2a_1"><div class="hint-step-label">Step 1　Σを分解する</div><p style="font-size:13px">$3\displaystyle\sum_{k=1}^{n}k - \sum_{k=1}^{n}1$ と分解できます。</p><button class="hint-next-btn" onclick="nextHint('ht_2a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_2a_2"><div class="hint-step-label">Step 2　公式を代入</div><p style="font-size:13px">$3\cdot\dfrac{n(n+1)}{2} - n$ を計算しましょう。</p><button class="hint-next-btn" onclick="nextHint('ht_2a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_2a_3"><div class="hint-step-label">Step 3　整理する</div><p style="font-size:13px">$\dfrac{3n(n+1)-2n}{2} = \dfrac{n(3n+1)}{2}$</p></div>
+      </div>
+      <div class="choices" id="ch_2a">
+        <button class="choice-btn" onclick="pickChoice('2a',this,0)">① $\dfrac{n(3n-1)}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,1)">② $\dfrac{n(3n+1)}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,2)">③ $\dfrac{3n(n+1)}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,3)">④ $n(3n+1)$</button>
+      </div>
+      <button class="judge-btn" id="jb_2a" onclick="judgeQ('2a',1,'$3\\cdot\\dfrac{n(n+1)}{2}-n = \\dfrac{3n^2+3n-2n}{2} = \\dfrac{n(3n+1)}{2}$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_2a"></div>
+      <button class="retry-btn" onclick="retryQ('2a','ht_2a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 2-B</div>
+      <div class="pq-text">$\displaystyle\sum_{k=1}^{n}(3k^2-7k+4)$ を計算した結果はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_2b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_2b">
+        <div class="hint-step" id="ht_2b_1"><div class="hint-step-label">Step 1　3つに分解する</div><p style="font-size:13px">$3\displaystyle\sum k^2 - 7\sum k + \sum 4$ と分解します。</p><button class="hint-next-btn" onclick="nextHint('ht_2b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_2b_2"><div class="hint-step-label">Step 2　公式を代入</div><p style="font-size:13px">$3\cdot\dfrac{n(n+1)(2n+1)}{6} - 7\cdot\dfrac{n(n+1)}{2} + 4n$<br>$= \dfrac{n(n+1)(2n+1)}{2} - \dfrac{7n(n+1)}{2} + 4n$</p><button class="hint-next-btn" onclick="nextHint('ht_2b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_2b_3"><div class="hint-step-label">Step 3　$n$ でくくって因数分解</div><p style="font-size:13px">$= \dfrac{n}{2}\{(n+1)(2n+1)-7(n+1)+8\} = \dfrac{n}{2}(2n^2-4n+2) = n(n-1)^2$</p></div>
+      </div>
+      <div class="choices" id="ch_2b">
+        <button class="choice-btn" onclick="pickChoice('2b',this,0)">① $n(n+1)^2$</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,1)">② $n(n-1)^2$</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,2)">③ $\dfrac{n(n-1)(n+2)}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,3)">④ $n(2n-1)(n-2)$</button>
+      </div>
+      <button class="judge-btn" id="jb_2b" onclick="judgeQ('2b',1,'$\\dfrac{n}{2}(2n^2-4n+2) = \\dfrac{n}{2}\\cdot2(n^2-2n+1) = n(n-1)^2$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_2b"></div>
+      <button class="retry-btn" onclick="retryQ('2b','ht_2b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⑤ 例題③　上限が $n-1$ のΣ</div>
+  <div class="ex-box">
+    <div class="ex-label">例題③</div>
+    <p style="font-size:14px">$\displaystyle\sum_{k=1}^{n-1}(2k-3)$ を計算しなさい。（$n \geqq 2$）</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px">上限が $n-1$ のときは、公式の $n$ を <strong>そのまま $n-1$ に置き換えて</strong>代入します。</p>
+    <div class="calc-flow">
+      $2\displaystyle\sum_{k=1}^{n-1}k - \sum_{k=1}^{n-1}3 = 2\cdot\dfrac{(n-1)n}{2} - 3(n-1)$<br>
+      $= n(n-1) - 3(n-1) = (n-1)(n-3)$
+    </div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">$(n-1)(n-3)$<br>
+      <span style="font-size:12px">確認：$n=4$ → $(3)(1)=3$、直接計算 $(2\cdot1-3)+(2\cdot2-3)+(2\cdot3-3)=-1+1+3=3$ ✅</span></p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex3')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex3">
+    <div class="pq-div">
+      <div class="pq-label">練習 3-A</div>
+      <div class="pq-text">$\displaystyle\sum_{k=1}^{n-1}(4k+1)$ を計算した結果はどれですか？（$n \geqq 2$）</div>
+      <button class="hint-main-btn" onclick="openHints('ht_3a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_3a">
+        <div class="hint-step" id="ht_3a_1"><div class="hint-step-label">Step 1　公式の $n$ を $n-1$ に</div><p style="font-size:13px">$\displaystyle\sum_{k=1}^{n-1}k = \dfrac{(n-1)n}{2}$、$\displaystyle\sum_{k=1}^{n-1}1 = n-1$</p><button class="hint-next-btn" onclick="nextHint('ht_3a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_3a_2"><div class="hint-step-label">Step 2　代入して計算</div><p style="font-size:13px">$4\cdot\dfrac{(n-1)n}{2} + (n-1) = 2n(n-1)+(n-1)$</p><button class="hint-next-btn" onclick="nextHint('ht_3a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_3a_3"><div class="hint-step-label">Step 3　$(n-1)$ でくくる</div><p style="font-size:13px">$(n-1)(2n+1)$</p></div>
+      </div>
+      <div class="choices" id="ch_3a">
+        <button class="choice-btn" onclick="pickChoice('3a',this,0)">① $(n-1)(2n-1)$</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,1)">② $(n-1)(2n+1)$</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,2)">③ $2n(n-1)$</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,3)">④ $(n+1)(2n-1)$</button>
+      </div>
+      <button class="judge-btn" id="jb_3a" onclick="judgeQ('3a',1,'$2n(n-1)+(n-1)=(n-1)(2n+1)$ ✅<br>確認：$n=2$ → $(1)(5)=5$、直接計算 $4\\times1+1=5$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_3a"></div>
+      <button class="retry-btn" onclick="retryQ('3a','ht_3a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 3-B</div>
+      <div class="pq-text">$1+2+3+\cdots+200$ をΣの公式を使って計算するといくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_3b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_3b">
+        <div class="hint-step" id="ht_3b_1"><div class="hint-step-label">Step 1　Σで表す</div><p style="font-size:13px">$\displaystyle\sum_{k=1}^{200}k$ です。公式① $\dfrac{n(n+1)}{2}$ に $n=200$ を代入します。</p><button class="hint-next-btn" onclick="nextHint('ht_3b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_3b_2"><div class="hint-step-label">Step 2　代入する</div><p style="font-size:13px">$\dfrac{200\times201}{2}$</p><button class="hint-next-btn" onclick="nextHint('ht_3b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_3b_3"><div class="hint-step-label">Step 3　計算する</div><p style="font-size:13px">$100\times201=20100$</p></div>
+      </div>
+      <div class="choices" id="ch_3b">
+        <button class="choice-btn" onclick="pickChoice('3b',this,0)">① 19900</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,1)">② 20000</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,2)">③ 20100</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,3)">④ 20200</button>
+      </div>
+      <button class="judge-btn" id="jb_3b" onclick="judgeQ('3b',2,'$\\dfrac{200\\times201}{2}=100\\times201=20100$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_3b"></div>
+      <button class="retry-btn" onclick="retryQ('3b','ht_3b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+</div><!-- /page-ex1 -->
+
+<!-- ===== 練習① ===== -->
+<div class="page" id="page-pr1">
+<div class="progress-bar"><div class="progress-fill fill-pr" style="width:40%"></div></div>
+<div class="card">
+  <div class="card-title">練習問題① Σ記法と公式計算</div>
+  <div class="prob-box"><div class="prob-num">問題 1</div>
+    <p style="font-size:14px">次の和をΣで表しなさい。<br>
+    （1）$1+3+5+\cdots+(2n-1)$　　（2）$\dfrac{1}{1\cdot2}+\dfrac{1}{2\cdot3}+\cdots+\dfrac{1}{(n-1)\cdot n}$</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">（1）$\displaystyle\sum_{k=1}^{n}(2k-1)$　　（2）$\displaystyle\sum_{k=1}^{n-1}\dfrac{1}{k(k+1)}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 2</div>
+    <p style="font-size:14px">次の和を計算しなさい。<br>
+    （1）$\displaystyle\sum_{k=1}^{n}(2k-1)$　　（2）$\displaystyle\sum_{k=1}^{n}(k^2+k)$</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">（1）$n^2$<br>
+      （2）$\dfrac{n(n+1)(2n+1)}{6}+\dfrac{n(n+1)}{2}=\dfrac{n(n+1)}{6}(2n+1+3)=\dfrac{n(n+1)(n+2)}{3}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 3</div>
+    <p style="font-size:14px">$\displaystyle\sum_{k=1}^{n}(4k^3-6k^2+3)$ を計算しなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$4\left\{\dfrac{n(n+1)}{2}\right\}^2 - 6\cdot\dfrac{n(n+1)(2n+1)}{6}+3n$<br>
+      $=n^2(n+1)^2-n(n+1)(2n+1)+3n = n(n^3-2n+2)$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 4</div>
+    <p style="font-size:14px">$\displaystyle\sum_{k=1}^{n-1}(4k+1)$ を計算しなさい。（$n \geqq 2$）</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$4\cdot\dfrac{(n-1)n}{2}+(n-1)=(n-1)(2n+1)$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 5</div>
+    <p style="font-size:14px">$\displaystyle\sum_{k=1}^{n}(3k^2-7k+4)$ を計算しなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$\dfrac{n(n+1)(2n+1)}{2}-\dfrac{7n(n+1)}{2}+4n = n(n-1)^2$</p></div>
+  </div>
+</div>
+</div><!-- /page-pr1 -->
+
+<!-- ===== 確認① ===== -->
+<div class="page" id="page-cf1">
+<div class="progress-bar"><div class="progress-fill fill-cf" style="width:50%"></div></div>
+<div class="card">
+  <div class="card-title">確認テスト① Σ記法と公式</div>
+  <p style="font-size:13px;color:#555;margin-bottom:12px">2問に挑戦しましょう。</p>
+  <div class="mini-q">
+    <div class="q-text">【Q1】$\displaystyle\sum_{k=1}^{n}(2k-1)$ を計算した結果はどれですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q1cf1',0,false,'q1cf1-fb')">① $n^2+n$</button></li>
+      <li><button onclick="mAns('q1cf1',1,false,'q1cf1-fb')">② $2n^2-1$</button></li>
+      <li><button onclick="mAns('q1cf1',2,true,'q1cf1-fb')">③ $n^2$</button></li>
+      <li><button onclick="mAns('q1cf1',3,false,'q1cf1-fb')">④ $n(n-1)$</button></li>
+    </ul>
+    <div id="q1cf1-fb" class="mini-fb" data-correct="2"
+      data-ok="$2\cdot\dfrac{n(n+1)}{2}-n = n(n+1)-n = n^2$ ✅<br>奇数 $n$ 個の和が $n^2$ になるという美しい結果です！"
+      data-ng0="$n(n+1)-n=n^2+n-n=n^2$ です。$n^2+n$ ではありません。"
+      data-ng1="$\displaystyle\sum_{k=1}^{n}1=n$ なので $n(n+1)-n=n^2$ です。"
+      data-ng3="$n(n+1)-n=n^2$ です。$n(n-1)$ ではありません。"></div>
+    <button class="reset-btn" onclick="mReset('q1cf1')">もう一度</button>
+  </div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <div class="mini-q">
+    <div class="q-text">【Q2】$\displaystyle\sum_{k=1}^{n}k^2 = \dfrac{n(n+1)(2n+1)}{6}$ を使って $1^2+2^2+3^2+\cdots+10^2$ を計算するといくつになりますか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q2cf1',0,false,'q2cf1-fb')">① 330</button></li>
+      <li><button onclick="mAns('q2cf1',1,false,'q2cf1-fb')">② 375</button></li>
+      <li><button onclick="mAns('q2cf1',2,true,'q2cf1-fb')">③ 385</button></li>
+      <li><button onclick="mAns('q2cf1',3,false,'q2cf1-fb')">④ 400</button></li>
+    </ul>
+    <div id="q2cf1-fb" class="mini-fb" data-correct="2"
+      data-ok="$n=10$ を代入：$\dfrac{10\times11\times21}{6}=\dfrac{2310}{6}=385$ ✅"
+      data-ng0="$10\times11\times21=2310$、$2310\div6=385$ です。"
+      data-ng1="$10\times11=110$、$110\times21=2310$、$2310\div6=385$ です。"
+      data-ng3="$\dfrac{10\times11\times21}{6}=\dfrac{2310}{6}=385$ です。"></div>
+    <button class="reset-btn" onclick="mReset('q2cf1')">もう一度</button>
+  </div>
+</div>
+</div><!-- /page-cf1 -->
+
+<!-- ===== 解説② ===== -->
+<div class="page" id="page-ex2">
+<div class="progress-bar"><div class="progress-fill fill-ex" style="width:65%"></div></div>
+
+<div class="card">
+  <div class="card-title">① 等比型のΣ</div>
+  <p style="font-size:14px;margin-bottom:10px">$\displaystyle\sum_{k=1}^{n}r^k$ のような<strong>等比型</strong>は公式①②③では計算できません。<br>
+  これは<strong>等比数列の和の公式</strong>を使います。</p>
+  <div class="def-box">
+    <div class="def-title">📖 等比型のΣ（初項 $r$、公比 $r$、項数 $n$）</div>
+    $$\sum_{k=1}^{n}r^k = r+r^2+\cdots+r^n = \frac{r(r^n-1)}{r-1} \quad (r \neq 1)$$
+  </div>
+  <div class="point-box">
+    <div class="pt-title">💡 よく出る例</div>
+    <p style="font-size:14px">$\displaystyle\sum_{k=1}^{n}2^k = \dfrac{2(2^n-1)}{2-1} = 2^{n+1}-2$</p>
+    <p style="font-size:14px;margin-top:4px">$\displaystyle\sum_{k=1}^{n}3^k = \dfrac{3(3^n-1)}{3-1} = \dfrac{3^{n+1}-3}{2}$</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">② 例題④　等比型と多項式の混合</div>
+  <div class="ex-box">
+    <div class="ex-label">例題④</div>
+    <p style="font-size:14px">$\displaystyle\sum_{k=1}^{n}(2k+2^k+1)$ を計算しなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <div class="calc-flow">
+      $\displaystyle\sum_{k=1}^{n}(2k+2^k+1) = 2\sum_{k=1}^{n}k + \sum_{k=1}^{n}2^k + \sum_{k=1}^{n}1$<br><br>
+      $= 2\cdot\dfrac{n(n+1)}{2} + (2^{n+1}-2) + n$<br><br>
+      $= n(n+1)+2^{n+1}-2+n = n^2+2n-2+2^{n+1}$<br><br>
+      $= 2^{n+1}+n^2+2n-2$
+    </div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">$2^{n+1}+n^2+2n-2$</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex4')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex4">
+    <div class="pq-div">
+      <div class="pq-label">練習 4-A</div>
+      <div class="pq-text">$\displaystyle\sum_{k=1}^{n}2^k$ を計算した結果はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_4a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_4a">
+        <div class="hint-step" id="ht_4a_1"><div class="hint-step-label">Step 1　等比数列の和</div><p style="font-size:13px">$2+2^2+\cdots+2^n$ は初項2・公比2・項数 $n$ の等比数列の和です。</p><button class="hint-next-btn" onclick="nextHint('ht_4a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_4a_2"><div class="hint-step-label">Step 2　公式を使う</div><p style="font-size:13px">$\dfrac{2(2^n-1)}{2-1} = 2(2^n-1)$</p><button class="hint-next-btn" onclick="nextHint('ht_4a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_4a_3"><div class="hint-step-label">Step 3　整理する</div><p style="font-size:13px">$2\cdot2^n-2 = 2^{n+1}-2$</p></div>
+      </div>
+      <div class="choices" id="ch_4a">
+        <button class="choice-btn" onclick="pickChoice('4a',this,0)">① $2^n-1$</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,1)">② $2^n$</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,2)">③ $2^{n+1}-2$</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,3)">④ $2^{n+1}-1$</button>
+      </div>
+      <button class="judge-btn" id="jb_4a" onclick="judgeQ('4a',2,'$\\dfrac{2(2^n-1)}{2-1}=2(2^n-1)=2^{n+1}-2$ ✅<br>確認：$n=3$ → $2+4+8=14$、$2^4-2=14$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_4a"></div>
+      <button class="retry-btn" onclick="retryQ('4a','ht_4a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 4-B</div>
+      <div class="pq-text">$\displaystyle\sum_{k=1}^{n-1}(3^k-1)$ を計算した結果はどれですか？（$n \geqq 2$）</div>
+      <button class="hint-main-btn" onclick="openHints('ht_4b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_4b">
+        <div class="hint-step" id="ht_4b_1"><div class="hint-step-label">Step 1　2つに分解する</div><p style="font-size:13px">$\displaystyle\sum_{k=1}^{n-1}3^k - \sum_{k=1}^{n-1}1$ に分けます。</p><button class="hint-next-btn" onclick="nextHint('ht_4b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_4b_2"><div class="hint-step-label">Step 2　それぞれ計算</div><p style="font-size:13px">$\displaystyle\sum_{k=1}^{n-1}3^k = \dfrac{3(3^{n-1}-1)}{2} = \dfrac{3^n-3}{2}$<br>$\displaystyle\sum_{k=1}^{n-1}1 = n-1$</p><button class="hint-next-btn" onclick="nextHint('ht_4b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_4b_3"><div class="hint-step-label">Step 3　まとめる</div><p style="font-size:13px">$\dfrac{3^n-3}{2}-(n-1)=\dfrac{3^n-3-2n+2}{2}=\dfrac{3^n-2n-1}{2}$</p></div>
+      </div>
+      <div class="choices" id="ch_4b">
+        <button class="choice-btn" onclick="pickChoice('4b',this,0)">① $\dfrac{3^n-n-2}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,1)">② $\dfrac{3^n-2n-1}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,2)">③ $\dfrac{3^{n-1}-n}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,3)">④ $3^n-2n-1$</button>
+      </div>
+      <button class="judge-btn" id="jb_4b" onclick="judgeQ('4b',1,'$\\dfrac{3^n-3}{2}-(n-1)=\\dfrac{3^n-3-2n+2}{2}=\\dfrac{3^n-2n-1}{2}$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_4b"></div>
+      <button class="retry-btn" onclick="retryQ('4b','ht_4b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">③ 例題⑤　9＋99＋999＋… 型</div>
+  <div class="ex-box">
+    <div class="ex-label">例題⑤</div>
+    <p style="font-size:14px">数列 $9,\ 99,\ 999,\ \ldots$ の初項から第 $n$ 項までの和を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>【手順①】</strong>一般項を変換する</p>
+    <p style="font-size:14px">$9=10-1,\ 99=10^2-1,\ \ldots$ より $a_k=10^k-1$</p>
+    <p style="font-size:14px;margin-top:8px"><strong>【手順②】</strong>Σに分解・計算</p>
+    <div class="calc-flow">
+      $\displaystyle\sum_{k=1}^{n}(10^k-1) = \sum_{k=1}^{n}10^k - \sum_{k=1}^{n}1$<br><br>
+      $= \dfrac{10(10^n-1)}{9} - n = \dfrac{10^{n+1}-10}{9}-n$<br><br>
+      $= \dfrac{10^{n+1}-10-9n}{9}$
+    </div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">$\dfrac{10^{n+1}-9n-10}{9}$<br>
+      <span style="font-size:12px">確認：$n=1$ → $\dfrac{100-9-10}{9}=\dfrac{81}{9}=9$ ✅</span></p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex5')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex5">
+    <div class="pq-div">
+      <div class="pq-label">練習 5-A</div>
+      <div class="pq-text">$9+99+999+\cdots$ の初項から第 $n$ 項までの和として正しいものはどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_5a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_5a">
+        <div class="hint-step" id="ht_5a_1"><div class="hint-step-label">Step 1　例題⑤の結果を使う</div><p style="font-size:13px">$\dfrac{10^{n+1}-9n-10}{9}$ が答えです。</p><button class="hint-next-btn" onclick="nextHint('ht_5a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_5a_2"><div class="hint-step-label">Step 2　$n=1$ で確認</div><p style="font-size:13px">$n=1$：$\dfrac{10^2-9-10}{9}=\dfrac{81}{9}=9$ ✅（第1項は9）</p><button class="hint-next-btn" onclick="nextHint('ht_5a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_5a_3"><div class="hint-step-label">Step 3　$n=2$ で確認</div><p style="font-size:13px">$n=2$：$\dfrac{10^3-18-10}{9}=\dfrac{972}{9}=108=9+99$ ✅</p></div>
+      </div>
+      <div class="choices" id="ch_5a">
+        <button class="choice-btn" onclick="pickChoice('5a',this,0)">① $\dfrac{10^n-9n-10}{9}$</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,1)">② $\dfrac{10^{n+1}-9n-10}{9}$</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,2)">③ $\dfrac{10^{n+1}-n-10}{9}$</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,3)">④ $10^{n+1}-9n-10$</button>
+      </div>
+      <button class="judge-btn" id="jb_5a" onclick="judgeQ('5a',1,'$\\dfrac{10^{n+1}-10}{9}-n=\\dfrac{10^{n+1}-10-9n}{9}=\\dfrac{10^{n+1}-9n-10}{9}$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_5a"></div>
+      <button class="retry-btn" onclick="retryQ('5a','ht_5a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 5-B</div>
+      <div class="pq-text">数列 $6,\ 66,\ 666,\ \ldots$ の初項から第 $n$ 項までの和はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_5b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_5b">
+        <div class="hint-step" id="ht_5b_1"><div class="hint-step-label">Step 1　一般項を変換</div><p style="font-size:13px">$6=\dfrac{2}{3}(10-1)$、$66=\dfrac{2}{3}(10^2-1)$<br>一般項 $a_k=\dfrac{2}{3}(10^k-1)$</p><button class="hint-next-btn" onclick="nextHint('ht_5b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_5b_2"><div class="hint-step-label">Step 2　Σに変換</div><p style="font-size:13px">$\dfrac{2}{3}\left(\displaystyle\sum_{k=1}^{n}10^k-n\right) = \dfrac{2}{3}\left(\dfrac{10^{n+1}-10}{9}-n\right)$</p><button class="hint-next-btn" onclick="nextHint('ht_5b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_5b_3"><div class="hint-step-label">Step 3　整理する</div><p style="font-size:13px">$\dfrac{2}{3}\cdot\dfrac{10^{n+1}-10-9n}{9}=\dfrac{2(10^{n+1}-9n-10)}{27}$</p></div>
+      </div>
+      <div class="choices" id="ch_5b">
+        <button class="choice-btn" onclick="pickChoice('5b',this,0)">① $\dfrac{10^{n+1}-9n-10}{27}$</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,1)">② $\dfrac{2(10^{n+1}-9n-10)}{27}$</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,2)">③ $\dfrac{2(10^{n+1}-n-10)}{27}$</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,3)">④ $\dfrac{2(10^n-9n-10)}{27}$</button>
+      </div>
+      <button class="judge-btn" id="jb_5b" onclick="judgeQ('5b',1,'$\\dfrac{2}{3}\\cdot\\dfrac{10^{n+1}-9n-10}{9}=\\dfrac{2(10^{n+1}-9n-10)}{27}$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_5b"></div>
+      <button class="retry-btn" onclick="retryQ('5b','ht_5b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">④ 例題⑥　二重和（$1,\ 1+2,\ 1+2+3,\ \ldots$ 型）</div>
+  <div class="ex-box">
+    <div class="ex-label">例題⑥</div>
+    <p style="font-size:14px">数列 $1,\ 1+2,\ 1+2+3,\ \ldots$ の初項から第 $n$ 項までの和を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>【手順①】</strong>一般項を求める</p>
+    <p style="font-size:14px">第 $k$ 項：$1+2+\cdots+k = \dfrac{k(k+1)}{2}$</p>
+    <p style="font-size:14px;margin-top:8px"><strong>【手順②】</strong>Σで和を求める</p>
+    <div class="calc-flow">
+      $\displaystyle\sum_{k=1}^{n}\frac{k(k+1)}{2} = \frac{1}{2}\sum_{k=1}^{n}(k^2+k)$<br><br>
+      $= \dfrac{1}{2}\left(\dfrac{n(n+1)(2n+1)}{6}+\dfrac{n(n+1)}{2}\right)$<br><br>
+      $= \dfrac{n(n+1)}{4}\left(\dfrac{2n+1}{3}+1\right) = \dfrac{n(n+1)}{4}\cdot\dfrac{2n+4}{3} = \dfrac{n(n+1)(n+2)}{6}$
+    </div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">$\dfrac{n(n+1)(n+2)}{6}$<br>
+      <span style="font-size:12px">確認：$n=3$ → $1+3+6=10$、$\dfrac{3\times4\times5}{6}=10$ ✅</span></p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex6')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex6">
+    <div class="pq-div">
+      <div class="pq-label">練習 6-A</div>
+      <div class="pq-text">数列 $1,\ 1+2,\ 1+2+3,\ \ldots$ の第 $k$ 項（一般項）はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_6a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_6a">
+        <div class="hint-step" id="ht_6a_1"><div class="hint-step-label">Step 1　各項を確認</div><p style="font-size:13px">第1項 $=1$、第2項 $=3$、第3項 $=6$。第 $k$ 項は $1$ から $k$ までの和。</p><button class="hint-next-btn" onclick="nextHint('ht_6a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_6a_2"><div class="hint-step-label">Step 2　等差数列の和の公式</div><p style="font-size:13px">$1+2+\cdots+k = \dfrac{k(k+1)}{2}$</p><button class="hint-next-btn" onclick="nextHint('ht_6a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_6a_3"><div class="hint-step-label">Step 3　確認</div><p style="font-size:13px">$k=1$：$\dfrac{1\times2}{2}=1$ ✅　$k=2$：$\dfrac{2\times3}{2}=3$ ✅</p></div>
+      </div>
+      <div class="choices" id="ch_6a">
+        <button class="choice-btn" onclick="pickChoice('6a',this,0)">① $k^2$</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,1)">② $\dfrac{k(k+1)}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,2)">③ $\dfrac{k(k-1)}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,3)">④ $k(k+1)$</button>
+      </div>
+      <button class="judge-btn" id="jb_6a" onclick="judgeQ('6a',1,'第 $k$ 項 $= 1+2+\\cdots+k = \\dfrac{k(k+1)}{2}$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_6a"></div>
+      <button class="retry-btn" onclick="retryQ('6a','ht_6a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 6-B</div>
+      <div class="pq-text">数列 $1,\ 1+3,\ 1+3+5,\ \ldots$（奇数の累積和）の初項から第 $n$ 項までの和はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_6b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_6b">
+        <div class="hint-step" id="ht_6b_1"><div class="hint-step-label">Step 1　一般項を求める</div><p style="font-size:13px">第 $k$ 項は奇数 $k$ 個の和。$\displaystyle\sum_{j=1}^{k}(2j-1)=k^2$（例題②(1)の結果）</p><button class="hint-next-btn" onclick="nextHint('ht_6b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_6b_2"><div class="hint-step-label">Step 2　全体の和を求める</div><p style="font-size:13px">一般項が $k^2$ なので $\displaystyle\sum_{k=1}^{n}k^2$ を計算します。</p><button class="hint-next-btn" onclick="nextHint('ht_6b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_6b_3"><div class="hint-step-label">Step 3　公式②を使う</div><p style="font-size:13px">$\displaystyle\sum_{k=1}^{n}k^2=\dfrac{n(n+1)(2n+1)}{6}$</p></div>
+      </div>
+      <div class="choices" id="ch_6b">
+        <button class="choice-btn" onclick="pickChoice('6b',this,0)">① $\dfrac{n(n+1)}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,1)">② $\dfrac{n(n+1)(2n+1)}{6}$</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,2)">③ $\left\{\dfrac{n(n+1)}{2}\right\}^2$</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,3)">④ $\dfrac{n(n+1)(n+2)}{6}$</button>
+      </div>
+      <button class="judge-btn" id="jb_6b" onclick="judgeQ('6b',1,'第 $k$ 項 $= k^2$、全体の和 $= \\displaystyle\\sum_{k=1}^{n}k^2 = \\dfrac{n(n+1)(2n+1)}{6}$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_6b"></div>
+      <button class="retry-btn" onclick="retryQ('6b','ht_6b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+</div><!-- /page-ex2 -->
+
+<!-- ===== 練習② ===== -->
+<div class="page" id="page-pr2">
+<div class="progress-bar"><div class="progress-fill fill-pr" style="width:80%"></div></div>
+<div class="card">
+  <div class="card-title">練習問題② 等比型・複合問題</div>
+  <div class="prob-box"><div class="prob-num">問題 1</div>
+    <p style="font-size:14px">$\displaystyle\sum_{k=1}^{n}3^k$ を計算しなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$\dfrac{3(3^n-1)}{2}=\dfrac{3^{n+1}-3}{2}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 2</div>
+    <p style="font-size:14px">$\displaystyle\sum_{k=1}^{n}(2k+3^k)$ を計算しなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$n(n+1)+\dfrac{3^{n+1}-3}{2} = \dfrac{2n(n+1)+3^{n+1}-3}{2}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 3</div>
+    <p style="font-size:14px">数列 $7,\ 77,\ 777,\ \ldots$ の初項から第 $n$ 項までの和を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$a_k=\dfrac{7}{9}(10^k-1)$ より $\dfrac{7}{9}\left(\dfrac{10^{n+1}-10}{9}-n\right)=\dfrac{7(10^{n+1}-9n-10)}{81}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 4</div>
+    <p style="font-size:14px">数列 $1,\ 1+2+4,\ 1+2+4+8,\ \ldots$ の初項から第 $n$ 項までの和を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">第 $k$ 項 $= \dfrac{2^k-1}{2-1}=2^k-1$<br>
+      $\displaystyle\sum_{k=1}^{n}(2^k-1)=(2^{n+1}-2)-n=2^{n+1}-n-2$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 5</div>
+    <p style="font-size:14px">数列 $1,\ 1+3,\ 1+3+5,\ \ldots$ の初項から第 $n$ 項までの和を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">第 $k$ 項 $= k^2$ より $\displaystyle\sum_{k=1}^{n}k^2=\dfrac{n(n+1)(2n+1)}{6}$</p></div>
+  </div>
+</div>
+</div><!-- /page-pr2 -->
+
+<!-- ===== 確認② ===== -->
+<div class="page" id="page-cf2">
+<div class="progress-bar"><div class="progress-fill fill-cf" style="width:100%"></div></div>
+<div class="card">
+  <div class="card-title">確認テスト② 等比型・複合計算</div>
+  <p style="font-size:13px;color:#555;margin-bottom:12px">2問に挑戦しましょう。</p>
+  <div class="mini-q">
+    <div class="q-text">【Q1】$\displaystyle\sum_{k=1}^{n}2^k = 2^{n+1}-2$ を使って $2+4+8+\cdots+2^{10}$ を計算するといくつですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q1cf2',0,false,'q1cf2-fb')">① 1022</button></li>
+      <li><button onclick="mAns('q1cf2',1,true,'q1cf2-fb')">② 2046</button></li>
+      <li><button onclick="mAns('q1cf2',2,false,'q1cf2-fb')">③ 2048</button></li>
+      <li><button onclick="mAns('q1cf2',3,false,'q1cf2-fb')">④ 4094</button></li>
+    </ul>
+    <div id="q1cf2-fb" class="mini-fb" data-correct="1"
+      data-ok="$n=10$ を代入：$2^{11}-2=2048-2=2046$ ✅"
+      data-ng0="$2^{10+1}-2=2^{11}-2=2048-2=2046$ です。"
+      data-ng2="$2^{11}=2048$ ですが $-2$ を忘れています。$2048-2=2046$ です。"
+      data-ng3="$2^{11}-2=2046$ です。2倍にはなりません。"></div>
+    <button class="reset-btn" onclick="mReset('q1cf2')">もう一度</button>
+  </div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <div class="mini-q">
+    <div class="q-text">【Q2】数列 $1,\ 1+2,\ 1+2+3,\ \ldots$ の初項から第 $n$ 項までの和は $\dfrac{n(n+1)(n+2)}{6}$ です。$n=4$ のとき和はいくつですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q2cf2',0,false,'q2cf2-fb')">① 15</button></li>
+      <li><button onclick="mAns('q2cf2',1,false,'q2cf2-fb')">② 18</button></li>
+      <li><button onclick="mAns('q2cf2',2,true,'q2cf2-fb')">③ 20</button></li>
+      <li><button onclick="mAns('q2cf2',3,false,'q2cf2-fb')">④ 24</button></li>
+    </ul>
+    <div id="q2cf2-fb" class="mini-fb" data-correct="2"
+      data-ok="$\dfrac{4\times5\times6}{6}=\dfrac{120}{6}=20$ ✅<br>直接確認：$1+(1+2)+(1+2+3)+(1+2+3+4)=1+3+6+10=20$ ✅"
+      data-ng0="$4\times5\times6=120$、$120\div6=20$ です。"
+      data-ng1="$4\times5=20$、$20\times6=120$、$120\div6=20$ です。"
+      data-ng3="$4\times5\times6=120$、$\div6=20$ です。$\div6$ を忘れずに。"></div>
+    <button class="reset-btn" onclick="mReset('q2cf2')">もう一度</button>
+  </div>
+</div>
+<div class="card" style="background:#e8f5e9;border:1.5px solid #43a047">
+  <p style="font-size:14px;font-weight:700;color:#1b5e20;margin-bottom:4px">🎉 EX3-3 完了！</p>
+  <p style="font-size:13px;color:#2e7d32">Σの計算をマスターしました。次は EX3-4「階差数列・群数列・分数和」に進みましょう。</p>
+</div>
+</div><!-- /page-cf2 -->
+
+<script>
+function toggleProof(btn){
+  var body=btn.nextElementSibling;
+  var isOpen=body.classList.toggle('open');
+  btn.innerHTML=isOpen?'✖ 閉じる':'🔍 なぜこの公式になるの？';
+  if(isOpen && typeof renderMathInElement!=='undefined') renderMathInElement(body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function switchPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active-ex','active-pr','active-cf');});
+  document.getElementById('page-'+id).classList.add('active');
+  var tabs=['ex1','pr1','cf1','ex2','pr2','cf2'];
+  var idx=tabs.indexOf(id);
+  var cls=id.indexOf('ex')===0?'active-ex':id.indexOf('pr')===0?'active-pr':'active-cf';
+  document.querySelectorAll('.tab-btn')[idx].classList.add(cls);
+  window.scrollTo(0,0);
+  if(typeof nekoUpdatePage==='function') nekoUpdatePage(id);
+}
+function toggleExStep(btn){
+  var body=btn.nextElementSibling;
+  var isOpen=body.classList.toggle('open');
+  btn.textContent=isOpen?'▼ 閉じる':'▶ 解き方を見る';
+  if(isOpen && typeof renderMathInElement!=='undefined') renderMathInElement(body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function togglePS(btn,id){
+  var el=document.getElementById(id);
+  var isOpen=el.classList.toggle('open');
+  btn.textContent=isOpen?'📝 練習を閉じる ▲':'📝 練習してみよう（2問）';
+  if(isOpen && typeof renderMathInElement!=='undefined') renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function openHints(hid){
+  var container=document.getElementById(hid);
+  container.classList.add('open');
+  var btn=container.previousElementSibling;
+  btn.style.display='none';
+  var step1=document.getElementById(hid+'_1');
+  if(step1){step1.classList.add('show');
+    if(typeof renderMathInElement!=='undefined') renderMathInElement(step1,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});}
+}
+function nextHint(hid,num){
+  var el=document.getElementById(hid+'_'+num);
+  if(el){el.classList.add('show');
+    if(typeof renderMathInElement!=='undefined') renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});}
+}
+var selectedChoice={};
+function pickChoice(qid,btn,idx){
+  selectedChoice[qid]=idx;
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b,i){b.style.borderColor=i===idx?'#1976d2':'';b.style.background=i===idx?'#e3f2fd':'#fff';b.style.fontWeight=i===idx?'700':'';});
+  document.getElementById('jb_'+qid).disabled=false;
+}
+function judgeQ(qid,correctIdx,explanation){
+  var chosen=selectedChoice[qid];
+  if(chosen===undefined) return;
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b){b.disabled=true;b.style.borderColor='';b.style.background='';b.style.fontWeight='';});
+  btns[correctIdx].classList.add('correct');
+  var isOK=(chosen===correctIdx);
+  if(!isOK) btns[chosen].classList.add('wrong');
+  document.getElementById('jb_'+qid).disabled=true;
+  var jr=document.getElementById('jr_'+qid);
+  jr.classList.add('show');
+  if(isOK){jr.className='judge-result show ok';jr.innerHTML='<span class="result-badge badge-ok">✅ 正解！</span><div class="result-exp">'+explanation+'</div>';launchConfetti();}
+  else{jr.className='judge-result show ng';jr.innerHTML='<span class="result-badge badge-ng">❌ 不正解</span><div class="result-exp">'+explanation+'</div>';}
+  if(typeof renderMathInElement!=='undefined') renderMathInElement(jr,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function retryQ(qid,hid){
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');b.style.borderColor='';b.style.background='';b.style.fontWeight='';});
+  delete selectedChoice[qid];
+  document.getElementById('jb_'+qid).disabled=true;
+  var jr=document.getElementById('jr_'+qid);jr.className='judge-result';jr.innerHTML='';
+  if(hid){var c=document.getElementById(hid);c.classList.remove('open');c.querySelectorAll('.hint-step').forEach(function(s){s.classList.remove('show');});var mb=c.previousElementSibling;if(mb&&mb.classList.contains('hint-main-btn'))mb.style.display='';}
+}
+function toggleAns(btn){
+  var body=btn.nextElementSibling;var isOpen=body.classList.toggle('open');
+  btn.textContent=isOpen?'閉じる':'答えを見る';
+  if(isOpen&&typeof renderMathInElement!=='undefined') renderMathInElement(body);
+}
+function mAns(mid,idx,correct,fbId){
+  var fb=document.getElementById(fbId||mid+'-fb');
+  var btns=fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(function(b){b.disabled=true;});
+  btns[idx].classList.add(correct?'correct':'wrong');
+  var correctIdx=fb.dataset.correct;
+  if(!correct&&correctIdx!==undefined) btns[correctIdx].classList.add('correct');
+  var topMsg=correct?'<span class="fb-badge fb-ok">✅ 正解！</span>':'<span class="fb-badge fb-ng">❌ 不正解</span> '+(fb.dataset['ng'+idx]||'もう一度確認しましょう。');
+  fb.classList.add('show',correct?'ok':'ng-with-ans');
+  fb.innerHTML='<div class="fb-top">'+topMsg+'</div><div class="fb-exp"><span class="fb-exp-label">📝 解説</span>'+(fb.dataset.ok||'')+'</div>';
+  if(typeof renderMathInElement!=='undefined') renderMathInElement(fb,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  if(correct) launchConfetti();
+}
+function mReset(mid){
+  var fb=document.getElementById(mid+'-fb');
+  var btns=fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');});
+  fb.className='mini-fb';fb.innerHTML='';
+}
+function launchConfetti(){
+  var colors=['#e91e63','#1976d2','#f57c00','#7b5ea7','#43a047','#ffc107','#00bcd4'];
+  var canvas=document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+  document.body.appendChild(canvas);
+  var ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  var particles=[];
+  for(var i=0;i<120;i++){particles.push({x:Math.random()*canvas.width,y:-20,r:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],speed:Math.random()*4+2,angle:Math.random()*360,spin:(Math.random()-.5)*6,wobble:Math.random()*3});}
+  var frame=0;
+  function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(function(p){ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6);ctx.restore();p.y+=p.speed;p.x+=Math.sin(frame*.05+p.wobble)*1.5;p.angle+=p.spin;});frame++;if(frame<120)requestAnimationFrame(draw);else canvas.remove();}
+  draw();
+}
+</script>
+<script>
+window.NEKO_CONFIG={
+  subject:'数学B',chapter:'EX3-3',title:'数列のΣ計算',
+  catSrc:'https://api.dicebear.com/7.x/fun-emoji/svg?seed=neko',
+  greeting:'Σ計算について何でも聞いてね🐱 公式①②③を使いこなそう！',
+  quickBtns:['Σの公式を教えて','Σの分解ルールは？','等比型のΣは？','上限がn-1のときは？'],
+  pageMap:{
+    'ex1':'解説①「Σ記法と3大公式」を学習中',
+    'pr1':'練習問題①「Σ記法と公式計算」に取り組み中',
+    'cf1':'確認テスト①「Σ基本」に取り組み中',
+    'ex2':'解説②「等比型・複合計算」を学習中',
+    'pr2':'練習問題②「複合問題」に取り組み中',
+    'cf2':'確認テスト②「複合計算」に取り組み中'
+  }
+};
+</script>
+<script src="neko.js"></script>
+</body>
+</html>

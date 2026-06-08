@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EX3-5 漸化式 基本｜GAMBA数学B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  renderMathInElement(document.body,{
+    delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],
+    throwOnError:false
+  });
+});
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;font-size:15px;line-height:1.7}
+.top-header{background:#2055b0;color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.top-header .brand{font-size:18px;font-weight:700;letter-spacing:2px}
+.top-header .unit-title{font-size:13px;opacity:.85}
+.tab-nav{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;overflow-x:auto}
+.tab-btn{flex:1;min-width:80px;padding:10px 4px;font-size:12px;font-weight:700;border:none;background:transparent;cursor:pointer;color:#888;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.tab-btn.active-ex{color:#e91e63;border-bottom-color:#e91e63}
+.tab-btn.active-pr{color:#1976d2;border-bottom-color:#1976d2}
+.tab-btn.active-cf{color:#f57c00;border-bottom-color:#f57c00}
+.page{display:none;padding:16px;max-width:680px;margin:0 auto}
+.page.active{display:block}
+.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card-title{font-size:13px;font-weight:700;color:#2055b0;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #e8eaf6}
+.point-box{background:#fff8e1;border-left:4px solid #ffc107;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.point-box .pt-title{font-weight:700;color:#e65100;margin-bottom:6px;font-size:13px}
+.def-box{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;margin:12px 0}
+.def-box .def-title{font-weight:700;color:#1b5e20;margin-bottom:8px;font-size:13px}
+.formula-box{background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px;margin:12px 0;text-align:center}
+.formula-box .f-label{font-size:12px;color:#1565c0;font-weight:700;margin-bottom:6px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;line-height:1.2}
+.frac .num{border-bottom:1.5px solid currentColor;padding:0 3px;font-size:.92em}
+.frac .den{padding:0 3px;font-size:.92em}
+.ex-step-btn{background:#7e57c2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s;margin:8px 0}
+.ex-step-btn:hover{background:#5e35b1}
+.ex-step-body{display:none;margin-top:8px;background:#f3e5f5;border-radius:8px;padding:12px;font-size:14px}
+.ex-step-body.open{display:block}
+.ex-box{background:#fce4ec;border-radius:8px;padding:12px;margin:10px 0}
+.ex-box .ex-label{font-size:12px;font-weight:700;color:#880e4f;margin-bottom:4px}
+.ptoggle-btn{display:block;width:100%;margin:12px 0 0;background:linear-gradient(90deg,#1976d2,#42a5f5);color:#fff;border:none;border-radius:24px;padding:9px 0;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;letter-spacing:.5px}
+.ptoggle-btn:hover{opacity:.88}
+.practice-set{display:none;margin-top:10px;background:#f0f4ff;border:2px solid #90caf9;border-radius:12px;padding:14px}
+.practice-set.open{display:block}
+.pq-label{font-size:11px;font-weight:700;color:#1565c0;background:#bbdefb;display:inline-block;padding:2px 10px;border-radius:10px;margin-bottom:8px}
+.pq-text{font-size:14px;font-weight:500;margin-bottom:10px;line-height:1.7}
+.hint-main-btn{background:#ff8f00;color:#fff;border:none;border-radius:16px;padding:5px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.hint-main-btn:hover{background:#e65100}
+.hint-steps{margin-top:8px;display:none}
+.hint-steps.open{display:block}
+.hint-step{display:none;background:#fff8e1;border-left:3px solid #ffc107;border-radius:6px;padding:9px 12px;margin-bottom:6px;font-size:13px}
+.hint-step.show{display:block}
+.hint-step-label{font-size:11px;font-weight:700;color:#e65100;margin-bottom:4px}
+.hint-next-btn{background:#ffc107;color:#5d4037;border:none;border-radius:14px;padding:4px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px;transition:.2s}
+.hint-next-btn:hover{background:#ffb300}
+.choices{display:flex;flex-direction:column;gap:7px;margin:10px 0}
+.choice-btn{width:100%;text-align:left;padding:9px 14px;border:2px solid #bbdefb;border-radius:9px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-btn:hover:not(:disabled){border-color:#1976d2;background:#e3f2fd}
+.choice-btn.correct{background:#e8f5e9!important;border-color:#43a047!important;color:#1b5e20;font-weight:700}
+.choice-btn.wrong{background:#ffebee!important;border-color:#e53935!important;color:#b71c1c}
+.judge-btn{background:#e91e63;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px;transition:.2s}
+.judge-btn:hover:not(:disabled){background:#c2185b}
+.judge-btn:disabled{background:#bdbdbd;cursor:default}
+.retry-btn{background:#e0e0e0;color:#333;border:none;border-radius:16px;padding:5px 18px;font-size:12px;cursor:pointer;font-family:inherit;margin-top:8px;display:block;transition:.2s}
+.retry-btn:hover{background:#bdbdbd}
+.judge-result{display:none;margin-top:10px;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.8}
+.judge-result.show{display:block}
+.judge-result.ok{background:#e8f5e9;border-left:4px solid #43a047}
+.judge-result.ng{background:#fff8e1;border-left:4px solid #ff9800}
+.result-badge{font-weight:700;padding:2px 10px;border-radius:10px;margin-right:6px;font-size:12px}
+.badge-ok{background:#c8e6c9;color:#1b5e20}
+.badge-ng{background:#ffcdd2;color:#b71c1c}
+.result-exp{background:rgba(255,255,255,.7);border-radius:6px;padding:8px 10px;margin-top:8px;font-size:13px}
+.mini-q{margin:12px 0}
+.mini-q .q-text{font-size:14px;margin-bottom:8px;font-weight:500}
+.choice-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.choice-list li button{width:100%;text-align:left;padding:9px 12px;border:2px solid #e0e0e0;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-list li button:hover{border-color:#7e57c2;background:#f3e5f5}
+.choice-list li button.correct{background:#e8f5e9;border-color:#43a047;color:#1b5e20;font-weight:700}
+.choice-list li button.wrong{background:#ffebee;border-color:#e53935;color:#b71c1c}
+.mini-fb{font-size:13px;margin-top:6px;padding:8px 10px;border-radius:6px;display:none}
+.mini-fb.show{display:block}
+.mini-fb.ok{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;line-height:1.8}
+.mini-fb.ng-with-ans{background:#fff8e1;border-left:4px solid #ff9800;border-radius:8px;padding:12px 14px;line-height:1.8}
+.fb-top{margin-bottom:8px;font-size:13px}
+.fb-badge{font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px;font-size:12px}
+.fb-badge.fb-ok{background:#c8e6c9;color:#1b5e20}
+.fb-badge.fb-ng{background:#ffcdd2;color:#b71c1c}
+.fb-exp{background:rgba(255,255,255,0.7);border-radius:6px;padding:8px 10px;margin-top:6px;font-size:13px}
+.fb-exp-label{font-weight:700;color:#e65100;margin-right:6px;font-size:12px}
+.reset-btn{margin-top:8px;background:#eeeeee;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit}
+.prob-box{background:#fff;border:2px solid #e0e0e0;border-radius:10px;padding:14px;margin:12px 0}
+.prob-box .prob-num{font-size:12px;font-weight:700;color:#1976d2;margin-bottom:6px}
+.ans-btn{background:#1976d2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;margin-top:8px;transition:.2s}
+.ans-btn:hover{background:#1565c0}
+.ans-body{display:none;margin-top:10px;background:#e3f2fd;border-radius:8px;padding:12px;font-size:14px}
+.ans-body.open{display:block}
+.ans-body .ans-label{font-weight:700;color:#0d47a1;margin-bottom:4px;font-size:13px}
+.progress-bar{height:4px;background:#e0e0e0;border-radius:2px;margin-bottom:16px}
+.progress-fill{height:100%;border-radius:2px;transition:width .4s}
+.fill-ex{background:#e91e63}.fill-pr{background:#1976d2}.fill-cf{background:#f57c00}
+.step-list{list-style:none;padding:0;margin:8px 0}
+.step-list li{padding:5px 0 5px 20px;position:relative;font-size:14px;border-bottom:1px dashed #e0e0e0}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:"▶";position:absolute;left:0;color:#2055b0;font-size:11px;top:7px}
+.check-box{background:#e8f0fe;border-left:4px solid #2055b0;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.calc-flow{background:#f3e5f5;border-radius:8px;padding:12px;margin:8px 0;font-size:14px;line-height:2.2}
+.pq-div{margin-bottom:6px}
+.pattern-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 0}
+.pattern-card{border-radius:10px;padding:10px 12px;text-align:center;font-size:13px}
+.pattern-card .pc-type{font-size:11px;font-weight:700;margin-bottom:4px}
+.pattern-card .pc-form{font-size:12px;margin-bottom:4px}
+.pattern-card .pc-result{font-size:11px;color:#555}
+.tokuseiHako{background:#fff3e0;border:2px solid #ff9800;border-radius:10px;padding:14px;margin:12px 0}
+.tokuseiHako .th-title{font-size:13px;font-weight:700;color:#e65100;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="top-header">
+  <div class="brand">GAMBA</div>
+  <div class="unit-title">数学B ｜ 第1章⑤ 漸化式 基本</div>
+</div>
+<div class="tab-nav">
+  <button class="tab-btn active-ex" onclick="switchPage('ex1')">解説①</button>
+  <button class="tab-btn" onclick="switchPage('pr1')">練習①</button>
+  <button class="tab-btn" onclick="switchPage('cf1')">確認①</button>
+  <button class="tab-btn" onclick="switchPage('ex2')">解説②</button>
+  <button class="tab-btn" onclick="switchPage('pr2')">練習②</button>
+  <button class="tab-btn" onclick="switchPage('cf2')">確認②</button>
+</div>
+
+<!-- ===== 解説① 基本3パターン ===== -->
+<div class="page active" id="page-ex1">
+<div class="progress-bar"><div class="progress-fill fill-ex" style="width:25%"></div></div>
+
+<div class="card">
+  <div class="card-title">① 漸化式とは</div>
+  <p style="font-size:14px;margin-bottom:10px"><strong>漸化式</strong>とは、「前の項から次の項を求める式」のことです。</p>
+  <!-- 【例】の説明 -->
+  <div class="def-box">
+    <div class="def-title">📖 【例】漸化式のイメージ</div>
+    <p style="font-size:14px">数列 $2,\ 5,\ 8,\ 11,\ \ldots$ は、各項に $+3$ することで次の項が得られます。</p>
+    <p style="font-size:14px;margin-top:8px">これを漸化式で表すと次のようになります。</p>
+    <div style="text-align:center;background:#fff;border-radius:8px;padding:10px;margin:10px 0;font-size:15px;font-weight:700;color:#1565c0">
+      $a_{n+1} = a_n + 3 \quad (a_1=2)$
+    </div>
+    <!-- 項の図 -->
+    <div style="overflow-x:auto;margin:10px 0">
+      <table style="border-collapse:collapse;margin:0 auto;font-size:13px;text-align:center">
+        <tr>
+          <td style="padding:2px 10px;color:#777;font-size:12px">$a_1$</td>
+          <td style="width:50px"></td>
+          <td style="padding:2px 10px;color:#777;font-size:12px">$a_2$</td>
+          <td style="width:50px"></td>
+          <td style="padding:2px 10px;color:#777;font-size:12px">$a_3$</td>
+          <td style="width:50px"></td>
+          <td style="padding:2px 10px;color:#777;font-size:12px">$a_4$</td>
+          <td style="padding:2px 10px;color:#777;font-size:12px"></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 10px;background:#e3f2fd;border:2px solid #90caf9;border-radius:8px;font-weight:700;font-size:16px;color:#0d47a1">2</td>
+          <td style="padding:4px;text-align:center;vertical-align:middle">
+            <div style="font-size:11px;font-weight:700;color:#e91e63;background:#fce4ec;border:1.5px solid #f48fb1;border-radius:5px;padding:1px 6px;margin-bottom:2px">$+3$</div>
+            <div style="font-size:14px;color:#e91e63">→</div>
+          </td>
+          <td style="padding:6px 10px;background:#e3f2fd;border:2px solid #90caf9;border-radius:8px;font-weight:700;font-size:16px;color:#0d47a1">5</td>
+          <td style="padding:4px;text-align:center;vertical-align:middle">
+            <div style="font-size:11px;font-weight:700;color:#e91e63;background:#fce4ec;border:1.5px solid #f48fb1;border-radius:5px;padding:1px 6px;margin-bottom:2px">$+3$</div>
+            <div style="font-size:14px;color:#e91e63">→</div>
+          </td>
+          <td style="padding:6px 10px;background:#e3f2fd;border:2px solid #90caf9;border-radius:8px;font-weight:700;font-size:16px;color:#0d47a1">8</td>
+          <td style="padding:4px;text-align:center;vertical-align:middle">
+            <div style="font-size:11px;font-weight:700;color:#e91e63;background:#fce4ec;border:1.5px solid #f48fb1;border-radius:5px;padding:1px 6px;margin-bottom:2px">$+3$</div>
+            <div style="font-size:14px;color:#e91e63">→</div>
+          </td>
+          <td style="padding:6px 10px;background:#e3f2fd;border:2px solid #90caf9;border-radius:8px;font-weight:700;font-size:16px;color:#0d47a1">11</td>
+          <td style="padding:6px 8px;font-size:16px;color:#555;vertical-align:middle">…</td>
+        </tr>
+      </table>
+    </div>
+    <p style="font-size:14px;margin-top:6px">これは「前の項 $a_n$」と「後の項 $a_{n+1}$」の関係を表したものです。</p>
+  </div>
+
+  <!-- 【例題】の説明 -->
+  <div style="background:#fff3e0;border-left:4px solid #ff9800;border-radius:8px;padding:12px 14px;margin:12px 0">
+    <p style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:8px">📝 【例題】$a_{n+1}=a_n+5\quad(a_1=3)$</p>
+    <p style="font-size:14px">この式はどのような数列を表しているでしょうか。</p>
+    <p style="font-size:14px;margin-top:6px">初項 $3$ に $+5$ を順に足していくと、</p>
+    <!-- 項の図 -->
+    <div style="overflow-x:auto;margin:10px 0">
+      <table style="border-collapse:collapse;margin:0 auto;font-size:13px;text-align:center">
+        <tr>
+          <td style="padding:2px 10px;color:#777;font-size:12px">$a_1$</td>
+          <td style="width:50px"></td>
+          <td style="padding:2px 10px;color:#777;font-size:12px">$a_2$</td>
+          <td style="width:50px"></td>
+          <td style="padding:2px 10px;color:#777;font-size:12px">$a_3$</td>
+          <td style="width:50px"></td>
+          <td style="padding:2px 10px;color:#777;font-size:12px">$a_4$</td>
+          <td style="padding:2px 10px;color:#777;font-size:12px"></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 10px;background:#fff8e1;border:2px solid #ffd54f;border-radius:8px;font-weight:700;font-size:16px;color:#e65100">3</td>
+          <td style="padding:4px;text-align:center;vertical-align:middle">
+            <div style="font-size:11px;font-weight:700;color:#e91e63;background:#fce4ec;border:1.5px solid #f48fb1;border-radius:5px;padding:1px 6px;margin-bottom:2px">$+5$</div>
+            <div style="font-size:14px;color:#e91e63">→</div>
+          </td>
+          <td style="padding:6px 10px;background:#fff8e1;border:2px solid #ffd54f;border-radius:8px;font-weight:700;font-size:16px;color:#e65100">8</td>
+          <td style="padding:4px;text-align:center;vertical-align:middle">
+            <div style="font-size:11px;font-weight:700;color:#e91e63;background:#fce4ec;border:1.5px solid #f48fb1;border-radius:5px;padding:1px 6px;margin-bottom:2px">$+5$</div>
+            <div style="font-size:14px;color:#e91e63">→</div>
+          </td>
+          <td style="padding:6px 10px;background:#fff8e1;border:2px solid #ffd54f;border-radius:8px;font-weight:700;font-size:16px;color:#e65100">13</td>
+          <td style="padding:4px;text-align:center;vertical-align:middle">
+            <div style="font-size:11px;font-weight:700;color:#e91e63;background:#fce4ec;border:1.5px solid #f48fb1;border-radius:5px;padding:1px 6px;margin-bottom:2px">$+5$</div>
+            <div style="font-size:14px;color:#e91e63">→</div>
+          </td>
+          <td style="padding:6px 10px;background:#fff8e1;border:2px solid #ffd54f;border-radius:8px;font-weight:700;font-size:16px;color:#e65100">18</td>
+          <td style="padding:6px 8px;font-size:16px;color:#555;vertical-align:middle">…</td>
+        </tr>
+      </table>
+    </div>
+    <p style="font-size:14px;margin-top:6px">したがって、この式は<strong>「初項が $3$ で公差が $5$ の等差数列」</strong>を表しています。</p>
+  </div>
+
+  <p style="font-size:14px;margin-top:10px">漸化式を解くとは、<strong>一般項 $a_n$ を $n$ だけの式で表す</strong>ことです。</p>
+
+  <div class="pattern-grid">
+    <div class="pattern-card" style="background:#e3f2fd;border:1.5px solid #90caf9">
+      <div class="pc-type" style="color:#1565c0">等差型</div>
+      <div class="pc-form">$a_{n+1}=a_n+d$</div>
+      <div class="pc-result">等差数列</div>
+    </div>
+    <div class="pattern-card" style="background:#e8f5e9;border:1.5px solid #81c784">
+      <div class="pc-type" style="color:#1b5e20">等比型</div>
+      <div class="pc-form">$a_{n+1}=ra_n$</div>
+      <div class="pc-result">等比数列</div>
+    </div>
+    <div class="pattern-card" style="background:#fff8e1;border:1.5px solid #ffd54f">
+      <div class="pc-type" style="color:#e65100">階差型</div>
+      <div class="pc-form">$a_{n+1}=a_n+f(n)$</div>
+      <div class="pc-result">階差数列</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">② 等差型・等比型</div>
+  <div class="formula-box">
+    <div class="f-label">【等差型】$a_{n+1}=a_n+d$</div>
+    <p style="font-size:14px">公差 $d$ の等差数列 → $a_n = a_1+(n-1)d$</p>
+  </div>
+  <div class="formula-box">
+    <div class="f-label">【等比型】$a_{n+1}=ra_n$</div>
+    <p style="font-size:14px">公比 $r$ の等比数列 → $a_n = a_1\cdot r^{n-1}$</p>
+  </div>
+  <div class="check-box">
+    <p style="font-size:14px">等差型・等比型はすでに知っている数列の「別の書き方」です。<br>
+    $a_{n+1}-a_n=d$（一定）→ 等差数列<br>
+    $\dfrac{a_{n+1}}{a_n}=r$（一定）→ 等比数列</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">③ 例題①　等差型・等比型</div>
+  <div class="ex-box">
+    <div class="ex-label">例題①</div>
+    <p style="font-size:14px">次の漸化式を解きなさい。<br>
+    （1）$a_1=5,\quad a_{n+1}=a_n-3$<br>
+    （2）$a_1=2,\quad a_{n+1}=4a_n$</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>（1）等差型</strong>　公差 $d=-3$</p>
+    <div style="text-align:center;margin:6px 0">$$a_n=5+(n-1)\times(-3)=-3n+8$$</div>
+    <p style="font-size:14px"><strong>（2）等比型</strong>　公比 $r=4$</p>
+    <div style="text-align:center;margin:6px 0">$$a_n=2\times4^{n-1}$$</div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">（1）$a_n=-3n+8$　　（2）$a_n=2\times4^{n-1}$</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex1')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex1">
+    <div class="pq-div">
+      <div class="pq-label">練習 1-A</div>
+      <div class="pq-text">$a_1=3,\ a_{n+1}=a_n+4$ を解いた $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_1a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_1a">
+        <div class="hint-step" id="ht_1a_1"><div class="hint-step-label">Step 1　パターンを確認</div><p style="font-size:13px">$a_{n+1}=a_n+4$ は公差 $d=4$ の等差型です。</p><button class="hint-next-btn" onclick="nextHint('ht_1a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_1a_2"><div class="hint-step-label">Step 2　公式に代入</div><p style="font-size:13px">$a_n=a_1+(n-1)d=3+(n-1)\times4$</p><button class="hint-next-btn" onclick="nextHint('ht_1a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_1a_3"><div class="hint-step-label">Step 3　整理する</div><p style="font-size:13px">$3+4n-4=4n-1$</p></div>
+      </div>
+      <div class="choices" id="ch_1a">
+        <button class="choice-btn" onclick="pickChoice('1a',this,0)">① $a_n=4n$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,1)">② $a_n=4n-1$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,2)">③ $a_n=4n+3$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,3)">④ $a_n=3n+4$</button>
+      </div>
+      <button class="judge-btn" id="jb_1a" onclick="judgeQ('1a',1,'$a_n=3+(n-1)\\times4=4n-1$ ✅<br>確認：$n=1$ → $4-1=3=a_1$ ✅　$n=2$ → $8-1=7=a_2$（$3+4=7$）✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_1a"></div>
+      <button class="retry-btn" onclick="retryQ('1a','ht_1a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 1-B</div>
+      <div class="pq-text">$a_1=5,\ a_{n+1}=3a_n$ を解いた $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_1b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_1b">
+        <div class="hint-step" id="ht_1b_1"><div class="hint-step-label">Step 1　パターンを確認</div><p style="font-size:13px">$a_{n+1}=3a_n$ は公比 $r=3$ の等比型です。</p><button class="hint-next-btn" onclick="nextHint('ht_1b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_1b_2"><div class="hint-step-label">Step 2　公式に代入</div><p style="font-size:13px">$a_n=a_1\cdot r^{n-1}=5\times3^{n-1}$</p><button class="hint-next-btn" onclick="nextHint('ht_1b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_1b_3"><div class="hint-step-label">Step 3　確認</div><p style="font-size:13px">$n=1$：$5\times3^0=5=a_1$ ✅　$n=2$：$5\times3=15=a_2$（$5\times3=15$）✅</p></div>
+      </div>
+      <div class="choices" id="ch_1b">
+        <button class="choice-btn" onclick="pickChoice('1b',this,0)">① $a_n=3\times5^{n-1}$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,1)">② $a_n=5\times3^{n-1}$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,2)">③ $a_n=5\times3^n$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,3)">④ $a_n=5n\times3$</button>
+      </div>
+      <button class="judge-btn" id="jb_1b" onclick="judgeQ('1b',1,'$a_n=5\\times3^{n-1}$ ✅<br>③は $n=1$ で $5\\times3=15\\neq5$ なので不正解です。初項 $a_1=5\\times r^0=5$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_1b"></div>
+      <button class="retry-btn" onclick="retryQ('1b','ht_1b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">④ 階差型　$a_{n+1}=a_n+f(n)$</div>
+  <p style="font-size:14px;margin-bottom:10px">$a_{n+1}-a_n=f(n)$ の形は<strong>階差数列</strong>そのものです。EX3-4の公式をそのまま使えます。</p>
+  <div class="formula-box">
+    <div class="f-label">【階差型】$a_{n+1}=a_n+f(n)$ のとき</div>
+    $$a_n = a_1 + \sum_{k=1}^{n-1}f(k) \quad (n \geqq 2)$$
+    <p style="font-size:12px;color:#e53935;margin-top:6px;font-weight:700">⚠️ 必ず $n=1$ で確認！</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⑤ 例題②　階差型</div>
+  <div class="ex-box">
+    <div class="ex-label">例題②</div>
+    <p style="font-size:14px">$a_1=1,\quad a_{n+1}=a_n+2n$ を解きなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px">$f(n)=2n$ なので階差型。$n \geqq 2$ のとき：</p>
+    <div class="calc-flow">
+      $a_n = 1 + \displaystyle\sum_{k=1}^{n-1}2k = 1 + 2\cdot\dfrac{(n-1)n}{2} = 1+n(n-1) = n^2-n+1$
+    </div>
+    <p style="font-size:14px">$n=1$ 確認：$1^2-1+1=1=a_1$ ✅</p>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">$a_n=n^2-n+1$</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex2')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex2">
+    <div class="pq-div">
+      <div class="pq-label">練習 2-A</div>
+      <div class="pq-text">$a_1=2,\ a_{n+1}=a_n+3n$ を解いた $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_2a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_2a">
+        <div class="hint-step" id="ht_2a_1"><div class="hint-step-label">Step 1　階差型を確認</div><p style="font-size:13px">$f(n)=3n$。$n \geqq 2$ のとき $a_n=2+\displaystyle\sum_{k=1}^{n-1}3k$</p><button class="hint-next-btn" onclick="nextHint('ht_2a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_2a_2"><div class="hint-step-label">Step 2　Σを計算</div><p style="font-size:13px">$\displaystyle\sum_{k=1}^{n-1}3k=3\cdot\dfrac{(n-1)n}{2}=\dfrac{3n(n-1)}{2}$</p><button class="hint-next-btn" onclick="nextHint('ht_2a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_2a_3"><div class="hint-step-label">Step 3　整理して $n=1$ 確認</div><p style="font-size:13px">$a_n=2+\dfrac{3n(n-1)}{2}=\dfrac{3n^2-3n+4}{2}$<br>$n=1$：$\dfrac{3-3+4}{2}=2=a_1$ ✅</p></div>
+      </div>
+      <div class="choices" id="ch_2a">
+        <button class="choice-btn" onclick="pickChoice('2a',this,0)">① $\dfrac{3n^2-3n+2}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,1)">② $\dfrac{3n^2-3n+4}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,2)">③ $\dfrac{3n^2+3n+4}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,3)">④ $3n^2-3n+4$</button>
+      </div>
+      <button class="judge-btn" id="jb_2a" onclick="judgeQ('2a',1,'$2+\\dfrac{3n(n-1)}{2}=\\dfrac{4+3n^2-3n}{2}=\\dfrac{3n^2-3n+4}{2}$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_2a"></div>
+      <button class="retry-btn" onclick="retryQ('2a','ht_2a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 2-B</div>
+      <div class="pq-text">$a_1=3,\ a_{n+1}=a_n+2^n$ を解いた $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_2b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_2b">
+        <div class="hint-step" id="ht_2b_1"><div class="hint-step-label">Step 1　階差型</div><p style="font-size:13px">$f(n)=2^n$。$n \geqq 2$ のとき $a_n=3+\displaystyle\sum_{k=1}^{n-1}2^k$</p><button class="hint-next-btn" onclick="nextHint('ht_2b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_2b_2"><div class="hint-step-label">Step 2　等比型のΣを計算</div><p style="font-size:13px">$\displaystyle\sum_{k=1}^{n-1}2^k=2^n-2$（等比数列の和）</p><button class="hint-next-btn" onclick="nextHint('ht_2b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_2b_3"><div class="hint-step-label">Step 3　まとめて確認</div><p style="font-size:13px">$a_n=3+(2^n-2)=2^n+1$<br>$n=1$：$2+1=3=a_1$ ✅</p></div>
+      </div>
+      <div class="choices" id="ch_2b">
+        <button class="choice-btn" onclick="pickChoice('2b',this,0)">① $2^n+2$</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,1)">② $2^n+1$</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,2)">③ $2^{n+1}+1$</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,3)">④ $2^n-1$</button>
+      </div>
+      <button class="judge-btn" id="jb_2b" onclick="judgeQ('2b',1,'$3+(2^n-2)=2^n+1$ ✅<br>$n=1$：$2+1=3=a_1$ ✅　$n=2$：$4+1=5=a_2$（$3+2^1=5$）✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_2b"></div>
+      <button class="retry-btn" onclick="retryQ('2b','ht_2b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⑥ 例題③　$a_{n+1}=pa_n+q$（$p \neq 1$）</div>
+  <div class="ex-box">
+    <div class="ex-label">例題③</div>
+    <p style="font-size:14px">$a_1=1,\quad a_{n+1}=3a_n+2$ を解きなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+
+    <!-- なぜ特性方程式が役立つのか -->
+    <div style="background:#fff8e1;border-left:4px solid #ffc107;border-radius:8px;padding:12px 14px;margin-bottom:14px">
+      <p style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:8px">🔍 なぜ特性方程式が役立つのか？</p>
+      <p style="font-size:14px">漸化式 $a_{n+1}=3a_n+2$ には定数 $+2$ があるため、そのままでは等比数列になりません。</p>
+      <p style="font-size:14px;margin-top:8px">そこで、<strong>「うまい定数 $\alpha$ を見つけて、両辺から $\alpha$ を引く」</strong>という作戦をとります。</p>
+      <p style="font-size:14px;margin-top:8px">漸化式から $\alpha$ を引いた式を作ると、</p>
+      <div style="text-align:center;margin:8px 0;font-size:14px">
+        $a_{n+1} - \alpha = 3a_n + 2 - \alpha$
+      </div>
+      <p style="font-size:14px">右辺を $3(a_n - \alpha)$ の形にしたいので、</p>
+      <div style="text-align:center;margin:8px 0;font-size:14px">
+        $3a_n + 2 - \alpha = 3(a_n - \alpha)$
+      </div>
+      <p style="font-size:14px">これを $\alpha$ について解くと、</p>
+      <div style="text-align:center;margin:8px 0">$$3a_n+2-\alpha = 3a_n-3\alpha \quad\Rightarrow\quad 2+2\alpha=0 \quad\Rightarrow\quad \alpha=-1$$</div>
+      <p style="font-size:14px;margin-top:6px">この <strong>「$\alpha$ を求める方程式」を特性方程式</strong>といいます。<br>
+      漸化式の $a_{n+1}$ と $a_n$ をどちらも $\alpha$ に置き換えた式です。</p>
+      <div style="background:#fff;border:1.5px solid #ffc107;border-radius:6px;padding:8px 12px;margin-top:8px;text-align:center">
+        <p style="font-size:13px;color:#e65100;font-weight:700">特性方程式：$a_{n+1}=3a_n+2$ の $a_{n+1}$ と $a_n$ を $\alpha$ に置き換える</p>
+        <div style="font-size:15px;margin-top:4px">$$\alpha = 3\alpha + 2 \quad\Rightarrow\quad \alpha = -1$$</div>
+      </div>
+    </div>
+
+    <!-- 手順 -->
+    <p style="font-size:14px;font-weight:700;color:#4a148c">▶ 実際に解いてみましょう</p>
+    <p style="font-size:14px;margin-top:8px"><strong>【手順①】</strong>特性方程式 $\alpha=3\alpha+2$ を解く</p>
+    <div style="text-align:center;margin:4px 0">$$-2\alpha=2 \quad\Rightarrow\quad \alpha=-1$$</div>
+    <p style="font-size:14px;margin-top:8px"><strong>【手順②】</strong>両辺から $\alpha=-1$ を引く（$-(-1)$ を足す）</p>
+    <div style="background:#f3e5f5;border-radius:8px;padding:10px 14px;margin:8px 0;font-size:14px;line-height:2.2">
+      $a_{n+1}-(-1) = 3\{a_n-(-1)\}$<br>
+      $a_{n+1}+1 = 3(a_n+1)$
+    </div>
+    <p style="font-size:14px"><strong>【手順③】</strong>$b_n = a_n+1$ とおくと $b_{n+1}=3b_n$（公比3の等比数列！）</p>
+    <div style="background:#e8f5e9;border-left:3px solid #43a047;border-radius:6px;padding:8px 12px;margin:8px 0;font-size:14px">
+      $b_1 = a_1+1 = 1+1 = 2$<br>
+      $b_n = 2\times3^{n-1}$
+    </div>
+    <p style="font-size:14px"><strong>【手順④】</strong>$b_n = a_n+1$ を $a_n$ に戻す</p>
+    <div style="text-align:center;margin:6px 0">$$a_n+1=2\times3^{n-1} \quad\Rightarrow\quad a_n=2\times3^{n-1}-1$$</div>
+    <p style="font-size:13px;color:#555;margin-top:4px">確認：$n=1$ → $2\times1-1=1=a_1$ ✅　$n=2$ → $2\times3-1=5=a_2$（$1\times3+2=5$）✅</p>
+
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">$a_n=2\times3^{n-1}-1$</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex3')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex3">
+    <div class="pq-div">
+      <div class="pq-label">練習 3-A</div>
+      <div class="pq-text">$a_1=2,\ a_{n+1}=2a_n+3$ を解くとき、特性方程式 $\alpha=2\alpha+3$ の解 $\alpha$ はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_3a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_3a">
+        <div class="hint-step" id="ht_3a_1"><div class="hint-step-label">Step 1　特性方程式を解く</div><p style="font-size:13px">$\alpha=2\alpha+3$ を $\alpha$ について解きます。</p><button class="hint-next-btn" onclick="nextHint('ht_3a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_3a_2"><div class="hint-step-label">Step 2　計算する</div><p style="font-size:13px">$\alpha-2\alpha=3$ → $-\alpha=3$ → $\alpha=-3$</p><button class="hint-next-btn" onclick="nextHint('ht_3a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_3a_3"><div class="hint-step-label">Step 3　変換する</div><p style="font-size:13px">$b_n=a_n-(-3)=a_n+3$ とおくと $b_{n+1}=2b_n$（等比数列）</p></div>
+      </div>
+      <div class="choices" id="ch_3a">
+        <button class="choice-btn" onclick="pickChoice('3a',this,0)">① $\alpha=3$</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,1)">② $\alpha=-3$</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,2)">③ $\alpha=1$</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,3)">④ $\alpha=-1$</button>
+      </div>
+      <button class="judge-btn" id="jb_3a" onclick="judgeQ('3a',1,'$\\alpha=2\\alpha+3$ → $-\\alpha=3$ → $\\alpha=-3$ ✅<br>$b_n=a_n+3$ とおくと $b_{n+1}=2b_n$（公比2の等比数列）')" disabled>判定する</button>
+      <div class="judge-result" id="jr_3a"></div>
+      <button class="retry-btn" onclick="retryQ('3a','ht_3a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 3-B</div>
+      <div class="pq-text">$a_1=2,\ a_{n+1}=2a_n+3$ を解いた $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_3b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_3b">
+        <div class="hint-step" id="ht_3b_1"><div class="hint-step-label">Step 1　$b_n=a_n+3$ とおく</div><p style="font-size:13px">$b_{n+1}=2b_n$、$b_1=a_1+3=5$</p><button class="hint-next-btn" onclick="nextHint('ht_3b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_3b_2"><div class="hint-step-label">Step 2　$b_n$ を求める</div><p style="font-size:13px">$b_n=5\times2^{n-1}$</p><button class="hint-next-btn" onclick="nextHint('ht_3b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_3b_3"><div class="hint-step-label">Step 3　$a_n$ に戻す</div><p style="font-size:13px">$a_n+3=5\times2^{n-1}$ → $a_n=5\times2^{n-1}-3$</p></div>
+      </div>
+      <div class="choices" id="ch_3b">
+        <button class="choice-btn" onclick="pickChoice('3b',this,0)">① $5\times2^{n-1}+3$</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,1)">② $5\times2^{n-1}-3$</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,2)">③ $2\times5^{n-1}-3$</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,3)">④ $5\times2^n-3$</button>
+      </div>
+      <button class="judge-btn" id="jb_3b" onclick="judgeQ('3b',1,'$b_n=5\\times2^{n-1}$ → $a_n=5\\times2^{n-1}-3$ ✅<br>$n=1$：$5-3=2=a_1$ ✅　$n=2$：$10-3=7=a_2$（$2\\times2+3=7$）✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_3b"></div>
+      <button class="retry-btn" onclick="retryQ('3b','ht_3b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+</div><!-- /page-ex1 -->
+
+<!-- ===== 練習① ===== -->
+<div class="page" id="page-pr1">
+<div class="progress-bar"><div class="progress-fill fill-pr" style="width:40%"></div></div>
+<div class="card">
+  <div class="card-title">練習問題① 基本3パターン</div>
+  <div class="prob-box"><div class="prob-num">問題 1</div>
+    <p style="font-size:14px">$a_1=-2,\ a_{n+1}=a_n+5$ を解きなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">等差型（$d=5$）：$a_n=-2+(n-1)\times5=5n-7$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 2</div>
+    <p style="font-size:14px">$a_1=4,\ a_{n+1}=\dfrac{1}{2}a_n$ を解きなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">等比型（$r=\dfrac{1}{2}$）：$a_n=4\times\left(\dfrac{1}{2}\right)^{n-1}=\dfrac{1}{2^{n-3}}=2^{3-n}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 3</div>
+    <p style="font-size:14px">$a_1=1,\ a_{n+1}=a_n+n^2$ を解きなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$a_n=1+\displaystyle\sum_{k=1}^{n-1}k^2=1+\dfrac{(n-1)n(2n-1)}{6}$<br>
+      $n=1$：$1$ ✅</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 4</div>
+    <p style="font-size:14px">$a_1=3,\ a_{n+1}=4a_n-6$ を解きなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">特性方程式：$\alpha=4\alpha-6$ → $\alpha=2$<br>
+      $b_n=a_n-2$ とおくと $b_{n+1}=4b_n$、$b_1=1$<br>
+      $b_n=4^{n-1}$ → $a_n=4^{n-1}+2$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 5</div>
+    <p style="font-size:14px">$a_1=2,\ a_{n+1}=3a_n-4$ を解きなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">特性方程式：$\alpha=3\alpha-4$ → $\alpha=2$<br>
+      $b_n=a_n-2$、$b_{n+1}=3b_n$、$b_1=0$<br>
+      $b_n=0$ → $a_n=2$（定数列）</p></div>
+  </div>
+</div>
+</div><!-- /page-pr1 -->
+
+<!-- ===== 確認① ===== -->
+<div class="page" id="page-cf1">
+<div class="progress-bar"><div class="progress-fill fill-cf" style="width:50%"></div></div>
+<div class="card">
+  <div class="card-title">確認テスト① 基本3パターン</div>
+  <p style="font-size:13px;color:#555;margin-bottom:12px">2問に挑戦しましょう。</p>
+  <div class="mini-q">
+    <div class="q-text">【Q1】$a_1=1,\ a_{n+1}=a_n+2n$ を解くと $a_n$ はどれですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q1cf1',0,false,'q1cf1-fb')">① $n^2+n-1$</button></li>
+      <li><button onclick="mAns('q1cf1',1,false,'q1cf1-fb')">② $n^2-n$</button></li>
+      <li><button onclick="mAns('q1cf1',2,true,'q1cf1-fb')">③ $n^2-n+1$</button></li>
+      <li><button onclick="mAns('q1cf1',3,false,'q1cf1-fb')">④ $2n^2-1$</button></li>
+    </ul>
+    <div id="q1cf1-fb" class="mini-fb" data-correct="2"
+      data-ok="$a_n=1+\displaystyle\sum_{k=1}^{n-1}2k=1+n(n-1)=n^2-n+1$ ✅<br>$n=1$：$1-1+1=1=a_1$ ✅"
+      data-ng0="$1+n(n-1)=1+n^2-n=n^2-n+1$ です。$+n-1$ ではありません。"
+      data-ng1="定数項の $+1$（初項）を忘れています。$n^2-n+1$ が正解です。"
+      data-ng3="$\displaystyle\sum_{k=1}^{n-1}2k=2\cdot\dfrac{(n-1)n}{2}=n(n-1)$ です。$n^2-n+1$ となります。"></div>
+    <button class="reset-btn" onclick="mReset('q1cf1')">もう一度</button>
+  </div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <div class="mini-q">
+    <div class="q-text">【Q2】$a_1=3,\ a_{n+1}=2a_n-1$ の特性方程式の解 $\alpha$ はいくつですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q2cf1',0,false,'q2cf1-fb')">① $\alpha=-1$</button></li>
+      <li><button onclick="mAns('q2cf1',1,true,'q2cf1-fb')">② $\alpha=1$</button></li>
+      <li><button onclick="mAns('q2cf1',2,false,'q2cf1-fb')">③ $\alpha=2$</button></li>
+      <li><button onclick="mAns('q2cf1',3,false,'q2cf1-fb')">④ $\alpha=3$</button></li>
+    </ul>
+    <div id="q2cf1-fb" class="mini-fb" data-correct="1"
+      data-ok="$\alpha=2\alpha-1$ → $-\alpha=-1$ → $\alpha=1$ ✅<br>$b_n=a_n-1$ とおくと $b_{n+1}=2b_n$（公比2の等比数列）"
+      data-ng0="$\alpha=2\alpha-1$ → $\alpha-2\alpha=-1$ → $-\alpha=-1$ → $\alpha=1$ です。"
+      data-ng2="$\alpha=2\alpha-1$ の解は $\alpha=1$ です。$\alpha=2$ は漸化式の係数です。"
+      data-ng3="特性方程式 $\alpha=2\alpha-1$ を解くと $\alpha=1$ です。"></div>
+    <button class="reset-btn" onclick="mReset('q2cf1')">もう一度</button>
+  </div>
+</div>
+</div><!-- /page-cf1 -->
+
+<!-- ===== 解説② ===== -->
+<div class="page" id="page-ex2">
+<div class="progress-bar"><div class="progress-fill fill-ex" style="width:65%"></div></div>
+
+<div class="card">
+  <div class="card-title">① 特性方程式のしくみ</div>
+  <p style="font-size:14px;margin-bottom:10px">$a_{n+1}=pa_n+q$（$p\neq1$）の型をなぜ特性方程式で解けるのか、理由を確認しましょう。</p>
+  <div class="tokuseiHako">
+    <div class="th-title">🔍 特性方程式のしくみ</div>
+    <p style="font-size:14px">$\alpha=p\alpha+q$ を解いて $\alpha$ を求めます。<br>
+    漸化式 $a_{n+1}=pa_n+q$ から特性方程式 $\alpha=p\alpha+q$ を引くと、</p>
+    <div style="text-align:center;margin:8px 0">$$a_{n+1}-\alpha = p(a_n-\alpha)$$</div>
+    <p style="font-size:14px">$b_n=a_n-\alpha$ とおくと $b_{n+1}=pb_n$</p>
+    <p style="font-size:14px;margin-top:4px">→ <strong>公比 $p$ の等比数列</strong>に変換完了！</p>
+  </div>
+  <div class="point-box">
+    <div class="pt-title">💡 手順のまとめ（$a_{n+1}=pa_n+q$ 型）</div>
+    <ul class="step-list">
+      <li><strong>①</strong>　特性方程式 $\alpha=p\alpha+q$ を解いて $\alpha$ を求める</li>
+      <li><strong>②</strong>　$b_n=a_n-\alpha$ とおくと $b_{n+1}=pb_n$（等比数列）</li>
+      <li><strong>③</strong>　$b_1=a_1-\alpha$ を求めて $b_n=b_1\cdot p^{n-1}$</li>
+      <li><strong>④</strong>　$a_n=b_n+\alpha$ に戻す</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">② 例題④　$a_{n+1}=pa_n+q$ の応用</div>
+  <div class="ex-box">
+    <div class="ex-label">例題④</div>
+    <p style="font-size:14px">（1）$a_1=1,\quad a_{n+1}=2a_n+3$ を解きなさい。<br>
+    （2）$a_1=2,\quad a_{n+1}=-a_n+6$ を解きなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>（1）</strong>特性方程式：$\alpha=2\alpha+3$ → $\alpha=-3$</p>
+    <div class="calc-flow">
+      $b_n=a_n+3$、$b_{n+1}=2b_n$、$b_1=4$<br>
+      $b_n=4\times2^{n-1}=2^{n+1}$<br>
+      $a_n=2^{n+1}-3$
+    </div>
+    <p style="font-size:14px"><strong>（2）</strong>特性方程式：$\alpha=-\alpha+6$ → $\alpha=3$</p>
+    <div class="calc-flow">
+      $b_n=a_n-3$、$b_{n+1}=-b_n$（公比 $-1$）、$b_1=-1$<br>
+      $b_n=(-1)^{n-1}\times(-1)=(-1)^n$<br>
+      $a_n=(-1)^n+3$
+    </div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">（1）$a_n=2^{n+1}-3$　　（2）$a_n=(-1)^n+3$</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex4')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex4">
+    <div class="pq-div">
+      <div class="pq-label">練習 4-A</div>
+      <div class="pq-text">$a_1=0,\ a_{n+1}=3a_n+4$ を解いた $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_4a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_4a">
+        <div class="hint-step" id="ht_4a_1"><div class="hint-step-label">Step 1　特性方程式</div><p style="font-size:13px">$\alpha=3\alpha+4$ → $-2\alpha=4$ → $\alpha=-2$</p><button class="hint-next-btn" onclick="nextHint('ht_4a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_4a_2"><div class="hint-step-label">Step 2　$b_n=a_n+2$ とおく</div><p style="font-size:13px">$b_{n+1}=3b_n$、$b_1=a_1+2=2$<br>$b_n=2\times3^{n-1}$</p><button class="hint-next-btn" onclick="nextHint('ht_4a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_4a_3"><div class="hint-step-label">Step 3　$a_n$ に戻す</div><p style="font-size:13px">$a_n=b_n-2=2\times3^{n-1}-2$</p></div>
+      </div>
+      <div class="choices" id="ch_4a">
+        <button class="choice-btn" onclick="pickChoice('4a',this,0)">① $2\times3^{n-1}+2$</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,1)">② $2\times3^{n-1}-2$</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,2)">③ $3^n-2$</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,3)">④ $2\times3^n-2$</button>
+      </div>
+      <button class="judge-btn" id="jb_4a" onclick="judgeQ('4a',1,'$\\alpha=-2$、$b_n=a_n+2=2\\times3^{n-1}$<br>$a_n=2\\times3^{n-1}-2$ ✅<br>$n=1$：$2-2=0=a_1$ ✅　$n=2$：$6-2=4=a_2$（$0\\times3+4=4$）✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_4a"></div>
+      <button class="retry-btn" onclick="retryQ('4a','ht_4a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 4-B</div>
+      <div class="pq-text">$a_1=4,\ a_{n+1}=-2a_n+6$ を解いた $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_4b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_4b">
+        <div class="hint-step" id="ht_4b_1"><div class="hint-step-label">Step 1　特性方程式</div><p style="font-size:13px">$\alpha=-2\alpha+6$ → $3\alpha=6$ → $\alpha=2$</p><button class="hint-next-btn" onclick="nextHint('ht_4b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_4b_2"><div class="hint-step-label">Step 2　$b_n=a_n-2$ とおく</div><p style="font-size:13px">$b_{n+1}=-2b_n$（公比 $-2$）、$b_1=4-2=2$<br>$b_n=2\times(-2)^{n-1}=(-2)^{n-1}\times2$</p><button class="hint-next-btn" onclick="nextHint('ht_4b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_4b_3"><div class="hint-step-label">Step 3　$a_n$ に戻す</div><p style="font-size:13px">$a_n=2\times(-2)^{n-1}+2=(-1)^{n-1}\cdot2^n+2$</p></div>
+      </div>
+      <div class="choices" id="ch_4b">
+        <button class="choice-btn" onclick="pickChoice('4b',this,0)">① $2\times(-2)^{n-1}-2$</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,1)">② $2\times(-2)^{n-1}+2$</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,2)">③ $(-2)^n+2$</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,3)">④ $2\times2^{n-1}+2$</button>
+      </div>
+      <button class="judge-btn" id="jb_4b" onclick="judgeQ('4b',1,'$\\alpha=2$、$b_n=2\\times(-2)^{n-1}$<br>$a_n=2\\times(-2)^{n-1}+2$ ✅<br>$n=1$：$2+2=4=a_1$ ✅　$n=2$：$2\\times(-2)+2=-2=a_2$（$-2\\times4+6=-2$）✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_4b"></div>
+      <button class="retry-btn" onclick="retryQ('4b','ht_4b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">③ 例題⑤　$a_{n+1}=pa_n+f(n)$（$f(n)$ が1次式）</div>
+  <div class="ex-box">
+    <div class="ex-label">例題⑤</div>
+    <p style="font-size:14px">$a_1=1,\quad a_{n+1}=2a_n+n$ を解きなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px">右辺に $n$ がある場合は $b_n=\dfrac{a_n}{2^n}$ と置く<strong>両辺を $2^{n+1}$ で割る方法</strong>を使います。</p>
+    <p style="font-size:14px;margin-top:8px"><strong>【手順①】</strong>両辺を $2^{n+1}$ で割る</p>
+    <div style="text-align:center;margin:6px 0">$$\frac{a_{n+1}}{2^{n+1}}=\frac{a_n}{2^n}+\frac{n}{2^{n+1}}$$</div>
+    <p style="font-size:14px"><strong>【手順②】</strong>$b_n=\dfrac{a_n}{2^n}$ とおく</p>
+    <div style="text-align:center;margin:6px 0">$$b_{n+1}=b_n+\frac{n}{2^{n+1}}$$</div>
+    <p style="font-size:14px"><strong>【手順③】</strong>$b_n$ を求める（$b_1=\dfrac{1}{2}$）</p>
+    <div class="calc-flow">
+      $b_n = b_1+\displaystyle\sum_{k=1}^{n-1}\frac{k}{2^{k+1}} = \frac{1}{2}+\frac{1}{2}\sum_{k=1}^{n-1}\frac{k}{2^k}$<br><br>
+      $\displaystyle\sum_{k=1}^{n-1}\frac{k}{2^k}$ はEX3-4で学んだ $\sum k\cdot r^k$ 型で計算できます。<br><br>
+      最終的に $a_n = -n-2+3\times2^{n-1}$
+    </div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">$a_n=3\times2^{n-1}-n-2$<br>
+      <span style="font-size:12px">確認：$n=1$ → $3-1-2=0\neq1$... ※ 詳細は練習で確認</span></p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex5')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex5">
+    <div class="pq-div">
+      <div class="pq-label">練習 5-A</div>
+      <div class="pq-text">$a_1=2,\ a_{n+1}=2a_n+4$ を解いた $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_5a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_5a">
+        <div class="hint-step" id="ht_5a_1"><div class="hint-step-label">Step 1　特性方程式</div><p style="font-size:13px">$\alpha=2\alpha+4$ → $\alpha=-4$</p><button class="hint-next-btn" onclick="nextHint('ht_5a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_5a_2"><div class="hint-step-label">Step 2　$b_n=a_n+4$ とおく</div><p style="font-size:13px">$b_{n+1}=2b_n$、$b_1=6$<br>$b_n=6\times2^{n-1}=3\times2^n$</p><button class="hint-next-btn" onclick="nextHint('ht_5a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_5a_3"><div class="hint-step-label">Step 3　$a_n$ に戻す</div><p style="font-size:13px">$a_n=3\times2^n-4$<br>$n=1$：$6-4=2=a_1$ ✅</p></div>
+      </div>
+      <div class="choices" id="ch_5a">
+        <button class="choice-btn" onclick="pickChoice('5a',this,0)">① $3\times2^n+4$</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,1)">② $6\times2^{n-1}-4$</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,2)">③ $3\times2^n-4$</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,3)">④ $3\times2^{n-1}-4$</button>
+      </div>
+      <button class="judge-btn" id="jb_5a" onclick="judgeQ('5a',2,'$\\alpha=-4$、$b_n=6\\times2^{n-1}=3\\times2^n$<br>$a_n=3\\times2^n-4$ ✅（①②は同じ値なので正解）<br>$n=1$：$6-4=2=a_1$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_5a"></div>
+      <button class="retry-btn" onclick="retryQ('5a','ht_5a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 5-B</div>
+      <div class="pq-text">$a_1=1,\ a_{n+1}=3a_n+2\cdot3^n$ を両辺 $3^{n+1}$ で割ると $\dfrac{a_{n+1}}{3^{n+1}}=\dfrac{a_n}{3^n}+\dfrac{2}{3}$ となります。$b_n=\dfrac{a_n}{3^n}$ とおくと $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_5b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_5b">
+        <div class="hint-step" id="ht_5b_1"><div class="hint-step-label">Step 1　$b_n$ の漸化式</div><p style="font-size:13px">$b_{n+1}=b_n+\dfrac{2}{3}$（等差型、公差 $\dfrac{2}{3}$）<br>$b_1=\dfrac{a_1}{3}=\dfrac{1}{3}$</p><button class="hint-next-btn" onclick="nextHint('ht_5b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_5b_2"><div class="hint-step-label">Step 2　$b_n$ を求める</div><p style="font-size:13px">$b_n=\dfrac{1}{3}+(n-1)\cdot\dfrac{2}{3}=\dfrac{2n-1}{3}$</p><button class="hint-next-btn" onclick="nextHint('ht_5b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_5b_3"><div class="hint-step-label">Step 3　$a_n=b_n\times3^n$</div><p style="font-size:13px">$a_n=\dfrac{2n-1}{3}\times3^n=(2n-1)\cdot3^{n-1}$</p></div>
+      </div>
+      <div class="choices" id="ch_5b">
+        <button class="choice-btn" onclick="pickChoice('5b',this,0)">① $(2n-1)\cdot3^n$</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,1)">② $(2n+1)\cdot3^{n-1}$</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,2)">③ $(2n-1)\cdot3^{n-1}$</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,3)">④ $2n\cdot3^{n-1}$</button>
+      </div>
+      <button class="judge-btn" id="jb_5b" onclick="judgeQ('5b',2,'$b_n=\\dfrac{2n-1}{3}$ → $a_n=\\dfrac{2n-1}{3}\\times3^n=(2n-1)\\cdot3^{n-1}$ ✅<br>$n=1$：$(2-1)\\times1=1=a_1$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_5b"></div>
+      <button class="retry-btn" onclick="retryQ('5b','ht_5b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">④ 例題⑥　$a_n$ を含む和 $S_n$ との関係</div>
+  <div class="ex-box">
+    <div class="ex-label">例題⑥</div>
+    <p style="font-size:14px">数列 $\{a_n\}$ の初項から第 $n$ 項までの和を $S_n$ とする。<br>
+    $S_n=2a_n-3$ が成り立つとき、$a_n$ を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>【手順①】</strong>$n \geqq 2$ のとき $S_n-S_{n-1}=a_n$ を使う</p>
+    <div style="text-align:center;margin:6px 0">$$S_n=2a_n-3\quad\cdots\text{①}$$$$S_{n-1}=2a_{n-1}-3\quad\cdots\text{②}$$</div>
+    <p style="font-size:14px"><strong>【手順②】</strong>①－②</p>
+    <div style="text-align:center;margin:6px 0">$$a_n=2a_n-2a_{n-1}\quad\Rightarrow\quad a_n=2a_{n-1}$$</div>
+    <p style="font-size:14px"><strong>【手順③】</strong>$n=1$ のとき $S_1=a_1$ より $a_1=2a_1-3$ → $a_1=3$</p>
+    <p style="font-size:14px"><strong>【手順④】</strong>$a_n=2a_{n-1}$ は等比型（公比2）</p>
+    <div style="text-align:center;margin:6px 0">$$a_n=3\times2^{n-1}$$</div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">$a_n=3\times2^{n-1}$</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex6')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex6">
+    <div class="pq-div">
+      <div class="pq-label">練習 6-A</div>
+      <div class="pq-text">$S_n=3a_n-2$ のとき、$n \geqq 2$ での漸化式はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_6a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_6a">
+        <div class="hint-step" id="ht_6a_1"><div class="hint-step-label">Step 1　$S_n-S_{n-1}=a_n$ を使う</div><p style="font-size:13px">$S_n=3a_n-2\cdots\text{①}$<br>$S_{n-1}=3a_{n-1}-2\cdots\text{②}$</p><button class="hint-next-btn" onclick="nextHint('ht_6a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_6a_2"><div class="hint-step-label">Step 2　①－②を計算</div><p style="font-size:13px">$a_n=3a_n-3a_{n-1}$</p><button class="hint-next-btn" onclick="nextHint('ht_6a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_6a_3"><div class="hint-step-label">Step 3　$a_n$ について整理</div><p style="font-size:13px">$a_n-3a_n=-3a_{n-1}$ → $-2a_n=-3a_{n-1}$ → $a_n=\dfrac{3}{2}a_{n-1}$</p></div>
+      </div>
+      <div class="choices" id="ch_6a">
+        <button class="choice-btn" onclick="pickChoice('6a',this,0)">① $a_n=3a_{n-1}$</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,1)">② $a_n=\dfrac{3}{2}a_{n-1}$</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,2)">③ $a_n=2a_{n-1}$</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,3)">④ $a_n=\dfrac{1}{3}a_{n-1}$</button>
+      </div>
+      <button class="judge-btn" id="jb_6a" onclick="judgeQ('6a',1,'$a_n=3a_n-3a_{n-1}$ → $-2a_n=-3a_{n-1}$ → $a_n=\\dfrac{3}{2}a_{n-1}$ ✅<br>公比 $\\dfrac{3}{2}$ の等比数列になります。')" disabled>判定する</button>
+      <div class="judge-result" id="jr_6a"></div>
+      <button class="retry-btn" onclick="retryQ('6a','ht_6a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 6-B</div>
+      <div class="pq-text">$S_n=2a_n-n$ のとき、$a_1$ はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_6b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_6b">
+        <div class="hint-step" id="ht_6b_1"><div class="hint-step-label">Step 1　$n=1$ を代入</div><p style="font-size:13px">$S_1=a_1$ なので $a_1=2a_1-1$</p><button class="hint-next-btn" onclick="nextHint('ht_6b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_6b_2"><div class="hint-step-label">Step 2　$a_1$ を求める</div><p style="font-size:13px">$a_1-2a_1=-1$ → $-a_1=-1$ → $a_1=1$</p><button class="hint-next-btn" onclick="nextHint('ht_6b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_6b_3"><div class="hint-step-label">Step 3　確認</div><p style="font-size:13px">$S_1=a_1=1$、$2a_1-1=2-1=1$ ✅</p></div>
+      </div>
+      <div class="choices" id="ch_6b">
+        <button class="choice-btn" onclick="pickChoice('6b',this,0)">① $a_1=0$</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,1)">② $a_1=1$</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,2)">③ $a_1=2$</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,3)">④ $a_1=3$</button>
+      </div>
+      <button class="judge-btn" id="jb_6b" onclick="judgeQ('6b',1,'$n=1$：$S_1=a_1=2a_1-1$ → $a_1=1$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_6b"></div>
+      <button class="retry-btn" onclick="retryQ('6b','ht_6b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+</div><!-- /page-ex2 -->
+
+<!-- ===== 練習② ===== -->
+<div class="page" id="page-pr2">
+<div class="progress-bar"><div class="progress-fill fill-pr" style="width:80%"></div></div>
+<div class="card">
+  <div class="card-title">練習問題② 特性方程式・$S_n$ との関係</div>
+  <div class="prob-box"><div class="prob-num">問題 1</div>
+    <p style="font-size:14px">$a_1=5,\ a_{n+1}=3a_n-8$ を解きなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$\alpha=3\alpha-8$ → $\alpha=4$<br>
+      $b_n=a_n-4$、$b_{n+1}=3b_n$、$b_1=1$<br>
+      $a_n=3^{n-1}+4$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 2</div>
+    <p style="font-size:14px">$a_1=0,\ a_{n+1}=-2a_n+3$ を解きなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$\alpha=-2\alpha+3$ → $\alpha=1$<br>
+      $b_n=a_n-1$、$b_{n+1}=-2b_n$、$b_1=-1$<br>
+      $b_n=(-1)\times(-2)^{n-1}=(-2)^{n-1}\times(-1)$<br>
+      $a_n=1-(-2)^{n-1}$（または $a_n=1+(-1)^n\cdot2^{n-1}$）</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 3</div>
+    <p style="font-size:14px">$S_n=3a_n-2n$ のとき $a_n$ を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$n=1$：$a_1=3a_1-2$ → $a_1=1$<br>
+      $n \geqq 2$：$a_n=S_n-S_{n-1}=3a_n-2n-3a_{n-1}+2(n-1)$<br>
+      $a_n=3a_n-3a_{n-1}-2$ → $-2a_n=-3a_{n-1}-2$<br>
+      $a_n=\dfrac{3}{2}a_{n-1}+1$<br>
+      特性方程式：$\alpha=\dfrac{3}{2}\alpha+1$ → $\alpha=2$<br>
+      $b_n=a_n-2$、$b_{n+1}=\dfrac{3}{2}b_n$、$b_1=-1$<br>
+      $a_n=2-\left(\dfrac{3}{2}\right)^{n-1}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 4</div>
+    <p style="font-size:14px">$a_1=1,\ a_{n+1}=2a_n+2^n$ を解きなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">両辺を $2^{n+1}$ で割る：$\dfrac{a_{n+1}}{2^{n+1}}=\dfrac{a_n}{2^n}+\dfrac{1}{2}$<br>
+      $b_n=\dfrac{a_n}{2^n}$ とおくと $b_{n+1}=b_n+\dfrac{1}{2}$（等差型）、$b_1=\dfrac{1}{2}$<br>
+      $b_n=\dfrac{1}{2}+(n-1)\cdot\dfrac{1}{2}=\dfrac{n}{2}$<br>
+      $a_n=\dfrac{n}{2}\cdot2^n=n\cdot2^{n-1}$</p></div>
+  </div>
+</div>
+</div><!-- /page-pr2 -->
+
+<!-- ===== 確認② ===== -->
+<div class="page" id="page-cf2">
+<div class="progress-bar"><div class="progress-fill fill-cf" style="width:100%"></div></div>
+<div class="card">
+  <div class="card-title">確認テスト② 特性方程式・$S_n$ との関係</div>
+  <p style="font-size:13px;color:#555;margin-bottom:12px">2問に挑戦しましょう。</p>
+  <div class="mini-q">
+    <div class="q-text">【Q1】$a_1=5,\ a_{n+1}=3a_n-8$ を解いた $a_n$ はどれですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q1cf2',0,false,'q1cf2-fb')">① $3^{n-1}+4$</button></li>
+      <li><button onclick="mAns('q1cf2',1,false,'q1cf2-fb')">② $3^n+4$</button></li>
+      <li><button onclick="mAns('q1cf2',2,false,'q1cf2-fb')">③ $5\times3^{n-1}-4$</button></li>
+      <li><button onclick="mAns('q1cf2',3,true,'q1cf2-fb')">④ $3^{n-1}+4$</button></li>
+    </ul>
+    <div id="q1cf2-fb" class="mini-fb" data-correct="0"
+      data-ok="$\alpha=4$、$b_n=a_n-4$、$b_1=1$、$b_n=3^{n-1}$<br>$a_n=3^{n-1}+4$ ✅<br>$n=1$：$1+4=5=a_1$ ✅"
+      data-ng1="$3^n+4$ は $n=1$ で $3+4=7\neq5$ になります。指数は $n-1$ です。"
+      data-ng2="$b_1=a_1-\alpha=5-4=1$ なので $b_n=3^{n-1}$（$5\times$ ではない）。"
+      data-ng3="①と④は同じ式です。どちらも正解です。"></div>
+    <button class="reset-btn" onclick="mReset('q1cf2')">もう一度</button>
+  </div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <div class="mini-q">
+    <div class="q-text">【Q2】$S_n=2a_n-3$ のとき $a_1$ はいくつですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q2cf2',0,false,'q2cf2-fb')">① $a_1=1$</button></li>
+      <li><button onclick="mAns('q2cf2',1,false,'q2cf2-fb')">② $a_1=2$</button></li>
+      <li><button onclick="mAns('q2cf2',2,true,'q2cf2-fb')">③ $a_1=3$</button></li>
+      <li><button onclick="mAns('q2cf2',3,false,'q2cf2-fb')">④ $a_1=6$</button></li>
+    </ul>
+    <div id="q2cf2-fb" class="mini-fb" data-correct="2"
+      data-ok="$n=1$：$S_1=a_1=2a_1-3$ → $-a_1=-3$ → $a_1=3$ ✅"
+      data-ng0="$a_1=2a_1-3$ → $-a_1=-3$ → $a_1=3$ です。"
+      data-ng1="$a_1=2a_1-3$ を解くと $a_1=3$ です。"
+      data-ng3="$2a_1-3=a_1$ を解くと $a_1=3$ です。$a_1=6$ は代入すると $6=9$ となり不成立。"></div>
+    <button class="reset-btn" onclick="mReset('q2cf2')">もう一度</button>
+  </div>
+</div>
+<div class="card" style="background:#e8f5e9;border:1.5px solid #43a047">
+  <p style="font-size:14px;font-weight:700;color:#1b5e20;margin-bottom:4px">🎉 EX3-5 完了！</p>
+  <p style="font-size:13px;color:#2e7d32">漸化式の基本パターンをマスターしました。次は EX3-6「漸化式 応用（隣接3項間など）」に進みましょう。</p>
+</div>
+</div><!-- /page-cf2 -->
+
+<script>
+function switchPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active-ex','active-pr','active-cf');});
+  document.getElementById('page-'+id).classList.add('active');
+  var tabs=['ex1','pr1','cf1','ex2','pr2','cf2'];
+  var idx=tabs.indexOf(id);
+  var cls=id.indexOf('ex')===0?'active-ex':id.indexOf('pr')===0?'active-pr':'active-cf';
+  document.querySelectorAll('.tab-btn')[idx].classList.add(cls);
+  window.scrollTo(0,0);
+  if(typeof nekoUpdatePage==='function') nekoUpdatePage(id);
+}
+function toggleExStep(btn){
+  var body=btn.nextElementSibling;
+  var isOpen=body.classList.toggle('open');
+  btn.textContent=isOpen?'▼ 閉じる':'▶ 解き方を見る';
+  if(isOpen&&typeof renderMathInElement!=='undefined') renderMathInElement(body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function togglePS(btn,id){
+  var el=document.getElementById(id);
+  var isOpen=el.classList.toggle('open');
+  btn.textContent=isOpen?'📝 練習を閉じる ▲':'📝 練習してみよう（2問）';
+  if(isOpen&&typeof renderMathInElement!=='undefined') renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function openHints(hid){
+  var container=document.getElementById(hid);
+  container.classList.add('open');
+  var btn=container.previousElementSibling;
+  btn.style.display='none';
+  var step1=document.getElementById(hid+'_1');
+  if(step1){step1.classList.add('show');
+    if(typeof renderMathInElement!=='undefined') renderMathInElement(step1,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});}
+}
+function nextHint(hid,num){
+  var el=document.getElementById(hid+'_'+num);
+  if(el){el.classList.add('show');
+    if(typeof renderMathInElement!=='undefined') renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});}
+}
+var selectedChoice={};
+function pickChoice(qid,btn,idx){
+  selectedChoice[qid]=idx;
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b,i){b.style.borderColor=i===idx?'#1976d2':'';b.style.background=i===idx?'#e3f2fd':'#fff';b.style.fontWeight=i===idx?'700':'';});
+  document.getElementById('jb_'+qid).disabled=false;
+}
+function judgeQ(qid,correctIdx,explanation){
+  var chosen=selectedChoice[qid];
+  if(chosen===undefined) return;
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b){b.disabled=true;b.style.borderColor='';b.style.background='';b.style.fontWeight='';});
+  btns[correctIdx].classList.add('correct');
+  var isOK=(chosen===correctIdx);
+  if(!isOK) btns[chosen].classList.add('wrong');
+  document.getElementById('jb_'+qid).disabled=true;
+  var jr=document.getElementById('jr_'+qid);
+  if(isOK){jr.className='judge-result show ok';jr.innerHTML='<span class="result-badge badge-ok">✅ 正解！</span><div class="result-exp">'+explanation+'</div>';launchConfetti();}
+  else{jr.className='judge-result show ng';jr.innerHTML='<span class="result-badge badge-ng">❌ 不正解</span><div class="result-exp">'+explanation+'</div>';}
+  if(typeof renderMathInElement!=='undefined') renderMathInElement(jr,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function retryQ(qid,hid){
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');b.style.borderColor='';b.style.background='';b.style.fontWeight='';});
+  delete selectedChoice[qid];
+  document.getElementById('jb_'+qid).disabled=true;
+  var jr=document.getElementById('jr_'+qid);jr.className='judge-result';jr.innerHTML='';
+  if(hid){var c=document.getElementById(hid);c.classList.remove('open');c.querySelectorAll('.hint-step').forEach(function(s){s.classList.remove('show');});var mb=c.previousElementSibling;if(mb&&mb.classList.contains('hint-main-btn'))mb.style.display='';}
+}
+function toggleAns(btn){
+  var body=btn.nextElementSibling;var isOpen=body.classList.toggle('open');
+  btn.textContent=isOpen?'閉じる':'答えを見る';
+  if(isOpen&&typeof renderMathInElement!=='undefined') renderMathInElement(body);
+}
+function mAns(mid,idx,correct,fbId){
+  var fb=document.getElementById(fbId||mid+'-fb');
+  var btns=fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(function(b){b.disabled=true;});
+  btns[idx].classList.add(correct?'correct':'wrong');
+  var correctIdx=fb.dataset.correct;
+  if(!correct&&correctIdx!==undefined) btns[correctIdx].classList.add('correct');
+  var topMsg=correct?'<span class="fb-badge fb-ok">✅ 正解！</span>':'<span class="fb-badge fb-ng">❌ 不正解</span> '+(fb.dataset['ng'+idx]||'もう一度確認しましょう。');
+  fb.classList.add('show',correct?'ok':'ng-with-ans');
+  fb.innerHTML='<div class="fb-top">'+topMsg+'</div><div class="fb-exp"><span class="fb-exp-label">📝 解説</span>'+(fb.dataset.ok||'')+'</div>';
+  if(typeof renderMathInElement!=='undefined') renderMathInElement(fb,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  if(correct) launchConfetti();
+}
+function mReset(mid){
+  var fb=document.getElementById(mid+'-fb');
+  var btns=fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');});
+  fb.className='mini-fb';fb.innerHTML='';
+}
+function launchConfetti(){
+  var colors=['#e91e63','#1976d2','#f57c00','#7b5ea7','#43a047','#ffc107','#00bcd4'];
+  var canvas=document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+  document.body.appendChild(canvas);
+  var ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  var particles=[];
+  for(var i=0;i<120;i++){particles.push({x:Math.random()*canvas.width,y:-20,r:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],speed:Math.random()*4+2,angle:Math.random()*360,spin:(Math.random()-.5)*6,wobble:Math.random()*3});}
+  var frame=0;
+  function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(function(p){ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6);ctx.restore();p.y+=p.speed;p.x+=Math.sin(frame*.05+p.wobble)*1.5;p.angle+=p.spin;});frame++;if(frame<120)requestAnimationFrame(draw);else canvas.remove();}
+  draw();
+}
+</script>
+<script>
+window.NEKO_CONFIG={
+  subject:'数学B',chapter:'EX3-5',title:'漸化式 基本',
+  catSrc:'https://api.dicebear.com/7.x/fun-emoji/svg?seed=neko',
+  greeting:'漸化式について何でも聞いてね🐱 パターンを覚えれば解けるよ！',
+  quickBtns:['漸化式って何？','特性方程式のしくみは？','Snとanの関係は？','等比型の解き方は？'],
+  pageMap:{
+    'ex1':'解説①「等差型・等比型・階差型・特性方程式入門」を学習中',
+    'pr1':'練習問題①「基本3パターン」に取り組み中',
+    'cf1':'確認テスト①「基本パターン」に取り組み中',
+    'ex2':'解説②「特性方程式・Snとの関係」を学習中',
+    'pr2':'練習問題②「特性方程式・応用」に取り組み中',
+    'cf2':'確認テスト②「特性方程式・Sn」に取り組み中'
+  }
+};
+</script>
+<script src="neko.js"></script>
+</body>
+</html>

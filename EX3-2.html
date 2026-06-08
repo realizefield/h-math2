@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EX3-2 等比数列｜GAMBA数学B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  renderMathInElement(document.body,{
+    delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],
+    throwOnError:false
+  });
+});
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;font-size:15px;line-height:1.7}
+.top-header{background:#2055b0;color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.top-header .brand{font-size:18px;font-weight:700;letter-spacing:2px}
+.top-header .unit-title{font-size:13px;opacity:.85}
+.tab-nav{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;overflow-x:auto}
+.tab-btn{flex:1;min-width:80px;padding:10px 4px;font-size:12px;font-weight:700;border:none;background:transparent;cursor:pointer;color:#888;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.tab-btn.active-ex{color:#e91e63;border-bottom-color:#e91e63}
+.tab-btn.active-pr{color:#1976d2;border-bottom-color:#1976d2}
+.tab-btn.active-cf{color:#f57c00;border-bottom-color:#f57c00}
+.page{display:none;padding:16px;max-width:680px;margin:0 auto}
+.page.active{display:block}
+.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card-title{font-size:13px;font-weight:700;color:#2055b0;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #e8eaf6}
+.point-box{background:#fff8e1;border-left:4px solid #ffc107;border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+.point-box .pt-title{font-weight:700;color:#e65100;margin-bottom:6px;font-size:13px}
+.def-box{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;margin:12px 0}
+.def-box .def-title{font-weight:700;color:#1b5e20;margin-bottom:8px;font-size:13px}
+.formula-box{background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px;margin:12px 0;text-align:center}
+.formula-box .f-label{font-size:12px;color:#1565c0;font-weight:700;margin-bottom:6px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;line-height:1.2}
+.frac .num{border-bottom:1.5px solid currentColor;padding:0 3px;font-size:.92em}
+.frac .den{padding:0 3px;font-size:.92em}
+.ex-step-btn{background:#7e57c2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s;margin:8px 0}
+.ex-step-btn:hover{background:#5e35b1}
+.ex-step-body{display:none;margin-top:8px;background:#f3e5f5;border-radius:8px;padding:12px;font-size:14px}
+.ex-step-body.open{display:block}
+.ex-box{background:#fce4ec;border-radius:8px;padding:12px;margin:10px 0}
+.ex-box .ex-label{font-size:12px;font-weight:700;color:#880e4f;margin-bottom:4px}
+.ptoggle-btn{display:block;width:100%;margin:12px 0 0;background:linear-gradient(90deg,#1976d2,#42a5f5);color:#fff;border:none;border-radius:24px;padding:9px 0;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;letter-spacing:.5px}
+.ptoggle-btn:hover{opacity:.88}
+.practice-set{display:none;margin-top:10px;background:#f0f4ff;border:2px solid #90caf9;border-radius:12px;padding:14px}
+.practice-set.open{display:block}
+.pq-label{font-size:11px;font-weight:700;color:#1565c0;background:#bbdefb;display:inline-block;padding:2px 10px;border-radius:10px;margin-bottom:8px}
+.pq-text{font-size:14px;font-weight:500;margin-bottom:10px;line-height:1.7}
+.hint-main-btn{background:#ff8f00;color:#fff;border:none;border-radius:16px;padding:5px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.hint-main-btn:hover{background:#e65100}
+.hint-steps{margin-top:8px;display:none}
+.hint-steps.open{display:block}
+.hint-step{display:none;background:#fff8e1;border-left:3px solid #ffc107;border-radius:6px;padding:9px 12px;margin-bottom:6px;font-size:13px}
+.hint-step.show{display:block}
+.hint-step-label{font-size:11px;font-weight:700;color:#e65100;margin-bottom:4px}
+.hint-next-btn{background:#ffc107;color:#5d4037;border:none;border-radius:14px;padding:4px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px;transition:.2s}
+.hint-next-btn:hover{background:#ffb300}
+.choices{display:flex;flex-direction:column;gap:7px;margin:10px 0}
+.choice-btn{width:100%;text-align:left;padding:9px 14px;border:2px solid #bbdefb;border-radius:9px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-btn:hover:not(:disabled){border-color:#1976d2;background:#e3f2fd}
+.choice-btn.correct{background:#e8f5e9!important;border-color:#43a047!important;color:#1b5e20;font-weight:700}
+.choice-btn.wrong{background:#ffebee!important;border-color:#e53935!important;color:#b71c1c}
+.judge-btn{background:#e91e63;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px;transition:.2s}
+.judge-btn:hover:not(:disabled){background:#c2185b}
+.judge-btn:disabled{background:#bdbdbd;cursor:default}
+.retry-btn{background:#e0e0e0;color:#333;border:none;border-radius:16px;padding:5px 18px;font-size:12px;cursor:pointer;font-family:inherit;margin-top:8px;display:block;transition:.2s}
+.retry-btn:hover{background:#bdbdbd}
+.judge-result{display:none;margin-top:10px;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.8}
+.judge-result.show{display:block}
+.judge-result.ok{background:#e8f5e9;border-left:4px solid #43a047}
+.judge-result.ng{background:#fff8e1;border-left:4px solid #ff9800}
+.result-badge{font-weight:700;padding:2px 10px;border-radius:10px;margin-right:6px;font-size:12px}
+.badge-ok{background:#c8e6c9;color:#1b5e20}
+.badge-ng{background:#ffcdd2;color:#b71c1c}
+.result-exp{background:rgba(255,255,255,.7);border-radius:6px;padding:8px 10px;margin-top:8px;font-size:13px}
+.mini-q{margin:12px 0}
+.mini-q .q-text{font-size:14px;margin-bottom:8px;font-weight:500}
+.choice-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.choice-list li button{width:100%;text-align:left;padding:9px 12px;border:2px solid #e0e0e0;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
+.choice-list li button:hover{border-color:#7e57c2;background:#f3e5f5}
+.choice-list li button.correct{background:#e8f5e9;border-color:#43a047;color:#1b5e20;font-weight:700}
+.choice-list li button.wrong{background:#ffebee;border-color:#e53935;color:#b71c1c}
+.mini-fb{font-size:13px;margin-top:6px;padding:8px 10px;border-radius:6px;display:none}
+.mini-fb.show{display:block}
+.mini-fb.ok{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:12px 14px;line-height:1.8}
+.mini-fb.ng-with-ans{background:#fff8e1;border-left:4px solid #ff9800;border-radius:8px;padding:12px 14px;line-height:1.8}
+.fb-top{margin-bottom:8px;font-size:13px}
+.fb-badge{font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px;font-size:12px}
+.fb-badge.fb-ok{background:#c8e6c9;color:#1b5e20}
+.fb-badge.fb-ng{background:#ffcdd2;color:#b71c1c}
+.fb-exp{background:rgba(255,255,255,0.7);border-radius:6px;padding:8px 10px;margin-top:6px;font-size:13px}
+.fb-exp-label{font-weight:700;color:#e65100;margin-right:6px;font-size:12px}
+.reset-btn{margin-top:8px;background:#eeeeee;border:none;border-radius:16px;padding:5px 16px;font-size:12px;cursor:pointer;font-family:inherit}
+.prob-box{background:#fff;border:2px solid #e0e0e0;border-radius:10px;padding:14px;margin:12px 0}
+.prob-box .prob-num{font-size:12px;font-weight:700;color:#1976d2;margin-bottom:6px}
+.ans-btn{background:#1976d2;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:inherit;margin-top:8px;transition:.2s}
+.ans-btn:hover{background:#1565c0}
+.ans-body{display:none;margin-top:10px;background:#e3f2fd;border-radius:8px;padding:12px;font-size:14px}
+.ans-body.open{display:block}
+.ans-body .ans-label{font-weight:700;color:#0d47a1;margin-bottom:4px;font-size:13px}
+.progress-bar{height:4px;background:#e0e0e0;border-radius:2px;margin-bottom:16px}
+.progress-fill{height:100%;border-radius:2px;transition:width .4s}
+.fill-ex{background:#e91e63}.fill-pr{background:#1976d2}.fill-cf{background:#f57c00}
+.step-list{list-style:none;padding:0;margin:8px 0}
+.step-list li{padding:5px 0 5px 20px;position:relative;font-size:14px;border-bottom:1px dashed #e0e0e0}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:"▶";position:absolute;left:0;color:#2055b0;font-size:11px;top:7px}
+.check-box{background:#e8f0fe;border-left:4px solid #2055b0;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.calc-flow{background:#f3e5f5;border-radius:8px;padding:12px;margin:8px 0;font-size:14px;line-height:2.2}
+.pq-div{margin-bottom:6px}
+.ratio-fig{display:flex;align-items:center;justify-content:center;gap:0;margin:10px 0;flex-wrap:wrap}
+.ratio-num{font-size:15px;font-weight:700;background:#e3f2fd;border:2px solid #90caf9;border-radius:8px;padding:6px 12px;min-width:44px;text-align:center}
+.ratio-arrow{font-size:13px;color:#e91e63;font-weight:700;padding:0 6px}
+</style>
+</head>
+<body>
+<div class="top-header">
+  <div class="brand">GAMBA</div>
+  <div class="unit-title">数学B ｜ 第1章② 等比数列</div>
+</div>
+<div class="tab-nav">
+  <button class="tab-btn active-ex" onclick="switchPage('ex1')">解説①</button>
+  <button class="tab-btn" onclick="switchPage('pr1')">練習①</button>
+  <button class="tab-btn" onclick="switchPage('cf1')">確認①</button>
+  <button class="tab-btn" onclick="switchPage('ex2')">解説②</button>
+  <button class="tab-btn" onclick="switchPage('pr2')">練習②</button>
+  <button class="tab-btn" onclick="switchPage('cf2')">確認②</button>
+</div>
+
+<!-- ===== 解説① ===== -->
+<div class="page active" id="page-ex1">
+<div class="progress-bar"><div class="progress-fill fill-ex" style="width:25%"></div></div>
+
+<div class="card">
+  <div class="card-title">① 等比数列とは</div>
+  <p style="font-size:14px;margin-bottom:10px">前の項に一定の数を<strong>かけ続ける</strong>数列を<strong>等比数列</strong>といいます。この「一定の数」を<strong>公比 $r$</strong> といいます。</p>
+  <div class="ratio-fig">
+    <div class="ratio-num">3</div>
+    <div class="ratio-arrow">×2 ▶</div>
+    <div class="ratio-num">6</div>
+    <div class="ratio-arrow">×2 ▶</div>
+    <div class="ratio-num">12</div>
+    <div class="ratio-arrow">×2 ▶</div>
+    <div class="ratio-num">24</div>
+    <div class="ratio-arrow">×2 ▶</div>
+    <div class="ratio-num">…</div>
+  </div>
+  <p style="font-size:14px;margin-top:8px">この数列は公比 $r=2$ の等比数列です。</p>
+
+  <div class="point-box" style="margin-top:12px">
+    <div class="pt-title">⚠️ 公比は「後ろ ÷ 前」で求める</div>
+    <p style="font-size:14px">$6\div3=2,\quad 12\div6=2,\quad 24\div12=2$<br>後ろの項を前の項で割ると公比が求まります。</p>
+  </div>
+
+  <div class="def-box" style="margin-top:10px">
+    <div class="def-title">📖 等差数列との違い</div>
+    <ul class="step-list">
+      <li><strong>等差数列</strong>：一定の数を「<strong>たす</strong>」　→ 公差 $d$</li>
+      <li><strong>等比数列</strong>：一定の数を「<strong>かける</strong>」　→ 公比 $r$</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">② 一般項の公式</div>
+  <p style="font-size:14px;margin-bottom:10px">初項 $a$、公比 $r$ の等比数列を並べると、</p>
+  <div style="text-align:center;font-size:14px;margin:8px 0;line-height:2.2">
+    $a_1=a$<br>
+    $a_2=a\cdot r$<br>
+    $a_3=a\cdot r\cdot r=ar^2$<br>
+    $a_n=\underbrace{a\cdot r\cdot r\cdots r}_{(n-1)\text{個}}=ar^{n-1}$
+  </div>
+  <div class="formula-box">
+    <div class="f-label">【重要公式】等比数列の一般項</div>
+    $$a_n = ar^{n-1}$$
+    <p style="font-size:12px;color:#555;margin-top:6px">$a$：初項　$r$：公比　$n$：第何項か</p>
+  </div>
+  <div class="check-box">
+    <p style="font-size:14px">等差数列 $a_n=a+(n-1)d$ と比べると、「たす」が「かける」、「$d$」が「$r^{n-1}$」になっています。</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">③ 例題①　一般項の基本</div>
+  <div class="ex-box">
+    <div class="ex-label">例題①</div>
+    <p style="font-size:14px">等比数列 $2,\ -6,\ 18,\ -54,\ \ldots$ について、<br>（1）公比 $r$ を求めなさい。<br>（2）一般項 $a_n$ を求めなさい。<br>（3）第6項 $a_6$ を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>（1）</strong>後ろ÷前で公比を求める：$r=\dfrac{-6}{2}=-3$</p>
+    <p style="font-size:14px;margin-top:8px"><strong>（2）</strong>初項 $a=2$、公比 $r=-3$ を公式に代入：</p>
+    <div style="text-align:center;margin:6px 0">$$a_n=2\times(-3)^{n-1}$$</div>
+    <p style="font-size:14px;margin-top:8px"><strong>（3）</strong>$n=6$ を代入：</p>
+    <div style="text-align:center;margin:6px 0">$$a_6=2\times(-3)^5=2\times(-243)=-486$$</div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">（1）$r=-3$　（2）$a_n=2\times(-3)^{n-1}$　（3）$a_6=-486$</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex1')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex1">
+    <div class="pq-div">
+      <div class="pq-label">練習 1-A</div>
+      <div class="pq-text">等比数列 $3,\ 6,\ 12,\ 24,\ \ldots$ の一般項 $a_n$ はどれですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_1a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_1a">
+        <div class="hint-step" id="ht_1a_1"><div class="hint-step-label">Step 1　公比を求める</div><p style="font-size:13px">後ろ÷前を計算しましょう。$6\div3=?$</p><button class="hint-next-btn" onclick="nextHint('ht_1a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_1a_2"><div class="hint-step-label">Step 2　初項と公比を確認</div><p style="font-size:13px">初項 $a=3$、公比 $r=2$ です。<br>$a_n=ar^{n-1}$ に代入してみましょう。</p><button class="hint-next-btn" onclick="nextHint('ht_1a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_1a_3"><div class="hint-step-label">Step 3　確認</div><p style="font-size:13px">$a_n=3\times2^{n-1}$<br>$n=1$：$3\times2^0=3$ ✅　$n=2$：$3\times2^1=6$ ✅</p></div>
+      </div>
+      <div class="choices" id="ch_1a">
+        <button class="choice-btn" onclick="pickChoice('1a',this,0)">① $a_n=2\times3^{n-1}$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,1)">② $a_n=3\times2^{n-1}$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,2)">③ $a_n=3\times2^n$</button>
+        <button class="choice-btn" onclick="pickChoice('1a',this,3)">④ $a_n=3n$</button>
+      </div>
+      <button class="judge-btn" id="jb_1a" onclick="judgeQ('1a',1,'初項 $a=3$、公比 $r=2$ より $a_n=3\\times2^{n-1}$ ✅<br>③は $n=1$ のとき $3\\times2=6$ になってしまい初項と一致しません。')" disabled>判定する</button>
+      <div class="judge-result" id="jr_1a"></div>
+      <button class="retry-btn" onclick="retryQ('1a','ht_1a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 1-B</div>
+      <div class="pq-text">等比数列 $4,\ 2,\ 1,\ \dfrac{1}{2},\ \ldots$ の第5項 $a_5$ はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_1b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_1b">
+        <div class="hint-step" id="ht_1b_1"><div class="hint-step-label">Step 1　公比を求める</div><p style="font-size:13px">$2\div4=\dfrac{1}{2}$　公比は分数になることもあります。</p><button class="hint-next-btn" onclick="nextHint('ht_1b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_1b_2"><div class="hint-step-label">Step 2　一般項を求める</div><p style="font-size:13px">初項 $a=4$、公比 $r=\dfrac{1}{2}$<br>$a_n=4\times\left(\dfrac{1}{2}\right)^{n-1}$</p><button class="hint-next-btn" onclick="nextHint('ht_1b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_1b_3"><div class="hint-step-label">Step 3　$n=5$ を代入</div><p style="font-size:13px">$a_5=4\times\left(\dfrac{1}{2}\right)^4=4\times\dfrac{1}{16}=\dfrac{1}{4}$</p></div>
+      </div>
+      <div class="choices" id="ch_1b">
+        <button class="choice-btn" onclick="pickChoice('1b',this,0)">① $\dfrac{1}{8}$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,1)">② $\dfrac{1}{4}$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,2)">③ $\dfrac{1}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('1b',this,3)">④ $\dfrac{1}{16}$</button>
+      </div>
+      <button class="judge-btn" id="jb_1b" onclick="judgeQ('1b',1,'$a_5=4\\times\\left(\\dfrac{1}{2}\\right)^4=4\\times\\dfrac{1}{16}=\\dfrac{4}{16}=\\dfrac{1}{4}$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_1b"></div>
+      <button class="retry-btn" onclick="retryQ('1b','ht_1b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">④ 例題②　公比が負・2項から求める</div>
+  <div class="ex-box">
+    <div class="ex-label">例題②</div>
+    <p style="font-size:14px">第3項が20、第6項が160の等比数列について、初項 $a$ と公比 $r$ を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>【手順①】</strong>一般項 $a_n=ar^{n-1}$ で式を立てる</p>
+    <div style="font-size:14px;margin:6px 0">$$a_3=ar^2=20\quad\cdots\text{①}$$$$a_6=ar^5=160\quad\cdots\text{②}$$</div>
+    <p style="font-size:14px"><strong>【手順②】</strong>②÷①で $a$ を消す</p>
+    <div style="text-align:center;margin:6px 0">$$\frac{ar^5}{ar^2}=\frac{160}{20}\quad\Rightarrow\quad r^3=8\quad\Rightarrow\quad r=2$$</div>
+    <p style="font-size:14px"><strong>【手順③】</strong>①に代入して $a$ を求める</p>
+    <div style="text-align:center;margin:6px 0">$$a\times4=20\quad\Rightarrow\quad a=5$$</div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">初項 $a=5$、公比 $r=2$　（一般項 $a_n=5\times2^{n-1}$）</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex2')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex2">
+    <div class="pq-div">
+      <div class="pq-label">練習 2-A</div>
+      <div class="pq-text">第2項が32、第5項が4の等比数列の公比 $r$ はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_2a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_2a">
+        <div class="hint-step" id="ht_2a_1"><div class="hint-step-label">Step 1　2つの式を立てる</div><p style="font-size:13px">$a_2=ar=32\cdots\text{①}$、$a_5=ar^4=4\cdots\text{②}$</p><button class="hint-next-btn" onclick="nextHint('ht_2a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_2a_2"><div class="hint-step-label">Step 2　②÷①で $a$ を消す</div><p style="font-size:13px">$\dfrac{ar^4}{ar}=\dfrac{4}{32}$ → $r^3=\dfrac{1}{8}$</p><button class="hint-next-btn" onclick="nextHint('ht_2a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_2a_3"><div class="hint-step-label">Step 3　$r$ を求める</div><p style="font-size:13px">$r^3=\dfrac{1}{8}=\left(\dfrac{1}{2}\right)^3$ より $r=\dfrac{1}{2}$</p></div>
+      </div>
+      <div class="choices" id="ch_2a">
+        <button class="choice-btn" onclick="pickChoice('2a',this,0)">① $r=\dfrac{1}{4}$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,1)">② $r=\dfrac{1}{3}$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,2)">③ $r=\dfrac{1}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2a',this,3)">④ $r=2$</button>
+      </div>
+      <button class="judge-btn" id="jb_2a" onclick="judgeQ('2a',2,'②÷①：$r^3=\\dfrac{4}{32}=\\dfrac{1}{8}$ → $r=\\dfrac{1}{2}$ ✅<br>確認：①より $a\\times\\dfrac{1}{2}=32$ → $a=64$。$a_5=64\\times\\left(\\dfrac{1}{2}\\right)^4=64\\times\\dfrac{1}{16}=4$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_2a"></div>
+      <button class="retry-btn" onclick="retryQ('2a','ht_2a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 2-B</div>
+      <div class="pq-text">第2項が $-5$、第5項が40の等比数列の初項 $a$ はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_2b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_2b">
+        <div class="hint-step" id="ht_2b_1"><div class="hint-step-label">Step 1　2つの式を立てる</div><p style="font-size:13px">$ar=-5\cdots\text{①}$、$ar^4=40\cdots\text{②}$</p><button class="hint-next-btn" onclick="nextHint('ht_2b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_2b_2"><div class="hint-step-label">Step 2　$r$ を求める</div><p style="font-size:13px">②÷①：$r^3=\dfrac{40}{-5}=-8$ → $r=-2$</p><button class="hint-next-btn" onclick="nextHint('ht_2b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_2b_3"><div class="hint-step-label">Step 3　①に代入して $a$ を求める</div><p style="font-size:13px">$a\times(-2)=-5$ → $a=\dfrac{5}{2}$</p></div>
+      </div>
+      <div class="choices" id="ch_2b">
+        <button class="choice-btn" onclick="pickChoice('2b',this,0)">① $a=-\dfrac{5}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,1)">② $a=\dfrac{5}{4}$</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,2)">③ $a=\dfrac{5}{2}$</button>
+        <button class="choice-btn" onclick="pickChoice('2b',this,3)">④ $a=5$</button>
+      </div>
+      <button class="judge-btn" id="jb_2b" onclick="judgeQ('2b',2,'$r=-2$ を①に代入：$a\\times(-2)=-5$ → $a=\\dfrac{5}{2}$ ✅<br>一般項：$a_n=\\dfrac{5}{2}\\times(-2)^{n-1}$')" disabled>判定する</button>
+      <div class="judge-result" id="jr_2b"></div>
+      <button class="retry-btn" onclick="retryQ('2b','ht_2b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⑤ 例題③　何項目かを求める問題</div>
+  <div class="ex-box">
+    <div class="ex-label">例題③</div>
+    <p style="font-size:14px">等比数列 $3,\ 6,\ 12,\ 24,\ \ldots$ において、初めて1000を超えるのは第何項ですか。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px">一般項：$a_n=3\times2^{n-1}$</p>
+    <p style="font-size:14px">$a_n>1000$ を解く：</p>
+    <div style="text-align:center;margin:8px 0">$$3\times2^{n-1}>1000\quad\Rightarrow\quad 2^{n-1}>\frac{1000}{3}=333.3\ldots$$</div>
+    <p style="font-size:14px">$2^8=256$、$2^9=512$ なので $2^{n-1}\geqq512$ を満たす最小は $n-1=9$、つまり $n=10$</p>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px"><strong>第10項</strong>（$a_{10}=3\times2^9=3\times512=1536>1000$ ✅）</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex3')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex3">
+    <div class="pq-div">
+      <div class="pq-label">練習 3-A</div>
+      <div class="pq-text">等比数列 $2,\ 6,\ 18,\ 54,\ \ldots$ の第6項はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_3a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_3a">
+        <div class="hint-step" id="ht_3a_1"><div class="hint-step-label">Step 1　公比を確認</div><p style="font-size:13px">$6\div2=3$　公比 $r=3$ です。</p><button class="hint-next-btn" onclick="nextHint('ht_3a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_3a_2"><div class="hint-step-label">Step 2　一般項を求める</div><p style="font-size:13px">初項 $a=2$、公比 $r=3$　→　$a_n=2\times3^{n-1}$</p><button class="hint-next-btn" onclick="nextHint('ht_3a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_3a_3"><div class="hint-step-label">Step 3　$n=6$ を代入</div><p style="font-size:13px">$a_6=2\times3^5=2\times243=486$</p></div>
+      </div>
+      <div class="choices" id="ch_3a">
+        <button class="choice-btn" onclick="pickChoice('3a',this,0)">① 162</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,1)">② 243</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,2)">③ 486</button>
+        <button class="choice-btn" onclick="pickChoice('3a',this,3)">④ 729</button>
+      </div>
+      <button class="judge-btn" id="jb_3a" onclick="judgeQ('3a',2,'$a_6=2\\times3^5=2\\times243=486$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_3a"></div>
+      <button class="retry-btn" onclick="retryQ('3a','ht_3a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 3-B</div>
+      <div class="pq-text">初項3、公比2の等比数列について、初めて5000を超えるのは第何項ですか？<br>（$2^{10}=1024$、$2^{11}=2048$、$2^{12}=4096$、$2^{13}=8192$ を参考に）</div>
+      <button class="hint-main-btn" onclick="openHints('ht_3b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_3b">
+        <div class="hint-step" id="ht_3b_1"><div class="hint-step-label">Step 1　一般項を書く</div><p style="font-size:13px">$a_n=3\times2^{n-1}$</p><button class="hint-next-btn" onclick="nextHint('ht_3b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_3b_2"><div class="hint-step-label">Step 2　不等式を立てる</div><p style="font-size:13px">$3\times2^{n-1}>5000$ → $2^{n-1}>\dfrac{5000}{3}=1666.7\ldots$</p><button class="hint-next-btn" onclick="nextHint('ht_3b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_3b_3"><div class="hint-step-label">Step 3　$2^k$ の値と比較</div><p style="font-size:13px">$2^{11}=2048>1666.7$ で最小。よって $n-1=11$ → $n=12$<br>確認：$a_{12}=3\times2^{11}=3\times2048=6144>5000$ ✅</p></div>
+      </div>
+      <div class="choices" id="ch_3b">
+        <button class="choice-btn" onclick="pickChoice('3b',this,0)">① 第11項</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,1)">② 第12項</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,2)">③ 第13項</button>
+        <button class="choice-btn" onclick="pickChoice('3b',this,3)">④ 第14項</button>
+      </div>
+      <button class="judge-btn" id="jb_3b" onclick="judgeQ('3b',1,'$2^{n-1}>1666.7$ を満たす最小の自然数は $n-1=11$（$2^{11}=2048$）<br>よって $n=12$、$a_{12}=3\\times2048=6144>5000$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_3b"></div>
+      <button class="retry-btn" onclick="retryQ('3b','ht_3b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+</div><!-- /page-ex1 -->
+
+<!-- ===== 練習① ===== -->
+<div class="page" id="page-pr1">
+<div class="progress-bar"><div class="progress-fill fill-pr" style="width:40%"></div></div>
+<div class="card">
+  <div class="card-title">練習問題① 一般項</div>
+  <div class="prob-box"><div class="prob-num">問題 1</div>
+    <p style="font-size:14px">等比数列 $1,\ -2,\ 4,\ -8,\ \ldots$ の一般項と第8項を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">公比 $r=-2$、$a_n=(-2)^{n-1}$、$a_8=(-2)^7=-128$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 2</div>
+    <p style="font-size:14px">等比数列 $5,\ \dfrac{5}{3},\ \dfrac{5}{9},\ \ldots$ の一般項を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">公比 $r=\dfrac{1}{3}$、$a_n=5\times\left(\dfrac{1}{3}\right)^{n-1}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 3</div>
+    <p style="font-size:14px">第3項が9、第5項が81の等比数列の初項と公比を求めなさい。<br>（公比は正とする）</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$ar^2=9$、$ar^4=81$　÷で $r^2=9$ → $r=3$（正）<br>$a\times9=9$ → $a=1$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 4</div>
+    <p style="font-size:14px">第2項が $-5$、第5項が40の等比数列の一般項を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$ar=-5$、$ar^4=40$　$r^3=-8$ → $r=-2$、$a=\dfrac{5}{2}$<br>$a_n=\dfrac{5}{2}\times(-2)^{n-1}$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 5</div>
+    <p style="font-size:14px">初項2、公比3の等比数列で、初めて10000を超えるのは第何項ですか。<br>（$3^7=2187$、$3^8=6561$、$3^9=19683$ を参考に）</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$2\times3^{n-1}>10000$ → $3^{n-1}>5000$<br>$3^8=6561>5000$ で最小 → $n-1=8$ → <strong>第9項</strong><br>$a_9=2\times3^8=2\times6561=13122>10000$ ✅</p></div>
+  </div>
+</div>
+</div><!-- /page-pr1 -->
+
+<!-- ===== 確認① ===== -->
+<div class="page" id="page-cf1">
+<div class="progress-bar"><div class="progress-fill fill-cf" style="width:50%"></div></div>
+<div class="card">
+  <div class="card-title">確認テスト① 一般項</div>
+  <p style="font-size:13px;color:#555;margin-bottom:12px">2問に挑戦しましょう。</p>
+  <div class="mini-q">
+    <div class="q-text">【Q1】等比数列 $2,\ -6,\ 18,\ -54,\ \ldots$ の一般項 $a_n$ はどれですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q1cf1',0,false,'q1cf1-fb')">① $a_n=2\times3^{n-1}$</button></li>
+      <li><button onclick="mAns('q1cf1',1,true,'q1cf1-fb')">② $a_n=2\times(-3)^{n-1}$</button></li>
+      <li><button onclick="mAns('q1cf1',2,false,'q1cf1-fb')">③ $a_n=(-2)\times3^{n-1}$</button></li>
+      <li><button onclick="mAns('q1cf1',3,false,'q1cf1-fb')">④ $a_n=2\times(-3)^n$</button></li>
+    </ul>
+    <div id="q1cf1-fb" class="mini-fb" data-correct="1"
+      data-ok="公比：$-6\div2=-3$　初項 $a=2$<br>$a_n=2\times(-3)^{n-1}$ ✅<br>④は $n=1$ のとき $2\times(-3)=-6$ になってしまい初項と一致しません。"
+      data-ng0="公比は $-6\div2=-3$（マイナス）です。①の公比は正の3なので符号が異なります。"
+      data-ng2="初項は $2$（正）です。③の初項は $-2$ なので誤りです。"
+      data-ng3="$n=1$ を代入すると $2\times(-3)^1=-6$ となり初項 $2$ と一致しません。指数は $n-1$ です。"></div>
+    <button class="reset-btn" onclick="mReset('q1cf1')">もう一度</button>
+  </div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <div class="mini-q">
+    <div class="q-text">【Q2】第3項が9、第6項が72の等比数列の公比 $r$ はいくつですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q2cf1',0,false,'q2cf1-fb')">① $r=\sqrt{2}$</button></li>
+      <li><button onclick="mAns('q2cf1',1,false,'q2cf1-fb')">② $r=2$</button></li>
+      <li><button onclick="mAns('q2cf1',2,true,'q2cf1-fb')">③ $r=\sqrt[3]{8}=2$</button></li>
+      <li><button onclick="mAns('q2cf1',3,false,'q2cf1-fb')">④ $r=3$</button></li>
+    </ul>
+    <div id="q2cf1-fb" class="mini-fb" data-correct="2"
+      data-ok="$ar^2=9$、$ar^5=72$　÷で $r^3=8$ → $r=2$ ✅<br>確認：$a\times4=9$ → $a=\dfrac{9}{4}$、$a_6=\dfrac{9}{4}\times32=72$ ✅"
+      data-ng0="$ar^5\div ar^2=r^3=8$ です。$r^3=8$ を解くと $r=2$ です。"
+      data-ng1="正解です！③も同じ意味です。$r=2$ ✅"
+      data-ng3="$r^3=8$ → $r=2$ です。$r=3$ だと $r^3=27\neq8$ になります。"></div>
+    <button class="reset-btn" onclick="mReset('q2cf1')">もう一度</button>
+  </div>
+</div>
+</div><!-- /page-cf1 -->
+
+<!-- ===== 解説② ===== -->
+<div class="page" id="page-ex2">
+<div class="progress-bar"><div class="progress-fill fill-ex" style="width:65%"></div></div>
+
+<div class="card">
+  <div class="card-title">① 等比数列の和の公式</div>
+  <p style="font-size:14px;margin-bottom:10px">初項 $a$、公比 $r$、項数 $n$ の等比数列の和 $S_n$ を求めます。</p>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 公式の導き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>【手順①】</strong>和を書く</p>
+    <div style="font-size:13px;margin:8px 0;background:#fff;border-radius:6px;padding:10px;line-height:2.2">
+      $S_n=a+ar+ar^2+\cdots+ar^{n-1}\quad\cdots\text{①}$<br>
+      $rS_n=\quad ar+ar^2+ar^3+\cdots+ar^n\quad\cdots\text{②}$
+    </div>
+    <p style="font-size:14px"><strong>【手順②】</strong>①－②を計算（中間が全部消える！）</p>
+    <div style="text-align:center;margin:8px 0">$$S_n-rS_n=a-ar^n=(1-r)S_n$$</div>
+    <p style="font-size:14px"><strong>【手順③】</strong>$r\neq1$ のとき両辺を $1-r$ で割る</p>
+    <div style="text-align:center;margin:8px 0">$$S_n=\frac{a(1-r^n)}{1-r}=\frac{a(r^n-1)}{r-1}$$</div>
+    <p style="font-size:14px;margin-top:8px">$r=1$ のとき：$S_n=a+a+\cdots+a=na$</p>
+  </div>
+  <div class="formula-box" style="margin-top:12px">
+    <div class="f-label">【重要公式】等比数列の和</div>
+    $$S_n=\frac{a(1-r^n)}{1-r}=\frac{a(r^n-1)}{r-1}\quad(r\neq1)$$
+    $$S_n=na\quad(r=1)$$
+    <p style="font-size:12px;color:#555;margin-top:6px">計算しやすい方を使いましょう。$r>1$ なら $\dfrac{a(r^n-1)}{r-1}$ が便利です。</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">② 例題④　等比数列の和</div>
+  <div class="ex-box">
+    <div class="ex-label">例題④</div>
+    <p style="font-size:14px">（1）初項2、公比3の等比数列の初項から第5項までの和を求めなさい。<br>
+    （2）初項3、公比2の等比数列の和がはじめて100を超えるのは第何項まで足したときですか。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>（1）</strong>$a=2$、$r=3$、$n=5$</p>
+    <div style="text-align:center;margin:6px 0">$$S_5=\frac{2(3^5-1)}{3-1}=\frac{2\times(243-1)}{2}=242$$</div>
+    <p style="font-size:14px;margin-top:8px"><strong>（2）</strong>$S_n=\dfrac{3(2^n-1)}{2-1}=3(2^n-1)$</p>
+    <div style="text-align:center;margin:6px 0">$$3(2^n-1)>100\quad\Rightarrow\quad 2^n>34.3\ldots$$</div>
+    <p style="font-size:14px">$2^5=32$、$2^6=64$ なので最小は $n=6$</p>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">（1）$242$　　（2）第6項まで</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex4')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex4">
+    <div class="pq-div">
+      <div class="pq-label">練習 4-A</div>
+      <div class="pq-text">第2項が6、第5項が $-48$ の等比数列の初項から第7項までの和はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_4a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_4a">
+        <div class="hint-step" id="ht_4a_1"><div class="hint-step-label">Step 1　$r$ を求める</div><p style="font-size:13px">$ar=6\cdots\text{①}$、$ar^4=-48\cdots\text{②}$<br>②÷①：$r^3=-8$ → $r=-2$</p><button class="hint-next-btn" onclick="nextHint('ht_4a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_4a_2"><div class="hint-step-label">Step 2　$a$ を求める</div><p style="font-size:13px">①より $a\times(-2)=6$ → $a=-3$<br>一般項：$a_n=-3\times(-2)^{n-1}$</p><button class="hint-next-btn" onclick="nextHint('ht_4a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_4a_3"><div class="hint-step-label">Step 3　和の公式を使う</div><p style="font-size:13px">$S_7=\dfrac{(-3)\{(-2)^7-1\}}{-2-1}=\dfrac{(-3)(-128-1)}{-3}=\dfrac{(-3)(-129)}{-3}=-129$</p></div>
+      </div>
+      <div class="choices" id="ch_4a">
+        <button class="choice-btn" onclick="pickChoice('4a',this,0)">① $-129$</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,1)">② $-126$</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,2)">③ $126$</button>
+        <button class="choice-btn" onclick="pickChoice('4a',this,3)">④ $129$</button>
+      </div>
+      <button class="judge-btn" id="jb_4a" onclick="judgeQ('4a',0,'$a=-3$、$r=-2$ より<br>$S_7=\\dfrac{(-3)((-2)^7-1)}{-2-1}=\\dfrac{(-3)(-128-1)}{-3}=\\dfrac{387}{-3}\\cdots$<br>$=\\dfrac{(-3)(-129)}{-3}=-129$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_4a"></div>
+      <button class="retry-btn" onclick="retryQ('4a','ht_4a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 4-B</div>
+      <div class="pq-text">初項2、公比3の等比数列の初項から第 $n$ 項までの和 $S_n$ が初めて200を超えるのは第何項ですか。<br>（$3^4=81$、$3^5=243$ を参考に）</div>
+      <button class="hint-main-btn" onclick="openHints('ht_4b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_4b">
+        <div class="hint-step" id="ht_4b_1"><div class="hint-step-label">Step 1　$S_n$ を求める</div><p style="font-size:13px">$S_n=\dfrac{2(3^n-1)}{3-1}=3^n-1$</p><button class="hint-next-btn" onclick="nextHint('ht_4b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_4b_2"><div class="hint-step-label">Step 2　不等式を立てる</div><p style="font-size:13px">$3^n-1>200$ → $3^n>201$</p><button class="hint-next-btn" onclick="nextHint('ht_4b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_4b_3"><div class="hint-step-label">Step 3　$3^n$ の値と比較</div><p style="font-size:13px">$3^4=81<201$、$3^5=243>201$<br>よって最小は $n=5$</p></div>
+      </div>
+      <div class="choices" id="ch_4b">
+        <button class="choice-btn" onclick="pickChoice('4b',this,0)">① 第4項</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,1)">② 第5項</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,2)">③ 第6項</button>
+        <button class="choice-btn" onclick="pickChoice('4b',this,3)">④ 第7項</button>
+      </div>
+      <button class="judge-btn" id="jb_4b" onclick="judgeQ('4b',1,'$S_n=3^n-1>200$ → $3^n>201$<br>$3^5=243>201$ で最小 → $n=5$ ✅<br>確認：$S_5=3^5-1=243-1=242>200$ ✅　$S_4=81-1=80\\leqq200$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_4b"></div>
+      <button class="retry-btn" onclick="retryQ('4b','ht_4b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">③ 等比中項</div>
+  <p style="font-size:14px;margin-bottom:10px">3項 $a,\ b,\ c$ がこの順で等比数列のとき、公比が等しいので</p>
+  <div style="text-align:center;margin:8px 0">$$\frac{b}{a}=\frac{c}{b}\quad\Rightarrow\quad b^2=ac$$</div>
+  <div class="formula-box">
+    <div class="f-label">【重要公式】等比中項</div>
+    $$b^2=ac$$
+    <p style="font-size:12px;color:#555;margin-top:6px">（比べてみよう）等差中項 $2b=a+c$（和）　等比中項 $b^2=ac$（積）</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">④ 例題⑤　等比中項・約数の和</div>
+  <div class="ex-box">
+    <div class="ex-label">例題⑤</div>
+    <p style="font-size:14px">（1）$6,\ a,\ b$ がこの順に等差数列、$a,\ b,\ 16$ がこの順に等比数列のとき、$a,\ b$ を求めなさい。<br>
+    （2）72の約数の総和を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px"><strong>（1）</strong>等差中項 $2a=6+b\cdots\text{①}$、等比中項 $b^2=16a\cdots\text{②}$</p>
+    <p style="font-size:14px">①より $b=2a-6$ を②に代入：</p>
+    <div style="text-align:center;margin:6px 0">$$(2a-6)^2=16a\quad\Rightarrow\quad 4a^2-40a+36=0\quad\Rightarrow\quad a^2-10a+9=0$$</div>
+    <div style="text-align:center;margin:6px 0">$$(a-1)(a-9)=0\quad\Rightarrow\quad a=1,9$$</div>
+    <p style="font-size:14px">$a=1$ のとき $b=-4$、$a=9$ のとき $b=12$</p>
+    <p style="font-size:14px;margin-top:10px"><strong>（2）</strong>$72=2^3\times3^2$ と素因数分解する。</p>
+    <p style="font-size:14px">約数の総和は各素因数の等比数列の和の積：</p>
+    <div style="text-align:center;margin:8px 0">$$(1+2+2^2+2^3)(1+3+3^2)=15\times13=195$$</div>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">（1）$(a,b)=(1,-4)$ または $(9,12)$　　（2）$195$</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex5')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex5">
+    <div class="pq-div">
+      <div class="pq-label">練習 5-A</div>
+      <div class="pq-text">$a,\ 8,\ b$ がこの順で等比数列、$a,\ b,\ -8$ がこの順で等差数列のとき、$(a,b)$ を求めると何組になりますか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_5a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_5a">
+        <div class="hint-step" id="ht_5a_1"><div class="hint-step-label">Step 1　2つの式を立てる</div><p style="font-size:13px">等比中項：$8^2=ab$ → $ab=64\cdots\text{①}$<br>等差中項：$2b=a+(-8)$ → $a=2b+8\cdots\text{②}$</p><button class="hint-next-btn" onclick="nextHint('ht_5a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_5a_2"><div class="hint-step-label">Step 2　②を①に代入</div><p style="font-size:13px">$(2b+8)b=64$ → $2b^2+8b-64=0$ → $b^2+4b-32=0$</p><button class="hint-next-btn" onclick="nextHint('ht_5a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_5a_3"><div class="hint-step-label">Step 3　因数分解</div><p style="font-size:13px">$(b+8)(b-4)=0$ → $b=4,-8$<br>$b=4$ のとき $a=16$、$b=-8$ のとき $a=-8$</p></div>
+      </div>
+      <div class="choices" id="ch_5a">
+        <button class="choice-btn" onclick="pickChoice('5a',this,0)">① 1組</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,1)">② 2組</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,2)">③ 3組</button>
+        <button class="choice-btn" onclick="pickChoice('5a',this,3)">④ 解なし</button>
+      </div>
+      <button class="judge-btn" id="jb_5a" onclick="judgeQ('5a',1,'$(a,b)=(16,4)$ または $(-8,-8)$ の2組 ✅<br>$(16,4,-8)$：等差確認 $2\\times4=8$、$16+(-8)=8$ ✅<br>$(-8,-8,-8)$：等差確認 $2\\times(-8)=-16$、$-8+(-8)=-16$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_5a"></div>
+      <button class="retry-btn" onclick="retryQ('5a','ht_5a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 5-B</div>
+      <div class="pq-text">108の約数の総和はいくつですか？（$108=2^2\times3^3$）</div>
+      <button class="hint-main-btn" onclick="openHints('ht_5b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_5b">
+        <div class="hint-step" id="ht_5b_1"><div class="hint-step-label">Step 1　約数の総和の計算方法</div><p style="font-size:13px">$(1+2+2^2)\times(1+3+3^2+3^3)$ を計算します。</p><button class="hint-next-btn" onclick="nextHint('ht_5b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_5b_2"><div class="hint-step-label">Step 2　それぞれ計算</div><p style="font-size:13px">$1+2+4=7$<br>$1+3+9+27=40$</p><button class="hint-next-btn" onclick="nextHint('ht_5b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_5b_3"><div class="hint-step-label">Step 3　かける</div><p style="font-size:13px">$7\times40=280$</p></div>
+      </div>
+      <div class="choices" id="ch_5b">
+        <button class="choice-btn" onclick="pickChoice('5b',this,0)">① 240</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,1)">② 260</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,2)">③ 280</button>
+        <button class="choice-btn" onclick="pickChoice('5b',this,3)">④ 320</button>
+      </div>
+      <button class="judge-btn" id="jb_5b" onclick="judgeQ('5b',2,'$(1+2+4)\\times(1+3+9+27)=7\\times40=280$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_5b"></div>
+      <button class="retry-btn" onclick="retryQ('5b','ht_5b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⑤ 例題⑥　等比数列をなす3数の問題</div>
+  <div class="ex-box">
+    <div class="ex-label">例題⑥</div>
+    <p style="font-size:14px">等比数列をなす3つの数がある。その和は21、積は216であるとき、3つの数を求めなさい。</p>
+  </div>
+  <button class="ex-step-btn" onclick="toggleExStep(this)">▶ 解き方を見る</button>
+  <div class="ex-step-body">
+    <p style="font-size:14px">3項を $\dfrac{a}{r},\ a,\ ar$ とおくと計算が楽になります（積が $a^3$ になる）。</p>
+    <div style="font-size:14px;margin:8px 0">
+      和：$\dfrac{a}{r}+a+ar=21\cdots\text{①}$<br>
+      積：$\dfrac{a}{r}\times a\times ar=a^3=216\cdots\text{②}$
+    </div>
+    <p style="font-size:14px">②より $a^3=216$ → $a=6$</p>
+    <p style="font-size:14px">①に $a=6$ を代入：$\dfrac{6}{r}+6+6r=21$ → $6r^2-15r+6=0$ → $2r^2-5r+2=0$</p>
+    <div style="text-align:center;margin:6px 0">$$(2r-1)(r-2)=0\quad\Rightarrow\quad r=\frac{1}{2},\ 2$$</div>
+    <p style="font-size:14px">$r=2$ のとき：$3,\ 6,\ 12$　　$r=\dfrac{1}{2}$ のとき：$12,\ 6,\ 3$（同じ3つの数）</p>
+    <div class="def-box" style="margin-top:8px">
+      <div class="def-title">✅ 答え</div>
+      <p style="font-size:14px">$3,\ 6,\ 12$</p>
+    </div>
+  </div>
+
+  <button class="ptoggle-btn" onclick="togglePS(this,'ps_ex6')">📝 練習してみよう（2問）</button>
+  <div class="practice-set" id="ps_ex6">
+    <div class="pq-div">
+      <div class="pq-label">練習 6-A</div>
+      <div class="pq-text">等比数列をなす3数の積が125、和が15のとき、真ん中の数（等比中項）はいくつですか？</div>
+      <button class="hint-main-btn" onclick="openHints('ht_6a')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_6a">
+        <div class="hint-step" id="ht_6a_1"><div class="hint-step-label">Step 1　3項を $\frac{a}{r}, a, ar$ とおく</div><p style="font-size:13px">積：$\dfrac{a}{r}\times a\times ar=a^3=125$</p><button class="hint-next-btn" onclick="nextHint('ht_6a',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_6a_2"><div class="hint-step-label">Step 2　$a$ を求める</div><p style="font-size:13px">$a^3=125$ → $a=5$　これが真ん中の数です。</p><button class="hint-next-btn" onclick="nextHint('ht_6a',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_6a_3"><div class="hint-step-label">Step 3　確認</div><p style="font-size:13px">和が $\dfrac{5}{r}+5+5r=15$ → $5r^2-10r+5=0$ → $(r-1)^2=0$ → $r=1$<br>3数はすべて5。（$5+5+5=15$ ✅）</p></div>
+      </div>
+      <div class="choices" id="ch_6a">
+        <button class="choice-btn" onclick="pickChoice('6a',this,0)">① $a=3$</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,1)">② $a=4$</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,2)">③ $a=5$</button>
+        <button class="choice-btn" onclick="pickChoice('6a',this,3)">④ $a=6$</button>
+      </div>
+      <button class="judge-btn" id="jb_6a" onclick="judgeQ('6a',2,'積 $a^3=125$ → $a=5$ ✅<br>真ん中の数（等比中項）は $5$ です。')" disabled>判定する</button>
+      <div class="judge-result" id="jr_6a"></div>
+      <button class="retry-btn" onclick="retryQ('6a','ht_6a')">🔄 もう一度やり直す</button>
+    </div>
+    <hr style="border:none;border-top:1px dashed #90caf9;margin:14px 0">
+    <div class="pq-div">
+      <div class="pq-label">練習 6-B</div>
+      <div class="pq-text">360の約数の総和はいくつですか？（$360=2^3\times3^2\times5$）</div>
+      <button class="hint-main-btn" onclick="openHints('ht_6b')">💡 ヒントを見る（Step 1）</button>
+      <div class="hint-steps" id="ht_6b">
+        <div class="hint-step" id="ht_6b_1"><div class="hint-step-label">Step 1　計算式を立てる</div><p style="font-size:13px">$(1+2+2^2+2^3)\times(1+3+3^2)\times(1+5)$</p><button class="hint-next-btn" onclick="nextHint('ht_6b',2)">Step 2 へ ▶</button></div>
+        <div class="hint-step" id="ht_6b_2"><div class="hint-step-label">Step 2　それぞれ計算</div><p style="font-size:13px">$1+2+4+8=15$<br>$1+3+9=13$<br>$1+5=6$</p><button class="hint-next-btn" onclick="nextHint('ht_6b',3)">Step 3 へ ▶</button></div>
+        <div class="hint-step" id="ht_6b_3"><div class="hint-step-label">Step 3　かける</div><p style="font-size:13px">$15\times13\times6=15\times78=1170$</p></div>
+      </div>
+      <div class="choices" id="ch_6b">
+        <button class="choice-btn" onclick="pickChoice('6b',this,0)">① 1080</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,1)">② 1140</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,2)">③ 1170</button>
+        <button class="choice-btn" onclick="pickChoice('6b',this,3)">④ 1200</button>
+      </div>
+      <button class="judge-btn" id="jb_6b" onclick="judgeQ('6b',2,'$(1+2+4+8)\\times(1+3+9)\\times(1+5)=15\\times13\\times6=1170$ ✅')" disabled>判定する</button>
+      <div class="judge-result" id="jr_6b"></div>
+      <button class="retry-btn" onclick="retryQ('6b','ht_6b')">🔄 もう一度やり直す</button>
+    </div>
+  </div>
+</div>
+</div><!-- /page-ex2 -->
+
+<!-- ===== 練習② ===== -->
+<div class="page" id="page-pr2">
+<div class="progress-bar"><div class="progress-fill fill-pr" style="width:80%"></div></div>
+<div class="card">
+  <div class="card-title">練習問題② 和・等比中項・応用</div>
+  <div class="prob-box"><div class="prob-num">問題 1</div>
+    <p style="font-size:14px">初項3、公比2の等比数列の初項から第10項までの和を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$S_{10}=\dfrac{3(2^{10}-1)}{2-1}=3\times1023=3069$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 2</div>
+    <p style="font-size:14px">初項 $-3$、公比 $-2$ の等比数列の初項から第7項までの和を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$S_7=\dfrac{(-3)((-2)^7-1)}{-2-1}=\dfrac{(-3)(-129)}{-3}=-129$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 3</div>
+    <p style="font-size:14px">等比中項の性質 $b^2=ac$ を使って、$2,\ x,\ 8$ がこの順に等比数列をなすとき $x$ の値を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$x^2=2\times8=16$ → $x=\pm4$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 4</div>
+    <p style="font-size:14px">等比数列をなす3つの数がある。和が14、積が64のとき、3つの数を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$\dfrac{a}{r},\ a,\ ar$ とおくと $a^3=64$ → $a=4$<br>$\dfrac{4}{r}+4+4r=14$ → $4r^2-10r+4=0$ → $r=2,\dfrac{1}{2}$<br>$r=2$ のとき $2,\ 4,\ 8$</p></div>
+  </div>
+  <div class="prob-box"><div class="prob-num">問題 5</div>
+    <p style="font-size:14px">$180=2^2\times3^2\times5$ の約数の総和を求めなさい。</p>
+    <button class="ans-btn" onclick="toggleAns(this)">答えを見る</button>
+    <div class="ans-body"><div class="ans-label">解答</div>
+      <p style="font-size:14px">$(1+2+4)\times(1+3+9)\times(1+5)=7\times13\times6=546$</p></div>
+  </div>
+</div>
+</div><!-- /page-pr2 -->
+
+<!-- ===== 確認② ===== -->
+<div class="page" id="page-cf2">
+<div class="progress-bar"><div class="progress-fill fill-cf" style="width:100%"></div></div>
+<div class="card">
+  <div class="card-title">確認テスト② 和・等比中項</div>
+  <p style="font-size:13px;color:#555;margin-bottom:12px">2問に挑戦しましょう。</p>
+  <div class="mini-q">
+    <div class="q-text">【Q1】初項2、公比3の等比数列の初項から第5項までの和 $S_5$ はいくつですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q1cf2',0,false,'q1cf2-fb')">① 240</button></li>
+      <li><button onclick="mAns('q1cf2',1,true,'q1cf2-fb')">② 242</button></li>
+      <li><button onclick="mAns('q1cf2',2,false,'q1cf2-fb')">③ 244</button></li>
+      <li><button onclick="mAns('q1cf2',3,false,'q1cf2-fb')">④ 246</button></li>
+    </ul>
+    <div id="q1cf2-fb" class="mini-fb" data-correct="1"
+      data-ok="$S_5=\dfrac{2(3^5-1)}{3-1}=\dfrac{2\times242}{2}=242$ ✅<br>$3^5=243$、$243-1=242$、$\dfrac{2\times242}{2}=242$"
+      data-ng0="$3^5=243$、$243-1=242$、$\dfrac{2\times242}{2}=242$ です。"
+      data-ng2="$3^5=243$ です。$243-1=242$、$\dfrac{2\times242}{2}=242$ です。"
+      data-ng3="$\dfrac{2(3^5-1)}{3-1}=\dfrac{2\times242}{2}=242$ です。"></div>
+    <button class="reset-btn" onclick="mReset('q1cf2')">もう一度</button>
+  </div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <div class="mini-q">
+    <div class="q-text">【Q2】$3,\ x,\ 12$ がこの順に等比数列をなすとき、$x$ の値として正しいものはどれですか？</div>
+    <ul class="choice-list">
+      <li><button onclick="mAns('q2cf2',0,false,'q2cf2-fb')">① $x=6$ のみ</button></li>
+      <li><button onclick="mAns('q2cf2',1,true,'q2cf2-fb')">② $x=6$ または $x=-6$</button></li>
+      <li><button onclick="mAns('q2cf2',2,false,'q2cf2-fb')">③ $x=\sqrt{36}=6$ のみ</button></li>
+      <li><button onclick="mAns('q2cf2',3,false,'q2cf2-fb')">④ $x=4$</button></li>
+    </ul>
+    <div id="q2cf2-fb" class="mini-fb" data-correct="1"
+      data-ok="等比中項：$x^2=3\times12=36$ → $x=\pm6$ ✅<br>確認：$3,\ 6,\ 12$（公比2）✅　または $3,\ -6,\ 12$（公比 $-2$）✅"
+      data-ng0="$x^2=36$ は $x=6$ だけでなく $x=-6$ も解です。$(-6)^2=36$ も成立します。"
+      data-ng2="①と③は同じ答えになっています。$x=-6$ も成り立つことを確認しましょう。"
+      data-ng3="$x^2=3\times12=36$ です。$x^2=36$ の解は $x=\pm6$ です。"></div>
+    <button class="reset-btn" onclick="mReset('q2cf2')">もう一度</button>
+  </div>
+</div>
+<div class="card" style="background:#e8f5e9;border:1.5px solid #43a047">
+  <p style="font-size:14px;font-weight:700;color:#1b5e20;margin-bottom:4px">🎉 EX3-2 完了！</p>
+  <p style="font-size:13px;color:#2e7d32">等比数列の一般項・和・等比中項をマスターしました。次は EX3-3「数列のΣ計算」に進みましょう。</p>
+</div>
+</div><!-- /page-cf2 -->
+
+<script>
+function switchPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active-ex','active-pr','active-cf');});
+  document.getElementById('page-'+id).classList.add('active');
+  var tabs=['ex1','pr1','cf1','ex2','pr2','cf2'];
+  var idx=tabs.indexOf(id);
+  var cls=id.indexOf('ex')===0?'active-ex':id.indexOf('pr')===0?'active-pr':'active-cf';
+  document.querySelectorAll('.tab-btn')[idx].classList.add(cls);
+  window.scrollTo(0,0);
+  if(typeof nekoUpdatePage==='function') nekoUpdatePage(id);
+}
+function toggleExStep(btn){
+  var body=btn.nextElementSibling;
+  var isOpen=body.classList.toggle('open');
+  btn.textContent=isOpen?'▼ 閉じる':'▶ 解き方を見る';
+  if(isOpen && typeof renderMathInElement!=='undefined') renderMathInElement(body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function togglePS(btn,id){
+  var el=document.getElementById(id);
+  var isOpen=el.classList.toggle('open');
+  btn.textContent=isOpen?'📝 練習を閉じる ▲':'📝 練習してみよう（2問）';
+  if(isOpen && typeof renderMathInElement!=='undefined') renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function openHints(hid){
+  var container=document.getElementById(hid);
+  container.classList.add('open');
+  var btn=container.previousElementSibling;
+  btn.style.display='none';
+  var step1=document.getElementById(hid+'_1');
+  if(step1){
+    step1.classList.add('show');
+    if(typeof renderMathInElement!=='undefined') renderMathInElement(step1,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
+}
+function nextHint(hid,num){
+  var el=document.getElementById(hid+'_'+num);
+  if(el){
+    el.classList.add('show');
+    if(typeof renderMathInElement!=='undefined') renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
+}
+var selectedChoice={};
+function pickChoice(qid,btn,idx){
+  selectedChoice[qid]=idx;
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b,i){
+    b.style.borderColor=i===idx?'#1976d2':'';
+    b.style.background=i===idx?'#e3f2fd':'#fff';
+    b.style.fontWeight=i===idx?'700':'';
+  });
+  document.getElementById('jb_'+qid).disabled=false;
+}
+function judgeQ(qid,correctIdx,explanation){
+  var chosen=selectedChoice[qid];
+  if(chosen===undefined) return;
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b){b.disabled=true;b.style.borderColor='';b.style.background='';b.style.fontWeight='';});
+  btns[correctIdx].classList.add('correct');
+  var isOK=(chosen===correctIdx);
+  if(!isOK) btns[chosen].classList.add('wrong');
+  document.getElementById('jb_'+qid).disabled=true;
+  var jr=document.getElementById('jr_'+qid);
+  jr.classList.add('show');
+  if(isOK){
+    jr.className='judge-result show ok';
+    jr.innerHTML='<span class="result-badge badge-ok">✅ 正解！</span><div class="result-exp">'+explanation+'</div>';
+    launchConfetti();
+  } else {
+    jr.className='judge-result show ng';
+    jr.innerHTML='<span class="result-badge badge-ng">❌ 不正解</span><div class="result-exp">'+explanation+'</div>';
+  }
+  if(typeof renderMathInElement!=='undefined') renderMathInElement(jr,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+}
+function retryQ(qid,hid){
+  var btns=document.querySelectorAll('#ch_'+qid+' .choice-btn');
+  btns.forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');b.style.borderColor='';b.style.background='';b.style.fontWeight='';});
+  delete selectedChoice[qid];
+  document.getElementById('jb_'+qid).disabled=true;
+  var jr=document.getElementById('jr_'+qid);
+  jr.className='judge-result';jr.innerHTML='';
+  if(hid){
+    var container=document.getElementById(hid);
+    container.classList.remove('open');
+    container.querySelectorAll('.hint-step').forEach(function(s){s.classList.remove('show');});
+    var mbtn=container.previousElementSibling;
+    if(mbtn && mbtn.classList.contains('hint-main-btn')) mbtn.style.display='';
+  }
+}
+function toggleAns(btn){
+  var body=btn.nextElementSibling;
+  var isOpen=body.classList.toggle('open');
+  btn.textContent=isOpen?'閉じる':'答えを見る';
+  if(isOpen && typeof renderMathInElement!=='undefined') renderMathInElement(body);
+}
+function mAns(mid,idx,correct,fbId){
+  var fb=document.getElementById(fbId||mid+'-fb');
+  var btns=fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(function(b){b.disabled=true;});
+  btns[idx].classList.add(correct?'correct':'wrong');
+  var correctIdx=fb.dataset.correct;
+  if(!correct && correctIdx!==undefined) btns[correctIdx].classList.add('correct');
+  var topMsg=correct?'<span class="fb-badge fb-ok">✅ 正解！</span>':'<span class="fb-badge fb-ng">❌ 不正解</span> '+(fb.dataset['ng'+idx]||'もう一度確認しましょう。');
+  fb.classList.add('show',correct?'ok':'ng-with-ans');
+  fb.innerHTML='<div class="fb-top">'+topMsg+'</div><div class="fb-exp"><span class="fb-exp-label">📝 解説</span>'+(fb.dataset.ok||'')+'</div>';
+  if(typeof renderMathInElement!=='undefined') renderMathInElement(fb,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  if(correct) launchConfetti();
+}
+function mReset(mid){
+  var fb=document.getElementById(mid+'-fb');
+  var btns=fb.closest('.mini-q').querySelectorAll('.choice-list button');
+  btns.forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');});
+  fb.className='mini-fb';fb.innerHTML='';
+}
+function launchConfetti(){
+  var colors=['#e91e63','#1976d2','#f57c00','#7b5ea7','#43a047','#ffc107','#00bcd4'];
+  var canvas=document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+  document.body.appendChild(canvas);
+  var ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  var particles=[];
+  for(var i=0;i<120;i++){
+    particles.push({x:Math.random()*canvas.width,y:-20,r:Math.random()*6+3,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      speed:Math.random()*4+2,angle:Math.random()*360,
+      spin:(Math.random()-.5)*6,wobble:Math.random()*3});
+  }
+  var frame=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(function(p){
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle*Math.PI/180);
+      ctx.fillStyle=p.color;ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6);ctx.restore();
+      p.y+=p.speed;p.x+=Math.sin(frame*.05+p.wobble)*1.5;p.angle+=p.spin;
+    });
+    frame++;
+    if(frame<120) requestAnimationFrame(draw); else canvas.remove();
+  }
+  draw();
+}
+</script>
+<script>
+window.NEKO_CONFIG={
+  subject:'数学B',chapter:'EX3-2',title:'等比数列',
+  catSrc:'https://api.dicebear.com/7.x/fun-emoji/svg?seed=neko',
+  greeting:'等比数列について何でも聞いてね🐱 「かける」がキーワードだよ！',
+  quickBtns:['一般項の公式を教えて','公比ってなに？','和の公式を教えて','等比中項とは？'],
+  pageMap:{
+    'ex1':'解説①「等比数列の定義と一般項」を学習中',
+    'pr1':'練習問題①「一般項の計算」に取り組み中',
+    'cf1':'確認テスト①「一般項」に取り組み中',
+    'ex2':'解説②「等比数列の和・等比中項・応用」を学習中',
+    'pr2':'練習問題②「和・応用問題」に取り組み中',
+    'cf2':'確認テスト②「和・等比中項」に取り組み中'
+  }
+};
+</script>
+<script src="neko.js"></script>
+</body>
+</html>
